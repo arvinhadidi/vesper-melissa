@@ -1,6 +1,7 @@
 {
   "project": "Vesper",
   "last_updated": "2026-06-08",
+  "current_session": 6,
   "sessions": [
     {
       "id": 1,
@@ -29,11 +30,35 @@
     {
       "id": 3,
       "name": "Core components — TarotCard, CardDeal, MelissaBubble",
-      "status": "pending",
+      "status": "complete",
       "features": [
-        { "id": "tarot_card_component", "name": "TarotCard 3D flip component (Framer Motion)", "status": "pending" },
-        { "id": "card_deal_animation", "name": "CardDeal animation (cards fan out from stack)", "status": "pending" },
-        { "id": "melissa_bubble", "name": "MelissaBubble with typewriter effect + 3 expression states", "status": "pending" }
+        { "id": "tarot_card_component", "name": "TarotCard 3D flip component (Framer Motion)", "status": "complete" },
+        { "id": "card_deal_animation", "name": "CardDeal animation (cards fan out from stack)", "status": "complete" },
+        { "id": "melissa_bubble", "name": "MelissaBubble with typewriter effect + 3 expression states", "status": "complete" },
+        { "id": "card_border_crop", "name": "Auto-crop all 78 card images to remove black borders", "status": "complete" },
+        { "id": "font_update", "name": "Update fonts to Faculty Glyphic (self-hosted)", "status": "complete" }
+      ]
+    },
+    {
+      "id": 3.5,
+      "name": "Unit tests — cards, components",
+      "status": "complete",
+      "features": [
+        { "id": "test_setup", "name": "Set up Vitest + Testing Library", "status": "complete" },
+        { "id": "cards_tests", "name": "Unit tests for cards utility (10 tests)", "status": "complete" },
+        { "id": "tarotcard_tests", "name": "Tests for TarotCard component (8 tests)", "status": "complete" },
+        { "id": "carddeal_tests", "name": "Tests for CardDeal component (8 tests)", "status": "complete" },
+        { "id": "melissa_tests", "name": "Tests for MelissaBubble component (8 tests)", "status": "complete" }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Daily card screen with Melissa streaming reading",
+      "status": "complete",
+      "features": [
+        { "id": "melissa_daily_api", "name": "POST /api/melissa-daily — Anthropic streaming route", "status": "complete" },
+        { "id": "daily_page", "name": "Daily card page at /daily — flip animation, Melissa bubble, journal save", "status": "complete" },
+        { "id": "cardlogic_exports", "name": "Added ES module exports to cardLogic.js", "status": "complete" }
       ]
     },
     {
@@ -44,6 +69,19 @@
         { "id": "landing_hero", "name": "Landing page hero section", "status": "pending" },
         { "id": "landing_value_props", "name": "Landing page value props section", "status": "pending" },
         { "id": "landing_cta", "name": "Landing page CTA routes to sign-in", "status": "pending" }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "App shell layout and bottom navigation bar",
+      "status": "complete",
+      "features": [
+        { "id": "test_user_constant", "name": "TEST_USER hardcoded constant in src/lib/testUser.ts", "status": "complete" },
+        { "id": "types_ts", "name": "Core types in src/lib/types.ts (UserProfile, TarotCardDraw, SavedReading, etc.)", "status": "complete" },
+        { "id": "app_shell_layout", "name": "Route group layout src/app/(app)/layout.tsx with dark indigo bg + bottom nav", "status": "complete" },
+        { "id": "bottom_nav", "name": "BottomNav component with Daily/Spread/Journal tabs, active gold state", "status": "complete" },
+        { "id": "route_placeholders", "name": "Placeholder pages for /daily, /spread, /journal inside (app) route group", "status": "complete" },
+        { "id": "root_redirect", "name": "Root / redirects to /daily", "status": "complete" }
       ]
     }
   ]
