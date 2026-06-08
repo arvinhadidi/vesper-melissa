@@ -1,26 +1,52 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@theme {
+  --color-indigo-deep: #1E1256;
+  --color-indigo-muted: #6B5B9E;
+  --color-cream: #FAF7F0;
+  --color-gold: #C9A84C;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --font-cinzel: var(--font-cinzel-var);
+  --font-garamond: var(--font-garamond-var);
+  --font-lato: var(--font-lato-var);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --radius-tile: 12px;
+  --radius-input: 8px;
+  --radius-modal: 24px;
+
+  --shadow-card: 0 4px 24px rgba(30, 18, 86, 0.15);
+  --shadow-modal: 0 8px 40px rgba(30, 18, 86, 0.25);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #FAF7F0;
+  color: #1E1256;
+  font-family: var(--font-garamond-var), Georgia, serif;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-cinzel-var), serif;
+  color: #1E1256;
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-indigo-deep text-cream px-6 py-3 rounded-tile font-lato font-medium hover:opacity-90 transition-opacity;
+  }
+
+  .btn-ghost {
+    @apply border border-cream/60 text-cream px-6 py-3 rounded-tile font-lato hover:border-cream transition-colors;
+  }
+
+  .btn-gold {
+    @apply bg-gold text-indigo-deep px-6 py-3 rounded-tile font-lato font-semibold hover:opacity-90 transition-opacity;
+  }
+
+  .input-field {
+    @apply w-full bg-cream border border-indigo-deep/30 rounded-input px-4 py-3 font-garamond text-indigo-deep placeholder:text-indigo-deep/40 focus:outline-none focus:border-gold;
+  }
+
+  .card-tile {
+    @apply bg-cream border border-indigo-deep/10 rounded-tile p-4 shadow-card cursor-pointer hover:border-gold/50 transition-colors;
+  }
 }

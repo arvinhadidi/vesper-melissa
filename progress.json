@@ -1,0 +1,50 @@
+{
+  "project": "Vesper",
+  "last_updated": "2026-06-08",
+  "sessions": [
+    {
+      "id": 1,
+      "name": "Project scaffold + design system",
+      "status": "complete",
+      "features": [
+        { "id": "scaffold_nextjs", "name": "Next.js 14 project created", "status": "complete" },
+        { "id": "tailwind_tokens", "name": "Tailwind design tokens configured", "status": "complete" },
+        { "id": "fonts_setup", "name": "Cinzel + EB Garamond + Lato fonts loaded", "status": "complete" },
+        { "id": "global_css", "name": "Global CSS classes defined", "status": "complete" },
+        { "id": "folder_structure", "name": "Folder structure created", "status": "complete" },
+        { "id": "claude_md", "name": "CLAUDE.md harness file created", "status": "complete" },
+        { "id": "progress_json", "name": "progress.json feature tracker created", "status": "complete" }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Card data + image mapping",
+      "status": "pending",
+      "features": [
+        { "id": "cards_json", "name": "cards.json generated from tarotapi.dev (78 cards)", "status": "pending" },
+        { "id": "image_mapping", "name": "Card images mapped to name_short identifiers", "status": "pending" },
+        { "id": "cards_utility", "name": "src/lib/cards.ts utility functions created", "status": "pending" }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Core components — TarotCard, CardDeal, MelissaBubble",
+      "status": "pending",
+      "features": [
+        { "id": "tarot_card_component", "name": "TarotCard 3D flip component (Framer Motion)", "status": "pending" },
+        { "id": "card_deal_animation", "name": "CardDeal animation (cards fan out from stack)", "status": "pending" },
+        { "id": "melissa_bubble", "name": "MelissaBubble with typewriter effect + 3 expression states", "status": "pending" }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Landing page",
+      "status": "pending",
+      "features": [
+        { "id": "landing_hero", "name": "Landing page hero section", "status": "pending" },
+        { "id": "landing_value_props", "name": "Landing page value props section", "status": "pending" },
+        { "id": "landing_cta", "name": "Landing page CTA routes to sign-in", "status": "pending" }
+      ]
+    }
+  ]
+}
