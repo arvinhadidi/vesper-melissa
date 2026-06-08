@@ -19,11 +19,11 @@
     {
       "id": 2,
       "name": "Card data + image mapping",
-      "status": "pending",
+      "status": "complete",
       "features": [
-        { "id": "cards_json", "name": "cards.json generated from tarotapi.dev (78 cards)", "status": "pending" },
-        { "id": "image_mapping", "name": "Card images mapped to name_short identifiers", "status": "pending" },
-        { "id": "cards_utility", "name": "src/lib/cards.ts utility functions created", "status": "pending" }
+        { "id": "cards_json", "name": "cards.json generated from tarotapi.dev (78 cards)", "status": "complete" },
+        { "id": "image_mapping", "name": "Card images mapped to name_short identifiers", "status": "complete" },
+        { "id": "cards_utility", "name": "src/lib/cards.ts utility functions created", "status": "complete" }
       ]
     },
     {
