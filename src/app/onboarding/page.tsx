@@ -1102,12 +1102,14 @@ function ScreenSocialProof({ goForward }: Pick<ScreenProps, 'goForward'>) {
       <div style={{ display: 'flex', alignItems: 'flex-end', gap: '24px', marginBottom: '28px' }}>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <div style={{ display: 'flex', alignItems: 'center', marginBottom: '6px' }}>
-            {[0, 1, 2].map(i => (
-              <div key={i} style={{ width: 36, height: 36, borderRadius: '50%', background: 'rgba(201,168,76,0.2)', border: '1.5px solid rgba(201,168,76,0.5)', marginLeft: i === 0 ? 0 : -10, flexShrink: 0 }} />
+            {(['reader-1.jpg', 'reader-2.jpg', 'reader-3.jpg']).map((file, i) => (
+              <div key={i} style={{ width: 36, height: 36, borderRadius: '50%', overflow: 'hidden', border: '1.5px solid rgba(201,168,76,0.5)', marginLeft: i === 0 ? 0 : -10, flexShrink: 0, position: 'relative' }}>
+                <img src={`/social-proof/${file}`} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              </div>
             ))}
           </div>
           <p style={{ fontFamily: 'var(--font-dm-sans-var), sans-serif', fontSize: '12px', fontWeight: 500, color: 'rgba(250,247,240,0.55)', margin: 0 }}>
-            Loved by women everywhere
+            Loved by readers everywhere
           </p>
         </div>
         <div style={{ width: '1px', height: '40px', background: 'rgba(201,168,76,0.4)' }} />
@@ -1289,10 +1291,22 @@ function ScreenPaywall({ data, onStartTrial }: PaywallProps) {
 
 // ─── Main page ────────────────────────────────────────────────────────────────
 
+const ONBOARDING_SESSION_KEY = 'vesper_onboarding_session';
+
+function loadSession(): { data: OnboardingData; screenId: ScreenId } | null {
+  if (typeof window === 'undefined') return null;
+  try {
+    const raw = sessionStorage.getItem(ONBOARDING_SESSION_KEY);
+    return raw ? JSON.parse(raw) : null;
+  } catch { return null; }
+}
+
 export default function OnboardingPage() {
   const router = useRouter();
 
-  const [data, setData] = useState<OnboardingData>({
+  const savedSession = typeof window !== 'undefined' ? loadSession() : null;
+
+  const [data, setData] = useState<OnboardingData>(savedSession?.data ?? {
     disclaimer_accepted_at: null,
     display_name: '',
     star_sign: null,
@@ -1312,10 +1326,17 @@ export default function OnboardingPage() {
     email_consent_given_at: null,
   });
 
-  const [currentScreenId, setCurrentScreenId] = useState<ScreenId>('welcome');
+  const [currentScreenId, setCurrentScreenId] = useState<ScreenId>(savedSession?.screenId ?? 'welcome');
   const [direction, setDirection] = useState<1 | -1>(1);
   const [trialStarting, setTrialStarting] = useState(false);
   const supabaseWriteFired = useRef(false);
+
+  // Persist state to sessionStorage on every change
+  useEffect(() => {
+    try {
+      sessionStorage.setItem(ONBOARDING_SESSION_KEY, JSON.stringify({ data, screenId: currentScreenId }));
+    } catch { /* storage full — ignore */ }
+  }, [data, currentScreenId]);
 
   function buildScreens(): ScreenId[] {
     const base: ScreenId[] = [
@@ -1423,6 +1444,7 @@ export default function OnboardingPage() {
       microPullCard: data.micro_pull_card,
       onboardingData: data,
     }));
+    sessionStorage.removeItem(ONBOARDING_SESSION_KEY);
 
     router.push('/personalisation');
   }

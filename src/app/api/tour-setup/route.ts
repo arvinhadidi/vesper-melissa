@@ -14,12 +14,17 @@ export async function POST(req: Request) {
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return new Response('Unauthorized', { status: 401 });
 
-  const { userProfile, spreadTimestamp } = await req.json() as {
+  const { userProfile, spreadTimestamp, microPullCardIndex } = await req.json() as {
     userProfile: UserProfile;
     spreadTimestamp: number;
+    microPullCardIndex: number | null;
   };
 
-  const spreadCards = getSpreadCards(user.id, spreadTimestamp, 3) as Array<{ cardIndex: number; isReversed: boolean }>;
+  // Draw more cards than needed so we can exclude the micro-pull card
+  const rawCards = getSpreadCards(user.id, spreadTimestamp, 6) as Array<{ cardIndex: number; isReversed: boolean }>;
+  const spreadCards = microPullCardIndex != null
+    ? rawCards.filter(c => c.cardIndex !== microPullCardIndex).slice(0, 3)
+    : rawCards.slice(0, 3);
 
   const cardLines = spreadCards.map((c, i) => {
     const card = getCardById(c.cardIndex);

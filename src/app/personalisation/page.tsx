@@ -67,6 +67,12 @@ export default function PersonalisationPage() {
 
       payloadRef.current = payload;
 
+      // Resolve micro-pull card index to exclude from spread
+      const microCard = payload.microPullCard
+        ? MICRO_CARDS.find(c => c.name === payload.microPullCard) ?? null
+        : null;
+      const microPullCardIndex = microCard ? MICRO_CARD_INDICES[microCard.imagePath] : null;
+
       // Fire tour-setup API (non-blocking)
       fetch('/api/tour-setup', {
         method: 'POST',
@@ -74,6 +80,7 @@ export default function PersonalisationPage() {
         body: JSON.stringify({
           userProfile: payload.userProfile,
           spreadTimestamp: payload.spreadTimestamp,
+          microPullCardIndex,
         }),
       })
         .then(r => r.json())
