@@ -17,9 +17,18 @@ const PHASES = [
   { label: 'Almost there...', duration: 1000 },
 ];
 
-const TOTAL_PHASE_MS = PHASES.reduce((sum, p) => sum + p.duration, 0); // ~9.6s
+const TOTAL_PHASE_MS = PHASES.reduce((sum, p) => sum + p.duration, 0);
 
 type Payload = { userProfile: UserProfile; spreadTimestamp: number; microPullCard: string | null };
+
+const MICRO_CARDS = [
+  { name: 'The High Priestess', imagePath: 'ar02', line: "You didn't need the cards for this one. You've known for a while now. The real question is whether you trust yourself enough to act on it." },
+  { name: 'Two of Wands', imagePath: 'wa02', line: "You're standing at the edge of this, waiting for permission. Here it is: the choice is yours, and you're already leaning one way." },
+  { name: 'Wheel of Fortune', imagePath: 'ar10', line: 'This is already in motion - the answer is being written right now. What you do in the next few weeks matters more than what you asked.' },
+  { name: 'The Star', imagePath: 'ar17', line: "Whatever you asked: it's going to be okay. Maybe not exactly how you pictured it. But okay." },
+  { name: 'The Moon', imagePath: 'ar18', line: "Not everything about this is visible yet - someone or something isn't showing its full face. The answer becomes clear when you watch what's done, not what's said." },
+] as const;
+const MICRO_CARD_INDICES: Record<string, number> = { ar02: 2, wa02: 23, ar10: 10, ar17: 17, ar18: 18 };
 
 export default function PersonalisationPage() {
   const router = useRouter();
@@ -30,32 +39,35 @@ export default function PersonalisationPage() {
   const apiDoneRef = useRef(false);
   const animDoneRef = useRef(false);
   const hasNavigatedRef = useRef(false);
+  const payloadRef = useRef<Payload | null>(null);
 
-  // Kick off the API call immediately — runs in parallel with animation
+  // Kick off DB write + API call immediately — both run in parallel with animation
   useEffect(() => {
-    const raw = localStorage.getItem('vesper_personalisation_payload');
-    if (!raw) { router.replace('/main'); return; }
+    async function init() {
+      const raw = localStorage.getItem('vesper_personalisation_payload');
+      if (!raw) { router.replace('/main'); return; }
 
-    let payload: Payload;
-    try { payload = JSON.parse(raw); } catch { router.replace('/main'); return; }
+      let payload: Payload;
+      try { payload = JSON.parse(raw); } catch { router.replace('/main'); return; }
 
-    const supabase = createClient();
+      const supabase = createClient();
+      const { data: { user } } = await supabase.auth.getUser();
 
-    // Persist trial start
-    supabase.auth.getUser().then(({ data: { user } }) => {
-      if (!user) return;
-      // Fill in the real user id
-      payload.userProfile = { ...payload.userProfile, id: user.id };
+      if (user) {
+        payload.userProfile = { ...payload.userProfile, id: user.id };
+        // Await the upsert so middleware sees the updated profile when we navigate
+        await supabase.from('user_profiles').upsert({
+          id: user.id,
+          onboarding_completed: true,
+          onboarding_completed_at: new Date().toISOString(),
+          subscription_status: 'trial',
+          trial_started_at: new Date().toISOString(),
+        }, { onConflict: 'id' });
+      }
 
-      void supabase.from('user_profiles').upsert({
-        id: user.id,
-        onboarding_completed: true,
-        onboarding_completed_at: new Date().toISOString(),
-        subscription_status: 'trial',
-        trial_started_at: new Date().toISOString(),
-      }, { onConflict: 'id' });
+      payloadRef.current = payload;
 
-      // Fire tour-setup API
+      // Fire tour-setup API (non-blocking)
       fetch('/api/tour-setup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -68,35 +80,29 @@ export default function PersonalisationPage() {
         .then((tourData: Record<string, unknown>) => {
           apiResultRef.current = tourData;
           apiDoneRef.current = true;
-          maybeFinish(payload);
+          maybeFinish();
         })
         .catch(() => {
           apiDoneRef.current = true;
-          maybeFinish(payload);
+          maybeFinish();
         });
-    });
+    }
+
+    init();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  function maybeFinish(payload: Payload) {
+  function maybeFinish() {
     if (!apiDoneRef.current || !animDoneRef.current || hasNavigatedRef.current) return;
+    if (!payloadRef.current) return;
     hasNavigatedRef.current = true;
-    finalize(payload);
+    finalize(payloadRef.current);
   }
 
   function finalize(payload: Payload) {
     const tourData = apiResultRef.current;
     const now = new Date();
     const dateStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
-
-    const MICRO_CARDS = [
-      { name: 'The High Priestess', imagePath: 'ar02', line: "You didn't need the cards for this one. You've known for a while now. The real question is whether you trust yourself enough to act on it." },
-      { name: 'Two of Wands', imagePath: 'wa02', line: "You're standing at the edge of this, waiting for permission. Here it is: the choice is yours, and you're already leaning one way." },
-      { name: 'Wheel of Fortune', imagePath: 'ar10', line: 'This is already in motion - the answer is being written right now. What you do in the next few weeks matters more than what you asked.' },
-      { name: 'The Star', imagePath: 'ar17', line: "Whatever you asked: it's going to be okay. Maybe not exactly how you pictured it. But okay." },
-      { name: 'The Moon', imagePath: 'ar18', line: "Not everything about this is visible yet - someone or something isn't showing its full face. The answer becomes clear when you watch what's done, not what's said." },
-    ] as const;
-    const MICRO_CARD_INDICES: Record<string, number> = { ar02: 2, wa02: 23, ar10: 10, ar17: 17, ar18: 18 };
 
     if (payload.microPullCard) {
       const microCard = MICRO_CARDS.find(c => c.name === payload.microPullCard);
@@ -136,27 +142,24 @@ export default function PersonalisationPage() {
     localStorage.removeItem('vesper_personalisation_payload');
     setTourActive();
     setDone(true);
-    setTimeout(() => router.replace('/main'), 600);
+    setTimeout(() => router.replace('/main'), 500);
   }
 
-  // Phase cycling animation
+  // Progress bar + phase label animation
   useEffect(() => {
-    let elapsed = 0;
     let currentPhase = 0;
     const startTime = performance.now();
 
-    const raf = requestAnimationFrame(function tick(now) {
-      elapsed = now - startTime;
+    function tick(now: number) {
+      const elapsed = now - startTime;
       const rawProgress = Math.min(elapsed / TOTAL_PHASE_MS, 1);
-
-      // Ease progress so it slows near 95% waiting for API
+      // Slow near 95% while waiting for API
       const easedProgress = rawProgress < 0.9
-        ? rawProgress / 0.9 * 0.9
-        : 0.9 + (rawProgress - 0.9) / 0.1 * 0.05;
+        ? rawProgress
+        : 0.9 + (rawProgress - 0.9) * 0.5;
 
       setProgress(Math.min(easedProgress * 100, 95));
 
-      // Advance phase label
       let acc = 0;
       for (let i = 0; i < PHASES.length; i++) {
         acc += PHASES[i].duration;
@@ -170,21 +173,16 @@ export default function PersonalisationPage() {
       }
 
       if (elapsed < TOTAL_PHASE_MS) {
-        requestAnimationFrame(tick);
+        rafId = requestAnimationFrame(tick);
       } else {
         setPhaseIndex(PHASES.length - 1);
         animDoneRef.current = true;
-        const raw = localStorage.getItem('vesper_personalisation_payload');
-        if (raw) {
-          try {
-            const payload = JSON.parse(raw);
-            maybeFinish(payload);
-          } catch { /* ignore */ }
-        }
+        maybeFinish();
       }
-    });
+    }
 
-    return () => cancelAnimationFrame(raf);
+    let rafId = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(rafId);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -196,7 +194,6 @@ export default function PersonalisationPage() {
       alignItems: 'center',
       justifyContent: 'center',
       padding: '48px 32px',
-      background: '#1E1256',
     }}>
       <motion.div
         initial={{ opacity: 0, y: 12 }}
@@ -204,7 +201,6 @@ export default function PersonalisationPage() {
         transition={{ duration: 0.5 }}
         style={{ width: '100%', maxWidth: '360px', textAlign: 'center' }}
       >
-        {/* Stars icon */}
         <div style={{ marginBottom: '32px', color: '#C9A84C', fontSize: '28px' }}>✦</div>
 
         <h1 style={{
@@ -218,7 +214,7 @@ export default function PersonalisationPage() {
           Personalising your experience
         </h1>
 
-        {/* Progress bar track */}
+        {/* Progress bar */}
         <div style={{
           width: '100%',
           height: '4px',
@@ -228,14 +224,15 @@ export default function PersonalisationPage() {
           marginBottom: '20px',
         }}>
           <motion.div
+            initial={{ width: '0%' }}
+            animate={{ width: done ? '100%' : `${progress}%` }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
             style={{
               height: '100%',
               background: '#C9A84C',
               borderRadius: '2px',
               boxShadow: '0 0 8px rgba(201,168,76,0.6)',
             }}
-            animate={{ width: done ? '100%' : `${progress}%` }}
-            transition={{ duration: 0.4, ease: 'easeOut' }}
           />
         </div>
 

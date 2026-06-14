@@ -40,6 +40,7 @@ Revenue model: 3-day free trial → £9.99/month or yearly. No permanent free ti
 - Functional components only, no class components
 - TypeScript strict mode — no `any` types
 - Styling: inline styles are used for app pages and components (not Tailwind utility classes). Tailwind tokens are defined in globals.css @theme block and used via CSS variables. Do not switch to Tailwind utility classes for new components — match the inline style pattern already in place.
+- Background: The starry sky background (`body::before` pseudo-element in globals.css, using `/landing/starrysky.webp`) applies to ALL pages globally — do NOT set a solid `background` colour on any page wrapper div, as this will cover the starry texture. Let the body::before show through.
 - One component per file
 - Export types from src/lib/types.ts, import from there
 - All Anthropic API calls go through server-side API routes only (never client-side)
