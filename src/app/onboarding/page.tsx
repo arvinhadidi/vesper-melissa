@@ -1434,10 +1434,14 @@ export default function OnboardingPage() {
   const isPaywall = currentScreenId === 'paywall';
 
   return (
-    <div style={{ minHeight: '100dvh', display: 'flex', justifyContent: 'center' }}>
-      {/* Radial depth gradient over the starfield */}
-      <div style={{ position: 'fixed', inset: 0, zIndex: 0, pointerEvents: 'none', background: 'radial-gradient(ellipse 80% 60% at 50% 0%, rgba(40,24,120,0.45) 0%, transparent 70%)' }} />
-
+    <div style={{
+      minHeight: '100dvh', display: 'flex', justifyContent: 'center',
+      backgroundColor: '#1E1256',
+      backgroundImage: 'linear-gradient(to bottom, rgba(30,18,86,0.6) 0%, rgba(30,18,86,0.45) 30%, rgba(30,18,86,0.8) 75%, rgba(30,18,86,1) 100%), url("/landing/starrysky.webp")',
+      backgroundSize: 'auto, cover',
+      backgroundPosition: 'center',
+      backgroundAttachment: 'fixed',
+    }}>
       <div style={{ position: 'relative', zIndex: 1, width: '100%', maxWidth: isPaywall ? '900px' : '480px', minHeight: '100dvh', padding: '0 28px 80px', display: 'flex', flexDirection: 'column', overflowX: 'hidden', transition: 'max-width 0.3s ease' }}>
         {showProgress && <div style={{ paddingTop: '32px' }}><ProgressBar current={progressIndex + 1} total={progressScreens.length} /></div>}
         {!showProgress && <div style={{ height: '32px' }} />}
