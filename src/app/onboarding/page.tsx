@@ -1293,46 +1293,52 @@ function ScreenPaywall({ data, onStartTrial }: PaywallProps) {
 
 const ONBOARDING_SESSION_KEY = 'vesper_onboarding_session';
 
-function loadSession(): { data: OnboardingData; screenId: ScreenId } | null {
-  if (typeof window === 'undefined') return null;
-  try {
-    const raw = sessionStorage.getItem(ONBOARDING_SESSION_KEY);
-    return raw ? JSON.parse(raw) : null;
-  } catch { return null; }
-}
+const DEFAULT_ONBOARDING_DATA: OnboardingData = {
+  disclaimer_accepted_at: null,
+  display_name: '',
+  star_sign: null,
+  birth_date: null,
+  current_mood: null,
+  notices_signs: null,
+  focus_area: null,
+  relationship_status: null,
+  life_weight: null,
+  has_specific_person: null,
+  micro_pull_card: null,
+  duration_weight: null,
+  reading_intent: [],
+  gut_feeling: null,
+  preferred_checkin_time: null,
+  email_marketing_consent: false,
+  email_consent_given_at: null,
+};
 
 export default function OnboardingPage() {
   const router = useRouter();
 
-  const savedSession = typeof window !== 'undefined' ? loadSession() : null;
-
-  const [data, setData] = useState<OnboardingData>(savedSession?.data ?? {
-    disclaimer_accepted_at: null,
-    display_name: '',
-    star_sign: null,
-    birth_date: null,
-    current_mood: null,
-    notices_signs: null,
-    focus_area: null,
-    relationship_status: null,
-    life_weight: null,
-    has_specific_person: null,
-    micro_pull_card: null,
-    duration_weight: null,
-    reading_intent: [],
-    gut_feeling: null,
-    preferred_checkin_time: null,
-    email_marketing_consent: false,
-    email_consent_given_at: null,
-  });
-
-  const [currentScreenId, setCurrentScreenId] = useState<ScreenId>(savedSession?.screenId ?? 'welcome');
+  // Always start with defaults (matches server render), restore from sessionStorage after hydration
+  const [data, setData] = useState<OnboardingData>(DEFAULT_ONBOARDING_DATA);
+  const [currentScreenId, setCurrentScreenId] = useState<ScreenId>('welcome');
   const [direction, setDirection] = useState<1 | -1>(1);
   const [trialStarting, setTrialStarting] = useState(false);
   const supabaseWriteFired = useRef(false);
 
-  // Persist state to sessionStorage on every change
+  // Restore saved session after hydration (client-only)
   useEffect(() => {
+    try {
+      const raw = sessionStorage.getItem(ONBOARDING_SESSION_KEY);
+      if (!raw) return;
+      const saved = JSON.parse(raw) as { data: OnboardingData; screenId: ScreenId };
+      if (saved.data) setData(saved.data);
+      if (saved.screenId) setCurrentScreenId(saved.screenId);
+    } catch { /* ignore */ }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Persist state to sessionStorage on every change (skip initial default write)
+  const isHydratedRef = useRef(false);
+  useEffect(() => {
+    if (!isHydratedRef.current) { isHydratedRef.current = true; return; }
     try {
       sessionStorage.setItem(ONBOARDING_SESSION_KEY, JSON.stringify({ data, screenId: currentScreenId }));
     } catch { /* storage full — ignore */ }
