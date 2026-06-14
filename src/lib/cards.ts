@@ -28,5 +28,5 @@ export function getCardByNameShort(nameShort: string): TarotCard {
 }
 
 export function getCardImagePath(nameShort: string): string {
-  return `/cards/${nameShort}.png`;
+  return `/cards-cropped/${nameShort}.png`;
 }

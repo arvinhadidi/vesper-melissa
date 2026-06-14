@@ -1,16 +1,16 @@
 {
   "project": "Vesper",
-  "last_updated": "2026-06-08",
-  "current_session": 6,
+  "last_updated": "2026-06-11",
+  "current_session": 13,
   "sessions": [
     {
       "id": 1,
       "name": "Project scaffold + design system",
       "status": "complete",
       "features": [
-        { "id": "scaffold_nextjs", "name": "Next.js 14 project created", "status": "complete" },
-        { "id": "tailwind_tokens", "name": "Tailwind design tokens configured", "status": "complete" },
-        { "id": "fonts_setup", "name": "Cinzel + EB Garamond + Lato fonts loaded", "status": "complete" },
+        { "id": "scaffold_nextjs", "name": "Next.js project created (now 16.2.7)", "status": "complete" },
+        { "id": "tailwind_tokens", "name": "Design tokens configured in globals.css @theme block", "status": "complete" },
+        { "id": "fonts_setup", "name": "Faculty Glyphic (self-hosted) + Lato fonts loaded", "status": "complete" },
         { "id": "global_css", "name": "Global CSS classes defined", "status": "complete" },
         { "id": "folder_structure", "name": "Folder structure created", "status": "complete" },
         { "id": "claude_md", "name": "CLAUDE.md harness file created", "status": "complete" },
@@ -52,16 +52,6 @@
       ]
     },
     {
-      "id": 6,
-      "name": "Daily card screen with Melissa streaming reading",
-      "status": "complete",
-      "features": [
-        { "id": "melissa_daily_api", "name": "POST /api/melissa-daily — Anthropic streaming route", "status": "complete" },
-        { "id": "daily_page", "name": "Daily card page at /daily — flip animation, Melissa bubble, journal save", "status": "complete" },
-        { "id": "cardlogic_exports", "name": "Added ES module exports to cardLogic.js", "status": "complete" }
-      ]
-    },
-    {
       "id": 4,
       "name": "Landing page",
       "status": "pending",
@@ -78,10 +68,151 @@
       "features": [
         { "id": "test_user_constant", "name": "TEST_USER hardcoded constant in src/lib/testUser.ts", "status": "complete" },
         { "id": "types_ts", "name": "Core types in src/lib/types.ts (UserProfile, TarotCardDraw, SavedReading, etc.)", "status": "complete" },
-        { "id": "app_shell_layout", "name": "Route group layout src/app/(app)/layout.tsx with dark indigo bg + bottom nav", "status": "complete" },
+        { "id": "app_shell_layout", "name": "Route group layout src/app/(app)/layout.tsx with cream bg + bottom nav", "status": "complete" },
         { "id": "bottom_nav", "name": "BottomNav component with Daily/Spread/Journal tabs, active gold state", "status": "complete" },
         { "id": "route_placeholders", "name": "Placeholder pages for /daily, /spread, /journal inside (app) route group", "status": "complete" },
         { "id": "root_redirect", "name": "Root / redirects to /daily", "status": "complete" }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Daily card screen with Melissa streaming reading",
+      "status": "complete",
+      "features": [
+        { "id": "melissa_daily_api", "name": "POST /api/melissa-daily — Anthropic streaming route", "status": "complete" },
+        { "id": "daily_page", "name": "Daily card page at /daily — flip animation, card name, action buttons", "status": "complete" },
+        { "id": "cardlogic_exports", "name": "Added ES module exports to cardLogic.js", "status": "complete" }
+      ]
+    },
+    {
+      "id": 6.5,
+      "name": "Daily page polish + Melissa reading flow + chat",
+      "status": "complete",
+      "features": [
+        { "id": "daily_reskin", "name": "Daily page restyled to cream bg (matching /main), inline styles throughout", "status": "complete" },
+        { "id": "card_modal", "name": "Card meaning modal — centred, scale-in animation, X + backdrop dismiss", "status": "complete" },
+        { "id": "melissa_reading_flow", "name": "MelissaReadingFlow component: 5-phase animated sequence with untype transitions", "status": "complete" },
+        { "id": "melissa_chat_api", "name": "POST /api/melissa-chat — conversational follow-up route with full context", "status": "complete" },
+        { "id": "chat_page", "name": "/chat/[id] page — Melissa avatar, typewriter reveal, streaming chat, back nav", "status": "complete" },
+        { "id": "em_dash_ban", "name": "Both API prompts explicitly ban em dashes, instruct commas/colons/brackets instead", "status": "complete" },
+        { "id": "claude_md_sync", "name": "CLAUDE.md updated: correct Next.js version, Melissa image paths, inline styles convention, routing, reading flow architecture", "status": "complete" }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Spread screen with question selection and Melissa reading",
+      "status": "complete",
+      "features": [
+        { "id": "spread_questions", "name": "src/data/spreadQuestions.ts — 8 questions with cardCount + positionLabels", "status": "complete" },
+        { "id": "melissa_spread_api", "name": "POST /api/melissa-spread — Anthropic streaming route for spread readings", "status": "complete" },
+        { "id": "card_deal_label_variant", "name": "CardDeal updated: labelVariant prop ('light'|'dark') for cream background usage", "status": "complete" },
+        { "id": "melissa_reading_flow_generic", "name": "MelissaReadingFlow refactored: apiEndpoint + apiPayload + userName props (no longer card-specific)", "status": "complete" },
+        { "id": "spread_page", "name": "/spread page — 3 stages: question selection, card deal + sequential flip, Melissa reading", "status": "complete" },
+        { "id": "chat_spread_context", "name": "Chat page updated to handle spread context (no single card) alongside daily context", "status": "complete" },
+        { "id": "melissa_chat_spread", "name": "melissa-chat API updated to build spread-aware system prompt when spreadContext is present", "status": "complete" }
+      ]
+    },
+    {
+      "id": 7.5,
+      "name": "Polish pass — prompts, label alignment, header, routing",
+      "status": "complete",
+      "features": [
+        { "id": "monologue_prompts", "name": "All 3 API routes updated: monologue-style prompts, no markdown/asterisks, max_tokens 220", "status": "complete" },
+        { "id": "card_label_alignment", "name": "CardDeal labels fixed: height:28px with alignItems:flex-end so all card columns align regardless of label word count", "status": "complete" },
+        { "id": "melissa_chat_page", "name": "MelissaChatPage shared component created (reads reading-{key} from sessionStorage)", "status": "complete" },
+        { "id": "conversation_path_prop", "name": "MelissaReadingFlow: chatId prop replaced with conversationPath", "status": "complete" },
+        { "id": "spread_routing", "name": "/spread/[id] (reading) + /spread/[id]/conversation pages created", "status": "complete" },
+        { "id": "daily_routing", "name": "/daily/[id] (reading with card reference) + /daily/[id]/conversation pages created", "status": "complete" },
+        { "id": "spread_page_nav", "name": "spread/page.tsx: removed inline reading stage, navigates to /spread/[id]", "status": "complete" },
+        { "id": "daily_page_nav", "name": "daily/page.tsx: removed inline MelissaReadingFlow, navigates to /daily/[id]", "status": "complete" },
+        { "id": "session_storage_key", "name": "SessionStorage key convention changed: reading-{id} (was chat-{id})", "status": "complete" },
+        { "id": "chat_header_fix", "name": "Chat header: centred Melissa title, full question text wraps naturally (no hard truncation)", "status": "complete" }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Spread UX refinement — inline reading + slug rename",
+      "status": "complete",
+      "features": [
+        { "id": "spread_slug_rename", "name": "Spread session slug changed from spread-{ts} to reading-{ts}, URL is now /spread/reading-{ts}", "status": "complete" },
+        { "id": "spread_inline_reading", "name": "Cards and Melissa bubble shown inline on same page — shuffle navigates to /spread/reading-{ts}, cards flip there, then Melissa reading appears below", "status": "complete" },
+        { "id": "spread_question_title", "name": "Question text shown as dark indigo title above the card spread", "status": "complete" },
+        { "id": "spread_journal_button", "name": "Add to journal button appears after all cards flipped and again after reading completes (shared isSaved state)", "status": "complete" },
+        { "id": "melissa_reading_flow_complete_actions", "name": "MelissaReadingFlow: completeActions prop added — replaces default Carry on button with custom JSX when provided", "status": "complete" },
+        { "id": "card_label_fixed_width", "name": "CardDeal columns fixed to card pixel width (80/120/180px) so all labels wrap within identical boundary and cards stay aligned", "status": "complete" },
+        { "id": "spread_token_fix", "name": "melissa-spread API: max_tokens raised to 280, sentence limit hardened to 4 sentences max", "status": "complete" },
+        { "id": "test_suite_fixed", "name": "All 51 unit tests passing: jest-dom setup file added, jsdom version fixed, TarotCard + MelissaBubble tests corrected, new tests for MelissaReadingFlow and spreadQuestions", "status": "complete" }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Journal screen + reading feedback mechanisms",
+      "status": "complete",
+      "features": [
+        { "id": "journal_types", "name": "JournalEntry, ResonanceRating, EmojiReaction types added to src/lib/types.ts", "status": "complete" },
+        { "id": "journal_lib", "name": "src/lib/journal.ts — localStorage helpers (get/getOne/save-upsert/update/delete) keyed on 'vesper_journal'", "status": "complete" },
+        { "id": "journal_saving", "name": "Real localStorage saving wired into daily/[id], spread/[id], and daily/page Add-to-journal buttons (upsert by session id, preserves annotations + savedAt)", "status": "complete" },
+        { "id": "emoji_reaction_row", "name": "MelissaReadingFlow: 'How did that land?' emoji reaction row (spot_on/got_me_thinking/surprisingly_accurate/not_quite), persisted to reading context, hidden on revisit once tapped", "status": "complete" },
+        { "id": "journal_page", "name": "/journal page: empty state (Melissa avatar + CTA to /daily) and reverse-chron list of entry cards (date, type/question, card thumbnails with (R), melissaText excerpt, impression preview)", "status": "complete" },
+        { "id": "journal_detail", "name": "JournalEntryDetail bottom-sheet: full date, cards with names + position labels, full melissaText, delete option", "status": "complete" },
+        { "id": "my_take", "name": "My Take section: debounced (800ms) autosave textarea writing impression to localStorage, pre-populated from existing impression", "status": "complete" },
+        { "id": "option_b_resonance", "name": "Option B follow-up: Melissa bubble for entries >5 days old with no rating yet, 3 resonance options, thank-you then fade, never re-shown once rated", "status": "complete" },
+        { "id": "emoji_selection_persist", "name": "Emoji reaction: selection stays on screen after tapping (only hides on a later revisit, captured at mount), selected box + text turn gold with glow", "status": "complete" },
+        { "id": "journal_view_reading", "name": "View Reading button in journal detail: rehydrates the reading session from the saved entry and opens /daily/[id] or /spread/[id] (in-session for now; durable cross-session viewing pending Supabase)", "status": "complete" }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Onboarding flow with paywall",
+      "status": "complete",
+      "features": [
+        { "id": "onboarding_page", "name": "/onboarding page: 11-screen flow with Framer Motion slide transitions, progress bar, back nav", "status": "complete" },
+        { "id": "onboarding_welcome", "name": "Screen 1: Welcome — Melissa avatar, warm intro, CTA", "status": "complete" },
+        { "id": "onboarding_disclaimer", "name": "Screen 2: Disclaimer — entertainment notice, stores vesper_disclaimer_seen to localStorage", "status": "complete" },
+        { "id": "onboarding_focus", "name": "Screen 3: Focus area — 6 single-select tiles, stores focusArea", "status": "complete" },
+        { "id": "onboarding_relationship_status", "name": "Screen 4 (conditional): Relationship situation — only shown if love/relationships selected", "status": "complete" },
+        { "id": "onboarding_specific_person", "name": "Screen 5 (conditional): Specific person — only shown if love/relationships selected", "status": "complete" },
+        { "id": "onboarding_intent", "name": "Screen 6: Reading intent — multi-select up to 2, stores readingIntent array", "status": "complete" },
+        { "id": "onboarding_star_sign", "name": "Screen 7: Star sign — 12-sign grid + unknown option, stores starSign", "status": "complete" },
+        { "id": "onboarding_name", "name": "Screen 8: Name input — trimmed, max 30 chars, stores displayName", "status": "complete" },
+        { "id": "onboarding_notifications", "name": "Screen 9: Notification opt-in — stores notificationsOptIn boolean", "status": "complete" },
+        { "id": "onboarding_email", "name": "Screen 10: Email consent — checkbox, stores marketingOptIn boolean", "status": "complete" },
+        { "id": "onboarding_paywall", "name": "Screen 11: Paywall — Melissa avatar, 3-day trial CTA, saves all data to localStorage, redirects to /daily", "status": "complete" },
+        { "id": "onboarding_temp_link", "name": "Temporary /onboarding link added to LandingNav for Session 10 testing", "status": "complete" }
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Onboarding restructure — 22-screen flow",
+      "status": "complete",
+      "features": [
+        { "id": "onboarding_22_screens", "name": "Full 22-screen flow at /onboarding — single route, step-index state machine", "status": "complete" },
+        { "id": "onboarding_conditional_logic", "name": "Conditional screens: 10a/10b on focus_area; hold_in_mind only on yes_someone; back nav respects skips", "status": "complete" },
+        { "id": "onboarding_micro_pull", "name": "Micro-pull (screen 13): zero API calls, 5 hardcoded cards, typewriter line, 3D flip animation", "status": "complete" },
+        { "id": "onboarding_synthesis", "name": "Synthesis (screen 20): 6 dynamic lines from state, timed fade-in sequence, shuffling deck animation", "status": "complete" },
+        { "id": "onboarding_supabase_write", "name": "Single Supabase upsert on reaching paywall; onboarding_completed only set post-paywall CTA", "status": "complete" },
+        { "id": "onboarding_migration_sql", "name": "Migration: add_onboarding_v2_fields — current_mood, notices_signs, life_weight, duration_weight, gut_feeling, micro_pull_card, birth_date, disclaimer_accepted_at, preferred_checkin_time, email_marketing_consent, email_consent_given_at, onboarding_completed_at", "status": "complete" },
+        { "id": "onboarding_types_update", "name": "UserProfile type, getUserProfile, and useUserProfile updated with new fields", "status": "complete" },
+        { "id": "onboarding_analytics", "name": "onboarding_step_viewed console event on every step change", "status": "complete" }
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Supabase auth, Google OAuth, localStorage migration",
+      "status": "complete",
+      "features": [
+        { "id": "supabase_ssr_install", "name": "@supabase/ssr installed", "status": "complete" },
+        { "id": "supabase_client_utils", "name": "src/lib/supabase/{client,server,middleware}.ts created", "status": "complete" },
+        { "id": "middleware_auth", "name": "src/middleware.ts: session refresh, protected routes, subscription/trial routing logic", "status": "complete" },
+        { "id": "auth_callback", "name": "src/app/auth/callback/route.ts: OAuth code exchange → redirect to /daily", "status": "complete" },
+        { "id": "signin_page", "name": "/signin page: Google OAuth button, Melissa avatar, entertainment disclaimer", "status": "complete" },
+        { "id": "use_user_profile_hook", "name": "src/lib/hooks/useUserProfile.ts: client-side hook returning { user, profile, loading, error }", "status": "complete" },
+        { "id": "get_user_profile_server", "name": "src/lib/getUserProfile.ts: server-side utility for API routes", "status": "complete" },
+        { "id": "test_user_removed", "name": "TEST_USER removed from all screens (daily, spread, journal detail) and replaced with useUserProfile hook", "status": "complete" },
+        { "id": "api_routes_protected", "name": "All 3 API routes (melissa-daily, melissa-spread, melissa-chat) return 401 if not authenticated", "status": "complete" },
+        { "id": "journal_supabase", "name": "/api/journal route (GET/POST/PATCH/DELETE) + journal.ts updated to save to Supabase with localStorage fallback", "status": "complete" },
+        { "id": "journal_page_supabase_read", "name": "Journal page reads from Supabase via fetchJournalEntries()", "status": "complete" },
+        { "id": "onboarding_migration", "name": "OnboardingMigration component in app layout: migrates vesper_onboarding localStorage key to user_profiles on first auth'd app load", "status": "complete" }
       ]
     }
   ]

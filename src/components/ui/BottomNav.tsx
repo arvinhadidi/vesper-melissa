@@ -44,22 +44,23 @@ export default function BottomNav() {
       style={{
         position: 'fixed',
         bottom: 0,
-        left: 0,
-        right: 0,
+        left: '50%',
+        transform: 'translateX(-50%)',
+        width: '100%',
         maxWidth: '480px',
-        margin: '0 auto',
-        background: '#1E1256',
-        borderTop: '1px solid rgba(201, 168, 76, 0.15)',
+        background: '#FAF7F0',
+        borderTop: '2px solid #C9A84C',
         height: '64px',
         display: 'flex',
         justifyContent: 'space-around',
         alignItems: 'center',
         paddingBottom: 'env(safe-area-inset-bottom)',
+        boxShadow: '0 -4px 16px rgba(0, 0, 0, 0.3)',
       }}
     >
       {tabs.map((tab) => {
         const isActive = pathname.startsWith(tab.href);
-        const color = isActive ? '#C9A84C' : 'rgba(250, 247, 240, 0.35)';
+        const color = isActive ? '#C9A84C' : 'rgba(30, 18, 86, 0.5)';
 
         return (
           <Link
@@ -78,8 +79,10 @@ export default function BottomNav() {
             {tab.icon}
             <span
               style={{
-                fontFamily: '"Faculty Glyphic", serif',
+                fontFamily: 'var(--font-dm-sans-var), sans-serif',
                 fontSize: '10px',
+                fontWeight: 500,
+                letterSpacing: '0.04em',
                 color,
               }}
             >

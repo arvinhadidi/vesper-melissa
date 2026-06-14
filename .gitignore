@@ -39,3 +39,28 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# brand assets: only the final mascot images + backgrounds are committed
+/brand_assets/brand_mascot/other_mascot_images/
+
+# extracted font archive (font no longer used)
+Faculty_Glyphic.zip
+/public/fonts/
+
+# raw tarot card source images (processed output lives in public/cards-cropped/)
+/tarot-cards/
+
+# standalone HTML (not part of Next.js app)
+index.html
+
+# local Claude settings
+.claude/
+
+# dev test page
+/src/app/test/
+
+# unused faded image variants
+*-faded.png
+
+# screenshots (generated, not source)
+/screenshots/

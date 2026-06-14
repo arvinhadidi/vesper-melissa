@@ -1,23 +1,32 @@
 import type { Metadata } from "next";
-import { Cinzel, EB_Garamond, Lato } from "next/font/google";
+import {
+  DM_Sans,
+  DM_Serif_Display,
+  EB_Garamond,
+} from "next/font/google";
 import "./globals.css";
-
-const cinzel = Cinzel({
-  variable: "--font-cinzel-var",
-  subsets: ["latin"],
-  weight: ["400", "600", "700"],
-});
 
 const ebGaramond = EB_Garamond({
   variable: "--font-garamond-var",
   subsets: ["latin"],
   weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
+  display: "swap",
 });
 
-const lato = Lato({
-  variable: "--font-lato-var",
+const dmSerifDisplay = DM_Serif_Display({
+  variable: "--font-dm-serif-var",
   subsets: ["latin"],
-  weight: ["300", "400", "700"],
+  weight: "400",
+  style: ["normal", "italic"],
+  display: "swap",
+});
+
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans-var",
+  subsets: ["latin"],
+  weight: ["300", "400", "500"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -33,9 +42,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${cinzel.variable} ${ebGaramond.variable} ${lato.variable}`}
+      className={`${ebGaramond.variable} ${dmSerifDisplay.variable} ${dmSans.variable}`}
     >
-      <body className="min-h-screen bg-cream">{children}</body>
+      <head>
+      </head>
+      <body className="min-h-screen">{children}</body>
     </html>
   );
 }

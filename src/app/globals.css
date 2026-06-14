@@ -6,9 +6,9 @@
   --color-cream: #FAF7F0;
   --color-gold: #C9A84C;
 
-  --font-cinzel: var(--font-cinzel-var);
-  --font-garamond: var(--font-garamond-var);
-  --font-lato: var(--font-lato-var);
+  --font-cinzel: var(--font-dm-serif-var), serif;
+  --font-garamond: var(--font-garamond-var), Georgia, serif;
+  --font-lato: var(--font-dm-sans-var), sans-serif;
 
   --radius-tile: 12px;
   --radius-input: 8px;
@@ -18,20 +18,44 @@
   --shadow-modal: 0 8px 40px rgba(30, 18, 86, 0.25);
 }
 
+html {
+  background-color: #1E1256;
+}
+
 body {
-  background-color: #FAF7F0;
-  color: #1E1256;
+  background-color: #1E1256;
+  color: #FAF7F0;
   font-family: var(--font-garamond-var), Georgia, serif;
 }
 
+/* Starry sky behind every app page. Fixed pseudo-element rather than
+   background-attachment: fixed, which iOS Safari ignores. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-color: #1E1256;
+  background-image: linear-gradient(
+      to bottom,
+      rgba(30, 18, 86, 0.6) 0%,
+      rgba(30, 18, 86, 0.45) 30%,
+      rgba(30, 18, 86, 0.8) 75%,
+      rgba(30, 18, 86, 1) 100%
+    ),
+    url("/landing/starrysky.webp");
+  background-size: auto, cover;
+  background-position: center;
+}
+
 h1, h2, h3 {
-  font-family: var(--font-cinzel-var), serif;
-  color: #1E1256;
+  font-family: var(--font-dm-serif-var), serif;
+  color: #FAF7F0;
 }
 
 @layer components {
   .btn-primary {
-    @apply bg-indigo-deep text-cream px-6 py-3 rounded-tile font-lato font-medium hover:opacity-90 transition-opacity;
+    @apply bg-cream text-indigo-deep px-6 py-3 rounded-tile font-lato font-medium hover:opacity-90 transition-opacity;
   }
 
   .btn-ghost {
@@ -48,5 +72,46 @@ h1, h2, h3 {
 
   .card-tile {
     @apply bg-cream border border-indigo-deep/10 rounded-tile p-4 shadow-card cursor-pointer hover:border-gold/50 transition-colors;
+  }
+}
+
+/* Onboarding back button: in-flow on mobile, fixed top-left on desktop */
+.back-btn-desktop { display: none !important; }
+.back-btn-mobile { display: flex !important; }
+
+@media screen and (min-width: 768px) {
+  .back-btn-desktop { display: flex !important; }
+  .back-btn-mobile { display: none !important; }
+}
+
+/* Paywall two-column layout on desktop */
+.paywall-grid {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center;
+}
+.paywall-timeline {
+  display: none !important;
+}
+
+@media screen and (min-width: 768px) {
+  .paywall-grid {
+    display: grid !important;
+    flex-direction: unset !important;
+    grid-template-columns: 1fr 320px !important;
+    gap: 48px !important;
+    align-items: start !important;
+    max-width: 860px;
+    width: 100%;
+  }
+  .paywall-timeline {
+    display: flex !important;
+    flex-direction: column;
+    background: rgba(250,247,240,0.05);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 20px;
+    padding: 32px 24px;
+    align-self: stretch;
+    justify-content: center;
   }
 }

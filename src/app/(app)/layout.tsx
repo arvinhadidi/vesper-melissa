@@ -1,20 +1,25 @@
-import BottomNav from '@/components/ui/BottomNav';
+import OnboardingMigration from '@/components/ui/OnboardingMigration';
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
     <div style={{
       minHeight: '100dvh',
-      background: '#1E1256',
       display: 'flex',
-      flexDirection: 'column',
-      maxWidth: '480px',
-      margin: '0 auto',
-      position: 'relative',
+      justifyContent: 'center',
     }}>
-      <main style={{ flex: 1, overflowY: 'auto', paddingBottom: '72px' }}>
-        {children}
-      </main>
-      <BottomNav />
+      <OnboardingMigration />
+      <div style={{
+        width: '100%',
+        maxWidth: '520px',
+        minHeight: '100dvh',
+        display: 'flex',
+        flexDirection: 'column',
+        position: 'relative',
+      }}>
+        <main style={{ flex: 1, overflowY: 'auto' }}>
+          {children}
+        </main>
+      </div>
     </div>
   );
 }
