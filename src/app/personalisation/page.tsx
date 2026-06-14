@@ -45,10 +45,10 @@ export default function PersonalisationPage() {
   useEffect(() => {
     async function init() {
       const raw = localStorage.getItem('vesper_personalisation_payload');
-      if (!raw) { router.replace('/main'); return; }
+      if (!raw) { window.location.href = '/main'; return; }
 
       let payload: Payload;
-      try { payload = JSON.parse(raw); } catch { router.replace('/main'); return; }
+      try { payload = JSON.parse(raw); } catch { window.location.href = '/main'; return; }
 
       const supabase = createClient();
       const { data: { user } } = await supabase.auth.getUser();
@@ -149,7 +149,8 @@ export default function PersonalisationPage() {
     localStorage.removeItem('vesper_personalisation_payload');
     setTourActive();
     setDone(true);
-    setTimeout(() => router.replace('/main'), 500);
+    // Full navigation so middleware reads fresh Supabase profile (not cached RSC)
+    setTimeout(() => { window.location.href = '/main'; }, 500);
   }
 
   // Progress bar + phase label animation
@@ -201,6 +202,11 @@ export default function PersonalisationPage() {
       alignItems: 'center',
       justifyContent: 'center',
       padding: '48px 32px',
+      backgroundColor: '#1E1256',
+      backgroundImage: 'linear-gradient(to bottom, rgba(30,18,86,0.6) 0%, rgba(30,18,86,0.45) 30%, rgba(30,18,86,0.8) 75%, rgba(30,18,86,1) 100%), url("/landing/starrysky.webp")',
+      backgroundSize: 'auto, cover',
+      backgroundPosition: 'center',
+      backgroundAttachment: 'fixed',
     }}>
       <motion.div
         initial={{ opacity: 0, y: 12 }}
