@@ -1167,9 +1167,9 @@ function ScreenTrialEnabled({ goForward }: Pick<ScreenProps, 'goForward'>) {
   );
 }
 
-type PaywallProps = { data: OnboardingData; onStartTrial: () => void; starting: boolean };
+type PaywallProps = { data: OnboardingData; onStartTrial: () => void };
 
-function ScreenPaywall({ data, onStartTrial, starting }: PaywallProps) {
+function ScreenPaywall({ data, onStartTrial }: PaywallProps) {
   const [selectedPlan, setSelectedPlan] = useState<'yearly' | 'monthly'>('yearly');
   const [secondsLeft, setSecondsLeft] = useState(COUNTDOWN_SECONDS);
   const [currency, setCurrency] = useState(DEFAULT_CURRENCY);
@@ -1237,9 +1237,7 @@ function ScreenPaywall({ data, onStartTrial, starting }: PaywallProps) {
 
         {/* CTA */}
         <div style={{ width: '100%' }}>
-          <PrimaryButton onClick={onStartTrial} disabled={starting}>
-            {starting ? 'Preparing your reading...' : `Try Vesper for ${p.symbol}0`}
-          </PrimaryButton>
+          <PrimaryButton onClick={onStartTrial}>Try Vesper for {p.symbol}0</PrimaryButton>
         </div>
         <p style={{ fontFamily: 'var(--font-dm-sans-var), sans-serif', fontSize: '13px', color: 'rgba(250,247,240,0.45)', textAlign: 'center', margin: '12px 0 0' }}>
           Cancel anytime during your trial.
@@ -1384,34 +1382,16 @@ export default function OnboardingPage() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentScreenId]);
 
-  async function handleStartTrial() {
+  function handleStartTrial() {
     if (trialStarting) return;
     setTrialStarting(true);
 
     const now = new Date();
-    const dateStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
     const spreadTimestamp = now.getTime();
 
-    // Persist trial start to Supabase
-    const supabase = createClient();
-    const { data: { user } } = await supabase.auth.getUser();
-    if (user) {
-      supabase.from('user_profiles').upsert({
-        id: user.id,
-        onboarding_completed: true,
-        onboarding_completed_at: now.toISOString(),
-        subscription_status: 'trial',
-        trial_started_at: now.toISOString(),
-      }, { onConflict: 'id' });
-    }
-
-    localStorage.setItem('vesper_onboarding', JSON.stringify(data));
-    localStorage.setItem('vesper_trial_started', 'true');
-    localStorage.setItem('vesper_trial_start_date', now.toISOString());
-
-    // Build user profile object for tour-setup API
+    // Build user profile for the personalisation page
     const userProfile = {
-      id: user?.id ?? '',
+      id: '',
       displayName: data.display_name || 'there',
       starSign: data.star_sign ?? 'unknown',
       birthDate: data.birth_date,
@@ -1434,60 +1414,17 @@ export default function OnboardingPage() {
       isSubscribed: false,
     };
 
-    // Pre-generate spread + save journal entries
-    try {
-      const res = await fetch('/api/tour-setup', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ userProfile, spreadTimestamp }),
-      });
-      if (res.ok) {
-        const tourData = await res.json();
+    localStorage.setItem('vesper_onboarding', JSON.stringify(data));
+    localStorage.setItem('vesper_trial_started', 'true');
+    localStorage.setItem('vesper_trial_start_date', now.toISOString());
+    localStorage.setItem('vesper_personalisation_payload', JSON.stringify({
+      userProfile,
+      spreadTimestamp,
+      microPullCard: data.micro_pull_card,
+      onboardingData: data,
+    }));
 
-        // Save micro-pull card as daily journal entry
-        if (data.micro_pull_card) {
-          const { saveJournalEntry } = await import('@/lib/journal');
-          const microCard = MICRO_CARDS.find(c => c.name === data.micro_pull_card);
-          const microCardIndex = microCard ? MICRO_CARD_INDICES[microCard.imagePath] : -1;
-          if (microCardIndex >= 0 && microCard) {
-            saveJournalEntry({
-              id: `daily-${dateStr}`,
-              type: 'daily',
-              savedAt: now.toISOString(),
-              questionText: null,
-              cards: [{ cardIndex: microCardIndex, isReversed: false }],
-              positionLabels: null,
-              melissaText: microCard.line,
-              impression: null,
-              resonanceRating: null,
-              emojiReaction: null,
-            });
-          }
-
-          // Save 3-card spread
-          saveJournalEntry({
-            id: `spread-tour-${dateStr}`,
-            type: 'spread',
-            savedAt: new Date(now.getTime() + 1000).toISOString(),
-            questionText: tourData.questionText,
-            cards: tourData.spreadCards,
-            positionLabels: tourData.positionLabels,
-            melissaText: tourData.melissaText ?? '',
-            impression: null,
-            resonanceRating: null,
-            emojiReaction: null,
-          });
-
-          // Store spread data for the tour spread page
-          localStorage.setItem('vesper_tour_spread', JSON.stringify(tourData));
-        }
-      }
-    } catch {
-      // Non-fatal — tour works without pre-generated reading
-    }
-
-    localStorage.setItem('vesper_tour_active', 'true');
-    router.push('/main');
+    router.push('/personalisation');
   }
 
   const sp: ScreenProps = { data, setData, goForward };
@@ -1515,7 +1452,7 @@ export default function OnboardingPage() {
       case 'synthesis':         return <ScreenSynthesis data={data} goForward={goForward} />;
       case 'social_proof':      return <ScreenSocialProof goForward={goForward} />;
       case 'trial_enabled':    return <ScreenTrialEnabled goForward={goForward} />;
-      case 'paywall':           return <ScreenPaywall data={data} onStartTrial={handleStartTrial} starting={trialStarting} />;
+      case 'paywall':           return <ScreenPaywall data={data} onStartTrial={handleStartTrial} />;
     }
   })();
 

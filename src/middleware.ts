@@ -39,7 +39,7 @@ export async function middleware(request: NextRequest) {
 
   // No profile row yet → treat as new user, send to onboarding
   if (!profile) {
-    if (pathname !== '/onboarding') {
+    if (pathname !== '/onboarding' && pathname !== '/personalisation') {
       return NextResponse.redirect(new URL('/onboarding', request.url));
     }
     return response;
@@ -49,15 +49,15 @@ export async function middleware(request: NextRequest) {
 
   // Onboarding not complete
   if (!onboarding_completed) {
-    if (pathname !== '/onboarding') {
+    if (pathname !== '/onboarding' && pathname !== '/personalisation') {
       return NextResponse.redirect(new URL('/onboarding', request.url));
     }
     return response;
   }
 
-  // Subscription: none → onboarding
+  // Subscription: none → onboarding (allow /personalisation through since it sets the trial)
   if (subscription_status === 'none') {
-    if (pathname !== '/onboarding') {
+    if (pathname !== '/onboarding' && pathname !== '/personalisation') {
       return NextResponse.redirect(new URL('/onboarding', request.url));
     }
     return response;
