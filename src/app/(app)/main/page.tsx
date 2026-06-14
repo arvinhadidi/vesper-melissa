@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useUserProfile } from '@/lib/hooks/useUserProfile';
 
 const sections = [
   {
@@ -42,6 +43,12 @@ const sections = [
 ];
 
 export default function MainPage() {
+  const { profile } = useUserProfile();
+  const name = profile?.displayName || '';
+
+  const hour = new Date().getHours();
+  const greeting = hour < 12 ? 'Good morning' : hour < 18 ? 'Good afternoon' : 'Good evening';
+
   return (
     <div style={{
       minHeight: '100dvh',
@@ -61,7 +68,7 @@ export default function MainPage() {
           margin: 0,
           letterSpacing: '0.01em',
         }}>
-          Good morning, Arvin.
+          {greeting}{name ? `, ${name}.` : '.'}
         </h1>
         <p style={{
           fontFamily: 'var(--font-garamond-var), Georgia, serif',

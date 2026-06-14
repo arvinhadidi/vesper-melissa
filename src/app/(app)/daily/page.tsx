@@ -8,6 +8,7 @@ import { getCardById, TarotCard, getCardImagePath } from '@/lib/cards';
 import { useUserProfile } from '@/lib/hooks/useUserProfile';
 import TarotCardComponent from '@/components/tarot/TarotCard';
 import { saveJournalEntry } from '@/lib/journal';
+import { isTourActive } from '@/lib/tour';
 
 function formatDate(dateString: string): string {
   const [year, month, day] = dateString.split('-').map(Number);
@@ -200,6 +201,10 @@ export default function DailyPage() {
     const reversed = (cardIndex * 7 + dateStr.length) % 10 < 3;
     setDailyCard(getCardById(cardIndex));
     setIsReversed(reversed);
+
+    if (isTourActive()) {
+      setIsFlipped(true);
+    }
   }, [profile, profileLoading]);
 
   function handleCardClick() {
