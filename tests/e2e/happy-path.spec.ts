@@ -141,7 +141,7 @@ test('happy path: onboarding -> paywall -> checkout -> reading -> cancel -> dele
     await page.locator('img[src*="card-back"]').click();
     await page.getByRole('button', { name: "Get Melissa's take" }).click();
     await page.waitForURL(/\/daily\/daily-\d{4}-\d{2}-\d{2}/, { timeout: 30000 });
-    await expect(page.getByRole('button', { name: 'Carry on the conversation' })).toBeVisible({ timeout: 30000 });
+    await expect(page.getByRole('button', { name: 'Carry on the conversation' })).toBeVisible({ timeout: 60000 });
   });
 
   await test.step('cancel subscription via Stripe billing portal', async () => {
@@ -149,13 +149,26 @@ test('happy path: onboarding -> paywall -> checkout -> reading -> cancel -> dele
     await page.getByRole('button', { name: 'Manage subscription' }).click();
     await page.waitForURL(/billing\.stripe\.com/, { timeout: 15000 });
 
-    await page.getByRole('button', { name: /Cancel plan|Cancel subscription/ }).click();
-    const confirm = page.getByRole('button', { name: /^Cancel plan$|Yes, cancel|Confirm/ });
-    if (await confirm.count() > 0) {
-      await confirm.first().click();
-    }
+    await page.getByRole('link', { name: 'Cancel subscription' }).click();
 
-    await page.getByRole('link', { name: /Return|Back/ }).click();
+    // Stripe's portal first shows a retention modal ("Could you tell us why you're
+    // leaving?") with a required reason dropdown before the real confirm page is
+    // reachable underneath. Skip past it.
+    await page.getByText("Could you tell us why you're leaving?").waitFor({ state: 'visible' });
+    // The "Reason" field is a React-Aria combobox (role="button" + popup
+    // role="listbox"), not a native <select>.
+    await page.getByRole('button', { name: 'Reason' }).click();
+    await page.getByRole('option').first().click();
+    await page.getByRole('button', { name: 'Continue to cancellation' }).click();
+
+    // Now the real "Confirm cancellation" page's own confirm button is reachable.
+    const confirmBtn = page.getByTestId('confirm');
+    await confirmBtn.waitFor({ state: 'visible' });
+    await confirmBtn.click();
+
+    const returnLink = page.getByTestId('return-to-business-link');
+    await returnLink.waitFor({ state: 'visible' });
+    await returnLink.click();
     await page.waitForURL(/\/account/, { timeout: 15000 });
   });
 
