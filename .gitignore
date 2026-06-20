@@ -13,6 +13,12 @@
 # testing
 /coverage
 
+# playwright (storageState.json holds live session cookies — never commit)
+/tests/e2e/storageState.json
+/test-results/
+/playwright-report/
+/blob-report/
+
 # next.js
 /.next/
 /out/
