@@ -4,6 +4,8 @@ import {
   DM_Serif_Display,
   EB_Garamond,
 } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import PostHogProvider from "@/components/analytics/PostHogProvider";
 import "./globals.css";
 
 const ebGaramond = EB_Garamond({
@@ -46,7 +48,10 @@ export default function RootLayout({
     >
       <head>
       </head>
-      <body className="min-h-screen">{children}</body>
+      <body className="min-h-screen">
+        <PostHogProvider>{children}</PostHogProvider>
+        <Analytics />
+      </body>
     </html>
   );
 }
