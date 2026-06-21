@@ -38,6 +38,8 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+# ...but the placeholder template (no secrets) IS committed so the repo documents required vars
+!.env.example
 
 # vercel
 .vercel
@@ -64,6 +66,13 @@ index.html
 
 # dev test page
 /src/app/test/
+
+# dev-only design scratchpad (not part of the live app — would ship as a public /main-preview route)
+/src/app/main-preview/
+
+# generated test artifacts (run logs / autonomous test plans — regenerated, not source)
+/test-run-report.md
+/manual-test-plan.json
 
 # unused faded image variants
 *-faded.png

@@ -1,7 +1,7 @@
 {
   "project": "Vesper",
-  "last_updated": "2026-06-11",
-  "current_session": 13,
+  "last_updated": "2026-06-21",
+  "current_session": 18,
   "sessions": [
     {
       "id": 1,
@@ -54,11 +54,11 @@
     {
       "id": 4,
       "name": "Landing page",
-      "status": "pending",
+      "status": "complete",
       "features": [
-        { "id": "landing_hero", "name": "Landing page hero section", "status": "pending" },
-        { "id": "landing_value_props", "name": "Landing page value props section", "status": "pending" },
-        { "id": "landing_cta", "name": "Landing page CTA routes to sign-in", "status": "pending" }
+        { "id": "landing_hero", "name": "Landing page hero section", "status": "complete" },
+        { "id": "landing_value_props", "name": "Landing page value props section", "status": "complete" },
+        { "id": "landing_cta", "name": "Landing page CTA routes to sign-in", "status": "complete" }
       ]
     },
     {
@@ -213,6 +213,90 @@
         { "id": "journal_supabase", "name": "/api/journal route (GET/POST/PATCH/DELETE) + journal.ts updated to save to Supabase with localStorage fallback", "status": "complete" },
         { "id": "journal_page_supabase_read", "name": "Journal page reads from Supabase via fetchJournalEntries()", "status": "complete" },
         { "id": "onboarding_migration", "name": "OnboardingMigration component in app layout: migrates vesper_onboarding localStorage key to user_profiles on first auth'd app load", "status": "complete" }
+      ]
+    },
+    {
+      "id": 13,
+      "name": "Main page redesign + two-theme background cutover",
+      "status": "complete",
+      "features": [
+        { "id": "nightsky_component", "name": "src/components/ui/NightSky.tsx — shared dark night-sky background (starfield, twinkling stars, gold motes, moon-glow halo), keyframes in globals.css, disabled under prefers-reduced-motion", "status": "complete" },
+        { "id": "background_theme_cutover", "name": "Hard cutover at onboarding 'trial-enabled' step: bluer indigo gradient (welcome→social-proof) vs NightSky (trial-enabled onward — trial-enabled, paywall, standalone /paywall, /personalisation, all (app) pages)", "status": "complete" },
+        { "id": "main_page_redesign", "name": "/main rebuilt: composed PathCard (parchment gradient, gold frame, glowing medallion ring with gold lines either side of icon, increased hover glow on card + ring), gold-italic name hero with full stop, responsive one-line-laptop/wrap-phone greeting", "status": "complete" },
+        { "id": "main_hero_fixes", "name": "Hero subtext made brighter/larger (17px italic, 0.78 opacity), gap between greeting and name tightened, suppressHydrationWarning on time-derived greeting text", "status": "complete" },
+        { "id": "app_layout_nightsky_wiring", "name": "(app)/layout.tsx and onboarding/layout.tsx (isDark branch) render shared NightSky as a fixed z-0 sibling behind a position:relative z-1 content column", "status": "complete" },
+        { "id": "claude_md_background_docs", "name": "CLAUDE.md Background convention section documents the two-theme rule and how to apply NightSky to new routes", "status": "complete" }
+      ]
+    },
+    {
+      "id": 14,
+      "name": "Account & billing source-of-truth refactor",
+      "status": "complete",
+      "features": [
+        { "id": "billing_investigation", "name": "Deep-dive investigation: traced onboarding-skip-on-reused-email, indefinite /account loading, and billing-portal 404 to root cause — OnboardingMigration writing a non-canonical 'trial' status client-side with no Stripe customer ever created", "status": "complete" },
+        { "id": "db_status_constraint", "name": "Migration 20260620120000_fix_subscription_status_source_of_truth.sql — normalizes existing bad 'trial' rows to 'none', adds CHECK constraint restricting subscription_status to none|active|expired|cancelled", "status": "complete" },
+        { "id": "checkout_server_writes", "name": "/api/checkout sets stripe_customer_id + onboarding_completed server-side at first checkout attempt (trial or not, completed or abandoned) and appends session_id={CHECKOUT_SESSION_ID} to the Stripe success_url", "status": "complete" },
+        { "id": "sync_subscription_route", "name": "New /api/sync-subscription route: reconciles entitlement directly from Stripe on return from Checkout (verifies subscription.metadata.supabase_uid), called from /personalisation and standalone /paywall instead of relying solely on the webhook", "status": "complete" },
+        { "id": "onboarding_migration_scope_cut", "name": "OnboardingMigration stripped of all entitlement writes (onboarding_completed, subscription_status, trial_started_at) — now migrates answer fields only, can never grant free access again", "status": "complete" },
+        { "id": "middleware_main_account_gating", "name": "middleware.ts: /main and /account added to AUTH_REQUIRED_PATHS (closes the infinite-spinner hole for unauthenticated users); /main added to SUBSCRIPTION_REQUIRED_PATHS; 'none' status routes to /onboarding/paywall (trial still offered) vs 'expired'/'cancelled' routes to standalone /paywall (no second trial)", "status": "complete" },
+        { "id": "account_page_error_states", "name": "/account page: infinite 'Loading...' replaced with a proper error/empty state + sign-in link; 'Manage subscription' surfaces a real error message instead of failing silently", "status": "complete" },
+        { "id": "qa_checklist_written", "name": "Manual QA checklist written covering all account/billing flows (new signup, abandoned checkout, returning user, lapsed subscription, immediate-charge proof via standalone /paywall, Stripe Test Clock for the real 3-day conversion, auth guards, portal cancel, delete account)", "status": "complete" },
+        { "id": "test_data_wipe", "name": "Wiped all 6 test auth users, 3 profile rows, saved_readings, and the 2 matching Stripe test customers/subscriptions for a clean slate after the fix", "status": "complete" }
+      ]
+    },
+    {
+      "id": 15,
+      "name": "Account creation regression fix — update() vs upsert()",
+      "status": "complete",
+      "features": [
+        { "id": "upsert_regression_found", "name": "Found via user repro: new account, paid for trial, returned to /personalisation, got bounced back to /onboarding/welcome instead of /main", "status": "complete" },
+        { "id": "upsert_regression_root_cause", "name": "Root cause: /api/checkout, /api/sync-subscription, and all four Stripe webhook handlers wrote entitlement via .update().eq('id', uid), which silently no-ops (no error, no insert) if the profile row doesn't exist yet — not a middleware bug, middleware correctly reacted to a write that had silently vanished", "status": "complete" },
+        { "id": "upsert_regression_fix", "name": "All four entitlement writers converted from .update() to .upsert({ id, ... }, { onConflict: 'id' }) so the row is created if missing instead of the write disappearing", "status": "complete" }
+      ]
+    },
+    {
+      "id": 16,
+      "name": "Email check-in sender (not yet built)",
+      "status": "pending",
+      "features": [
+        { "id": "email_provider_integration", "name": "Integrate an email provider (Resend/Postmark/SES) — currently nothing sends email at all", "status": "pending" },
+        { "id": "email_scheduler", "name": "Cron/Supabase Edge Function to send the daily reading email at each user's preferred_checkin_time", "status": "pending" },
+        { "id": "email_unsubscribe", "name": "Unsubscribe link honoring email_marketing_consent, updating email_consent_given_at", "status": "pending" },
+        { "id": "email_content_template", "name": "Email template containing the day's card/reading, matching the 'she'll send daily reminders' promise made on the onboarding email-checkin screen", "status": "pending" }
+      ]
+    },
+    {
+      "id": 17,
+      "name": "Pre-launch / go-live checklist (not yet started)",
+      "status": "pending",
+      "features": [
+        { "id": "stripe_live_mode", "name": "Switch Stripe to live mode: live secret key, live price IDs, live webhook endpoint + signing secret against the production domain", "status": "pending" },
+        { "id": "prod_env_vars", "name": "Set production env vars on Vercel for Supabase, Stripe, AWS Bedrock — confirm no test/live key mixing", "status": "pending" },
+        { "id": "oauth_redirect_prod", "name": "Update Google OAuth authorized redirect URI to the production domain", "status": "pending" },
+        { "id": "legal_pages", "name": "Build and link real Privacy Policy + Terms of Service pages", "status": "pending" },
+        { "id": "stripe_portal_live_config", "name": "Configure Stripe Customer Portal in live mode (separate from test mode config)", "status": "pending" },
+        { "id": "tax_handling", "name": "Evaluate Stripe Tax / VAT handling for UK/US subscription billing", "status": "pending" },
+        { "id": "error_monitoring", "name": "Add error monitoring (e.g. Sentry) — billing failures are currently silent/easy to miss", "status": "pending" },
+        { "id": "rate_limiting", "name": "Rate limit the Bedrock-backed routes (melissa-daily/spread/chat) before going public", "status": "pending" },
+        { "id": "supabase_backups", "name": "Confirm Supabase backups/PITR are enabled on the production project", "status": "pending" }
+      ]
+    },
+    {
+      "id": 18,
+      "name": "E2E harness, onboarding route-split, account management, analytics (branch testing/e2e-20260620)",
+      "status": "complete",
+      "features": [
+        { "id": "e2e_happy_path", "name": "Playwright e2e happy-path test (onboarding -> checkout -> reading -> cancel -> delete) + capture-session helper", "status": "complete" },
+        { "id": "e2e_test_clocks", "name": "Stripe Test Clock scripts: trial-to-autocharge conversion, payment failure, webhook cancellation, renewal", "status": "complete" },
+        { "id": "onboarding_route_split", "name": "Onboarding refactored from a single step-index page.tsx into one route per step (/onboarding/<step>); page.tsx is now a redirect to /onboarding/welcome; shared chrome in onboarding/layout.tsx + template.tsx", "status": "complete" },
+        { "id": "account_management_routes", "name": "Account management: /account page, /api/delete-account (cascade-aware, admin client), /api/billing-portal, /api/subscription-status (reconcile-on-read)", "status": "complete" },
+        { "id": "review_fix_personalisation_race", "name": "Code-review fix: /personalisation now gates navigation to /main on sync-subscription completing (syncDoneRef + 8s safety timeout) so a brand-new subscriber isn't bounced to /onboarding/paywall by a status that hasn't synced yet", "status": "complete" },
+        { "id": "review_fix_paywall_hang", "name": "Code-review fix: standalone /paywall activation polling now has a 25s timeout with a 'go to my account' escape instead of spinning forever if sync fails and the webhook lags", "status": "complete" },
+        { "id": "review_fix_subscription_status_upsert", "name": "Code-review fix: /api/subscription-status switched from .update() to .upsert() to obey the documented entitlement-writer invariant", "status": "complete" },
+        { "id": "shared_paywall_components", "name": "Reuse: extracted shared PlanSelector component + useDetectedCurrency hook (used by both onboarding paywall and standalone paywall); deduped MICRO_CARDS/MICRO_CARD_INDICES to lib/onboarding/constants", "status": "complete" },
+        { "id": "gitignore_dev_artifacts", "name": "Gitignored dev-only artifacts: src/app/main-preview/ (design scratchpad), test-run-report.md, manual-test-plan.json", "status": "complete" },
+        { "id": "analytics_providers", "name": "Vercel Analytics + PostHog wired in root layout; PostHog provider auto-captures $pageview per App Router navigation; AnalyticsIdentify ties events to the logged-in user; .npmrc pins legacy-peer-deps for the @vercel/analytics peer conflict", "status": "complete" },
+        { "id": "analytics_events", "name": "lib/analytics.ts track() helper + named events: onboarding_step_viewed, trial_checkout_started, checkout_started, reading_completed; resetAnalytics on sign-out/delete; env vars documented in .env.example + CLAUDE.md", "status": "complete" }
       ]
     }
   ]
