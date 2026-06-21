@@ -4,17 +4,32 @@ import { createClient } from '@/lib/supabase/server';
 export async function GET(request: NextRequest) {
   const { searchParams, origin } = new URL(request.url);
   const code = searchParams.get('code');
+  const next = searchParams.get('next');
 
   if (code) {
     const supabase = await createClient();
     const { error } = await supabase.auth.exchangeCodeForSession(code);
     if (!error) {
-      // Middleware will redirect to /onboarding if profile not yet set up.
-      // The localStorage migration (vesper_onboarding) is handled client-side
-      // in the onboarding page's useEffect, since the server cannot access localStorage.
-      return NextResponse.redirect(`${origin}/daily`);
+      // If the user has already completed onboarding, skip back into the onboarding
+      // flow entirely. The middleware will handle paywall redirects if the
+      // subscription has since lapsed.
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user) {
+        const { data: profile } = await supabase
+          .from('user_profiles')
+          .select('onboarding_completed')
+          .eq('id', user.id)
+          .single();
+
+        if (profile?.onboarding_completed) {
+          return NextResponse.redirect(`${origin}/main`);
+        }
+      }
+
+      const destination = next && next.startsWith('/') ? next : '/main';
+      return NextResponse.redirect(`${origin}${destination}`);
     }
   }
 
-  return NextResponse.redirect(`${origin}/signin?error=auth_failed`);
+  return NextResponse.redirect(`${origin}/?error=auth_failed`);
 }

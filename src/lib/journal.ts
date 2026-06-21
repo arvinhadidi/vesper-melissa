@@ -101,10 +101,14 @@ export async function fetchJournalEntries(): Promise<JournalEntry[]> {
   try {
     const res = await fetch('/api/journal');
     if (!res.ok) throw new Error('not ok');
-    const data: JournalEntry[] = await res.json();
-    // Keep local cache in sync so offline reads stay warm
-    writeAll(data);
-    return data.sort(
+    const remote: JournalEntry[] = await res.json();
+    const local = readAll();
+
+    // Merge: use remote as base, add any local entries not yet in remote
+    const remoteIds = new Set(remote.map(e => e.id));
+    const merged = [...remote, ...local.filter(e => !remoteIds.has(e.id))];
+    writeAll(merged);
+    return merged.sort(
       (a, b) => new Date(b.savedAt).getTime() - new Date(a.savedAt).getTime(),
     );
   } catch {

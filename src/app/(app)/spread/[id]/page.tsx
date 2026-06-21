@@ -26,6 +26,7 @@ interface SpreadContext {
   userProfile: UserProfile;
   readingText?: string;
   emojiReaction?: EmojiReaction | null;
+  fromJournal?: boolean;
 }
 
 export default function SpreadReadingPage() {
@@ -48,7 +49,13 @@ export default function SpreadReadingPage() {
     if (!raw) { setNotFound(true); return; }
     const ctx = JSON.parse(raw) as SpreadContext;
     setContext(ctx);
-    setFlippedStates(new Array(ctx.cards.length).fill(false));
+    const isRevisit = ctx.fromJournal || !!ctx.readingText;
+    setFlippedStates(new Array(ctx.cards.length).fill(isRevisit));
+    if (isRevisit) {
+      setAllFlipped(true);
+      setStage('reading');
+    }
+    if (ctx.fromJournal) setIsSaved(true);
     if (ctx.readingText) setReadingText(ctx.readingText);
     if (ctx.emojiReaction) setEmojiReaction(ctx.emojiReaction);
   }, [id]);
@@ -228,50 +235,76 @@ export default function SpreadReadingPage() {
           transition={{ duration: 0.35 }}
           style={{ width: '100%', maxWidth: '400px', marginTop: '28px' }}
         >
-          <MelissaReadingFlow
-            apiEndpoint="/api/melissa-spread"
-            apiPayload={{
-              questionText: context.questionText,
-              cards: context.cards,
-              positionLabels: context.positionLabels,
-              promptContext: context.promptContext,
-              userProfile: context.userProfile,
-            }}
-            userName={context.userProfile.displayName}
-            conversationPath={conversationPath}
-            initialEmojiReaction={emojiReaction}
-            onEmojiReaction={handleEmojiReaction}
-            onReadingComplete={(text) => {
-              setReadingText(text);
-              setContext(prev => (prev ? { ...prev, readingText: text } : prev));
-              sessionStorage.setItem(`reading-${id}`, JSON.stringify({
-                ...context,
-                readingText: text,
-              }));
-            }}
-            completeActions={
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginTop: '10px' }}>
-                <button
-                  onClick={() => router.push(conversationPath)}
-                  style={{
-                    width: '100%',
-                    fontFamily: 'var(--font-dm-sans-var), sans-serif',
-                    fontSize: '13px',
-                    color: '#FAF7F0',
-                    background: 'transparent',
-                    border: '1px solid rgba(250,247,240,0.35)',
-                    borderRadius: '10px',
-                    padding: '10px 16px',
-                    cursor: 'pointer',
-                    textAlign: 'center',
-                  }}
-                >
-                  Carry on the conversation
-                </button>
-                {journalButton}
-              </div>
-            }
-          />
+          {(!context.fromJournal || context.readingText) ? (
+            <MelissaReadingFlow
+              apiEndpoint="/api/melissa-spread"
+              apiPayload={{
+                questionText: context.questionText,
+                cards: context.cards,
+                positionLabels: context.positionLabels,
+                promptContext: context.promptContext,
+                userProfile: context.userProfile,
+              }}
+              userName={context.userProfile.displayName}
+              conversationPath={conversationPath}
+              initialEmojiReaction={emojiReaction}
+              onEmojiReaction={handleEmojiReaction}
+              existingReadingText={context.readingText}
+              onReadingComplete={(text) => {
+                setReadingText(text);
+                setContext(prev => (prev ? { ...prev, readingText: text } : prev));
+                sessionStorage.setItem(`reading-${id}`, JSON.stringify({
+                  ...context,
+                  readingText: text,
+                }));
+              }}
+              completeActions={
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginTop: '10px' }}>
+                  <button
+                    onClick={() => router.push(conversationPath)}
+                    style={{
+                      width: '100%',
+                      fontFamily: 'var(--font-dm-sans-var), sans-serif',
+                      fontSize: '13px',
+                      color: '#FAF7F0',
+                      background: 'transparent',
+                      border: '1px solid rgba(250,247,240,0.35)',
+                      borderRadius: '10px',
+                      padding: '10px 16px',
+                      cursor: 'pointer',
+                      textAlign: 'center',
+                    }}
+                  >
+                    Carry on the conversation
+                  </button>
+                  {journalButton}
+                </div>
+              }
+            />
+          ) : (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              <button
+                onClick={() => {
+                  setContext(prev => prev ? { ...prev, fromJournal: false } : prev);
+                }}
+                style={{
+                  width: '100%',
+                  background: '#C9A84C',
+                  color: '#1E1256',
+                  padding: '14px',
+                  borderRadius: '12px',
+                  fontFamily: 'var(--font-dm-sans-var), sans-serif',
+                  fontWeight: 500,
+                  fontSize: '15px',
+                  border: 'none',
+                  cursor: 'pointer',
+                }}
+              >
+                Get Melissa&apos;s take
+              </button>
+              {journalButton}
+            </div>
+          )}
         </motion.div>
       )}
     </div>

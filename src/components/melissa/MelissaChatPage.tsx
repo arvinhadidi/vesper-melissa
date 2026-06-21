@@ -81,27 +81,6 @@ function BlinkingCursor() {
   );
 }
 
-function MelissaAvatar() {
-  const [errored, setErrored] = useState(false);
-  if (errored) {
-    return (
-      <div style={{
-        width: '42px', height: '42px', borderRadius: '50%', flexShrink: 0,
-        background: '#C9A84C', display: 'flex', alignItems: 'center', justifyContent: 'center',
-        fontFamily: 'var(--font-dm-serif-var), serif', fontSize: '12px', color: '#1E1256',
-      }}>M</div>
-    );
-  }
-  return (
-    <img
-      src="/melissa/melissa-default.png"
-      alt="Melissa"
-      onError={() => setErrored(true)}
-      style={{ width: '42px', height: '42px', borderRadius: '50%', objectFit: 'cover', flexShrink: 0 }}
-    />
-  );
-}
-
 function TypewriterText({ text, onDone }: { text: string; onDone: () => void }) {
   const [displayed, setDisplayed] = useState('');
   const doneRef = useRef(false);
@@ -424,8 +403,12 @@ export default function MelissaChatPage({ sessionKey, backPath }: MelissaChatPag
                   gap: '8px',
                 }}
               >
-                {isAssistant && <MelissaAvatar />}
-
+                {/* No avatar per-message — repeating it next to every bubble in a
+                    back-and-forth conversation is visual clutter (matches the
+                    convention in iMessage/WhatsApp: side + color is the speaker
+                    cue, not a repeated avatar). Bubble alignment alone already
+                    distinguishes Melissa (left) from the user (right) via the
+                    row/row-reverse flex-direction above. */}
                 <div style={{
                   maxWidth: '78%',
                   background: isAssistant ? '#FAF7F0' : '#C9A84C',
@@ -462,14 +445,24 @@ export default function MelissaChatPage({ sessionKey, backPath }: MelissaChatPag
         <div ref={bottomRef} />
       </div>
 
-      {/* Input bar */}
-      <div style={{
-        padding: '12px 16px',
+      {/* Input bar. On phone, the bottom nav pill is position:fixed with a higher
+          z-index, so this needs extra bottom clearance there or the nav renders
+          on top of it — desktop has no bottom nav at all (SideNav is on the left),
+          so only the mobile rule below applies. */}
+      <style>{`
+        .chat-input-bar { padding-bottom: calc(12px + env(safe-area-inset-bottom)); }
+        @media (max-width: 700px) {
+          .chat-input-bar { padding-bottom: calc(92px + env(safe-area-inset-bottom)); }
+        }
+      `}</style>
+      <div className="chat-input-bar" style={{
+        paddingTop: '12px',
+        paddingLeft: '16px',
+        paddingRight: '16px',
         borderTop: '1px solid rgba(250,247,240,0.12)',
         background: 'rgba(18,11,58,0.75)',
         display: 'flex', gap: '10px', alignItems: 'flex-end',
         flexShrink: 0,
-        paddingBottom: 'calc(12px + env(safe-area-inset-bottom))',
       }}>
         <textarea
           value={input}

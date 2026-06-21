@@ -8,7 +8,6 @@ import { getCardById, TarotCard, getCardImagePath } from '@/lib/cards';
 import { useUserProfile } from '@/lib/hooks/useUserProfile';
 import TarotCardComponent from '@/components/tarot/TarotCard';
 import { saveJournalEntry } from '@/lib/journal';
-import { isTourActive } from '@/lib/tour';
 
 function formatDate(dateString: string): string {
   const [year, month, day] = dateString.split('-').map(Number);
@@ -201,10 +200,6 @@ export default function DailyPage() {
     const reversed = (cardIndex * 7 + dateStr.length) % 10 < 3;
     setDailyCard(getCardById(cardIndex));
     setIsReversed(reversed);
-
-    if (isTourActive()) {
-      setIsFlipped(true);
-    }
   }, [profile, profileLoading]);
 
   function handleCardClick() {
@@ -254,12 +249,13 @@ export default function DailyPage() {
         padding: '48px 24px 120px',
       }}>
 
-        <div style={{ textAlign: 'center', marginBottom: '28px', width: '100%' }}>
+        <div style={{ textAlign: 'center', marginBottom: '36px', width: '100%' }}>
           <p style={{
             fontFamily: 'var(--font-dm-sans-var), sans-serif',
-            fontSize: '11px',
+            fontSize: '13px',
+            fontWeight: 500,
             color: '#C9A84C',
-            letterSpacing: '2px',
+            letterSpacing: '2.5px',
             textTransform: 'uppercase',
             margin: 0,
           }}>
@@ -267,10 +263,11 @@ export default function DailyPage() {
           </p>
           <h1 style={{
             fontFamily: 'var(--font-dm-serif-var), serif',
-            fontSize: '20px',
+            fontSize: 'clamp(30px, 9vw, 40px)',
             fontWeight: 400,
             color: '#FAF7F0',
-            margin: '6px 0 0',
+            margin: '10px 0 0',
+            lineHeight: 1.15,
           }}>
             Your card for today
           </h1>

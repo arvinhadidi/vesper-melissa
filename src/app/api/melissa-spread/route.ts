@@ -1,9 +1,9 @@
-import Anthropic from '@anthropic-ai/sdk';
+import { bedrockStream } from '@/lib/bedrock';
 import { getCardById } from '@/lib/cards';
 import type { UserProfile } from '@/lib/types';
 import { createClient } from '@/lib/supabase/server';
 
-const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+export const dynamic = 'force-dynamic';
 
 export async function POST(req: Request) {
   const supabase = await createClient();
@@ -28,31 +28,20 @@ export async function POST(req: Request) {
 
   const systemPrompt = buildSpreadSystemPrompt(cardLines, questionText, promptContext, userProfile);
 
-  const stream = await anthropic.messages.stream({
-    model: 'claude-haiku-4-5-20251001',
-    max_tokens: 280,
-    system: systemPrompt,
-    messages: [{ role: 'user', content: 'Read my spread.' }],
-  });
-
-  const encoder = new TextEncoder();
-  const readable = new ReadableStream({
-    async start(controller) {
-      for await (const chunk of stream) {
-        if (
-          chunk.type === 'content_block_delta' &&
-          chunk.delta.type === 'text_delta'
-        ) {
-          controller.enqueue(encoder.encode(chunk.delta.text));
-        }
-      }
-      controller.close();
+  return new Response(
+    bedrockStream({
+      max_tokens: 280,
+      system: systemPrompt,
+      messages: [{ role: 'user', content: 'Read my spread.' }],
+    }),
+    {
+      headers: {
+        'Content-Type': 'text/plain; charset=utf-8',
+        'Cache-Control': 'no-cache',
+        'X-Accel-Buffering': 'no',
+      },
     },
-  });
-
-  return new Response(readable, {
-    headers: { 'Content-Type': 'text/plain; charset=utf-8' },
-  });
+  );
 }
 
 function buildSpreadSystemPrompt(

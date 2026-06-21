@@ -48,6 +48,23 @@ body::before {
   background-position: center;
 }
 
+/* Dark night-sky atmosphere (shared NightSky component, used from trial-enabled onward) */
+@keyframes mn-twinkle { 0%, 100% { opacity: 0.2 } 50% { opacity: 0.95 } }
+@keyframes mn-drift {
+  0%   { transform: scale(1.12) translate3d(0, 0, 0); }
+  100% { transform: scale(1.12) translate3d(-1.8%, -1.4%, 0); }
+}
+@keyframes mn-glow { 0%, 100% { opacity: 0.55 } 50% { opacity: 1 } }
+@keyframes mn-mote {
+  0%   { transform: translateY(0); opacity: 0 }
+  12%  { opacity: 0.85 }
+  88%  { opacity: 0.5 }
+  100% { transform: translateY(-140px); opacity: 0 }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mn-anim { animation: none !important; }
+}
+
 h1, h2, h3 {
   font-family: var(--font-dm-serif-var), serif;
   color: #FAF7F0;

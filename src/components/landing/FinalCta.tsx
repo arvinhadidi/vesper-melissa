@@ -38,7 +38,7 @@ export default function FinalCta() {
             No card required. Cancel any time.
           </motion.p>
           <motion.div {...reveal({ delay: 0.24 })}>
-            <a href="/signin" className={styles.btnFinal}>
+            <a href="/onboarding" className={styles.btnFinal}>
               Start free trial →
             </a>
             <p className={styles.finalFineprint}>

@@ -60,6 +60,7 @@ export default function TourSpreadPage() {
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
+      justifyContent: 'center',
       padding: '48px 24px 180px',
     }}>
       {/* Header */}
@@ -67,25 +68,26 @@ export default function TourSpreadPage() {
         initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
-        style={{ textAlign: 'center', marginBottom: '32px', width: '100%' }}
+        style={{ textAlign: 'center', marginBottom: '40px', width: '100%' }}
       >
         <p style={{
           fontFamily: 'var(--font-dm-sans-var), sans-serif',
-          fontSize: '11px',
+          fontSize: '14px',
+          fontWeight: 500,
           color: '#C9A84C',
-          letterSpacing: '2px',
+          letterSpacing: '3.5px',
           textTransform: 'uppercase',
-          margin: '0 0 8px',
+          margin: '0 0 12px',
         }}>
           Your first spread
         </p>
         <h1 style={{
           fontFamily: 'var(--font-dm-serif-var), serif',
-          fontSize: '22px',
+          fontSize: 'clamp(30px, 9vw, 40px)',
           fontWeight: 400,
           color: '#FAF7F0',
           margin: 0,
-          lineHeight: 1.3,
+          lineHeight: 1.2,
         }}>
           {tourData.questionText}
         </h1>
@@ -107,7 +109,8 @@ export default function TourSpreadPage() {
         />
       </motion.div>
 
-      {/* Melissa's reading */}
+      {/* Melissa's reading — same cream bubble + avatar as the real single-reading
+          view (MelissaReadingFlow), not a custom box, so the demo matches reality. */}
       {tourData.melissaText ? (
         <motion.div
           initial={{ opacity: 0, y: 10 }}
@@ -116,33 +119,42 @@ export default function TourSpreadPage() {
           style={{
             width: '100%',
             maxWidth: '440px',
-            background: 'rgba(250,247,240,0.06)',
-            border: '1px solid rgba(201,168,76,0.2)',
-            borderRadius: '16px',
-            padding: '24px 20px',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '10px',
           }}
         >
-          <p style={{
-            fontFamily: 'var(--font-dm-sans-var), sans-serif',
-            fontSize: '11px',
-            fontWeight: 500,
-            letterSpacing: '1.5px',
-            textTransform: 'uppercase',
-            color: '#C9A84C',
-            margin: '0 0 12px',
+          <style>{`
+            .spread-tour-avatar { width: 48px; height: 48px; }
+            @media (max-width: 700px) {
+              .spread-tour-avatar { width: 96px; height: 96px; }
+            }
+          `}</style>
+          <img
+            src="/melissa/melissa-insight.png"
+            alt="Melissa"
+            className="spread-tour-avatar"
+            style={{ borderRadius: '50%', objectFit: 'cover', flexShrink: 0 }}
+          />
+          <div style={{
+            width: '100%',
+            background: '#FAF7F0',
+            border: '1px solid rgba(201,168,76,0.3)',
+            borderRadius: '16px',
+            padding: '14px 16px',
           }}>
-            Melissa
-          </p>
-          <p style={{
-            fontFamily: 'var(--font-dm-serif-var), serif',
-            fontSize: '17px',
-            color: 'rgba(250,247,240,0.9)',
-            lineHeight: 1.65,
-            margin: 0,
-            fontStyle: 'italic',
-          }}>
-            {tourData.melissaText}
-          </p>
+            <p style={{
+              fontFamily: 'var(--font-garamond-var), Georgia, serif',
+              fontStyle: 'italic',
+              fontSize: '14.5px',
+              color: '#1E1256',
+              lineHeight: 1.6,
+              margin: 0,
+            }}>
+              {tourData.melissaText}
+            </p>
+          </div>
         </motion.div>
       ) : (
         <motion.div

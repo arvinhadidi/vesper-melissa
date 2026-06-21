@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { EmojiReaction } from '@/lib/types';
+import { track } from '@/lib/analytics';
 
 type Phase = 'intro' | 'intro_out' | 'thinking' | 'eureka' | 'eureka_out' | 'revealing' | 'complete';
 
@@ -17,6 +18,11 @@ interface MelissaReadingFlowProps {
   onReadingComplete?: (readingText: string) => void;
   initialEmojiReaction?: EmojiReaction | null;
   onEmojiReaction?: (reaction: EmojiReaction) => void;
+  existingReadingText?: string;
+  // When provided, play the full animated flow (intro → thinking → eureka → reveal)
+  // using this text instead of fetching from the API. Used by the post-signin tour
+  // to replay a reading that was pre-generated during the personalisation screen.
+  precomputedReadingText?: string;
 }
 
 const EMOJI_OPTIONS: { value: EmojiReaction; emoji: string; label: string }[] = [
@@ -154,30 +160,50 @@ function useUntyper(text: string, msPerChar: number, active: boolean): string {
 function Avatar({ phase }: { phase: Phase }) {
   const [errored, setErrored] = useState(false);
   const src = AVATAR[phase];
+
+  // Single-message instance only (this component) — 2x size on phone. Desktop
+  // keeps the original 48px; the chat view has no avatar at all anymore so this
+  // doesn't touch that.
+  const sizeStyle = (
+    <style>{`
+      .melissa-reading-avatar { width: 48px; height: 48px; }
+      @media (max-width: 700px) {
+        .melissa-reading-avatar { width: 96px; height: 96px; }
+      }
+    `}</style>
+  );
+
   if (errored) {
     return (
-      <div style={{
-        width: '48px', height: '48px', borderRadius: '50%',
-        background: '#C9A84C', flexShrink: 0,
-        display: 'flex', alignItems: 'center', justifyContent: 'center',
-        fontFamily: 'var(--font-dm-serif-var), serif', fontSize: '18px', color: '#1E1256',
-      }}>M</div>
+      <>
+        {sizeStyle}
+        <div className="melissa-reading-avatar" style={{
+          borderRadius: '50%',
+          background: '#C9A84C', flexShrink: 0,
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          fontFamily: 'var(--font-dm-serif-var), serif', fontSize: '18px', color: '#1E1256',
+        }}>M</div>
+      </>
     );
   }
   return (
-    <AnimatePresence mode="wait">
-      <motion.img
-        key={src}
-        src={src}
-        alt="Melissa"
-        onError={() => setErrored(true)}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.3 }}
-        style={{ width: '48px', height: '48px', borderRadius: '50%', objectFit: 'cover', flexShrink: 0 }}
-      />
-    </AnimatePresence>
+    <>
+      {sizeStyle}
+      <AnimatePresence mode="wait">
+        <motion.img
+          key={src}
+          src={src}
+          alt="Melissa"
+          onError={() => setErrored(true)}
+          className="melissa-reading-avatar"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+          style={{ borderRadius: '50%', objectFit: 'cover', flexShrink: 0 }}
+        />
+      </AnimatePresence>
+    </>
   );
 }
 
@@ -224,10 +250,12 @@ export default function MelissaReadingFlow({
   onReadingComplete,
   initialEmojiReaction,
   onEmojiReaction,
+  existingReadingText,
+  precomputedReadingText,
 }: MelissaReadingFlowProps) {
   const router = useRouter();
-  const [phase, setPhase] = useState<Phase>('intro');
-  const [fullReadingText, setFullReadingText] = useState('');
+  const [phase, setPhase] = useState<Phase>(existingReadingText ? 'complete' : 'intro');
+  const [fullReadingText, setFullReadingText] = useState(existingReadingText ?? '');
   const thinkingStartRef = useRef<number>(0);
   const apiTextRef = useRef<string>('');
 
@@ -258,6 +286,14 @@ export default function MelissaReadingFlow({
 
     thinkingStartRef.current = performance.now();
     apiTextRef.current = '';
+
+    // Tour playback: skip the network call, use the pre-generated text but keep the
+    // same "reading the cards" beat so the animation feels identical to the real thing.
+    if (precomputedReadingText !== undefined) {
+      apiTextRef.current = precomputedReadingText;
+      const id = setTimeout(() => setPhase('eureka'), MIN_THINKING_MS);
+      return () => clearTimeout(id);
+    }
 
     fetch(apiEndpoint, {
       method: 'POST',
@@ -298,10 +334,11 @@ export default function MelissaReadingFlow({
       const id = setTimeout(() => {
         setPhase('complete');
         onReadingComplete?.(fullReadingText);
+        track('reading_completed', { type: apiEndpoint.includes('spread') ? 'spread' : 'daily' });
       }, 200);
       return () => clearTimeout(id);
     }
-  }, [phase, revealDisplayed, fullReadingText, onReadingComplete]);
+  }, [phase, revealDisplayed, fullReadingText, onReadingComplete, apiEndpoint]);
 
   function handleCarryOn() {
     router.push(conversationPath);
@@ -321,28 +358,17 @@ export default function MelissaReadingFlow({
 
   return (
     <motion.div
-      style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', width: '100%' }}
+      // Avatar centered above the bubble, not beside it — side-by-side pushed the
+      // bubble's visual center to the right of the actual content column (the
+      // avatar only eats space on the left), which read as off-center on phone.
+      style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px', width: '100%' }}
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.35 }}
     >
       <Avatar phase={phase} />
 
-      <div style={{ flex: 1, position: 'relative' }}>
-        {/* Speech bubble pointer */}
-        <div style={{
-          position: 'absolute', left: '-7px', top: '18px', width: 0, height: 0,
-          borderTop: '6px solid transparent',
-          borderBottom: '6px solid transparent',
-          borderRight: '7px solid rgba(201,168,76,0.3)',
-        }} />
-        <div style={{
-          position: 'absolute', left: '-6px', top: '18px', width: 0, height: 0,
-          borderTop: '6px solid transparent',
-          borderBottom: '6px solid transparent',
-          borderRight: '7px solid #FAF7F0',
-        }} />
-
+      <div style={{ width: '100%', position: 'relative' }}>
         <motion.div
           style={{
             background: '#FAF7F0',

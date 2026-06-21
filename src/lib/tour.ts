@@ -7,6 +7,9 @@ export type TourStep = {
   route: string;
   title: string;
   body: string;
+  // When true, the global TourOverlay tooltip is suppressed on this step — the page
+  // itself drives the experience and calls nextStep() when the user is ready.
+  hideOverlay?: boolean;
 };
 
 export const TOUR_STEPS: TourStep[] = [
@@ -18,9 +21,10 @@ export const TOUR_STEPS: TourStep[] = [
   },
   {
     id: 'daily',
-    route: '/daily',
+    route: '/daily/tour',
     title: 'Your daily card.',
-    body: 'Every morning, a card is drawn just for you. This is the one you pulled during your reading. Come back tomorrow for a new one.',
+    body: 'Every morning, a card is drawn just for you.',
+    hideOverlay: true,
   },
   {
     id: 'spread',

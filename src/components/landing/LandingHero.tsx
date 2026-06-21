@@ -57,7 +57,7 @@ export default function LandingHero() {
           clarity you&rsquo;ve been looking for.
         </motion.p>
         <motion.div {...enter(4)}>
-          <a href="/signin" className={styles.btnPrimary}>
+          <a href="/onboarding" className={styles.btnPrimary}>
             Start your free reading
           </a>
         </motion.div>

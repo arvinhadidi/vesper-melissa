@@ -28,6 +28,9 @@ export type UserProfile = {
   onboardingCompleted: boolean;
   onboardingCompletedAt: string | null;
   isSubscribed: boolean;
+  subscriptionStatus: string;
+  subscriptionPlan: string | null;
+  trialStartedAt: string | null;
 };
 
 export type TarotCardDraw = {

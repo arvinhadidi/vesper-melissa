@@ -3,11 +3,6 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-// Mirrors SideNav's item set and icon-only pill aesthetic — this is the mobile
-// counterpart, swapped in by a CSS breakpoint in (app)/layout.tsx so it never
-// fights SideNav for the same screen real estate (that was the original overlap
-// bug: SideNav rendered unconditionally on every viewport, eating into the left
-// edge on phones where Melissa's avatar also needs that space).
 const VISIBLE_PREFIXES = ['/daily', '/spread', '/journal', '/account'];
 
 const navItems = [
@@ -58,7 +53,7 @@ const navItems = [
   },
 ];
 
-export default function BottomNav() {
+export default function SideNav() {
   const pathname = usePathname();
 
   if (!VISIBLE_PREFIXES.some(prefix => pathname.startsWith(prefix))) return null;
@@ -66,19 +61,18 @@ export default function BottomNav() {
   return (
     <nav style={{
       position: 'fixed',
-      bottom: 'max(16px, env(safe-area-inset-bottom))',
-      left: '50%',
-      transform: 'translateX(-50%)',
+      left: '16px',
+      top: '50%',
+      transform: 'translateY(-50%)',
       display: 'flex',
+      flexDirection: 'column',
       alignItems: 'center',
-      gap: '6px',
-      padding: '8px',
+      gap: '8px',
+      padding: '12px 8px',
       backgroundColor: '#FAF7F0',
       borderRadius: '999px',
-      boxShadow: '0 4px 20px rgba(0, 0, 0, 0.25)',
-      // Higher than any in-page fixed element (e.g. tour hints at z-index 90) so
-      // nothing can ever sit on top of the nav itself.
-      zIndex: 110,
+      boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)',
+      zIndex: 100,
     }}>
       {navItems.map((item) => {
         const isActive = item.href === '/main' ? false : pathname.startsWith(item.href);
@@ -90,8 +84,8 @@ export default function BottomNav() {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              width: '44px',
-              height: '44px',
+              width: '40px',
+              height: '40px',
               borderRadius: '50%',
               color: isActive ? '#1E1256' : '#C9A84C',
               backgroundColor: isActive ? 'rgba(30, 18, 86, 0.08)' : 'transparent',

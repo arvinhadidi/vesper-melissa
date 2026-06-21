@@ -24,6 +24,8 @@ type ProfileRow = {
   onboarding_completed_at: string | null;
   subscription_status: string;
   is_subscribed: boolean;
+  subscription_plan: string | null;
+  trial_started_at: string | null;
 };
 
 const SELECT_FIELDS = [
@@ -32,7 +34,7 @@ const SELECT_FIELDS = [
   'current_mood', 'notices_signs', 'duration_weight', 'gut_feeling', 'micro_pull_card',
   'disclaimer_accepted_at', 'preferred_checkin_time', 'email_marketing_consent',
   'email_consent_given_at', 'onboarding_completed', 'onboarding_completed_at',
-  'subscription_status', 'is_subscribed',
+  'subscription_status', 'is_subscribed', 'subscription_plan', 'trial_started_at',
 ].join(', ');
 
 export async function getUserProfile(supabase: SupabaseClient): Promise<UserProfile | null> {
@@ -70,5 +72,8 @@ export async function getUserProfile(supabase: SupabaseClient): Promise<UserProf
     onboardingCompleted: row.onboarding_completed,
     onboardingCompletedAt: row.onboarding_completed_at,
     isSubscribed: row.is_subscribed,
+    subscriptionStatus: row.subscription_status,
+    subscriptionPlan: row.subscription_plan ?? null,
+    trialStartedAt: row.trial_started_at ?? null,
   };
 }

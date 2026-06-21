@@ -43,11 +43,21 @@ export default function OnboardingMigration() {
       return;
     }
 
+    // If there's no real onboarding data (e.g. an empty/abandoned payload), don't migrate —
+    // upserting nulls would wipe answers the user already has saved.
+    if (!(data.display_name ?? data.displayName)) {
+      localStorage.removeItem('vesper_onboarding');
+      return;
+    }
+
     const supabase = createClient();
 
     supabase.auth.getUser().then(({ data: { user } }) => {
       if (!user) return;
 
+      // Answer fields only — entitlement (onboarding_completed, subscription_status,
+      // trial_started_at) is written exclusively by /api/checkout, /api/sync-subscription,
+      // and the Stripe webhook. This component must never grant access on its own.
       supabase
         .from('user_profiles')
         .upsert({
@@ -70,9 +80,6 @@ export default function OnboardingMigration() {
           preferred_checkin_time: data.preferred_checkin_time ?? null,
           email_marketing_consent: data.email_marketing_consent ?? false,
           email_consent_given_at: data.email_consent_given_at ?? null,
-          onboarding_completed: true,
-          subscription_status: 'trial',
-          trial_started_at: new Date().toISOString(),
         }, { onConflict: 'id' })
         .then(({ error }) => {
           if (!error) {

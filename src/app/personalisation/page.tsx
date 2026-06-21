@@ -1,11 +1,13 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { Suspense, useEffect, useRef, useState } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { createClient } from '@/lib/supabase/client';
 import { saveJournalEntry } from '@/lib/journal';
 import { setTourActive } from '@/lib/tour';
+import NightSky from '@/components/ui/NightSky';
+import { MICRO_CARDS, MICRO_CARD_INDICES } from '@/lib/onboarding/constants';
 import type { UserProfile } from '@/lib/types';
 
 const PHASES = [
@@ -21,23 +23,27 @@ const TOTAL_PHASE_MS = PHASES.reduce((sum, p) => sum + p.duration, 0);
 
 type Payload = { userProfile: UserProfile; spreadTimestamp: number; microPullCard: string | null };
 
-const MICRO_CARDS = [
-  { name: 'The High Priestess', imagePath: 'ar02', line: "You didn't need the cards for this one. You've known for a while now. The real question is whether you trust yourself enough to act on it." },
-  { name: 'Two of Wands', imagePath: 'wa02', line: "You're standing at the edge of this, waiting for permission. Here it is: the choice is yours, and you're already leaning one way." },
-  { name: 'Wheel of Fortune', imagePath: 'ar10', line: 'This is already in motion - the answer is being written right now. What you do in the next few weeks matters more than what you asked.' },
-  { name: 'The Star', imagePath: 'ar17', line: "Whatever you asked: it's going to be okay. Maybe not exactly how you pictured it. But okay." },
-  { name: 'The Moon', imagePath: 'ar18', line: "Not everything about this is visible yet - someone or something isn't showing its full face. The answer becomes clear when you watch what's done, not what's said." },
-] as const;
-const MICRO_CARD_INDICES: Record<string, number> = { ar02: 2, wa02: 23, ar10: 10, ar17: 17, ar18: 18 };
+// MICRO_CARDS + MICRO_CARD_INDICES are the single source of truth in @/lib/onboarding/constants
+// (the micro-pull onboarding step uses the same data) — imported here, never re-declared.
 
 export default function PersonalisationPage() {
+  return (
+    <Suspense>
+      <PersonalisationContent />
+    </Suspense>
+  );
+}
+
+function PersonalisationContent() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [phaseIndex, setPhaseIndex] = useState(0);
   const [progress, setProgress] = useState(0);
   const [done, setDone] = useState(false);
   const apiResultRef = useRef<Record<string, unknown> | null>(null);
   const apiDoneRef = useRef(false);
   const animDoneRef = useRef(false);
+  const syncDoneRef = useRef(false);
   const hasNavigatedRef = useRef(false);
   const payloadRef = useRef<Payload | null>(null);
 
@@ -55,17 +61,30 @@ export default function PersonalisationPage() {
 
       if (user) {
         payload.userProfile = { ...payload.userProfile, id: user.id };
-        // Await the upsert so middleware sees the updated profile when we navigate
-        await supabase.from('user_profiles').upsert({
-          id: user.id,
-          onboarding_completed: true,
-          onboarding_completed_at: new Date().toISOString(),
-          subscription_status: 'trial',
-          trial_started_at: new Date().toISOString(),
-        }, { onConflict: 'id' });
       }
 
       payloadRef.current = payload;
+
+      // Reconcile entitlement directly from Stripe — don't wait on the webhook,
+      // which can lag or, in local dev, never reach this server at all. Crucially we
+      // GATE navigation on this completing (syncDoneRef): the checkout route only writes
+      // stripe_customer_id, so subscription_status is still 'none' until this sync (or the
+      // lagging webhook) writes 'active'. Navigating to /main before that lands makes the
+      // middleware bounce the brand-new subscriber back to /onboarding/paywall.
+      const sessionId = searchParams.get('session_id');
+      if (sessionId) {
+        // Safety valve: never hang forever on a stuck request — fall back to the webhook.
+        const syncTimeout = setTimeout(() => { syncDoneRef.current = true; maybeFinish(); }, 8000);
+        const settleSync = () => { clearTimeout(syncTimeout); syncDoneRef.current = true; maybeFinish(); };
+        fetch('/api/sync-subscription', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ sessionId }),
+        }).then(settleSync).catch(settleSync);
+      } else {
+        // No checkout session in the URL (e.g. re-entering personalisation) — nothing to sync.
+        syncDoneRef.current = true;
+      }
 
       // Resolve micro-pull card index to exclude from spread
       const microCard = payload.microPullCard
@@ -100,7 +119,7 @@ export default function PersonalisationPage() {
   }, []);
 
   function maybeFinish() {
-    if (!apiDoneRef.current || !animDoneRef.current || hasNavigatedRef.current) return;
+    if (!apiDoneRef.current || !animDoneRef.current || !syncDoneRef.current || hasNavigatedRef.current) return;
     if (!payloadRef.current) return;
     hasNavigatedRef.current = true;
     finalize(payloadRef.current);
@@ -111,24 +130,9 @@ export default function PersonalisationPage() {
     const now = new Date();
     const dateStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
 
-    if (payload.microPullCard) {
-      const microCard = MICRO_CARDS.find(c => c.name === payload.microPullCard);
-      const microCardIndex = microCard ? MICRO_CARD_INDICES[microCard.imagePath] : -1;
-      if (microCardIndex >= 0 && microCard) {
-        saveJournalEntry({
-          id: `daily-${dateStr}`,
-          type: 'daily',
-          savedAt: now.toISOString(),
-          questionText: null,
-          cards: [{ cardIndex: microCardIndex, isReversed: false }],
-          positionLabels: null,
-          melissaText: microCard.line,
-          impression: null,
-          resonanceRating: null,
-          emojiReaction: null,
-        });
-      }
-    }
+    // NOTE: the daily card is intentionally NOT saved to the journal. The tour shows it
+    // as a demo (see /daily/tour); the user's real daily card stays unpulled so they can
+    // discover it themselves later. Only the unique spread is saved.
 
     if (tourData && Array.isArray(tourData.spreadCards)) {
       saveJournalEntry({
@@ -144,6 +148,16 @@ export default function PersonalisationPage() {
         emojiReaction: null,
       });
       localStorage.setItem('vesper_tour_spread', JSON.stringify(tourData));
+    }
+
+    // Cache the pre-generated daily reading for the tour's /daily/tour step to play back.
+    if (tourData && typeof tourData.dailyCardIndex === 'number') {
+      localStorage.setItem('vesper_tour_daily', JSON.stringify({
+        cardIndex: tourData.dailyCardIndex,
+        isReversed: Boolean(tourData.dailyIsReversed),
+        readingText: (tourData.dailyReadingText as string) ?? '',
+        userName: payload.userProfile.displayName || 'there',
+      }));
     }
 
     localStorage.removeItem('vesper_personalisation_payload');
@@ -195,6 +209,8 @@ export default function PersonalisationPage() {
   }, []);
 
   return (
+    <>
+    <NightSky />
     <div style={{
       minHeight: '100dvh',
       display: 'flex',
@@ -202,11 +218,8 @@ export default function PersonalisationPage() {
       alignItems: 'center',
       justifyContent: 'center',
       padding: '48px 32px',
-      backgroundColor: '#1E1256',
-      backgroundImage: 'linear-gradient(to bottom, rgba(30,18,86,0.6) 0%, rgba(30,18,86,0.45) 30%, rgba(30,18,86,0.8) 75%, rgba(30,18,86,1) 100%), url("/landing/starrysky.webp")',
-      backgroundSize: 'auto, cover',
-      backgroundPosition: 'center',
-      backgroundAttachment: 'fixed',
+      position: 'relative',
+      zIndex: 1,
     }}>
       <motion.div
         initial={{ opacity: 0, y: 12 }}
@@ -272,5 +285,6 @@ export default function PersonalisationPage() {
         </div>
       </motion.div>
     </div>
+    </>
   );
 }

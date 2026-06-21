@@ -17,6 +17,7 @@ interface DailyReadingContext {
   userProfile: UserProfile;
   readingText?: string;
   emojiReaction?: EmojiReaction | null;
+  fromJournal?: boolean;
 }
 
 function CardModal({ card, isReversed, onClose }: { card: TarotCardType; isReversed: boolean; onClose: () => void }) {
@@ -137,6 +138,7 @@ export default function DailyReadingPage() {
     if (!raw) { setNotFound(true); return; }
     const ctx = JSON.parse(raw) as DailyReadingContext;
     setContext(ctx);
+    if (ctx.fromJournal) setIsSaved(true);
     if (ctx.readingText) setReadingText(ctx.readingText);
     if (ctx.emojiReaction) setEmojiReaction(ctx.emojiReaction);
   }, [id]);
@@ -273,62 +275,102 @@ export default function DailyReadingPage() {
 
         {/* Melissa reading */}
         <div style={{ width: '100%', maxWidth: '400px' }}>
-          <MelissaReadingFlow
-            apiEndpoint="/api/melissa-daily"
-            apiPayload={{
-              cardIndex: context.card.id,
-              isReversed: context.isReversed,
-              userProfile: context.userProfile,
-            }}
-            userName={context.userProfile.displayName}
-            conversationPath={conversationPath}
-            initialEmojiReaction={emojiReaction}
-            onEmojiReaction={handleEmojiReaction}
-            onReadingComplete={(text) => {
-              setReadingText(text);
-              setContext(prev => (prev ? { ...prev, readingText: text } : prev));
-              sessionStorage.setItem(`reading-${id}`, JSON.stringify({ ...context, readingText: text }));
-            }}
-            completeActions={
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginTop: '10px' }}>
-                <button
-                  onClick={() => router.push(conversationPath)}
-                  style={{
-                    width: '100%',
-                    fontFamily: 'var(--font-dm-sans-var), sans-serif',
-                    fontSize: '13px',
-                    color: '#FAF7F0',
-                    background: 'transparent',
-                    border: '1px solid rgba(250,247,240,0.35)',
-                    borderRadius: '10px',
-                    padding: '10px 16px',
-                    cursor: 'pointer',
-                    textAlign: 'center',
-                  }}
-                >
-                  Carry on the conversation
-                </button>
-                <button
-                  onClick={handleSaveToJournal}
-                  disabled={isSaved}
-                  style={{
-                    width: '100%',
-                    fontFamily: 'var(--font-dm-sans-var), sans-serif',
-                    fontSize: '13px',
-                    color: isSaved ? 'rgba(30,18,86,0.4)' : 'rgba(30,18,86,0.7)',
-                    background: isSaved ? 'rgba(250,247,240,0.6)' : '#FAF7F0',
-                    border: 'none',
-                    borderRadius: '10px',
-                    padding: '10px 16px',
-                    cursor: isSaved ? 'default' : 'pointer',
-                    textAlign: 'center',
-                  }}
-                >
-                  {isSaved ? 'Added to journal ✓' : 'Add to journal'}
-                </button>
-              </div>
-            }
-          />
+          {(!context.fromJournal || context.readingText) ? (
+            <MelissaReadingFlow
+              apiEndpoint="/api/melissa-daily"
+              apiPayload={{
+                cardIndex: context.card.id,
+                isReversed: context.isReversed,
+                userProfile: context.userProfile,
+              }}
+              userName={context.userProfile.displayName}
+              conversationPath={conversationPath}
+              initialEmojiReaction={emojiReaction}
+              onEmojiReaction={handleEmojiReaction}
+              existingReadingText={context.readingText || undefined}
+              onReadingComplete={(text) => {
+                setReadingText(text);
+                setContext(prev => (prev ? { ...prev, readingText: text } : prev));
+                sessionStorage.setItem(`reading-${id}`, JSON.stringify({ ...context, readingText: text }));
+              }}
+              completeActions={
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginTop: '10px' }}>
+                  <button
+                    onClick={() => router.push(conversationPath)}
+                    style={{
+                      width: '100%',
+                      fontFamily: 'var(--font-dm-sans-var), sans-serif',
+                      fontSize: '13px',
+                      color: '#FAF7F0',
+                      background: 'transparent',
+                      border: '1px solid rgba(250,247,240,0.35)',
+                      borderRadius: '10px',
+                      padding: '10px 16px',
+                      cursor: 'pointer',
+                      textAlign: 'center',
+                    }}
+                  >
+                    Carry on the conversation
+                  </button>
+                  <button
+                    onClick={handleSaveToJournal}
+                    disabled={isSaved}
+                    style={{
+                      width: '100%',
+                      fontFamily: 'var(--font-dm-sans-var), sans-serif',
+                      fontSize: '13px',
+                      color: isSaved ? 'rgba(30,18,86,0.4)' : 'rgba(30,18,86,0.7)',
+                      background: isSaved ? 'rgba(250,247,240,0.6)' : '#FAF7F0',
+                      border: 'none',
+                      borderRadius: '10px',
+                      padding: '10px 16px',
+                      cursor: isSaved ? 'default' : 'pointer',
+                      textAlign: 'center',
+                    }}
+                  >
+                    {isSaved ? 'Added to journal ✓' : 'Add to journal'}
+                  </button>
+                </div>
+              }
+            />
+          ) : (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              <button
+                onClick={() => setContext(prev => prev ? { ...prev, fromJournal: false } : prev)}
+                style={{
+                  width: '100%',
+                  background: '#C9A84C',
+                  color: '#1E1256',
+                  padding: '14px',
+                  borderRadius: '12px',
+                  fontFamily: 'var(--font-dm-sans-var), sans-serif',
+                  fontWeight: 500,
+                  fontSize: '15px',
+                  border: 'none',
+                  cursor: 'pointer',
+                }}
+              >
+                Get Melissa&apos;s take
+              </button>
+              <button
+                disabled
+                style={{
+                  width: '100%',
+                  fontFamily: 'var(--font-dm-sans-var), sans-serif',
+                  fontSize: '13px',
+                  color: 'rgba(30,18,86,0.4)',
+                  background: 'rgba(250,247,240,0.6)',
+                  border: 'none',
+                  borderRadius: '10px',
+                  padding: '10px 16px',
+                  cursor: 'default',
+                  textAlign: 'center',
+                }}
+              >
+                Added to journal ✓
+              </button>
+            </div>
+          )}
         </div>
       </div>
 

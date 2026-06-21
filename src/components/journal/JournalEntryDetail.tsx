@@ -112,6 +112,8 @@ export default function JournalEntryDetail({
   const { profile } = useUserProfile();
   const [impression, setImpression] = useState(entry.impression ?? '');
   const [showResonance, setShowResonance] = useState(false);
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+  const [deleteHovered, setDeleteHovered] = useState(false);
   const saveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Option B appears only for entries older than 5 days that have no rating yet.
@@ -154,6 +156,7 @@ export default function JournalEntryDetail({
         userProfile: profile,
         readingText: entry.melissaText,
         emojiReaction: entry.emojiReaction,
+        fromJournal: true,
       }));
       router.push(`/daily/${entry.id}`);
     } else {
@@ -166,6 +169,7 @@ export default function JournalEntryDetail({
         userProfile: profile,
         readingText: entry.melissaText,
         emojiReaction: entry.emojiReaction,
+        fromJournal: true,
       }));
       router.push(`/spread/${entry.id}`);
     }
@@ -362,21 +366,112 @@ export default function JournalEntryDetail({
         {/* Delete */}
         <div style={{ textAlign: 'center', marginTop: '28px' }}>
           <button
-            onClick={handleDelete}
+            onClick={() => setShowDeleteConfirm(true)}
+            onMouseEnter={() => setDeleteHovered(true)}
+            onMouseLeave={() => setDeleteHovered(false)}
             style={{
               fontFamily: 'var(--font-dm-sans-var), sans-serif',
               fontSize: '11.5px',
-              color: 'rgba(250,247,240,0.4)',
+              color: deleteHovered ? '#E07070' : 'rgba(250,247,240,0.4)',
               background: 'transparent',
               border: 'none',
               cursor: 'pointer',
               textDecoration: 'underline',
               textUnderlineOffset: '3px',
+              transition: 'color 0.15s ease',
             }}
           >
             Delete this entry
           </button>
         </div>
+
+        {/* Delete confirmation modal */}
+        <AnimatePresence>
+          {showDeleteConfirm && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.15 }}
+              onClick={() => setShowDeleteConfirm(false)}
+              style={{
+                position: 'fixed', inset: 0, background: 'rgba(10,6,30,0.6)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                zIndex: 70, padding: '0 24px',
+              }}
+            >
+              <motion.div
+                initial={{ scale: 0.95, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.95, opacity: 0 }}
+                transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                onClick={e => e.stopPropagation()}
+                style={{
+                  background: '#1E1256',
+                  border: '1px solid rgba(250,247,240,0.12)',
+                  borderRadius: '18px',
+                  padding: '28px 24px',
+                  width: '100%',
+                  maxWidth: '320px',
+                  textAlign: 'center',
+                }}
+              >
+                <p style={{
+                  fontFamily: 'var(--font-dm-serif-var), serif',
+                  fontSize: '18px',
+                  color: '#FAF7F0',
+                  margin: '0 0 8px',
+                }}>
+                  Delete this entry?
+                </p>
+                <p style={{
+                  fontFamily: 'var(--font-garamond-var), Georgia, serif',
+                  fontSize: '14px',
+                  color: 'rgba(250,247,240,0.55)',
+                  lineHeight: 1.5,
+                  margin: '0 0 24px',
+                }}>
+                  This can&apos;t be undone.
+                </p>
+                <div style={{ display: 'flex', gap: '10px' }}>
+                  <button
+                    onClick={() => setShowDeleteConfirm(false)}
+                    style={{
+                      flex: 1,
+                      fontFamily: 'var(--font-dm-sans-var), sans-serif',
+                      fontSize: '13px',
+                      color: '#FAF7F0',
+                      background: 'transparent',
+                      border: '1px solid rgba(250,247,240,0.25)',
+                      borderRadius: '10px',
+                      padding: '11px 16px',
+                      cursor: 'pointer',
+                    }}
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    onClick={handleDelete}
+                    style={{
+                      flex: 1,
+                      fontFamily: 'var(--font-dm-sans-var), sans-serif',
+                      fontSize: '13px',
+                      fontWeight: 500,
+                      color: '#FAF7F0',
+                      background: '#E07070',
+                      border: 'none',
+                      borderRadius: '10px',
+                      padding: '11px 16px',
+                      cursor: 'pointer',
+                    }}
+                  >
+                    Delete
+                  </button>
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.div>
     </motion.div>
   );

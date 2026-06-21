@@ -13,11 +13,15 @@ interface TarotCardProps {
   onFlip?: () => void;
   size?: Size;
   animateIn?: boolean;
+  // Extra class for callers that need a narrower size override (e.g. CardDeal's
+  // mobile-only shrink) without touching the default sizeClasses every other
+  // single-card usage (the daily card) relies on.
+  className?: string;
 }
 
 const sizeClasses: Record<Size, string> = {
-  sm: 'w-[80px]',
-  md: 'w-[120px]',
+  sm: 'w-[100px]',
+  md: 'w-[130px]',
   lg: 'w-[180px]',
 };
 
@@ -29,11 +33,12 @@ export function TarotCard({
   onFlip,
   size = 'md',
   animateIn = false,
+  className = '',
 }: TarotCardProps) {
   return (
     <div className="flex flex-col items-center">
       <motion.div
-        className={`${sizeClasses[size]} aspect-[300/527] cursor-pointer drop-shadow-[0_4px_8px_rgba(0,0,0,0.45)]`}
+        className={`${sizeClasses[size]} ${className} aspect-[300/527] cursor-pointer drop-shadow-[0_4px_8px_rgba(0,0,0,0.45)]`}
         initial={animateIn ? { y: 20, opacity: 0 } : false}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.4, ease: 'easeOut' }}
