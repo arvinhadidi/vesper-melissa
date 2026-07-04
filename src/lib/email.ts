@@ -33,18 +33,13 @@ function subjectFor(name?: string | null): string {
 function htmlFor(name: string | null | undefined, unsubscribeUrl: string): string {
   const greeting = name ? `, ${name}` : '';
   return `<!doctype html>
-<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<html>
   <head>
     <meta charset="utf-8">
-    <meta name="color-scheme" content="light dark">
-    <meta name="supported-color-schemes" content="light dark">
-    <!--[if mso]><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml><![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
-  <body style="margin:0; padding:0; background-color:#120B3A; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%;">
-    <div style="display:none; font-size:1px; color:#120B3A; line-height:1px; max-height:0px; max-width:0px; opacity:0; overflow:hidden;">
-      Your card is ready &#8204;&#847; &#8204;&#847; &#8204;&#847; &#8204;&#847; &#8204;&#847;
-    </div>
-    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#120B3A;" bgcolor="#120B3A">
+  <body style="margin:0; padding:0; background-color:#FAF7F0; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#FAF7F0;" bgcolor="#FAF7F0">
       <tr>
         <td align="center" style="padding:40px 16px;">
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:480px;">
@@ -54,7 +49,7 @@ function htmlFor(name: string | null | undefined, unsubscribeUrl: string): strin
               </td>
             </tr>
             <tr>
-              <td style="padding:32px 32px 24px; background-color:#1E1256; border-radius:16px; border:1px solid #C9A84C; text-align:center;" bgcolor="#1E1256">
+              <td style="padding:32px 32px 24px; background-color:#1E1256; border-radius:16px; text-align:center;" bgcolor="#1E1256">
                 <p style="font-family: Georgia, 'Times New Roman', serif; font-size:22px; line-height:1.4; color:#FAF7F0; margin:0 0 16px; text-align:center;">
                   Good day${greeting}.
                 </p>
@@ -67,7 +62,7 @@ function htmlFor(name: string | null | undefined, unsubscribeUrl: string): strin
                 <table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 auto;">
                   <tr>
                     <td style="border-radius:999px; background-color:#C9A84C;" bgcolor="#C9A84C">
-                      <a href="${DAILY_URL}" style="display:inline-block; padding:14px 32px; font-family: Georgia, 'Times New Roman', serif; font-size:16px; font-weight:bold; color:#120B3A; text-decoration:none; border-radius:999px;">
+                      <a href="${DAILY_URL}" style="display:inline-block; padding:14px 32px; font-family: Georgia, 'Times New Roman', serif; font-size:16px; font-weight:bold; color:#1E1256; text-decoration:none; border-radius:999px;">
                         See today's card
                       </a>
                     </td>
@@ -77,10 +72,10 @@ function htmlFor(name: string | null | undefined, unsubscribeUrl: string): strin
             </tr>
             <tr>
               <td style="padding:24px 8px 0; text-align:center;">
-                <p style="font-family: Georgia, 'Times New Roman', serif; font-size:12px; line-height:1.6; color:#9B8FB0; margin:0;">
+                <p style="font-family: Georgia, 'Times New Roman', serif; font-size:12px; line-height:1.6; color:#1E1256; margin:0;">
                   Melissa, Vesper
                 </p>
-                <p style="font-family: Georgia, 'Times New Roman', serif; font-size:12px; line-height:1.6; color:#7A6F8A; margin:8px 0 0;">
+                <p style="font-family: Georgia, 'Times New Roman', serif; font-size:12px; line-height:1.6; color:#6B5F7A; margin:8px 0 0;">
                   You're getting this because you asked Melissa to check in.
                   <a href="${unsubscribeUrl}" style="color:#C9A84C;">Unsubscribe</a>
                 </p>
