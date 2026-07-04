@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "./landing.module.css";
 
 export default function LandingFooter() {
@@ -7,9 +8,9 @@ export default function LandingFooter() {
         © 2026 Vesper&nbsp;&nbsp;·&nbsp;&nbsp;
         <span>vesper.cards</span>
         &nbsp;&nbsp;·&nbsp;&nbsp;
-        <span>Privacy</span>
+        <Link href="/privacy" style={{ color: 'inherit', textDecoration: 'underline', textUnderlineOffset: '2px' }}>Privacy</Link>
         &nbsp;&nbsp;·&nbsp;&nbsp;
-        <span>Terms</span>
+        <Link href="/tos" style={{ color: 'inherit', textDecoration: 'underline', textUnderlineOffset: '2px' }}>Terms</Link>
       </p>
     </footer>
   );

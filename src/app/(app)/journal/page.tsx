@@ -87,23 +87,25 @@ export default function JournalPage() {
         minHeight: '100dvh',
         padding: '48px 24px 120px',
       }}>
-        <div style={{ marginBottom: '28px' }}>
+        <div style={{ marginBottom: '40px', textAlign: 'center' }}>
           <p style={{
             fontFamily: 'var(--font-dm-sans-var), sans-serif',
-            fontSize: '11px',
+            fontSize: '14px',
+            fontWeight: 500,
             color: '#C9A84C',
-            letterSpacing: '3px',
+            letterSpacing: '4px',
             textTransform: 'uppercase',
-            margin: '0 0 8px',
+            margin: '0 0 12px',
           }}>
             JOURNAL
           </p>
           <h1 style={{
             fontFamily: 'var(--font-dm-serif-var), serif',
-            fontSize: '22px',
+            fontSize: 'clamp(32px, 10vw, 44px)',
             fontWeight: 400,
             color: '#FAF7F0',
             margin: 0,
+            lineHeight: 1.12,
           }}>
             Your readings
           </h1>

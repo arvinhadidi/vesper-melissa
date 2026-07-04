@@ -3,24 +3,7 @@
 import { useOnboardingData } from '@/lib/onboarding/useOnboardingData';
 import { OptionTile } from '@/components/onboarding/OptionTile';
 import { Heading } from '@/components/onboarding/Heading';
-
-const LOVE_OPTIONS = [
-  { label: '🌸  Single', value: 'single' },
-  { label: '💬  Talking to Someone', value: 'talking' },
-  { label: '🌀  Situationship', value: 'situationship' },
-  { label: '💔  Healing from a Breakup', value: 'healing_breakup' },
-  { label: '💑  In a Relationship', value: 'in_relationship' },
-  { label: '🤐  Prefer Not to Say', value: 'prefer_not_say' },
-];
-
-const OTHER_OPTIONS = [
-  { label: '🫂  A Loved One', value: 'loved_one' },
-  { label: '🔭  My Own Future', value: 'own_future' },
-  { label: '⚖️  An Impossible Choice', value: 'impossible_choice' },
-  { label: '🕯️  Grief or Loss', value: 'grief_loss' },
-  { label: "🌊  Something I Can't Shake", value: 'cant_shake' },
-  { label: '🌫️  Hard to Put Into Words', value: 'unnamed' },
-];
+import { LOVE_SITUATION_OPTIONS as LOVE_OPTIONS, OTHER_SITUATION_OPTIONS as OTHER_OPTIONS } from '@/lib/onboarding/options';
 
 export default function SituationPage() {
   const { data, updateAndNavigate } = useOnboardingData();

@@ -3,14 +3,7 @@
 import { useOnboardingData } from '@/lib/onboarding/useOnboardingData';
 import { OptionTile } from '@/components/onboarding/OptionTile';
 import { Heading } from '@/components/onboarding/Heading';
-
-const OPTIONS = [
-  { label: '🌧️  Heavy', value: 'heavy' },
-  { label: '🌱  Hopeful', value: 'hopeful' },
-  { label: '🌀  Restless', value: 'restless' },
-  { label: '🌫️  Numb', value: 'numb' },
-  { label: '🤍  Honestly, fine', value: 'fine' },
-];
+import { MOOD_OPTIONS as OPTIONS } from '@/lib/onboarding/options';
 
 export default function MoodPage() {
   const { data, updateAndNavigate } = useOnboardingData();

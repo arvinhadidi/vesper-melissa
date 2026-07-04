@@ -3,13 +3,7 @@
 import { useOnboardingData } from '@/lib/onboarding/useOnboardingData';
 import { OptionTile } from '@/components/onboarding/OptionTile';
 import { Heading } from '@/components/onboarding/Heading';
-
-const OPTIONS = [
-  { label: '🌱  Just recently', value: 'recent' },
-  { label: '📅  A few weeks', value: 'weeks' },
-  { label: '🌒  Months now', value: 'months' },
-  { label: "🪨  Longer than I'd like to admit", value: 'long' },
-];
+import { DURATION_OPTIONS as OPTIONS } from '@/lib/onboarding/options';
 
 export default function DurationPage() {
   const { data, updateAndNavigate } = useOnboardingData();

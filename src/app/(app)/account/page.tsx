@@ -181,12 +181,33 @@ export default function AccountPage() {
           fontFamily: 'var(--font-dm-sans-var), sans-serif',
           fontSize: '14px',
           color: 'rgba(250,247,240,0.5)',
-          margin: '0 0 32px',
+          margin: '0 0 16px',
           textTransform: 'capitalize',
         }}>
           {profile.starSign}
         </p>
       )}
+
+      <Link
+        href="/account/edit-profile"
+        style={{
+          width: '100%',
+          padding: '14px',
+          borderRadius: '12px',
+          border: '1.5px solid #C9A84C',
+          background: 'transparent',
+          color: '#C9A84C',
+          fontFamily: 'var(--font-dm-sans-var), sans-serif',
+          fontSize: '15px',
+          fontWeight: 600,
+          textAlign: 'center',
+          textDecoration: 'none',
+          boxSizing: 'border-box',
+          marginBottom: '32px',
+        }}
+      >
+        Edit profile
+      </Link>
 
       <div style={{
         width: '100%',

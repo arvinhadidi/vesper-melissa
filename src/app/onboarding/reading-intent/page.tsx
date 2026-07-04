@@ -5,15 +5,7 @@ import { useOnboardingData } from '@/lib/onboarding/useOnboardingData';
 import { OptionTile } from '@/components/onboarding/OptionTile';
 import { Heading } from '@/components/onboarding/Heading';
 import { PrimaryButton } from '@/components/onboarding/PrimaryButton';
-
-const OPTIONS = [
-  { label: '🔦  Clarity', value: 'clarity' },
-  { label: '🪶  A Sign', value: 'sign' },
-  { label: '🤝  Whether to Hold On', value: 'hold_on' },
-  { label: '🗺️  What I Need to Do', value: 'what_to_do' },
-  { label: '🌤️  That Things Will Be Okay', value: 'things_okay' },
-  { label: '🕊️  Permission to Let Go', value: 'let_go' },
-];
+import { READING_INTENT_OPTIONS as OPTIONS } from '@/lib/onboarding/options';
 
 export default function ReadingIntentPage() {
   const { data, updateAndNavigate } = useOnboardingData();

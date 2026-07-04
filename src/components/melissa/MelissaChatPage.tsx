@@ -133,14 +133,67 @@ export default function MelissaChatPage({ sessionKey, backPath }: MelissaChatPag
   const [isRevealing, setIsRevealing] = useState(false);
   const [notFound, setNotFound] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
+  // True once the user has sent a message in this visit — guards the mount-time
+  // history fetch below from overwriting it if that GET resolves afterward
+  // (it's a snapshot from before the send, so it would erase the new message
+  // and/or the in-progress streaming reply if applied blindly).
+  const hasSentRef = useRef(false);
 
   useEffect(() => {
     const raw = sessionStorage.getItem(`reading-${sessionKey}`);
     if (!raw) { setNotFound(true); return; }
     const ctx = JSON.parse(raw) as ReadingContext;
     setContext(ctx);
-    setMessages([{ role: 'assistant', content: ctx.readingText, revealed: true }]);
+
+    const initialBubble: Message = { role: 'assistant', content: ctx.readingText, revealed: true };
+
+    // sessionStorage cache paints instantly while the durable fetch below resolves.
+    const cached = sessionStorage.getItem(`chat-messages-${sessionKey}`);
+    if (cached) {
+      try {
+        const parsed = JSON.parse(cached) as Message[];
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          setMessages(parsed.map(m => ({ ...m, revealed: true })));
+        } else {
+          setMessages([initialBubble]);
+        }
+      } catch {
+        setMessages([initialBubble]);
+      }
+    } else {
+      setMessages([initialBubble]);
+    }
+
+    // Durable history from Supabase is the source of truth — reconcile once it
+    // loads, since the sessionStorage cache won't follow you to a new tab/device.
+    fetch(`/api/chat-messages?readingId=${encodeURIComponent(sessionKey)}`)
+      .then(res => (res.ok ? res.json() : null))
+      .then((remote: { role: 'user' | 'assistant'; content: string }[] | null) => {
+        if (!remote || hasSentRef.current) return;
+        const merged: Message[] = [
+          initialBubble,
+          ...remote.map(m => ({ role: m.role, content: m.content, revealed: true })),
+        ];
+        setMessages(merged);
+        sessionStorage.setItem(`chat-messages-${sessionKey}`, JSON.stringify(merged));
+      })
+      .catch(() => {/* keep whatever the sessionStorage cache already produced */});
   }, [sessionKey]);
+
+  // Keep the sessionStorage cache in sync for instant paint on the next visit.
+  useEffect(() => {
+    if (messages.length === 0) return;
+    sessionStorage.setItem(`chat-messages-${sessionKey}`, JSON.stringify(messages));
+  }, [messages, sessionKey]);
+
+  // Best-effort durable persist — fire-and-forget, mirrors the pattern in lib/journal.ts.
+  function persistMessage(role: 'user' | 'assistant', content: string) {
+    fetch('/api/chat-messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ readingId: sessionKey, role, content }),
+    }).catch(() => {/* silently fall back to sessionStorage-only */});
+  }
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -158,9 +211,11 @@ export default function MelissaChatPage({ sessionKey, backPath }: MelissaChatPag
   async function handleSend() {
     if (!input.trim() || isStreaming || isRevealing || !context) return;
 
+    hasSentRef.current = true;
     const userMessage: Message = { role: 'user', content: input.trim(), revealed: true };
     const newMessages = [...messages, userMessage];
     setMessages(newMessages);
+    persistMessage('user', userMessage.content);
     setInput('');
     setIsStreaming(true);
 
@@ -208,6 +263,7 @@ export default function MelissaChatPage({ sessionKey, backPath }: MelissaChatPag
       updated[updated.length - 1] = { role: 'assistant', content: fullText, revealed: false };
       return updated;
     });
+    persistMessage('assistant', fullText);
     setIsStreaming(false);
     setIsRevealing(true);
   }

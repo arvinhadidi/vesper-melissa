@@ -285,8 +285,8 @@
   align-items: flex-end;
   justify-content: center;
   background: radial-gradient(
-    ellipse at center,
-    rgba(201, 168, 76, 0.18) 0%,
+    ellipse at 50% 65%,
+    rgba(201, 168, 76, 0.09) 0%,
     transparent 65%
   );
   margin-top: -54px;
@@ -439,6 +439,8 @@
   height: 130px;
   width: auto;
   filter: drop-shadow(0 6px 18px rgba(30, 18, 86, 0.18));
+  mask-image: linear-gradient(to bottom, black 75%, transparent 95%);
+  -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 95%);
 }
 
 .featureEyebrow {
@@ -886,8 +888,8 @@
   align-items: flex-end;
   justify-content: center;
   background: radial-gradient(
-    ellipse at center,
-    rgba(201, 168, 76, 0.18) 0%,
+    ellipse at 50% 62%,
+    rgba(201, 168, 76, 0.09) 0%,
     transparent 65%
   );
   margin-bottom: 20px;

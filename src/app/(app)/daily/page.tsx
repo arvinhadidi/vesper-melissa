@@ -7,7 +7,7 @@ import { getDailyCardIndex } from '@/lib/cardLogic.js';
 import { getCardById, TarotCard, getCardImagePath } from '@/lib/cards';
 import { useUserProfile } from '@/lib/hooks/useUserProfile';
 import TarotCardComponent from '@/components/tarot/TarotCard';
-import { saveJournalEntry } from '@/lib/journal';
+import { saveJournalEntry, fetchJournalEntries } from '@/lib/journal';
 
 function formatDate(dateString: string): string {
   const [year, month, day] = dateString.split('-').map(Number);
@@ -186,6 +186,7 @@ export default function DailyPage() {
   const [isReversed, setIsReversed] = useState(false);
   const [todayString, setTodayString] = useState('');
   const [showModal, setShowModal] = useState(false);
+  const [checkingExisting, setCheckingExisting] = useState(true);
 
   useEffect(() => {
     if (profileLoading || !profile) return;
@@ -198,9 +199,44 @@ export default function DailyPage() {
 
     const cardIndex = getDailyCardIndex(profile.id, dateStr);
     const reversed = (cardIndex * 7 + dateStr.length) % 10 < 3;
-    setDailyCard(getCardById(cardIndex));
+    const card = getCardById(cardIndex);
+    setDailyCard(card);
     setIsReversed(reversed);
-  }, [profile, profileLoading]);
+
+    // If today's card has already been pulled and read, jump straight to that
+    // reading instead of re-presenting a blank flippable card — re-flipping and
+    // re-saving it used to silently no-op against the existing journal entry.
+    const entryId = `daily-${dateStr}`;
+    fetchJournalEntries()
+      .then(entries => {
+        const existing = entries.find(e => e.id === entryId);
+        if (existing && existing.melissaText) {
+          sessionStorage.setItem(`reading-${entryId}`, JSON.stringify({
+            type: 'daily',
+            card,
+            isReversed: reversed,
+            userProfile: profile,
+            readingText: existing.melissaText,
+            emojiReaction: existing.emojiReaction,
+          }));
+          router.replace(`/daily/${entryId}`);
+        } else {
+          // Saved pre-reading (empty melissaText) — let them flip/save as normal,
+          // but reflect that it's already in the journal so the button isn't misleading.
+          if (existing) setIsSaved(true);
+          setCheckingExisting(false);
+        }
+      })
+      .catch(() => setCheckingExisting(false));
+  }, [profile, profileLoading, router]);
+
+  if (profileLoading || checkingExisting) {
+    return (
+      <div style={{ minHeight: '100dvh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <p style={{ fontFamily: 'var(--font-dm-sans-var), sans-serif', fontSize: '14px', color: 'rgba(250,247,240,0.6)' }}>Loading...</p>
+      </div>
+    );
+  }
 
   function handleCardClick() {
     if (!isFlipped) {

@@ -136,5 +136,5 @@ export const PRICING: Record<string, { symbol: string; monthly: number; yearly: 
   USD: { symbol: '$', monthly: 12.99, yearly: 103.99, savePct: 33 },
 };
 export const DEFAULT_CURRENCY = 'GBP';
-export const TRIAL_DAYS = 3;
+export const TRIAL_DAYS = 14;
 export const COUNTDOWN_SECONDS = 5 * 60;

@@ -258,6 +258,8 @@ export default function JournalEntryDetail({
                   alt={card.name}
                   style={{
                     width: '88px',
+                    aspectRatio: '300 / 527',
+                    objectFit: 'cover',
                     borderRadius: '8px',
                     boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
                     transform: c.isReversed ? 'rotate(180deg)' : 'none',
@@ -320,7 +322,7 @@ export default function JournalEntryDetail({
             marginBottom: '28px',
           }}
         >
-          View Reading
+          {entry.melissaText ? 'View Reading' : entry.type === 'daily' ? 'View Card' : 'View Spread'}
         </button>
 
         {/* My Take */}

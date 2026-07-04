@@ -33,11 +33,30 @@ const STARS = [
 ];
 
 const MOTES = [
-  { left: '20%', dur: 14, delay: 0, size: 3 },
-  { left: '46%', dur: 18, delay: 4, size: 2 },
-  { left: '72%', dur: 16, delay: 8, size: 3 },
-  { left: '88%', dur: 20, delay: 2, size: 2 },
-  { left: '34%', dur: 17, delay: 11, size: 2 },
+  { left: '20%', bottom: '6%', dur: 14, delay: 0, size: 3 },
+  { left: '46%', bottom: '38%', dur: 18, delay: 4, size: 2 },
+  { left: '72%', bottom: '16%', dur: 16, delay: 8, size: 3 },
+  { left: '88%', bottom: '52%', dur: 20, delay: 2, size: 2 },
+  { left: '34%', bottom: '24%', dur: 17, delay: 11, size: 2 },
+  { left: '10%', bottom: '60%', dur: 19, delay: 6, size: 2 },
+  { left: '58%', bottom: '8%', dur: 15, delay: 13, size: 3 },
+  { left: '80%', bottom: '30%', dur: 21, delay: 9, size: 2 },
+  { left: '26%', bottom: '70%', dur: 16, delay: 1, size: 2 },
+  { left: '64%', bottom: '46%', dur: 18, delay: 15, size: 3 },
+  { left: '4%', bottom: '34%', dur: 14, delay: 7, size: 2 },
+  { left: '94%', bottom: '12%', dur: 20, delay: 4, size: 2 },
+  { left: '14%', bottom: '44%', dur: 17, delay: 3, size: 2 },
+  { left: '40%', bottom: '64%', dur: 19, delay: 10, size: 3 },
+  { left: '52%', bottom: '4%', dur: 15, delay: 5, size: 2 },
+  { left: '66%', bottom: '58%', dur: 20, delay: 14, size: 2 },
+  { left: '78%', bottom: '40%', dur: 16, delay: 0.5, size: 3 },
+  { left: '90%', bottom: '66%', dur: 18, delay: 12, size: 2 },
+  { left: '8%', bottom: '20%', dur: 14, delay: 9.5, size: 2 },
+  { left: '30%', bottom: '50%', dur: 21, delay: 2.5, size: 2 },
+  { left: '62%', bottom: '26%', dur: 17, delay: 16, size: 3 },
+  { left: '84%', bottom: '4%', dur: 19, delay: 7.5, size: 2 },
+  { left: '98%', bottom: '28%', dur: 15, delay: 11.5, size: 2 },
+  { left: '44%', bottom: '12%', dur: 20, delay: 5.5, size: 3 },
 ];
 
 export default function NightSky() {
@@ -106,7 +125,7 @@ export default function NightSky() {
             className="mn-anim"
             style={{
               position: 'absolute',
-              bottom: '14%',
+              bottom: m.bottom,
               left: m.left,
               width: m.size,
               height: m.size,

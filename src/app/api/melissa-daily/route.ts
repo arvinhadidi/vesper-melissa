@@ -1,6 +1,7 @@
 import { bedrockStream } from '@/lib/bedrock';
 import { getCardById, TarotCard } from '@/lib/cards';
 import { createClient } from '@/lib/supabase/server';
+import { checkRateLimit } from '@/lib/rateLimit';
 
 export const dynamic = 'force-dynamic';
 
@@ -9,6 +10,14 @@ export async function POST(req: Request) {
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) {
     return new Response('Unauthorized', { status: 401 });
+  }
+
+  const { allowed, retryAfterSecs } = checkRateLimit(user.id);
+  if (!allowed) {
+    return new Response(
+      JSON.stringify({ error: "You've reached Melissa's limit for now. Come back in a little while." }),
+      { status: 429, headers: { 'Content-Type': 'application/json', 'Retry-After': String(retryAfterSecs) } },
+    );
   }
 
   const { cardIndex, isReversed, userProfile } = await req.json();

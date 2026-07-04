@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import styles from "./landing.module.css";
 import { useReveal } from "./useReveal";
+import { TRIAL_DAYS } from "@/lib/onboarding/constants";
 
 const FAN_ROTATIONS = [-15, 9, -6, 6, -10, 14];
 
@@ -24,6 +25,12 @@ export default function FinalCta() {
               width={200}
               height={200}
               className={styles.heroMelissaImg}
+              style={{
+                maskImage: 'linear-gradient(to bottom, black 52%, transparent 90%), radial-gradient(ellipse 80% 94% at 50% 48%, black 45%, transparent 82%)',
+                WebkitMaskImage: 'linear-gradient(to bottom, black 52%, transparent 90%), radial-gradient(ellipse 80% 94% at 50% 48%, black 45%, transparent 82%)',
+                maskComposite: 'intersect',
+                WebkitMaskComposite: 'source-in',
+              }}
             />
           </div>
           {/* <motion.span className={styles.eyebrow} {...reveal()}>
@@ -33,7 +40,7 @@ export default function FinalCta() {
             Melissa is waiting.
           </motion.h2>
           <motion.p className={styles.finalSub} {...reveal({ delay: 0.16 })}>
-            Your first 3 days are free.
+            Your first {TRIAL_DAYS} days are free.
             <br />
             No card required. Cancel any time.
           </motion.p>

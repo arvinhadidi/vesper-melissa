@@ -161,15 +161,12 @@ function Avatar({ phase }: { phase: Phase }) {
   const [errored, setErrored] = useState(false);
   const src = AVATAR[phase];
 
-  // Single-message instance only (this component) — 2x size on phone. Desktop
-  // keeps the original 48px; the chat view has no avatar at all anymore so this
-  // doesn't touch that.
+  // Single-message instance only (this component). 96px everywhere so Melissa
+  // reads the same size on desktop as she does on phone; the chat view has no
+  // avatar at all anymore so this doesn't touch that.
   const sizeStyle = (
     <style>{`
-      .melissa-reading-avatar { width: 48px; height: 48px; }
-      @media (max-width: 700px) {
-        .melissa-reading-avatar { width: 96px; height: 96px; }
-      }
+      .melissa-reading-avatar { width: 96px; height: 96px; }
     `}</style>
   );
 

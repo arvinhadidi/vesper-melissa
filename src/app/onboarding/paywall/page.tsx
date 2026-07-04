@@ -12,14 +12,28 @@ import { VALUE_PROPS, PRICING, DEFAULT_CURRENCY, TRIAL_DAYS, COUNTDOWN_SECONDS }
 
 export default function PaywallPage() {
   const { data } = useOnboardingData();
-  const [selectedPlan, setSelectedPlan] = useState<'yearly' | 'monthly'>('yearly');
+  const [selectedPlan, setSelectedPlan] = useState<'yearly' | 'monthly'>('monthly');
   const [secondsLeft, setSecondsLeft] = useState(COUNTDOWN_SECONDS);
   const currency = useDetectedCurrency();
   const [trialStarting, setTrialStarting] = useState(false);
   const supabaseWriteFired = useRef(false);
 
   useEffect(() => {
-    const t = setInterval(() => setSecondsLeft(s => (s > 0 ? s - 1 : 0)), 1000);
+    const KEY = 'vesper_paywall_deadline';
+    const stored = sessionStorage.getItem(KEY);
+    let deadline: number;
+    if (stored) {
+      deadline = parseInt(stored, 10);
+    } else {
+      deadline = Date.now() + COUNTDOWN_SECONDS * 1000;
+      sessionStorage.setItem(KEY, String(deadline));
+    }
+    function tick() {
+      const remaining = Math.max(0, Math.round((deadline - Date.now()) / 1000));
+      setSecondsLeft(remaining);
+    }
+    tick();
+    const t = setInterval(tick, 1000);
     return () => clearInterval(t);
   }, []);
 
@@ -142,7 +156,7 @@ export default function PaywallPage() {
         </div>
 
         <h1 style={{ fontFamily: 'var(--font-dm-serif-var), serif', fontSize: '38px', fontWeight: 400, color: '#FAF7F0', margin: '0 0 20px', textAlign: 'center', lineHeight: 1.25 }}>
-          Try Vesper <span style={{ color: '#C9A84C' }}>free for {TRIAL_DAYS} days</span>
+          {data.display_name ? <>{data.display_name}, try Vesper <span style={{ color: '#C9A84C' }}>free for {TRIAL_DAYS} days</span></> : <>Try Vesper <span style={{ color: '#C9A84C' }}>free for {TRIAL_DAYS} days</span></>}
         </h1>
 
         <div style={{ marginBottom: '24px' }}>
@@ -158,13 +172,23 @@ export default function PaywallPage() {
           ))}
         </div>
 
+        <p style={{ fontFamily: 'var(--font-dm-sans-var), sans-serif', fontSize: '13px', color: 'rgba(250,247,240,0.55)', textAlign: 'center', margin: '0 0 20px', fontStyle: 'italic' }}>
+          A single tarot reading can cost £25–50. Melissa is with you every day.
+        </p>
+
         <PlanSelector selectedPlan={selectedPlan} onSelect={setSelectedPlan} pricing={p} />
 
+        <p style={{ fontFamily: 'var(--font-dm-sans-var), sans-serif', fontSize: '13px', color: 'rgba(250,247,240,0.65)', textAlign: 'center', margin: '0 0 10px' }}>
+          No payment due now
+        </p>
         <div style={{ width: '100%' }}>
           <PrimaryButton onClick={handleStartTrial}>Try Vesper for {p.symbol}0</PrimaryButton>
         </div>
         <p style={{ fontFamily: 'var(--font-dm-sans-var), sans-serif', fontSize: '13px', color: 'rgba(250,247,240,0.45)', textAlign: 'center', margin: '12px 0 0' }}>
           Cancel anytime during your trial.
+        </p>
+        <p style={{ fontFamily: 'var(--font-dm-sans-var), sans-serif', fontSize: '13px', color: 'rgba(250,247,240,0.45)', textAlign: 'center', margin: '6px 0 0' }}>
+          We&apos;ll email you before your trial ends.
         </p>
       </div>
 

@@ -5,7 +5,7 @@ Read this at the start of every session before touching any code.
 ## What Vesper Is
 Tarot reading web app for women 18-35, UK/US, focused on relationships and emotional clarity.
 AI guide character: Melissa — warm oracle persona, never called AI in the product.
-Revenue model: 3-day free trial → £9.99/month or yearly. No permanent free tier. Hard paywall at end of onboarding.
+Revenue model: 14-day free trial → £9.99/month or yearly. No permanent free tier. Hard paywall at end of onboarding.
 
 ## Tech Stack
 - Next.js 16.2.7 (App Router, TypeScript)
@@ -128,7 +128,7 @@ Deploying to Vercel is necessary but not sufficient. Before charging real custom
 - Stripe Customer Portal configured in live mode (separate config from test mode)
 - Tax/VAT handling (Stripe Tax) depending on registration status
 - Error monitoring (e.g. Sentry) — billing failures are currently easy to miss
-- Rate limiting on the Bedrock-backed routes (melissa-daily/spread/chat) before going public
+- Rate limiting on the Bedrock-backed routes (melissa-daily/spread/chat): in-memory stopgap is live (30 calls/user/hour, per-instance — acceptable for now). Replace with Upstash Redis for a true global limit before high traffic.
 - Confirm Supabase backups/PITR on the production project
 - Build the email check-in sender (see Onboarding section above) before promoting that feature
 

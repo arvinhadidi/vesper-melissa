@@ -277,7 +277,7 @@
         { "id": "stripe_portal_live_config", "name": "Configure Stripe Customer Portal in live mode (separate from test mode config)", "status": "pending" },
         { "id": "tax_handling", "name": "Evaluate Stripe Tax / VAT handling for UK/US subscription billing", "status": "pending" },
         { "id": "error_monitoring", "name": "Add error monitoring (e.g. Sentry) — billing failures are currently silent/easy to miss", "status": "pending" },
-        { "id": "rate_limiting", "name": "Rate limit the Bedrock-backed routes (melissa-daily/spread/chat) before going public", "status": "pending" },
+        { "id": "rate_limiting", "name": "Rate limit the Bedrock-backed routes (melissa-daily/spread/chat) before going public", "status": "complete" },
         { "id": "supabase_backups", "name": "Confirm Supabase backups/PITR are enabled on the production project", "status": "pending" }
       ]
     },
@@ -297,6 +297,14 @@
         { "id": "gitignore_dev_artifacts", "name": "Gitignored dev-only artifacts: src/app/main-preview/ (design scratchpad), test-run-report.md, manual-test-plan.json", "status": "complete" },
         { "id": "analytics_providers", "name": "Vercel Analytics + PostHog wired in root layout; PostHog provider auto-captures $pageview per App Router navigation; AnalyticsIdentify ties events to the logged-in user; .npmrc pins legacy-peer-deps for the @vercel/analytics peer conflict", "status": "complete" },
         { "id": "analytics_events", "name": "lib/analytics.ts track() helper + named events: onboarding_step_viewed, trial_checkout_started, checkout_started, reading_completed; resetAnalytics on sign-out/delete; env vars documented in .env.example + CLAUDE.md", "status": "complete" }
+      ]
+    },
+    {
+      "id": 19,
+      "name": "Idea backlog (not started — parked behind funnel/marketing work)",
+      "status": "pending",
+      "features": [
+        { "id": "melissa_recap_feature", "name": "\"What Melissa thinks about you\" — a button/separate page (not a tab, mobile gets cluttered) that does a single cheap Haiku call summarizing recent journal entries (\"last week you pulled X and said Y...\"), possibly folding in a conversational \"how did this land?\" check that replaces/complements the standalone resonance-rating tiles. Explicitly deferred by user 2026-06-30: good idea, but likely doesn't move conversion, prioritize TikTok/funnel first.", "status": "pending" }
       ]
     }
   ]

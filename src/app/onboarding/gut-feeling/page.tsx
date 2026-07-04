@@ -3,13 +3,7 @@
 import { useOnboardingData } from '@/lib/onboarding/useOnboardingData';
 import { OptionTile } from '@/components/onboarding/OptionTile';
 import { Heading } from '@/components/onboarding/Heading';
-
-const OPTIONS = [
-  { label: "🌅  That it's going to work out", value: 'optimistic' },
-  { label: '🔮  That I already know the answer', value: 'knows' },
-  { label: "😶‍🌫️  Honestly, I'm scared to ask", value: 'scared' },
-  { label: "🌫️  I genuinely don't know", value: 'unsure' },
-];
+import { GUT_FEELING_OPTIONS as OPTIONS } from '@/lib/onboarding/options';
 
 export default function GutFeelingPage() {
   const { data, updateAndNavigate } = useOnboardingData();

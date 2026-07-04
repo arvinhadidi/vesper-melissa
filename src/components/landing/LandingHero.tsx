@@ -49,6 +49,12 @@ export default function LandingHero() {
               height={270}
               priority
               className={styles.heroMelissaImg}
+              style={{
+                maskImage: 'linear-gradient(to bottom, black 52%, transparent 90%), radial-gradient(ellipse 80% 94% at 50% 48%, black 45%, transparent 82%)',
+                WebkitMaskImage: 'linear-gradient(to bottom, black 52%, transparent 90%), radial-gradient(ellipse 80% 94% at 50% 48%, black 45%, transparent 82%)',
+                maskComposite: 'intersect',
+                WebkitMaskComposite: 'source-in',
+              }}
             />
           </motion.div>
         </motion.div>

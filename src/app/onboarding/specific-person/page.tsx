@@ -3,12 +3,7 @@
 import { useOnboardingData } from '@/lib/onboarding/useOnboardingData';
 import { OptionTile } from '@/components/onboarding/OptionTile';
 import { Heading } from '@/components/onboarding/Heading';
-
-const OPTIONS = [
-  { label: "Yes, there's someone", value: 'yes_someone' },
-  { label: 'More of a situation', value: 'situation' },
-  { label: "It's about me", value: 'about_me' },
-];
+import { SPECIFIC_PERSON_OPTIONS as OPTIONS } from '@/lib/onboarding/options';
 
 export default function SpecificPersonPage() {
   const { data, updateAndNavigate } = useOnboardingData();

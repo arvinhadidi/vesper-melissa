@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
+import { TRIAL_DAYS } from '@/lib/onboarding/constants';
 
 export default function TrialEnabledPage() {
   const router = useRouter();
@@ -37,7 +38,7 @@ export default function TrialEnabledPage() {
         style={{ textAlign: 'center' }}
       >
         <p style={{ fontFamily: 'var(--font-dm-serif-var), serif', fontSize: '24px', color: '#FAF7F0', margin: '0 0 10px', lineHeight: 1.3 }}>
-          Your 3-day free trial is enabled ✦
+          Your {TRIAL_DAYS}-day free trial is enabled ✦
         </p>
         <p style={{ fontFamily: 'var(--font-dm-sans-var), sans-serif', fontSize: '14px', color: 'rgba(250,247,240,0.6)', margin: 0 }}>
           No payment yet — you&apos;ll choose your plan next.

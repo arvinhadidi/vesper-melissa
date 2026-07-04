@@ -30,6 +30,13 @@ export function getJournalEntry(id: string): JournalEntry | null {
   return readAll().find(e => e.id === id) ?? null;
 }
 
+// Tracks the in-flight POST (insert) per entry id, so a PATCH fired right after a
+// save (e.g. tapping an emoji reaction immediately after "Add to journal") waits for
+// the row to actually exist server-side first. Without this, the two fire-and-forget
+// requests can land out of order and the PATCH silently no-ops against a row that
+// hasn't been inserted yet.
+const pendingSaves = new Map<string, Promise<unknown>>();
+
 // Upsert by id — updates in-memory/localStorage and fires an async Supabase save.
 export function saveJournalEntry(entry: JournalEntry): JournalEntry {
   const entries = readAll();
@@ -56,11 +63,16 @@ export function saveJournalEntry(entry: JournalEntry): JournalEntry {
 
   // Best-effort Supabase persist (fire-and-forget, no await)
   if (typeof window !== 'undefined') {
-    fetch('/api/journal', {
+    const savePromise = fetch('/api/journal', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(merged),
     }).catch(() => {/* silently fall back to localStorage-only */});
+
+    pendingSaves.set(entry.id, savePromise);
+    savePromise.finally(() => {
+      if (pendingSaves.get(entry.id) === savePromise) pendingSaves.delete(entry.id);
+    });
   }
 
   return merged;
@@ -76,13 +88,15 @@ export function updateJournalEntry(
   entries[idx] = { ...entries[idx], ...patch };
   writeAll(entries);
 
-  // Best-effort Supabase patch
+  // Best-effort Supabase patch — wait for an in-flight save (insert) of this same
+  // entry to settle first, so we never PATCH a row that doesn't exist yet.
   if (typeof window !== 'undefined') {
-    fetch('/api/journal', {
+    const pending = pendingSaves.get(id) ?? Promise.resolve();
+    pending.then(() => fetch('/api/journal', {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ id, ...patch }),
-    }).catch(() => {});
+    })).catch(() => {});
   }
 }
 
@@ -95,6 +109,11 @@ export function deleteJournalEntry(id: string): void {
   }
 }
 
+// Local-only entries older than this are presumed permanently gone server-side
+// (deleted account, DB wipe, etc.) rather than still mid-sync, and are dropped
+// instead of being resurrected on every fetch.
+const UNSYNCED_GRACE_PERIOD_MS = 15 * 60 * 1000;
+
 // Fetch journal entries from Supabase (for the journal page).
 // Falls back to localStorage on error or when unauthenticated.
 export async function fetchJournalEntries(): Promise<JournalEntry[]> {
@@ -104,9 +123,33 @@ export async function fetchJournalEntries(): Promise<JournalEntry[]> {
     const remote: JournalEntry[] = await res.json();
     const local = readAll();
 
-    // Merge: use remote as base, add any local entries not yet in remote
+    // Merge: use remote as base, add only recent local entries not yet in remote
+    // (still mid-sync). Older local-only entries are stale cache, not new data.
     const remoteIds = new Set(remote.map(e => e.id));
-    const merged = [...remote, ...local.filter(e => !remoteIds.has(e.id))];
+    const now = Date.now();
+    const pendingLocal = local.filter(
+      e => !remoteIds.has(e.id) && now - new Date(e.savedAt).getTime() < UNSYNCED_GRACE_PERIOD_MS,
+    );
+
+    // For entries present both remotely and locally, backfill any soft field
+    // (melissaText/impression/resonanceRating/emojiReaction) that's still empty on
+    // the remote row from the local cache. These fields only ever move from
+    // null -> set in the UI (never reset back to null), so a remote-null/local-set
+    // mismatch always means a PATCH was lost in flight, not an intentional clear.
+    const localById = new Map(local.map(e => [e.id, e]));
+    const reconciled = remote.map(r => {
+      const l = localById.get(r.id);
+      if (!l) return r;
+      return {
+        ...r,
+        melissaText: r.melissaText || l.melissaText,
+        impression: r.impression ?? l.impression,
+        resonanceRating: r.resonanceRating ?? l.resonanceRating,
+        emojiReaction: r.emojiReaction ?? l.emojiReaction,
+      };
+    });
+
+    const merged = [...reconciled, ...pendingLocal];
     writeAll(merged);
     return merged.sort(
       (a, b) => new Date(b.savedAt).getTime() - new Date(a.savedAt).getTime(),

@@ -34,6 +34,9 @@ const dmSans = DM_Sans({
 export const metadata: Metadata = {
   title: "Vesper",
   description: "Your personal tarot guide",
+  icons: {
+    icon: '/melissa/melissa-default.png',
+  },
 };
 
 export default function RootLayout({

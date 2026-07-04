@@ -11,11 +11,12 @@ export default function SpreadPage() {
   const { profile } = useUserProfile();
   const [selectedQuestion, setSelectedQuestion] = useState<SpreadQuestion | null>(null);
   const [customText, setCustomText] = useState('');
+  const [isShuffling, setIsShuffling] = useState(false);
 
   const isCustom = selectedQuestion?.id === 'custom';
-  const isShuffleDisabled = !selectedQuestion || (isCustom && !customText.trim());
+  const isShuffleDisabled = !selectedQuestion || (isCustom && !customText.trim()) || isShuffling;
 
-  function handleShuffle() {
+  async function handleShuffle() {
     if (!selectedQuestion || !profile) return;
     const ts = Date.now();
     const id = `reading-${ts}`;
@@ -25,11 +26,29 @@ export default function SpreadPage() {
     type DrawnCard = { cardIndex: number; isReversed: boolean };
     const cards = getSpreadCards(profile.id, ts, selectedQuestion.cardCount) as DrawnCard[];
 
+    let positionLabels = selectedQuestion.positionLabels;
+    if (isCustom) {
+      setIsShuffling(true);
+      try {
+        const res = await fetch('/api/melissa-spread-labels', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ questionText: finalQuestionText, cardCount: selectedQuestion.cardCount }),
+        });
+        if (res.ok) {
+          const { labels } = await res.json() as { labels: string[] };
+          positionLabels = labels;
+        }
+      } catch {
+        // fall back to the static Past/Present/Future labels
+      }
+    }
+
     sessionStorage.setItem(`reading-${id}`, JSON.stringify({
       type: 'spread',
       questionText: finalQuestionText,
       cards,
-      positionLabels: selectedQuestion.positionLabels,
+      positionLabels,
       promptContext,
       userProfile: profile,
     }));
@@ -74,6 +93,7 @@ export default function SpreadPage() {
         <div style={{ marginBottom: '28px' }}>
           {SPREAD_QUESTIONS.map(q => {
             const selected = selectedQuestion?.id === q.id;
+            const isCustomOption = q.id === 'custom';
             return (
               <div key={q.id}>
                 <button
@@ -81,7 +101,11 @@ export default function SpreadPage() {
                   style={{
                     width: '100%',
                     padding: '18px 20px',
-                    border: `1px solid ${selected ? '#C9A84C' : 'rgba(201,168,76,0.35)'}`,
+                    border: selected
+                      ? '1px solid #C9A84C'
+                      : isCustomOption
+                        ? '1.5px solid #C9A84C'
+                        : '1px solid rgba(201,168,76,0.35)',
                     borderRadius: '14px',
                     marginBottom: '12px',
                     background: selected ? '#C9A84C' : '#FAF7F0',
@@ -94,16 +118,17 @@ export default function SpreadPage() {
                     alignItems: 'center',
                     justifyContent: 'space-between',
                     transition: 'all 0.15s ease',
+                    textTransform: 'lowercase',
                   }}
                 >
                   <span>{q.text}</span>
-                  {selected && <span style={{ fontSize: '16px' }}>✓</span>}
                 </button>
 
                 {selected && q.id === 'custom' && (
                   <textarea
                     value={customText}
                     onChange={e => setCustomText(e.target.value)}
+                    onKeyDown={e => { if (e.key === 'Enter') e.preventDefault(); }}
                     placeholder="What's been on your mind?"
                     style={{
                       width: '100%',
@@ -145,7 +170,7 @@ export default function SpreadPage() {
             transition: 'background 0.15s ease',
           }}
         >
-          Shuffle the cards
+          {isShuffling ? 'Shuffling...' : 'Shuffle the cards'}
         </button>
       </div>
     </div>

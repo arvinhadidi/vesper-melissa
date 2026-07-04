@@ -5,14 +5,7 @@ import { motion } from 'framer-motion';
 import { useOnboardingData } from '@/lib/onboarding/useOnboardingData';
 import { Heading } from '@/components/onboarding/Heading';
 import { PrimaryButton } from '@/components/onboarding/PrimaryButton';
-
-const TIME_OPTIONS = [
-  { label: 'Morning (7-9am)', value: 'morning' as string | null },
-  { label: 'Lunchtime (12-2pm)', value: 'lunchtime' as string | null },
-  { label: 'Evening (6-8pm)', value: 'evening' as string | null },
-  { label: 'Night (9-11pm)', value: 'night' as string | null },
-  { label: 'No thanks', value: null },
-];
+import { CHECKIN_TIME_OPTIONS as TIME_OPTIONS } from '@/lib/onboarding/options';
 
 export default function EmailCheckinPage() {
   const { data, updateAndNavigate } = useOnboardingData();

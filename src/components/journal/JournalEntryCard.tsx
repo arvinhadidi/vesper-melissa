@@ -75,6 +75,8 @@ export default function JournalEntryCard({
                 alt={card.name}
                 style={{
                   width: '46px',
+                  aspectRatio: '300 / 527',
+                  objectFit: 'cover',
                   borderRadius: '5px',
                   boxShadow: '0 2px 6px rgba(30,18,86,0.15)',
                   transform: c.isReversed ? 'rotate(180deg)' : 'none',

@@ -3,12 +3,7 @@
 import { useOnboardingData } from '@/lib/onboarding/useOnboardingData';
 import { OptionTile } from '@/components/onboarding/OptionTile';
 import { Heading } from '@/components/onboarding/Heading';
-
-const OPTIONS = [
-  { label: 'Always', value: 'always' },
-  { label: 'I try to', value: 'sometimes' },
-  { label: 'I want to get better at it', value: 'learning' },
-];
+import { NOTICES_SIGNS_OPTIONS as OPTIONS } from '@/lib/onboarding/options';
 
 export default function NoticesSignsPage() {
   const { data, updateAndNavigate } = useOnboardingData();

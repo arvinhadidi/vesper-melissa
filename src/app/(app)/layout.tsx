@@ -1,6 +1,7 @@
 'use client';
 
 import OnboardingMigration from '@/components/ui/OnboardingMigration';
+import LocalDataUserGuard from '@/components/ui/LocalDataUserGuard';
 import AnalyticsIdentify from '@/components/analytics/AnalyticsIdentify';
 import SideNav from '@/components/ui/SideNav';
 import BottomNav from '@/components/ui/BottomNav';
@@ -29,6 +30,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         }
       `}</style>
       <NightSky />
+      <LocalDataUserGuard />
       <OnboardingMigration />
       <AnalyticsIdentify />
       <div className="nav-desktop-only"><SideNav /></div>

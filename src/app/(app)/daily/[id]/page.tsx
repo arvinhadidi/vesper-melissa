@@ -7,7 +7,7 @@ import { TarotCard as TarotCardType, getCardImagePath } from '@/lib/cards';
 import { UserProfile } from '@/lib/types';
 import TarotCardComponent from '@/components/tarot/TarotCard';
 import MelissaReadingFlow from '@/components/melissa/MelissaReadingFlow';
-import { saveJournalEntry } from '@/lib/journal';
+import { saveJournalEntry, updateJournalEntry, getJournalEntry } from '@/lib/journal';
 import { EmojiReaction } from '@/lib/types';
 
 interface DailyReadingContext {
@@ -138,7 +138,10 @@ export default function DailyReadingPage() {
     if (!raw) { setNotFound(true); return; }
     const ctx = JSON.parse(raw) as DailyReadingContext;
     setContext(ctx);
-    if (ctx.fromJournal) setIsSaved(true);
+    // Don't rely solely on the fromJournal flag (only set when navigating in via
+    // the journal's "View Reading" button) — check the actual saved state so a
+    // pre-reading save from the /daily front page is also recognized here.
+    if (ctx.fromJournal || getJournalEntry(id) !== null) setIsSaved(true);
     if (ctx.readingText) setReadingText(ctx.readingText);
     if (ctx.emojiReaction) setEmojiReaction(ctx.emojiReaction);
   }, [id]);
@@ -178,6 +181,9 @@ export default function DailyReadingPage() {
     const updated = { ...context, emojiReaction: reaction };
     setContext(updated);
     sessionStorage.setItem(`reading-${id}`, JSON.stringify(updated));
+    // If already saved to journal, persist the reaction onto that entry too —
+    // otherwise it only lives in sessionStorage and is lost on revisit.
+    if (isSaved) updateJournalEntry(id, { emojiReaction: reaction });
   }
 
   function handleSaveToJournal() {
@@ -292,6 +298,10 @@ export default function DailyReadingPage() {
                 setReadingText(text);
                 setContext(prev => (prev ? { ...prev, readingText: text } : prev));
                 sessionStorage.setItem(`reading-${id}`, JSON.stringify({ ...context, readingText: text }));
+                // If a journal entry already exists for this id (e.g. saved before
+                // the reading was generated), patch the real text into it —
+                // otherwise the saved row keeps an empty melissa_text forever.
+                if (isSaved) updateJournalEntry(id, { melissaText: text });
               }}
               completeActions={
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginTop: '10px' }}>

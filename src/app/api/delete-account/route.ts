@@ -36,6 +36,11 @@ export async function DELETE() {
     .delete()
     .eq('user_id', user.id);
 
+  const { error: chatMessagesErr } = await supabaseAdmin
+    .from('chat_messages')
+    .delete()
+    .eq('user_id', user.id);
+
   const { error: profileErr } = await supabaseAdmin
     .from('user_profiles')
     .delete()
@@ -45,9 +50,10 @@ export async function DELETE() {
 
   // Surface failures instead of swallowing them — a swallowed error here is what let
   // "deleted" accounts keep existing (and keep their access).
-  if (readingsErr || profileErr || authErr) {
+  if (readingsErr || chatMessagesErr || profileErr || authErr) {
     console.error('[delete-account] failed', {
       readings: readingsErr?.message,
+      chatMessages: chatMessagesErr?.message,
       profile: profileErr?.message,
       auth: authErr?.message,
     });
