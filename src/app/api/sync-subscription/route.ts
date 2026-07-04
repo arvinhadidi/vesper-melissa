@@ -25,13 +25,14 @@ export async function POST(req: NextRequest) {
   }
 
   const isTrial = subscription.status === 'trialing';
+  const plan: 'yearly' | 'monthly' = subscription.items.data[0]?.plan?.interval === 'year' ? 'yearly' : 'monthly';
   // upsert, not update: don't assume the profile row already exists.
   await supabase.from('user_profiles').upsert({
     id: user.id,
     subscription_status: 'active',
     is_subscribed: true,
     stripe_subscription_id: subscription.id,
-    subscription_plan: subscription.items.data[0]?.plan?.interval === 'year' ? 'yearly' : 'monthly',
+    subscription_plan: plan,
     onboarding_completed: true,
     onboarding_completed_at: new Date().toISOString(),
     ...(isTrial && subscription.trial_start
@@ -39,5 +40,5 @@ export async function POST(req: NextRequest) {
       : {}),
   }, { onConflict: 'id' });
 
-  return Response.json({ status: 'active' });
+  return Response.json({ status: 'active', plan });
 }

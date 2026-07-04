@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { createClient } from "@/lib/supabase/client";
+import { track } from "@/lib/analytics";
 import styles from "./landing.module.css";
 
 export default function LandingNav() {
@@ -22,6 +23,7 @@ export default function LandingNav() {
   async function handleSignIn() {
     if (signingIn) return;
     setSigningIn(true);
+    track("signin_google_clicked");
     const supabase = createClient();
     await supabase.auth.signInWithOAuth({
       provider: "google",
@@ -47,7 +49,11 @@ export default function LandingNav() {
           >
             {signingIn ? "Opening…" : "Sign in"}
           </button>
-          <a href="/onboarding" className={styles.navCta}>
+          <a
+            href="/onboarding"
+            className={styles.navCta}
+            onClick={() => track("landing_cta_clicked", { location: "nav" })}
+          >
             Start free trial
           </a>
         </div>
@@ -72,7 +78,11 @@ export default function LandingNav() {
             >
               {signingIn ? "Opening…" : "Sign in"}
             </button>
-            <a href="/onboarding" className={styles.navMenuCta}>
+            <a
+              href="/onboarding"
+              className={styles.navMenuCta}
+              onClick={() => track("landing_cta_clicked", { location: "nav" })}
+            >
               Start free trial
             </a>
           </div>

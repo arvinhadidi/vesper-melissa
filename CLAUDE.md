@@ -41,7 +41,7 @@ Revenue model: 14-day free trial → £9.99/month or yearly. No permanent free t
 - TypeScript strict mode — no `any` types
 - Styling: inline styles are used for app pages and components (not Tailwind utility classes). Tailwind tokens are defined in globals.css @theme block and used via CSS variables. Do not switch to Tailwind utility classes for new components — match the inline style pattern already in place.
 - Background — two themes with a hard cutover at the onboarding `trial-enabled` screen (`STEP_ORDER` in src/lib/onboarding/constants.ts):
-  - **Bluer (lighter indigo gradient)** — onboarding screens `welcome` through `social-proof`. Set in `src/app/onboarding/layout.tsx` (the `lightBg` style: `backgroundColor: '#1E1256'` + `linear-gradient(... rgba(30,18,86,1) 100%)` over `/landing/starrysky.webp`, `backgroundAttachment: fixed`). This is the original look and stays. The global `body::before` in globals.css carries the same gradient as a fallback for any page that sets no background of its own (e.g. `/signin`).
+  - **Bluer (lighter indigo gradient)** — onboarding screens `welcome` through `social-proof`. Set in `src/app/onboarding/layout.tsx` (the `lightBg` style: `backgroundColor: '#1E1256'` + `linear-gradient(... rgba(30,18,86,1) 100%)` over `/landing/starrysky.webp`, `backgroundAttachment: fixed`). This is the original look and stays. The global `body::before` in globals.css carries the same gradient as a fallback for any page that sets no background of its own.
   - **Dark night sky** — from `trial-enabled` onward: onboarding `trial-enabled` + `paywall`, standalone `/paywall`, `/personalisation`, and every `(app)` page (main, spread, daily, journal, chat). Rendered by the shared `src/components/ui/NightSky.tsx`: fixed full-viewport `#120B3A` base + drifting starfield + twinkling stars + gold motes + moon-glow halo. Keyframes (`mn-twinkle`/`mn-drift`/`mn-glow`/`mn-mote`) live in globals.css; motion is disabled under `prefers-reduced-motion` via the `.mn-anim` class.
   - **How to apply NightSky:** render `<NightSky />` as a sibling BEHIND content and give the content wrapper `position: relative; zIndex: 1` (NightSky is `position: fixed; zIndex: 0` with an opaque base, so content must sit above it). The `(app)` layout and `onboarding/layout` (dark branch via `isDark`) already render it, so pages inside them need nothing. For a NEW standalone dark route, wrap the root in a fragment with `<NightSky />` first and make the root `position: relative; zIndex: 1` with no opaque background of its own.
   - Do NOT use a plain solid background colour — every screen must have either the bluer gradient (pre-trial) or NightSky (trial-enabled onward).
@@ -59,18 +59,18 @@ Revenue model: 14-day free trial → £9.99/month or yearly. No permanent free t
 - Shared step UI is in `src/components/onboarding/` (Heading, OptionTile, PrimaryButton, ProgressBar, MelissaAvatar, **PlanSelector**); shared state/constants/helpers in `src/lib/onboarding/` (`constants.ts`, `useOnboardingData.ts`, `useDetectedCurrency.ts`, `helpers.ts`, `types.ts`)
 - `OnboardingData` holds all answers in snake_case; written to Supabase once on reaching the paywall screen (before payment), with a `useRef` guard to prevent double-fire
 - `onboarding_completed` and `onboarding_completed_at` are only set in the trial-start handler AFTER the user taps the paywall CTA
-- Conditional screens: `situation` (screen 10) always present, renders love vs. other variant based on `focus_area`; `hold_in_mind` (screen 12) inserted only when `has_specific_person === 'yes_someone'`
+- Conditional screens: `situation` (screen 10) always present, renders love vs. other variant based on `focus_area`. (The old `hold_in_mind` conditional screen no longer exists — it was dropped in the per-route restructure.)
 - Micro-pull (screen 13): zero API calls — 5 hardcoded cards with verbatim lines, typewriter via `setInterval`
 - Synthesis (screen 20): 6 lines built from state, each fading in ~1.4s apart, auto-advances after all lines shown
 - Analytics: `onboarding/template.tsx` fires a PostHog `onboarding_step_viewed` event ({ step, index, total }) on every step change (see Analytics section below). PostHog also auto-captures a `$pageview` per `/onboarding/<step>` route, so the funnel is visible two ways.
-- Email check-in (screen `email-checkin`) collects `preferred_checkin_time` and `email_marketing_consent`/`email_consent_given_at` and stores them on the profile — **but no email is actually ever sent.** There is no email provider integrated yet (no Resend/Postmark/SES, no cron/Edge Function to dispatch the daily reading email). This is a known gap, tracked as a pending feature in progress.json — implement before promoting the "she'll send daily reminders by email" promise made on that screen.
+- Email check-in (screen `email-checkin`) collects `preferred_checkin_time` and `email_marketing_consent`/`email_consent_given_at` and stores them on the profile. The daily check-in email is now actually sent — see the "Email (daily check-in — live)" section below for the Resend/cron architecture.
 
 ## Auth (Session 11 — live)
 - TEST_USER is removed. All screens use real Supabase auth via @supabase/ssr.
 - Supabase client utilities: src/lib/supabase/{client,server,middleware}.ts
 - Client-side user hook: src/lib/hooks/useUserProfile.ts → { user, profile, loading, error }
 - Server-side utility: src/lib/getUserProfile.ts (pass supabase server client)
-- Google OAuth flow: /signin → Google → /auth/callback → /daily (middleware handles onboarding redirect)
+- Google OAuth flow: there is no /signin page anymore (it 404s). `signInWithOAuth` fires from the landing nav "Sign in" button (src/components/landing/LandingNav.tsx) and the onboarding `disclaimer` step → Google → /auth/callback → /main (or ?next= target); the proxy handles onboarding/paywall redirects from there.
 - All three API routes (melissa-daily, melissa-spread, melissa-chat) verify auth via supabase.auth.getUser() and return 401 if unauthenticated.
 - Journal saves go to Supabase (saved_readings table) via /api/journal, with localStorage as warm cache/fallback.
 - OnboardingMigration component in app layout: migrates vesper_onboarding (answer fields only — name, star sign, focus area, etc.) from localStorage to user_profiles on first app load. As of Session 14 it must NEVER write `onboarding_completed`, `subscription_status`, or `trial_started_at` — those are entitlement fields and are written exclusively by the server routes listed under Subscription & Billing below. This component used to grant free access by writing `subscription_status: 'trial'` client-side with no Stripe customer; that bug is what Session 14 fixed.
@@ -79,7 +79,7 @@ Revenue model: 14-day free trial → £9.99/month or yearly. No permanent free t
 Bottom nav bar: Daily (/daily) | Spread (/spread) | Journal (/journal) | Account (/account)
 Side nav (desktop): same four tabs plus /main (home)
 Additional routes: /main (home/menu), /chat/[id] (Melissa conversation, no bottom nav)
-Auth: handled in src/middleware.ts — `AUTH_REQUIRED_PATHS` = /daily, /spread, /journal, /chat, /main, /account (unauthenticated → /signin). /account is intentionally auth-only with no subscription check, so a user can always reach it to manage/cancel/delete regardless of status.
+Auth: handled in src/proxy.ts (Next 16 renamed the middleware.ts convention to proxy.ts; same Edge API) — `AUTH_REQUIRED_PATHS` = /daily, /spread, /journal, /chat, /main, /account (unauthenticated → redirected to the landing page `/`, whose nav has the Sign in button). /account is intentionally auth-only with no subscription check, so a user can always reach it to manage/cancel/delete regardless of status.
 Subscription check: `SUBSCRIPTION_REQUIRED_PATHS` = /daily, /spread, /chat, /main. /journal is exempt (accessible when expired). subscription_status='none' (never subscribed) → /onboarding/paywall (trial still offered); 'expired'/'cancelled' (lapsed) → standalone /paywall (no second trial, immediate charge).
 
 ## Subscription & Billing (Session 14 rewrite — Stripe is the single source of truth)
@@ -91,14 +91,14 @@ Subscription check: `SUBSCRIPTION_REQUIRED_PATHS` = /daily, /spread, /chat, /mai
 
 **All writers use `.upsert({ id: ..., ... }, { onConflict: 'id' })`, never `.update()`.** `.update().eq('id', uid)` silently no-ops if the profile row doesn't exist yet — this caused a real regression (Session 15) where a brand-new user could pay, return to `/personalisation`, and get bounced back to `/onboarding/welcome` because the checkout write vanished. Any new entitlement write must upsert, not update.
 
-- Stripe Checkout with 3-day trial (card collected upfront) at end of onboarding → /api/checkout
+- Stripe Checkout with 14-day trial (`TRIAL_DAYS` in src/lib/onboarding/constants.ts, card collected upfront) at end of onboarding → /api/checkout. Stripe auto-charges when the trial ends unless cancelled.
 - Standalone /paywall page for lapsed (expired/cancelled) users — no trial, immediate charge. Useful to manually visit in test mode to prove a charge lands without waiting on a trial period.
 - Stripe Customer Portal for cancellation/card changes → /api/billing-portal (404s only if `stripe_customer_id` is null, which should now be unreachable for any genuinely entitled user)
-- /account page: shows subscription status, trial end date, "Manage subscription" button. Shows an inline error (not infinite "Loading…") if the profile can't be fetched, with a link back to /signin.
+- /account page: shows subscription status, trial end date, "Manage subscription" button. Shows an inline error (not infinite "Loading…") if the profile can't be fetched, with a "Sign in again" link.
 - Webhook at /api/webhooks/stripe handles: checkout.session.completed, customer.subscription.updated, customer.subscription.deleted, invoice.payment_failed
 - subscription_status values: 'none' | 'active' | 'expired' | 'cancelled' (Stripe trialing maps to 'active'). DB-enforced via a CHECK constraint (migration `20260620120000_fix_subscription_status_source_of_truth.sql`) — no other value can ever be written again.
 - Price IDs in .env.local: STRIPE_PRICE_ID_MONTHLY_GBP, STRIPE_PRICE_ID_YEARLY_GBP (must be test-mode IDs when using sk_test_ key)
-- To verify trial→paid conversion without waiting 3 real days, use a Stripe Test Clock (Dashboard → Developers → Test clocks) and fast-forward past trial end — fires the same webhooks as production.
+- To verify trial→paid conversion without waiting 14 real days, use a Stripe Test Clock (Dashboard → Developers → Test clocks) and fast-forward past trial end — fires the same webhooks as production.
 
 ## Melissa Reading Flow
 The daily reading uses a 5-phase animated sequence (MelissaReadingFlow component):
@@ -108,29 +108,37 @@ The daily reading uses a 5-phase animated sequence (MelissaReadingFlow component
 4. revealing — typewriters the actual API response
 5. complete — shows "Carry on the conversation" button → navigates to /chat/[id]
 
-Chat context is passed via sessionStorage key `chat-{chatId}` (e.g. chat-daily-2026-06-09).
+Chat context: the reading is handed to the chat page via sessionStorage key `reading-{chatId}`; chat history is persisted server-side via /api/chat-messages (Supabase `chat_messages` table) with a sessionStorage warm cache under `chat-messages-{chatId}`.
 chatId format for daily: `daily-YYYY-MM-DD`
 
 ## Analytics (Vercel Analytics + PostHog — live)
 - Two providers, both wired in the root `src/app/layout.tsx`: Vercel `<Analytics />` (traffic/Web Vitals, zero config on Vercel) and `<PostHogProvider>` (product analytics + funnels).
 - **PostHog setup:** `src/components/analytics/PostHogProvider.tsx` inits posthog-js (StrictMode-guarded) and captures a `$pageview` on every App Router navigation (built-in `capture_pageview` is off because App Router doesn't emit page loads on client nav). `person_profiles: 'identified_only'`. `src/components/analytics/AnalyticsIdentify.tsx` (rendered in the `(app)` layout) calls `posthog.identify(user.id, …)` once the profile loads.
 - **One helper:** import `track`/`identifyUser`/`resetAnalytics` from `src/lib/analytics.ts`. Every call is a safe no-op when `NEXT_PUBLIC_POSTHOG_KEY` is unset (local dev, SSR), so call it anywhere without guards. `resetAnalytics()` is called on sign-out and account deletion.
-- **Named events so far:** `onboarding_step_viewed` ({ step, index, total }, in `onboarding/template.tsx`), `trial_checkout_started` (onboarding paywall), `checkout_started` (standalone paywall), `reading_completed` ({ type: daily|spread }, in `MelissaReadingFlow`). Screen visits (spread, journal, daily, main, account, paywall) come for free via `$pageview`. Add new events through `track()`, not posthog-js directly.
+- **Named events so far:** `onboarding_step_viewed` ({ step, index, total }, in `onboarding/template.tsx`), `trial_checkout_started` (onboarding paywall), `paywall_plan_selected` ({ plan }, onboarding paywall), `trial_started` ({ plan }, `/personalisation` on Stripe return), `checkout_started` (standalone paywall), `subscription_started` ({ plan }, standalone `/paywall` on Stripe return), `checkout_sync_failed` (either paywall, when `/api/sync-subscription` fails), `reading_started` / `reading_completed` ({ type: daily|spread }, in `MelissaReadingFlow`), `spread_question_submitted` (spread page), `chat_message_sent` ({ chat_type: daily|spread }, in `MelissaChatPage`), `journal_entry_opened` ({ type }, journal page), `landing_cta_clicked` ({ location: hero|final_cta|nav }), `signin_google_clicked` (`LandingNav`), `billing_portal_opened` / `account_deleted` (account page). Screen visits (spread, journal, daily, main, account, paywall) come for free via `$pageview`. Add new events through `track()`, not posthog-js directly.
 - **Env vars (client-exposed, `NEXT_PUBLIC_`):** `NEXT_PUBLIC_POSTHOG_KEY` (PostHog project API key) and optional `NEXT_PUBLIC_POSTHOG_HOST` (defaults to `https://us.i.posthog.com`; use `https://eu.i.posthog.com` for EU). Vercel Analytics needs no key. Set both in `.env.local` and in Vercel project env.
 - **Note:** `@vercel/analytics` drags in an optional `@sveltejs/kit` peer that conflicts with the repo's vite 5 — `.npmrc` pins `legacy-peer-deps=true` so `npm install` (and the Vercel build) resolves. Don't delete it.
+
+## Email (daily check-in — live)
+- **Sending:** `src/lib/email.ts` wraps Resend (`resend` npm package). `sendDailyCheckin()` sends one email, `sendDailyCheckinBatch()` sends up to `RESEND_BATCH_CHUNK_SIZE` (100) via `resend.batch.send`. Both build the same plain-HTML template inline (no React Email) — dark indigo `#120B3A` background, cream `#FAF7F0` text, gold `#C9A84C` CTA, Georgia/Times/serif font stack (email clients can't load the site's DM Serif/EB Garamond webfonts). Sent from `Melissa at Vesper <melissa@vesper.cards>` (domain verified in Resend). Subject: `Your card is waiting, {name}` (falls back to no name). Every send sets `List-Unsubscribe` and `List-Unsubscribe-Post: List-Unsubscribe=One-Click` headers alongside the visible footer unsubscribe link.
+- **Unsubscribe token:** `src/lib/unsubscribeToken.ts`. Stateless HMAC-SHA256 of the user id keyed on `EMAIL_UNSUBSCRIBE_SECRET`, format `${uid}.${hex_hmac}`, verified with `timingSafeEqual` (fails closed on any length/format mismatch, never throws). `GET/POST /api/email/unsubscribe?token=...` (`src/app/api/email/unsubscribe/route.ts`) verifies the token with the service-role client and upserts `email_opt_out: true` — separate flag from the original opt-in (`email_marketing_consent`), so a webhook/consent bug can never silently re-subscribe someone. Both GET (human click) and POST (mailbox one-click) are supported and behave identically.
+- **Cron:** `vercel.json` schedules `0 * * * *` (hourly) against `/api/cron/daily-checkin`. The route 401s unless `Authorization: Bearer ${CRON_SECRET}` matches. Each run maps the current hour to a `preferred_checkin_time` bucket — morning 7-8, lunchtime 12-13, evening 18-19, night 21-22 — computed in **Europe/London** only (no per-user timezone is stored yet; UK/US audience means US "morning" users currently get a UK-morning-timed email — flagged in a code comment as a known limitation to fix once timezone is captured). Candidates: `subscription_status='active'`, `email_marketing_consent=true`, `email_opt_out=false`, matching bucket, and `last_checkin_email_sent_at` null or older than 20 hours (idempotency guard against double-sends within one send window). `user_profiles` has no email column, so each candidate's address is looked up via `supabaseAdmin.auth.admin.getUserById` — fine at current volume; mirror email onto the profile row instead if this becomes a bottleneck. Successful sends upsert `last_checkin_email_sent_at = now()` for just the sent ids.
+- **Dry run:** `GET /api/cron/daily-checkin?dryRun=1&to=<address>` (still requires the `CRON_SECRET` bearer) skips the DB query entirely and sends one real email to `<address>` with a placeholder name, for deliverability testing without touching real user data. Its unsubscribe link uses a deliberately bogus (well-formed but invalid) token, so clicking it fails the HMAC check instead of upserting `email_opt_out` for a fake/nonexistent uid.
+- **Env vars:** `RESEND_API_KEY` (Resend dashboard), `CRON_SECRET` (any long random string, must match what's configured on the Vercel cron job / manual curl calls), `EMAIL_UNSUBSCRIBE_SECRET` (any long random string; changing it invalidates every unsubscribe link already sent).
+- **Migration:** `supabase/migrations/20260704120000_add_email_checkin_fields.sql` adds `email_opt_out boolean not null default false` and `last_checkin_email_sent_at timestamptz` to `user_profiles`.
 
 ## Pre-Launch Checklist (selling this for real, not just deployed)
 Deploying to Vercel is necessary but not sufficient. Before charging real customers:
 - Switch Stripe to live mode: live secret key, live price IDs, live webhook endpoint + signing secret registered against the production domain (not localhost)
 - Production env vars on Vercel for Supabase + Stripe + AWS Bedrock — confirm no test/live key mixing
 - Real domain + HTTPS; Google OAuth authorized redirect URI updated to the production domain
-- Privacy Policy + Terms of Service pages actually built and linked (signin page already references "Terms of Service")
+- ✅ Privacy Policy (/privacy) + Terms of Service (/tos) pages are built (content in src/lib/legal/content.ts) — linked from the landing footer (Privacy / Terms)
 - Stripe Customer Portal configured in live mode (separate config from test mode)
 - Tax/VAT handling (Stripe Tax) depending on registration status
 - Error monitoring (e.g. Sentry) — billing failures are currently easy to miss
 - Rate limiting on the Bedrock-backed routes (melissa-daily/spread/chat): in-memory stopgap is live (30 calls/user/hour, per-instance — acceptable for now). Replace with Upstash Redis for a true global limit before high traffic.
 - Confirm Supabase backups/PITR on the production project
-- Build the email check-in sender (see Onboarding section above) before promoting that feature
+- ✅ Email check-in sender is built (see "Email (daily check-in — live)" section above) — still needs `RESEND_API_KEY`/`CRON_SECRET`/`EMAIL_UNSUBSCRIBE_SECRET` set in Vercel production env before the cron will actually send
 
 ## Session Workflow
 1. Read this file

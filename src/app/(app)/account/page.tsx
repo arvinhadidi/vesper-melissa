@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useUserProfile } from '@/lib/hooks/useUserProfile';
 import { createClient } from '@/lib/supabase/client';
 import { clearVesperLocalData } from '@/lib/clearLocalData';
-import { resetAnalytics } from '@/lib/analytics';
+import { track, resetAnalytics } from '@/lib/analytics';
 import { PRICING, DEFAULT_CURRENCY, TRIAL_DAYS } from '@/lib/onboarding/constants';
 
 type SubInfo = {
@@ -48,8 +48,12 @@ export default function AccountPage() {
         return;
       }
       const { url } = await res.json();
-      if (url) window.location.href = url;
-      else setPortalLoading(false);
+      if (url) {
+        track('billing_portal_opened');
+        window.location.href = url;
+      } else {
+        setPortalLoading(false);
+      }
     } catch {
       setPortalError('Could not open billing portal.');
       setPortalLoading(false);
@@ -72,6 +76,7 @@ export default function AccountPage() {
     try {
       const res = await fetch('/api/delete-account', { method: 'DELETE' });
       if (res.ok) {
+        track('account_deleted');
         const supabase = createClient();
         await supabase.auth.signOut();
         clearVesperLocalData();

@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { createClient } from '@/lib/supabase/client';
 import { saveJournalEntry } from '@/lib/journal';
 import { setTourActive } from '@/lib/tour';
+import { track } from '@/lib/analytics';
 import NightSky from '@/components/ui/NightSky';
 import { MICRO_CARDS, MICRO_CARD_INDICES } from '@/lib/onboarding/constants';
 import type { UserProfile } from '@/lib/types';
@@ -80,7 +81,14 @@ function PersonalisationContent() {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ sessionId }),
-        }).then(settleSync).catch(settleSync);
+        })
+          .then(async res => {
+            if (!res.ok) throw new Error('sync failed');
+            const body = await res.json() as { plan?: string };
+            track('trial_started', { plan: body.plan });
+          })
+          .catch(() => { track('checkout_sync_failed'); })
+          .finally(settleSync);
       } else {
         // No checkout session in the URL (e.g. re-entering personalisation) — nothing to sync.
         syncDoneRef.current = true;

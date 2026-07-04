@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { getSpreadCards } from '@/lib/cardLogic.js';
 import { useUserProfile } from '@/lib/hooks/useUserProfile';
+import { track } from '@/lib/analytics';
 import { SPREAD_QUESTIONS, SpreadQuestion } from '@/data/spreadQuestions';
 
 export default function SpreadPage() {
@@ -22,6 +23,7 @@ export default function SpreadPage() {
     const id = `reading-${ts}`;
     const finalQuestionText = isCustom ? customText : selectedQuestion.text;
     const promptContext = isCustom ? '' : selectedQuestion.promptContext;
+    track('spread_question_submitted', { question_id: selectedQuestion.id });
 
     type DrawnCard = { cardIndex: number; isReversed: boolean };
     const cards = getSpreadCards(profile.id, ts, selectedQuestion.cardCount) as DrawnCard[];

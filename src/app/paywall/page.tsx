@@ -63,7 +63,13 @@ function PaywallContent() {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ sessionId }),
-        }).catch(() => {});
+        })
+          .then(async res => {
+            if (!res.ok) throw new Error('sync failed');
+            const body = await res.json() as { plan?: string };
+            track('subscription_started', { plan: body.plan });
+          })
+          .catch(() => { track('checkout_sync_failed'); });
       }
 
       const supabase = createClient();

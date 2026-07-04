@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import styles from "./landing.module.css";
 import { useReveal } from "./useReveal";
 import { TRIAL_DAYS } from "@/lib/onboarding/constants";
+import { track } from "@/lib/analytics";
 
 const FAN_ROTATIONS = [-15, 9, -6, 6, -10, 14];
 
@@ -45,7 +46,11 @@ export default function FinalCta() {
             No card required. Cancel any time.
           </motion.p>
           <motion.div {...reveal({ delay: 0.24 })}>
-            <a href="/onboarding" className={styles.btnFinal}>
+            <a
+              href="/onboarding"
+              className={styles.btnFinal}
+              onClick={() => track("landing_cta_clicked", { location: "final_cta" })}
+            >
               Start free trial →
             </a>
             <p className={styles.finalFineprint}>

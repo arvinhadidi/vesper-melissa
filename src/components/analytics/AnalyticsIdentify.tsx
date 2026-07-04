@@ -19,6 +19,7 @@ export default function AnalyticsIdentify() {
       star_sign: profile?.starSign ?? undefined,
       focus_area: profile?.focusArea ?? undefined,
       subscription_status: profile?.subscriptionStatus ?? undefined,
+      subscription_plan: profile?.subscriptionPlan ?? undefined,
     });
   }, [user, profile]);
 

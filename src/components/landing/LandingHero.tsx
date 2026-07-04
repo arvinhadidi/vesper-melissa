@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import styles from "./landing.module.css";
+import { track } from "@/lib/analytics";
 
 const STAGGER = 0.12;
 
@@ -63,7 +64,11 @@ export default function LandingHero() {
           clarity you&rsquo;ve been looking for.
         </motion.p>
         <motion.div {...enter(4)}>
-          <a href="/onboarding" className={styles.btnPrimary}>
+          <a
+            href="/onboarding"
+            className={styles.btnPrimary}
+            onClick={() => track("landing_cta_clicked", { location: "hero" })}
+          >
             Start your free reading
           </a>
         </motion.div>

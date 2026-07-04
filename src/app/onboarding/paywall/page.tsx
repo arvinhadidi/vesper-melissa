@@ -70,6 +70,11 @@ export default function PaywallPage() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  function handlePlanSelect(plan: 'yearly' | 'monthly') {
+    track('paywall_plan_selected', { plan });
+    setSelectedPlan(plan);
+  }
+
   async function handleStartTrial() {
     if (trialStarting) return;
     setTrialStarting(true);
@@ -176,7 +181,7 @@ export default function PaywallPage() {
           A single tarot reading can cost £25–50. Melissa is with you every day.
         </p>
 
-        <PlanSelector selectedPlan={selectedPlan} onSelect={setSelectedPlan} pricing={p} />
+        <PlanSelector selectedPlan={selectedPlan} onSelect={handlePlanSelect} pricing={p} />
 
         <p style={{ fontFamily: 'var(--font-dm-sans-var), sans-serif', fontSize: '13px', color: 'rgba(250,247,240,0.65)', textAlign: 'center', margin: '0 0 10px' }}>
           No payment due now

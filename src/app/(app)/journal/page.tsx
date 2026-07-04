@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { AnimatePresence } from 'framer-motion';
 import { JournalEntry } from '@/lib/types';
 import { fetchJournalEntries } from '@/lib/journal';
+import { track } from '@/lib/analytics';
 import JournalEntryCard from '@/components/journal/JournalEntryCard';
 import JournalEntryDetail from '@/components/journal/JournalEntryDetail';
 
@@ -116,7 +117,10 @@ export default function JournalPage() {
             <JournalEntryCard
               key={entry.id}
               entry={entry}
-              onOpen={() => setSelectedId(entry.id)}
+              onOpen={() => {
+                track('journal_entry_opened', { type: entry.type });
+                setSelectedId(entry.id);
+              }}
             />
           ))}
         </div>

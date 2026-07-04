@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { TarotCard, getCardById, getCardImagePath } from '@/lib/cards';
 import { TEST_USER } from '@/lib/testUser';
+import { track } from '@/lib/analytics';
 
 type Message = { role: 'user' | 'assistant'; content: string; revealed?: boolean };
 
@@ -211,6 +212,7 @@ export default function MelissaChatPage({ sessionKey, backPath }: MelissaChatPag
   async function handleSend() {
     if (!input.trim() || isStreaming || isRevealing || !context) return;
 
+    track('chat_message_sent', { chat_type: isSpreadContext(context) ? 'spread' : 'daily' });
     hasSentRef.current = true;
     const userMessage: Message = { role: 'user', content: input.trim(), revealed: true };
     const newMessages = [...messages, userMessage];

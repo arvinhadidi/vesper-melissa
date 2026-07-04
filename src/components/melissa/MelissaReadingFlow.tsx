@@ -283,6 +283,7 @@ export default function MelissaReadingFlow({
 
     thinkingStartRef.current = performance.now();
     apiTextRef.current = '';
+    track('reading_started', { type: apiEndpoint.includes('spread') ? 'spread' : 'daily' });
 
     // Tour playback: skip the network call, use the pre-generated text but keep the
     // same "reading the cards" beat so the animation feels identical to the real thing.
