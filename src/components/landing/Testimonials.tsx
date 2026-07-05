@@ -94,169 +94,82 @@ type Testimonial = {
 // ];
 
 const ROWS: Testimonial[][] = [
-
   [
-
     {
-
       quote:
-
         "i asked about my situationship and the reading said the thing i'd been avoiding admitting to myself for two months. had to put my phone down for a bit honestly",
-
-      attribution: "— Shannon, 24 · Liverpool",
-
+      attribution: "Shannon, 24 · Liverpool",
     },
-
     {
-
       quote:
-
         "every other tarot app gave me one line and a 'yes/no'. this actually talks to you like a person who knows the cards. i deleted three apps the same week i found this",
-
-      attribution: "— Georgia, 29 · Melbourne",
-
+      attribution: "Georgia, 29 · Melbourne",
     },
-
     {
-
-      quote:
-
-        "my group chat is sick of my vesper screenshots and i will not be stopping",
-
-      attribution: "— Kayla, 23 · Austin",
-
+      quote: "obsessed. that's it that's the review",
+      attribution: "Kayla, 23 · Austin",
     },
-
     {
-
-      quote:
-
-        "I downloaded this fully expecting to cancel before the trial ended. It's been four months. The daily card with my coffee is the only routine I've ever actually kept.",
-
-      attribution: "— Beth, 31 · Edinburgh",
-
+      quote: "the accuracy is scary",
+      attribution: "Beth, 31 · Edinburgh",
     },
-
     {
-
       quote:
-
         "did the 'where is this going' spread about a guy i'd been seeing for three months. the middle card basically described the exact conversation we'd been avoiding. we had it that weekend",
-
-      attribution: "— Courtney, 25 · Sheffield",
-
+      attribution: "Courtney, 25 · Sheffield",
     },
-
   ],
-
   [
-
     {
-
       quote:
-
         "My therapist knows about my Vesper habit and fully approves. It helps me name what I'm feeling before our sessions.",
-
-      attribution: "— Paige, 26 · Cardiff",
-
+      attribution: "Paige, 26 · Cardiff",
     },
-
     {
-
       quote:
-
         "i do my card before i open any other app in the morning. it's been 7 weeks. i have never stuck to anything for 7 weeks",
-
-      attribution: "— Demi, 22 · Newcastle",
-
+      attribution: "Demi, 22 · Newcastle",
     },
-
     {
-
-      quote:
-
-        "I cancelled my horoscope app. This is the only ritual I need.",
-
-      attribution: "— Savannah, 26 · Denver",
-
+      quote: "my new morning ritual",
+      attribution: "Savannah, 26 · Denver",
     },
-
     {
-
       quote:
-
         "Honest without being harsh. It told me something I didn't want to hear about a friendship and it was right.",
-
-      attribution: "— Niamh, 30 · Cork",
-
+      attribution: "Niamh, 30 · Cork",
     },
-
     {
-
-      quote:
-
-        "the readings feel like they were written for me specifically. idk how else to put it",
-
-      attribution: "— Abbie, 21 · Nottingham",
-
+      quote: "really impressive",
+      attribution: "Abbie, 21 · Nottingham",
     },
-
   ],
-
   [
-
     {
-
       quote:
-
         "scrolled back through a month of my readings last night and realised i'd been asking the same question in different words the whole time. that did more for me than the readings themselves honestly",
-
-      attribution: "— Erin, 28 · Boston",
-
+      attribution: "Erin, 28 · Boston",
     },
-
     {
-
       quote:
-
         "genuinely better than the £40 reading i paid for last year. it doesn't tell you what you want to hear but instead what you've been ignoring",
-
-      attribution: "— Robyn, 27 · Dublin",
-
+      attribution: "Robyn, 27 · Dublin",
     },
-
     {
-
-      quote:
-
-        "no ads, no coins, no 'watch a video to unlock your destiny'. just the reading. i respect it a lot",
-
-      attribution: "— Jordan, 25 · Portland",
-
+      quote: "transformed my july",
+      attribution: "Jordan, 25 · Portland",
     },
-
     {
-
       quote:
-
         "My mum's been reading cards for thirty years and even she said the interpretations are solid. That's the highest praise that exists.",
-
-      attribution: "— Lauren, 27 · Belfast",
-
+      attribution: "Lauren, 27 · Belfast",
     },
-
     {
-
       quote:
-
         "drew the moon the night i was spiralling about someone and the reading named the exact fear i couldn't. i sat with it for a long time",
-
-      attribution: "— Caitlin, 29 · Glasgow",
-
+      attribution: "Caitlin, 29 · Glasgow",
     },
-
   ],
-
 ];
 
 function TestimonialCard({ quote, attribution }: Testimonial) {

@@ -3,7 +3,7 @@ import styles from "./landing.module.css";
 export default function HomeMockup() {
   return (
     <div className={styles.mockup}>
-      <div className={styles.mkGreeting}>Good morning, Arvin.</div>
+      <div className={styles.mkGreeting}>Good morning, Sophie.</div>
       <div className={styles.mkSub}>What would you like to explore today?</div>
       <div className={styles.mkTile}>
         <span className={styles.mkTileTitle}>Daily Reading</span>

@@ -27,10 +27,10 @@ export default function FinalCta() {
               height={200}
               className={styles.heroMelissaImg}
               style={{
-                maskImage: 'linear-gradient(to bottom, black 52%, transparent 90%), radial-gradient(ellipse 80% 94% at 50% 48%, black 45%, transparent 82%)',
-                WebkitMaskImage: 'linear-gradient(to bottom, black 52%, transparent 90%), radial-gradient(ellipse 80% 94% at 50% 48%, black 45%, transparent 82%)',
-                maskComposite: 'intersect',
-                WebkitMaskComposite: 'source-in',
+                /* Single mask layer only: multi-layer masks with
+                   mask-composite render as a hard square edge on iOS Safari. */
+                maskImage: 'radial-gradient(ellipse 78% 70% at 50% 36%, black 50%, transparent 95%)',
+                WebkitMaskImage: 'radial-gradient(ellipse 78% 70% at 50% 36%, black 50%, transparent 95%)',
               }}
             />
           </div>

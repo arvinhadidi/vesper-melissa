@@ -6,7 +6,7 @@ import { useInView, useReducedMotion } from "framer-motion";
 import styles from "./landing.module.css";
 
 const BUBBLE_TEXT =
-  "Arvin, what I'm seeing here is that something in this connection has gone very still — and that stillness is actually the message. You don't need a grand sign from the universe. You need to decide if you're willing to gently stir things, to speak what's true…";
+  "Sophie, what I'm seeing here is that something in this connection has gone very still: and that stillness is actually the message. You don't need a grand sign from the universe. You need to decide if you're willing to gently stir things, to speak what's true…";
 
 const MS_PER_CHAR = 18;
 

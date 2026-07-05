@@ -32,10 +32,10 @@ export function MelissaAvatar({ size = 96, variant = 'default' }: { size?: numbe
           display: 'block',
           position: 'relative',
           zIndex: 1,
-          maskImage: 'linear-gradient(to bottom, black 55%, transparent 92%), radial-gradient(ellipse 90% 92% at 50% 44%, black 48%, transparent 80%)',
-          WebkitMaskImage: 'linear-gradient(to bottom, black 55%, transparent 92%), radial-gradient(ellipse 90% 92% at 50% 44%, black 48%, transparent 80%)',
-          maskComposite: 'intersect',
-          WebkitMaskComposite: 'source-in',
+          /* Single mask layer only: multi-layer masks with mask-composite
+             render as a hard square edge on iOS Safari. */
+          maskImage: 'radial-gradient(ellipse 82% 74% at 50% 38%, black 52%, transparent 95%)',
+          WebkitMaskImage: 'radial-gradient(ellipse 82% 74% at 50% 38%, black 52%, transparent 95%)',
         }}
       />
     </div>

@@ -26,7 +26,7 @@ export default function FeaturesSection() {
         <FeatureRow
           eyebrow="Every morning"
           title="Card spreads waiting for you, every morning"
-          body="Open Vesper and something is already there — your daily card, drawn just for you. Melissa reads it in the context of your life, not a generic interpretation you've seen a hundred times."
+          body="Open Vesper and something is already there: your daily card, drawn just for you. Melissa reads it in the context of your life, not a generic interpretation you've seen a hundred times."
           mockup={<HomeMockup />}
           melissaSrc="/landing/melissa_base.png"
         />
@@ -35,7 +35,7 @@ export default function FeaturesSection() {
           reverse
           eyebrow="Spreads"
           title="Ask anything. Get a real answer."
-          body="Bring Melissa your questions — about him, about the decision, about what comes next. She draws the cards and reads the story they're telling."
+          body="Bring Melissa your questions, about him, about the decision, about what comes next. She draws the cards and reads the story they're telling."
           mockup={<SpreadMockup />}
           melissaSrc="/landing/melissa_thinking.png"
         />
@@ -52,7 +52,7 @@ export default function FeaturesSection() {
           reverse
           eyebrow="Melissa"
           title="Real talk, any time"
-          body="A reading doesn't have to end when the cards are down. Keep talking — ask follow-ups, push back, go deeper. Melissa remembers every card she's pulled for you."
+          body="A reading doesn't have to end when the cards are down. Keep talking: ask follow-ups, push back, go deeper. Melissa remembers every card she's pulled for you."
           mockup={<ChatMockup />}
         />
       </div>

@@ -43,7 +43,7 @@ export default function TrustStrip() {
       <div className={styles.container}>
         <div className={styles.trustRow}>
           <Stat
-            target={50000}
+            target={5000}
             format={(v) => `${Math.round(v).toLocaleString("en-GB")}+`}
             label="readings given"
           />
@@ -55,7 +55,7 @@ export default function TrustStrip() {
           />
           <div className={styles.trustDivider} aria-hidden="true"></div>
           <Stat
-            target={30}
+            target={50}
             format={(v) => `${Math.round(v)}+`}
             label="countries"
           />

@@ -284,10 +284,14 @@
   display: flex;
   align-items: flex-end;
   justify-content: center;
+  /* Multi-stop so the falloff dithers smoothly on phone screens instead of
+     banding into a visible rectangle at the div edge. */
   background: radial-gradient(
-    ellipse at 50% 65%,
-    rgba(201, 168, 76, 0.09) 0%,
-    transparent 65%
+    ellipse 55% 50% at 50% 60%,
+    rgba(201, 168, 76, 0.34) 0%,
+    rgba(201, 168, 76, 0.16) 34%,
+    rgba(201, 168, 76, 0.05) 58%,
+    transparent 78%
   );
   margin-top: -54px;
   margin-bottom: 28px;
@@ -759,7 +763,7 @@
 .marqueeRows {
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 20px;
 }
 
 .marquee {
@@ -820,15 +824,15 @@
   background: rgba(30, 18, 86, 0.55);
   border: 1px solid rgba(201, 168, 76, 0.2);
   border-radius: 16px;
-  padding: 36px 32px;
-  margin: 0 28px 0 0;
-  width: 400px;
+  padding: 24px 22px;
+  margin: 0 18px 0 0;
+  width: 266px;
   flex: 0 0 auto;
 }
 
 .testimonialQuotemark {
   font-family: var(--font-display);
-  font-size: 80px;
+  font-size: 54px;
   color: rgba(201, 168, 76, 0.3);
   line-height: 0.7;
   display: block;
@@ -838,7 +842,7 @@
 .testimonialQuote {
   font-family: var(--font-display);
   font-style: italic;
-  font-size: 19px;
+  font-size: 15px;
   line-height: 1.65;
   color: var(--cream);
   margin: 0;
@@ -847,10 +851,10 @@
 
 .testimonialAttr {
   font-family: var(--font-body);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 400;
   color: rgba(201, 168, 76, 0.75);
-  margin-top: 20px;
+  margin-top: 14px;
   font-style: normal;
 }
 
@@ -888,9 +892,11 @@
   align-items: flex-end;
   justify-content: center;
   background: radial-gradient(
-    ellipse at 50% 62%,
-    rgba(201, 168, 76, 0.09) 0%,
-    transparent 65%
+    ellipse 55% 50% at 50% 58%,
+    rgba(201, 168, 76, 0.34) 0%,
+    rgba(201, 168, 76, 0.16) 34%,
+    rgba(201, 168, 76, 0.05) 58%,
+    transparent 78%
   );
   margin-bottom: 20px;
 }
@@ -1014,22 +1020,22 @@
   }
 
   .testimonialCard {
-    width: 300px;
-    padding: 28px 24px;
-    margin-right: 18px;
+    width: 200px;
+    padding: 18px 16px;
+    margin-right: 12px;
   }
 
   .marqueeRows {
-    gap: 18px;
+    gap: 12px;
   }
 
   .heroMelissaGlow {
-    width: 260px;
-    height: 290px;
+    width: 320px;
+    height: 350px;
   }
 
   .heroMelissaImg {
-    height: 220px;
+    height: 270px;
   }
 
   /* Trust strip stays horizontal — just shrinks */

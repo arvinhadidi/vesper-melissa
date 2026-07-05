@@ -12,7 +12,7 @@ const ENTRIES = [
     title: "Daily card · The Star",
     date: "Yesterday",
     preview:
-      "Hope is quietly returning, Arvin. The Star asks you to trust that the worst of the storm has already passed…",
+      "Hope is quietly returning, Sophie. The Star asks you to trust that the worst of the storm has already passed…",
   },
   {
     title: "Should I reach out first?",
