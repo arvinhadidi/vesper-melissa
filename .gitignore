@@ -81,3 +81,8 @@ index.html
 /screenshots/
 
 env.txt
+
+# keep repo agents versioned, keep local settings ignored
+!.claude/
+.claude/*
+!.claude/agents/

@@ -140,6 +140,19 @@ Deploying to Vercel is necessary but not sufficient. Before charging real custom
 - Confirm Supabase backups/PITR on the production project
 - ✅ Email check-in sender is built (see "Email (daily check-in — live)" section above) — still needs `RESEND_API_KEY`/`CRON_SECRET`/`EMAIL_UNSUBSCRIBE_SECRET` set in Vercel production env before the cron will actually send
 
+## Verification (run before declaring any change done)
+There is no `typecheck` npm script — run the compiler directly. In order, cheapest first:
+1. `npx tsc --noEmit` — must be clean (strict mode, no `any`)
+2. `npm run lint`
+3. `npm run test` — vitest unit tests in `src/__tests__/`
+4. `npm run build` — for changes touching routing, layouts, env vars, or anything server-side
+5. Billing/entitlement changes additionally require the billing-verifier subagent pass (below) and, for flow changes, the Stripe test-clock scripts in `tests/e2e/` (`test-clock-autocharge.mjs`, `test-clock-renewal.mjs`, `test-clock-payment-failure.mjs`, `test-clock-webhook-cancellation.mjs`) against a test-mode key
+Do NOT open a browser to verify unless the user asks (see Coding Conventions). `npm run test:e2e` (Playwright happy-path) needs a captured session (`npm run test:e2e:capture-session`) — only run when the user asks for e2e.
+
+## Subagents
+- After ANY edit that touches entitlement fields, `user_profiles` writes, Stripe routes, or the proxy's subscription gates, run the `billing-verifier` agent (`.claude/agents/billing-verifier.md`) and fix what it flags before committing.
+- Use a cheaper model (sonnet/haiku) for bulk sweeps; keep the session model for design and synthesis.
+
 ## Session Workflow
 1. Read this file
 2. Read progress.json — find the first feature with status: "pending"
