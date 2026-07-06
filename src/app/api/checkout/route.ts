@@ -2,6 +2,7 @@ import { NextRequest } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { stripe } from '@/lib/stripe';
 import { TRIAL_DAYS } from '@/lib/onboarding/constants';
+import { getRequestOrigin } from '@/lib/requestOrigin';
 
 const PRICE_MAP: Record<string, string | undefined> = {
   monthly_GBP: process.env.STRIPE_PRICE_ID_MONTHLY_GBP,
@@ -67,7 +68,7 @@ export async function POST(req: NextRequest) {
     return Response.json({ error: 'already_subscribed' }, { status: 409 });
   }
 
-  const origin = req.nextUrl.origin;
+  const origin = getRequestOrigin(req);
   const successDestination = successUrl ? `${origin}${successUrl}` : `${origin}/paywall?success=true`;
   const successUrlWithSession = `${successDestination}${successDestination.includes('?') ? '&' : '?'}session_id={CHECKOUT_SESSION_ID}`;
   const session = await stripe.checkout.sessions.create({
