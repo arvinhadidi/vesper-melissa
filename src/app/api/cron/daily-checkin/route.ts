@@ -3,8 +3,9 @@ import { supabaseAdmin } from '@/lib/supabase/admin';
 import { sendDailyCheckin, sendDailyCheckinBatch, RESEND_BATCH_CHUNK_SIZE } from '@/lib/email';
 import { buildUnsubscribeUrl } from '@/lib/unsubscribeToken';
 
-// Runs hourly (see vercel.json: "0 * * * *"). Each run figures out which of
-// the four preferred_checkin_time buckets the current hour falls into for
+// Runs hourly via GitHub Actions (.github/workflows/daily-checkin-cron.yml,
+// Vercel Hobby crons are daily-only). Each run figures out which of the four
+// preferred_checkin_time buckets the current hour falls into for
 // Europe/London, then emails everyone in that bucket who hasn't already been
 // emailed in the last 20 hours.
 //
