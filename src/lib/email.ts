@@ -5,7 +5,9 @@ import { Resend } from 'resend';
 // direct SDK calls across routes.
 
 const FROM = 'Melissa at Vesper <melissa@vesper.cards>';
-const DAILY_URL = 'https://vesper.cards/daily';
+// CTA lands on /main (the post-trial menu: daily card, spreads, journal)
+// rather than jumping straight into the daily reading.
+const MAIN_URL = 'https://vesper.cards/main';
 
 let client: Resend | null = null;
 
@@ -62,7 +64,7 @@ function htmlFor(name: string | null | undefined, unsubscribeUrl: string): strin
                 <table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 auto;">
                   <tr>
                     <td style="border-radius:999px; background-color:#C9A84C;" bgcolor="#C9A84C">
-                      <a href="${DAILY_URL}" style="display:inline-block; padding:14px 32px; font-family: Georgia, 'Times New Roman', serif; font-size:16px; font-weight:bold; color:#1E1256; text-decoration:none; border-radius:999px;">
+                      <a href="${MAIN_URL}" style="display:inline-block; padding:14px 32px; font-family: Georgia, 'Times New Roman', serif; font-size:16px; font-weight:bold; color:#1E1256; text-decoration:none; border-radius:999px;">
                         See today's card
                       </a>
                     </td>
