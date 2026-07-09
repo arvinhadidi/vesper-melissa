@@ -20,20 +20,23 @@ export default function OnboardingLayout({ children }: { children: React.ReactNo
   const slugIdx = STEP_ORDER.indexOf(slug as typeof STEP_ORDER[number]);
   const isDark = slugIdx !== -1 && slugIdx >= darkIdx;
 
+  // Rendered as a position:fixed layer rather than background-attachment:fixed:
+  // iOS Safari doesn't support fixed attachment and composites it incorrectly,
+  // leaving ghost fragments of gold borders smeared across the page on scroll.
   const lightBg: React.CSSProperties = {
+    position: 'fixed', inset: 0, zIndex: 0, pointerEvents: 'none',
     backgroundColor: '#1E1256',
     backgroundImage: 'linear-gradient(to bottom, rgba(30,18,86,0.6) 0%, rgba(30,18,86,0.45) 30%, rgba(30,18,86,0.8) 75%, rgba(30,18,86,1) 100%), url("/landing/starrysky.webp")',
     backgroundSize: 'auto, cover',
     backgroundPosition: 'center',
-    backgroundAttachment: 'fixed',
   };
 
   return (
     <div style={{
       minHeight: '100dvh', display: 'flex', justifyContent: 'center',
-      ...(isDark ? { backgroundColor: '#120B3A' } : lightBg),
+      backgroundColor: isDark ? '#120B3A' : '#1E1256',
     }}>
-      {isDark && <NightSky />}
+      {isDark ? <NightSky /> : <div style={lightBg} />}
       <div style={{
         position: 'relative', zIndex: 1, width: '100%',
         maxWidth: isPaywall ? '900px' : '480px',
