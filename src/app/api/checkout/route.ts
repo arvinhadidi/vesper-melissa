@@ -1,4 +1,5 @@
 import { NextRequest } from 'next/server';
+import Stripe from 'stripe';
 import { createClient } from '@/lib/supabase/server';
 import { stripe } from '@/lib/stripe';
 import { TRIAL_DAYS } from '@/lib/onboarding/constants';
@@ -33,6 +34,24 @@ export async function POST(req: NextRequest) {
     .single();
 
   let customerId = profile?.stripe_customer_id as string | null;
+
+  // A stored id can be stale: it may belong to a different Stripe account or
+  // mode (e.g. ids minted under test keys after switching to live keys), or the
+  // customer may have been deleted in the dashboard. Using it then makes every
+  // Stripe call below throw "No such customer", bricking checkout for that user
+  // forever. Verify it and fall through to creating a fresh customer instead.
+  if (customerId) {
+    try {
+      const existing = await stripe.customers.retrieve(customerId);
+      if (existing.deleted) customerId = null;
+    } catch (err) {
+      if (err instanceof Stripe.errors.StripeInvalidRequestError && err.code === 'resource_missing') {
+        customerId = null;
+      } else {
+        throw err;
+      }
+    }
+  }
 
   if (!customerId) {
     const customer = await stripe.customers.create({
