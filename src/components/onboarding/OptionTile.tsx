@@ -18,6 +18,7 @@ export function OptionTile({ label, selected, onClick }: { label: string; select
         fontFamily: 'var(--font-dm-sans-var), sans-serif', fontSize: '16px',
         color: selected ? '#FAF7F0' : 'rgba(250,247,240,0.8)',
         cursor: 'pointer', textAlign: 'center',
+        WebkitTapHighlightColor: 'transparent',
         transition: 'border-color 0.15s ease, background 0.15s ease',
       }}
     >

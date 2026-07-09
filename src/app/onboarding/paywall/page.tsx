@@ -21,10 +21,11 @@ export default function PaywallPage() {
   useEffect(() => {
     const KEY = 'vesper_paywall_deadline';
     const stored = sessionStorage.getItem(KEY);
-    let deadline: number;
-    if (stored) {
-      deadline = parseInt(stored, 10);
-    } else {
+    let deadline = stored ? parseInt(stored, 10) : NaN;
+    // Restart when absent, corrupt, or already expired (e.g. returning to the
+    // paywall in a tab whose earlier deadline has passed) — otherwise the
+    // banner sits frozen at 00:00.
+    if (!Number.isFinite(deadline) || deadline <= Date.now()) {
       deadline = Date.now() + COUNTDOWN_SECONDS * 1000;
       sessionStorage.setItem(KEY, String(deadline));
     }
@@ -153,46 +154,46 @@ export default function PaywallPage() {
   return (
     <div className="paywall-grid">
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
-        <div style={{ width: '100%', marginBottom: '24px', padding: '10px 16px', background: 'rgba(201,168,76,0.12)', border: '1px solid rgba(201,168,76,0.3)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+        <div style={{ width: '100%', marginBottom: '14px', padding: '8px 14px', background: 'rgba(201,168,76,0.12)', border: '1px solid rgba(201,168,76,0.3)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
           <span style={{ fontSize: '16px' }}>✦</span>
           <span style={{ fontFamily: 'var(--font-dm-sans-var), sans-serif', fontSize: '14px', color: 'rgba(250,247,240,0.8)' }}>
             Your free trial is reserved for: <span style={{ color: '#C9A84C', fontWeight: 600 }}>{timerStr}</span>
           </span>
         </div>
 
-        <h1 style={{ fontFamily: 'var(--font-dm-serif-var), serif', fontSize: '38px', fontWeight: 400, color: '#FAF7F0', margin: '0 0 20px', textAlign: 'center', lineHeight: 1.25 }}>
+        <h1 style={{ fontFamily: 'var(--font-dm-serif-var), serif', fontSize: 'clamp(26px, 4.6dvh, 36px)', fontWeight: 400, color: '#FAF7F0', margin: '0 0 12px', textAlign: 'center', lineHeight: 1.25 }}>
           {data.display_name ? <>{data.display_name}, try Vesper <span style={{ color: '#C9A84C' }}>free for {TRIAL_DAYS} days</span></> : <>Try Vesper <span style={{ color: '#C9A84C' }}>free for {TRIAL_DAYS} days</span></>}
         </h1>
 
-        <div style={{ marginBottom: '24px' }}>
-          <MelissaAvatar size={132} variant="insight" />
+        <div style={{ marginBottom: '12px' }}>
+          <MelissaAvatar size={104} variant="insight" />
         </div>
 
-        <div style={{ width: '100%', marginBottom: '28px', display: 'flex', flexDirection: 'column', gap: '14px' }}>
+        <div style={{ width: '100%', marginBottom: '16px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
           {VALUE_PROPS.map((prop, i) => (
             <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '14px', textAlign: 'left' }}>
               <span style={{ color: '#C9A84C', fontSize: '16px', marginTop: '1px', flexShrink: 0 }}>✓</span>
-              <p style={{ fontFamily: 'var(--font-dm-sans-var), sans-serif', fontSize: '15px', color: 'rgba(250,247,240,0.85)', margin: 0, lineHeight: 1.5 }}>{prop}</p>
+              <p style={{ fontFamily: 'var(--font-dm-sans-var), sans-serif', fontSize: '14px', color: 'rgba(250,247,240,0.85)', margin: 0, lineHeight: 1.45 }}>{prop}</p>
             </div>
           ))}
         </div>
 
-        <p style={{ fontFamily: 'var(--font-dm-sans-var), sans-serif', fontSize: '13px', color: 'rgba(250,247,240,0.55)', textAlign: 'center', margin: '0 0 20px', fontStyle: 'italic' }}>
+        <p style={{ fontFamily: 'var(--font-dm-sans-var), sans-serif', fontSize: '12px', color: 'rgba(250,247,240,0.55)', textAlign: 'center', margin: '0 0 14px', fontStyle: 'italic' }}>
           A single tarot reading can cost £25–50. Melissa is with you every day.
         </p>
 
         <PlanSelector selectedPlan={selectedPlan} onSelect={handlePlanSelect} pricing={p} />
 
-        <p style={{ fontFamily: 'var(--font-dm-sans-var), sans-serif', fontSize: '13px', color: 'rgba(250,247,240,0.65)', textAlign: 'center', margin: '0 0 10px' }}>
+        <p style={{ fontFamily: 'var(--font-dm-sans-var), sans-serif', fontSize: '13px', color: 'rgba(250,247,240,0.65)', textAlign: 'center', margin: '0 0 8px' }}>
           No payment due now
         </p>
         <div style={{ width: '100%' }}>
           <PrimaryButton onClick={handleStartTrial}>Try Vesper for {p.symbol}0</PrimaryButton>
         </div>
-        <p style={{ fontFamily: 'var(--font-dm-sans-var), sans-serif', fontSize: '13px', color: 'rgba(250,247,240,0.45)', textAlign: 'center', margin: '12px 0 0' }}>
+        <p style={{ fontFamily: 'var(--font-dm-sans-var), sans-serif', fontSize: '13px', color: 'rgba(250,247,240,0.45)', textAlign: 'center', margin: '8px 0 0' }}>
           Cancel anytime during your trial.
         </p>
-        <p style={{ fontFamily: 'var(--font-dm-sans-var), sans-serif', fontSize: '13px', color: 'rgba(250,247,240,0.45)', textAlign: 'center', margin: '6px 0 0' }}>
+        <p style={{ fontFamily: 'var(--font-dm-sans-var), sans-serif', fontSize: '13px', color: 'rgba(250,247,240,0.45)', textAlign: 'center', margin: '4px 0 0' }}>
           We&apos;ll email you before your trial ends.
         </p>
       </div>

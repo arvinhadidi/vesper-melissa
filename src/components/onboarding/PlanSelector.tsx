@@ -15,13 +15,13 @@ interface PlanSelectorProps {
 // re-subscribe paywall. Both rendered an identical ~50-line inline block; this is the single copy.
 export function PlanSelector({ selectedPlan, onSelect, pricing }: PlanSelectorProps) {
   return (
-    <div style={{ width: '100%', marginBottom: '24px', display: 'flex', gap: '10px' }}>
+    <div style={{ width: '100%', marginBottom: '16px', display: 'flex', gap: '10px' }}>
       <button
         onClick={() => onSelect('yearly')}
         style={{
           position: 'relative',
           flex: 1,
-          padding: '16px 12px',
+          padding: '12px 10px',
           border: `1.5px solid ${selectedPlan === 'yearly' ? '#C9A84C' : 'rgba(201,168,76,0.3)'}`,
           borderRadius: '14px',
           background: selectedPlan === 'yearly' ? 'rgba(201,168,76,0.12)' : 'rgba(250,247,240,0.04)',
@@ -32,13 +32,13 @@ export function PlanSelector({ selectedPlan, onSelect, pricing }: PlanSelectorPr
       >
         <span style={{ position: 'absolute', top: '-10px', left: '50%', transform: 'translateX(-50%)', background: '#C9A84C', color: '#1E1256', fontFamily: 'var(--font-dm-sans-var), sans-serif', fontSize: '10px', fontWeight: 700, padding: '3px 8px', borderRadius: '6px', letterSpacing: '0.3px', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>Save {pricing.savePct}%</span>
         <span style={{ fontFamily: 'var(--font-dm-sans-var), sans-serif', fontSize: '16px', fontWeight: 600, color: '#FAF7F0', display: 'block' }}>Yearly</span>
-        <span style={{ fontFamily: 'var(--font-dm-sans-var), sans-serif', fontSize: '20px', fontWeight: 700, color: '#FAF7F0', display: 'block', marginTop: '4px' }}>{pricing.symbol}{pricing.yearly}</span>
+        <span style={{ fontFamily: 'var(--font-dm-sans-var), sans-serif', fontSize: '18px', fontWeight: 700, color: '#FAF7F0', display: 'block', marginTop: '4px' }}>{pricing.symbol}{pricing.yearly}</span>
       </button>
       <button
         onClick={() => onSelect('monthly')}
         style={{
           flex: 1,
-          padding: '16px 12px',
+          padding: '12px 10px',
           border: `1.5px solid ${selectedPlan === 'monthly' ? '#C9A84C' : 'rgba(201,168,76,0.3)'}`,
           borderRadius: '14px',
           background: selectedPlan === 'monthly' ? 'rgba(201,168,76,0.12)' : 'rgba(250,247,240,0.04)',
@@ -48,7 +48,7 @@ export function PlanSelector({ selectedPlan, onSelect, pricing }: PlanSelectorPr
         }}
       >
         <span style={{ fontFamily: 'var(--font-dm-sans-var), sans-serif', fontSize: '16px', fontWeight: 600, color: '#FAF7F0', display: 'block' }}>Monthly</span>
-        <span style={{ fontFamily: 'var(--font-dm-sans-var), sans-serif', fontSize: '20px', fontWeight: 700, color: '#FAF7F0', display: 'block', marginTop: '4px' }}>{pricing.symbol}{pricing.monthly}</span>
+        <span style={{ fontFamily: 'var(--font-dm-sans-var), sans-serif', fontSize: '18px', fontWeight: 700, color: '#FAF7F0', display: 'block', marginTop: '4px' }}>{pricing.symbol}{pricing.monthly}</span>
       </button>
     </div>
   );
