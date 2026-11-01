@@ -1,8 +1,10 @@
+import type { Metadata } from 'next';
 import LegalPage from '@/components/legal/LegalPage';
 import { PRIVACY_MD } from '@/lib/legal/content';
 
-export const metadata = {
-  title: 'Privacy Policy — Vesper',
+export const metadata: Metadata = {
+  title: 'Privacy Policy',
+  alternates: { canonical: '/privacy' },
 };
 
 export default function PrivacyPolicyPage() {

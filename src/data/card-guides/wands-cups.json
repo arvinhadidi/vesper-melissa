@@ -1,0 +1,758 @@
+[
+  {
+    "slug": "ace-of-wands",
+    "name": "Ace of Wands",
+    "metaDescription": "Ace of Wands tarot card meaning: upright, reversed, love and yes or no. A spark of drive, and what to do before it fades.",
+    "intro": "The Ace of Wands is the spark before the plan: a raw burst of wanting something. A hand reaches out of a cloud holding a single wand that is still sprouting green leaves, with a quiet castle and river behind it. It is drive with no instructions attached, which is exactly why it feels so good and so easy to waste.",
+    "keywordsUpright": [
+      "new beginnings",
+      "inspiration",
+      "spark",
+      "drive",
+      "potential"
+    ],
+    "keywordsReversed": [
+      "delays",
+      "lack of direction",
+      "false start",
+      "burnout",
+      "hesitation"
+    ],
+    "upright": "This card shows up when something in you wakes up. It might be an idea for a business you have only told your sister about, a sudden urge to redo your whole room at 11pm, or the first real flicker of fancying someone after months of feeling nothing. The leaves still falling off the wand show it is new and a bit messy. Nothing is built yet.\n\nThe uncomfortable part is that sparks are cheap and follow-through is not. The Ace rewards the person who does one small thing within 48 hours: books the class, sends the email, buys the domain. If you wait until you feel fully ready, the spark goes back into the cloud and you spend March wondering what happened to that idea.",
+    "reversed": "Reversed, the Ace is the flat battery. You have the idea, but it keeps sitting in your Notes app between a shopping list and a half-written birthday message. Sometimes the spark is blocked by fear that it will be mediocre, so you never start. Sometimes it is blocked by exhaustion, and the honest answer is that you need sleep, not a new project.\n\nIt can also mean a false start: a plan you announced loudly that has no real wanting behind it. Ask whether you want the thing or just the version of yourself who has done it. If it is the second, let it fizzle without guilt.",
+    "love": "Single, the Ace of Wands is the pull towards someone that arrives uninvited: you notice you are suddenly checking your hair before the gym, or you reply to a message within a minute instead of three hours. Enjoy it, but do not write the whole story yet. In a relationship it asks for something new rather than more of the same: a weekend away, a different routine, a flirtatious message on a Tuesday afternoon. With an ex or situationship, it can be a flash of old attraction. Sparks are not promises, so ask whether anything lasts past the first weekend.",
+    "career": "A new project, offer or side hustle is lighting up. This is a good moment to pitch the idea, apply for the role that scares you slightly, or start the portfolio you keep calling a someday thing. For money, it is seed-stage: small amounts put into something you actually believe in, not a big bet. Write down the first three tasks today, because the Ace fades quickly without a plan attached.",
+    "yesNo": "yes",
+    "yesNoText": "Yes, and quickly. The Ace is one of the strongest beginnings in the deck, so it favours starting over waiting. The catch is that it says yes to the attempt, not to a guaranteed result. Reversed, it becomes not yet or not like this: the drive is there but the timing or the plan is not.",
+    "melissaLine": "You do not need a perfect plan, you need one small action before this spark goes cold, so do it today."
+  },
+  {
+    "slug": "two-of-wands",
+    "name": "Two of Wands",
+    "metaDescription": "Two of Wands tarot card meaning: upright, reversed, love and yes or no. How to stop planning and choose a direction.",
+    "intro": "The Two of Wands is the card of standing at the edge of your own life and deciding how far to go. A figure in a red hat stands on a castle wall holding a small globe, a wand in his other hand, looking out over the sea. He has already built something. The question is whether it is enough.",
+    "keywordsUpright": [
+      "planning",
+      "decisions",
+      "future vision",
+      "boldness",
+      "discovery"
+    ],
+    "keywordsReversed": [
+      "fear of leaving",
+      "poor planning",
+      "playing safe",
+      "indecision",
+      "impulsive moves"
+    ],
+    "upright": "He has the castle, the view and a second wand bolted to the wall behind him, so this is not someone starting from nothing. This card appears when you are comfortable and quietly restless: the job that is fine, the city you like, the flat with the decent landlord. You have a globe in your hand, which means options are genuinely on the table.\n\nThe tension is planning versus doing. You can research Lisbon flats for six weeks and never book a viewing. The Two asks you to pick a direction, even a provisional one, and test it. A short trip, a coffee with someone who made the move, a trial month. Choosing is uncomfortable because it closes doors, but staying on the wall forever is also a choice.",
+    "reversed": "Reversed, the Two of Wands is fear of the unknown wearing the costume of being sensible. You have a spreadsheet of pros and cons that has not changed since August, and a tab open for a course you will never enrol on. Sometimes it signals plans that fall apart because you never committed to them. Sometimes it is the opposite: a leap made impulsively, before you knew what you wanted.\n\nIf you keep saying you are just weighing it up, check who benefits from the delay. Often it is comfort, or someone else's opinion you are still waiting on for permission.",
+    "love": "Single, you may be comparing your life to the life that dating would require, and deciding the trade is not yet worth it. That is allowed, but be honest about whether it is a preference or a fear. In a relationship, the card raises the big conversation about where you are heading: moving in, moving cities, a long-distance stretch. Do not settle it by hinting. With an ex or a situationship, it asks whether you want this person or just the safety of knowing them. Make the decision rather than letting the other person make it by going quiet.",
+    "career": "You are weighing a promotion, a new city or a leap into self-employment. The Two says you have enough foundation to do it, but a plan beats a mood. Draft the six-month version: savings figure, notice period, first clients. For money, this is the time to compare options in writing rather than in your head. If the current job pays your rent and bores you, ask what you would need to be paid to stay.",
+    "yesNo": "maybe",
+    "yesNoText": "Maybe, leaning yes with preparation. The Two of Wands is a card of choosing, so it will not decide for you. It supports a move forward if you have done the homework. Reversed, it leans no for now: the plan is not formed, or the fear is doing the talking.",
+    "melissaLine": "You know which way you are leaning, and the pros and cons list is only a place to hide, so pick a date to decide."
+  },
+  {
+    "slug": "three-of-wands",
+    "name": "Three of Wands",
+    "metaDescription": "Three of Wands tarot card meaning: upright, reversed, love and yes or no. What it means when your plans are on their way.",
+    "intro": "The Three of Wands is the card of waiting for your ships to come in. A man stands on a high cliff with his back to us, three wands planted in the ground, watching boats sail across a calm sea under a yellow sky. He has already sent things out. Now he can only look ahead and hold his nerve.",
+    "keywordsUpright": [
+      "expansion",
+      "foresight",
+      "patience",
+      "progress",
+      "long-term plans"
+    ],
+    "keywordsReversed": [
+      "delays",
+      "setbacks",
+      "poor planning",
+      "short-sighted",
+      "frustration"
+    ],
+    "upright": "Something you set in motion is on its way. The ships are far off, which is the point: you cannot speed them up by refreshing the tracking page. This is the card of the application sent, the pitch emailed, the flights booked for a trip that is still eleven weeks away. You have done the hard part of starting, and now it is about patience with purpose.\n\nIt also invites wider thinking. His back is turned, so he is not glancing at the people on the shore, he is looking at the horizon. Ask what the next stage looks like if this goes well, and whether you are ready for it. Use the waiting for useful things: learn the skill the new role requires, or save the money the move will cost.",
+    "reversed": "Reversed, the ships are delayed or lost, or you stopped watching the horizon. It can show plans that stalled because you expected too fast a return, a long-distance arrangement with no end date, or a project you launched and never followed up on. The disappointment is real: you waited for the email that did not come.\n\nIt can also warn against looking so far ahead that you miss what is in front of you. If the same plan has been pending for a year, the useful question is whether to push it, rework it or stop. Hoping without acting is what keeps you on the cliff.",
+    "love": "Single, the Three suggests your love life is widening: new places, new circles, perhaps someone met while travelling or through a friend of a friend. Say yes to the invitation you would usually dodge. In a relationship, it fits shared plans that need time, like saving for a flat or surviving a stretch apart with scheduled calls and a date in the diary. With an ex or situationship, waiting for them to come round is the cliff. Decide how long you will stand there. A date, even a private one, protects you from drifting.",
+    "career": "Your efforts are about to reach beyond your immediate team or city. Expect responses from applications, a client introducing you to another client, or an international opportunity. Build contacts now rather than after the offer lands. Financially, think in quarters, not days: savings pots and investments build slowly, and this card rewards steady contributions. Keep a log of what you sent and when, so follow-up is easy at the two-week mark.",
+    "yesNo": "yes",
+    "yesNoText": "Yes, but not immediately. The Three of Wands says what you are hoping for is in motion, so the answer leans positive with a delay attached. Reversed, it becomes not yet, or not in the form you imagined, and usually means you need to follow up rather than wait.",
+    "melissaLine": "Send the follow-up you are avoiding, because waiting is only a strategy if you are also doing something useful in the meantime."
+  },
+  {
+    "slug": "four-of-wands",
+    "name": "Four of Wands",
+    "metaDescription": "Four of Wands tarot card meaning: upright, reversed, love and yes or no. Celebration, home and a milestone worth marking.",
+    "intro": "The Four of Wands is the card of finally getting to celebrate. Four tall wands hold up a garland of flowers and fruit, a canopy like a wedding arch, while two figures in the foreground raise bouquets and a castle sits behind them. It is about stability you have earned, shared with other people.",
+    "keywordsUpright": [
+      "celebration",
+      "harmony",
+      "home",
+      "stability",
+      "community"
+    ],
+    "keywordsReversed": [
+      "tension at home",
+      "cancelled plans",
+      "feeling unwelcome",
+      "delayed celebration",
+      "lack of support"
+    ],
+    "upright": "This is the card of the housewarming, the engagement dinner, the Friday you all finally get the same day off. It marks a milestone reached: a move completed, a degree finished, a relationship that has settled into something steady. The canopy is built on four solid supports, so the happiness here has foundations and is not a party that ends at 2am.\n\nTake the celebrating seriously. Many of us hit a goal and immediately move on to the next, treating the achievement as a box ticked. The Four asks you to pause, invite people over, light the candles and let someone toast you. It also speaks to home: the sense of having a place, a group or a team that feels like yours, even if the flat is rented and the sofa is second-hand.",
+    "reversed": "Reversed, the party is cancelled or you are at it feeling nothing. It can show instability at home, a flatshare tension that has everyone tiptoeing around the kitchen, or a family event you dread because of one person. Sometimes the celebration is delayed rather than denied: the wedding date keeps shifting, the move keeps stalling.\n\nIt can also show you holding back from belonging. You attend, you smile, but you check the time and plan your exit. Ask whether the place or the people are wrong, or whether you are still bracing for something to go wrong.",
+    "love": "Single, the Four points to community: a wedding where you meet someone, a friend group that has space for another person. Do not skip the invite. In a relationship it is a strong card for commitment, a moving-in conversation, an engagement or simply a household that works. Plan a proper night to mark an anniversary or promotion. With an ex or situationship, it is about whether there is a stable future, not just a good night. Warm chemistry is not the same as a home.",
+    "career": "Good news at work: a project shipped, a contract signed, a probation passed. Mark it. Send the thank-you messages and bring cake. This card also supports a stable team or a workplace that feels like home, and money is in a settled phase, possibly with a bonus or a deposit saved. Do not rush straight into the next big ask without stopping to enjoy what you built.",
+    "yesNo": "yes",
+    "yesNoText": "Yes. The Four of Wands is one of the most positive cards in the deck, pointing to security, celebration and support from others. The answer is yes if your question is about settling, hosting or committing. Reversed, it becomes yes, but with delays or some unease behind the scenes.",
+    "melissaLine": "You worked hard for this, so stop treating it like a checkbox and actually invite people over to celebrate it properly."
+  },
+  {
+    "slug": "five-of-wands",
+    "name": "Five of Wands",
+    "metaDescription": "Five of Wands tarot card meaning: upright, reversed, love and yes or no. Conflict, competition and which fights are worth having. Read on.",
+    "intro": "The Five of Wands is a card of noisy conflict. Five young men swing wooden staves at one another on bare ground, and nobody is winning or bleeding. It looks like a fight but also like a practice session, which is the key: this is competition, disagreement and clashing egos rather than war.",
+    "keywordsUpright": [
+      "conflict",
+      "competition",
+      "tension",
+      "disagreement",
+      "rivalry"
+    ],
+    "keywordsReversed": [
+      "avoiding conflict",
+      "truce",
+      "resolution",
+      "compromise",
+      "tension easing"
+    ],
+    "upright": "Everyone has a different idea of how the group chat should plan the holiday, and nobody will give way. This card appears in the squabble over who does the washing-up, the meeting where three colleagues talk over each other, and the family argument about Christmas logistics. Each person is holding their stick as though theirs is the only one that counts.\n\nThe lesson is that not all conflict is dangerous. Friction can sharpen ideas, and competition can push you to improve. But the Five also asks you to notice when you are arguing to win rather than to solve. If you are exhausted by constant low-level fighting, choose which battles actually matter, say what you need in a sentence, and stop adding noise to a loud room.",
+    "reversed": "Reversed, the fighting either ends or goes underground. You may be avoiding a conflict that needs having, smiling in the meeting and then venting in the toilets afterwards. Or you have reached a truce, with the relief of finally agreeing on the rota. It can also point to conflict you cannot resolve because the other party refuses to engage.\n\nIf you are avoiding, remember that peace bought by silence does not last. Pick one clear conversation, keep it short and say what you want. If you have been the aggressor, reversed asks you to notice the damage of constant point-scoring.",
+    "love": "Single, expect competition or mixed signals: a dating app conversation where you are one of several, or friction with a friend over the same crush. In a relationship, the Five is the recurring row about dishes, money or who texts first. It is irritating rather than fatal, but it needs a real conversation instead of sniping. With an ex or situationship, the card suggests a stand-off where both of you are too proud to message first. Decide whether winning the silence is worth more than the person.",
+    "career": "Office politics, competing for the same promotion, or a team that cannot agree on direction. Do not hide from it: bring your ideas with evidence, and pick collaborators over rivals when you can. Healthy competition is useful; backstabbing is not. For money, watch for squabbles over splitting costs or invoices that nobody wants to chase. Put agreements in writing and keep emails calm.",
+    "yesNo": "maybe",
+    "yesNoText": "Maybe, leaning no for now. The Five of Wands shows disagreement and obstacles, so the path is not smooth. You can get a yes through effort, but expect friction. Reversed, tension eases and the answer moves toward yes, once a truce or compromise is reached.",
+    "melissaLine": "Not every argument deserves your best performance, so decide which one actually matters and let the rest be someone else's noise."
+  },
+  {
+    "slug": "six-of-wands",
+    "name": "Six of Wands",
+    "metaDescription": "Six of Wands tarot card meaning: upright, reversed, love and yes or no. Victory, recognition and how to enjoy a win.",
+    "intro": "The Six of Wands is public victory. A rider on a white horse, crowned with a laurel wreath, carries a wand decorated with another wreath while a crowd on foot walks beside him holding their own staves. Everyone is looking at him, and that is the card: success that other people can see.",
+    "keywordsUpright": [
+      "victory",
+      "recognition",
+      "success",
+      "confidence",
+      "public praise"
+    ],
+    "keywordsReversed": [
+      "ego",
+      "fall from favour",
+      "hollow win",
+      "self-doubt",
+      "delayed rewards"
+    ],
+    "upright": "You did the thing and people noticed. This is the promotion, the exam result, the compliment from a boss who rarely gives them, the post about your news that gets forty likes from people you have not spoken to in years. The rider is on a horse, so he is lifted above the crowd, but the staves around him are a reminder that others helped carry the win.\n\nEnjoy it without apologising. Many women reflexively deflect praise with it was nothing or I was just lucky. Say thank you and let it land. The card also carries a small caution: the crowd's approval is nice but temporary. Use the confidence to take on something bigger, not to start performing success for an audience.",
+    "reversed": "Reversed, the victory is hollow, delayed or taken by someone else. A colleague presents your slide deck as theirs, or you win the thing and feel nothing. It can show a fall from favour, a failed attempt, or ego running ahead of results.\n\nIt can also show you chasing validation. If you only feel you succeeded when the likes arrive, the reversed Six asks where your own measure went. Define success privately, in terms you would still care about with no audience at all, and let the quiet version count.",
+    "love": "Single, you are in a confident phase and people can tell. You may be asked out because you finally stopped shrinking, so say yes to things that suit you, not to flattery. In a relationship, the card celebrates a partner who backs you publicly and a couple that others look to. Share the credit for the wins you both worked on. With an ex, avoid using a good week as a performance for them: the post that is secretly for one viewer rarely works.",
+    "career": "Recognition is on its way, whether a promotion, award, great review or a client who recommends you. Collect it: save the feedback email and update your CV today while it is fresh. For money, a deserved rise is realistic, so ask with specifics about what you delivered. Do not wait for someone to notice. Success here is earned, but it is also made visible by you.",
+    "yesNo": "yes",
+    "yesNoText": "Yes. The Six of Wands is a clear positive, associated with winning, praise and success. It favours questions about results, recognition or competition. Reversed, the answer turns to not yet or not publicly, usually because you need more evidence, effort or humility first.",
+    "melissaLine": "Take the compliment without arguing with it, and write the win down somewhere before your brain starts shrinking it."
+  },
+  {
+    "slug": "seven-of-wands",
+    "name": "Seven of Wands",
+    "metaDescription": "Seven of Wands tarot card meaning: upright, reversed, love and yes or no. Holding your ground when everyone has an opinion.",
+    "intro": "The Seven of Wands is the card of holding your ground. A man stands on a high ridge defending himself with one staff against six others thrusting up from below. Look closely at his feet: he is wearing two different boots, as if he rushed out to fight. He has the advantage of height and the cost of exhaustion.",
+    "keywordsUpright": [
+      "defence",
+      "perseverance",
+      "standing ground",
+      "courage",
+      "boundaries"
+    ],
+    "keywordsReversed": [
+      "giving up",
+      "overwhelm",
+      "defensiveness",
+      "caving in",
+      "paranoia"
+    ],
+    "upright": "You are defending something you care about: your decision, your boundary, your seat at the table. The six wands below may be the aunt who has opinions on your degree, the colleague who questions every suggestion, or the group chat that thinks your new boundary is rude. You are in the stronger position, but you are tired.\n\nThis card says stay put. You do not need to win everyone over, and you do not need a long essay of justification. A simple, repeated sentence works better: no, that does not work for me. Notice also that the odd boots suggest you did not plan for this fight. It is fine to be unprepared and still hold the high ground. Rest is part of defence.",
+    "reversed": "Reversed, you are either giving in or fighting everything. You may be exhausted from defending a position that was never worth it, or caving to pressure at the first sign of resistance, like agreeing to the Thursday drinks you will cancel. It can also show defensiveness, treating a neutral comment as an attack.\n\nAsk which battles are yours. Some pushback is just feedback, and some is a person testing whether your no is real. Learn to tell them apart, then retreat from the first and stand firm on the second.",
+    "love": "Single, you may be guarding your standards against friends who keep saying you are too picky. Keep them. In a relationship, the card shows a boundary being tested: his friends, the in-laws, a partner who shrugs at your no. Say it once, calmly, and watch what happens next. With an ex or situationship, it can mean defending your decision to leave, or defending a dynamic everyone else sees clearly. If everyone is telling you the same thing, consider that the six wands might be right.",
+    "career": "You are defending your role, your idea or your work-life limits. Keep records: emails, results and agreed responsibilities. A calm, evidenced position beats a heated one. If you are on the receiving end of a pile-on or a colleague trying to take credit, document and escalate. For money, stand firm on the rate you set and resist late discounts. It is easier to hold a price than to raise it later.",
+    "yesNo": "maybe",
+    "yesNoText": "Maybe, leaning yes if you are willing to fight for it. The Seven of Wands shows a result that is possible but contested, with opposition to push past. Reversed, it leans no: the effort is too heavy, or you are giving up the high ground too early.",
+    "melissaLine": "You are allowed to hold your position without winning the argument, so say it once, calmly, and stop explaining."
+  },
+  {
+    "slug": "eight-of-wands",
+    "name": "Eight of Wands",
+    "metaDescription": "Eight of Wands tarot card meaning: upright, reversed, love and yes or no. What to do when everything moves at once.",
+    "intro": "The Eight of Wands is pure motion. Eight wands fly through a clear blue sky at a slant, heading down over a river and green hills, with no person in sight. Nothing is holding them back and nothing is steering. They are arriving. This is the card of fast news, fast travel and things happening all at once.",
+    "keywordsUpright": [
+      "speed",
+      "movement",
+      "news",
+      "momentum",
+      "travel"
+    ],
+    "keywordsReversed": [
+      "delays",
+      "frustration",
+      "slowdown",
+      "miscommunication",
+      "rushing"
+    ],
+    "upright": "After weeks of silence, everything moves on the same day. The email you were waiting for lands, the flight is confirmed, and three people text you about plans before lunch. The Eight of Wands is the opposite of the waiting in the Three: the ships have docked and the cargo is in your hands.\n\nUse this speed. Reply today, not on Sunday. Book the tickets, send the invoice, say yes to the spontaneous weekend. Momentum like this does not stay forever, and the wands, once they land, stop. The only risk is rushing so quickly you miss the detail: read the contract, check the date on the train ticket, and do not send the 2am message just because everything feels fast.",
+    "reversed": "Reversed, the wands stall or crash. Flights get cancelled, replies come late, plans pile up and collide. Sometimes it is frustration with slow progress: the visa that sits in a queue, the deposit that takes a week to clear. Sometimes the problem is rushing, and the speed is yours rather than the world's: the impulsive move, the rapid-fire texts that you regret.\n\nIf things are slowing down, use the time to get paperwork in order and cut commitments that no longer fit. If you are speeding up, take one breath before pressing send. Fast is only useful when pointed at something.",
+    "love": "Single, things can move quickly: a match turns into a call within an hour, or a date turns into a weekend. Enjoy it, but check that his pace is steady rather than a burst that fades after the second week. In a relationship, expect a flurry of communication or a trip together. With an ex or a situationship, rapid contact might appear, and the card does not promise it lasts. Someone who texts constantly for three days then vanishes for ten is showing a pattern, not a spark. Match speed with consistency.",
+    "career": "News, deadlines and decisions arrive all at once. Reply fast, as speed is rewarded now, particularly with job offers, interviews booked at short notice and projects that suddenly get green-lit. Clear your calendar for the next few weeks. Money may move quickly too: payments, transfers, a quick sale. Double check amounts before authorising anything, because quick is not the same as correct.",
+    "yesNo": "yes",
+    "yesNoText": "Yes, and soon. The Eight of Wands is a card of speed and good news, so it favours acting quickly and saying yes. Check the details though. Reversed, the answer slows to not yet: delays, crossed wires, or a rush that causes mistakes.",
+    "melissaLine": "Things are about to move faster than you expected, so reply today, read the small print, and do not sit on the good news."
+  },
+  {
+    "slug": "nine-of-wands",
+    "name": "Nine of Wands",
+    "metaDescription": "Nine of Wands tarot card meaning: upright, reversed, love and yes or no. How to get through the last stretch when you are worn out. Read on.",
+    "intro": "The Nine of Wands is the card of being nearly there and extremely tired. A man with a bandage around his head leans on one wand, glancing warily over his shoulder, while eight more stand in a row behind him like a fence. He has been hurt before. He is still standing, and he is still on guard.",
+    "keywordsUpright": [
+      "resilience",
+      "persistence",
+      "last stand",
+      "stamina",
+      "caution"
+    ],
+    "keywordsReversed": [
+      "exhaustion",
+      "burnout",
+      "stubbornness",
+      "giving up",
+      "mistrust"
+    ],
+    "upright": "You have been through the rough part and you are not quite finished. This is the final stretch of the dissertation, the long-running family situation, the end of a job you are leaving in three weeks. The bandage is real: you have taken a few hits and your trust is a bit raw.\n\nThe card asks for stamina rather than new tactics. Cut the extras: cancel the weekend plan that drains you, say no to the favour, and protect sleep. But it also asks you to notice that the fence behind him is made of his own past efforts. You have already built eight of nine. Do not abandon it at ninety per cent because it hurts. Equally, do not read every new person as another attacker, since wariness can become a habit.",
+    "reversed": "Reversed, you are running on empty, or you are so guarded that nothing can reach you. It can show burnout: the sixth month of being the reliable one, replying to every message, absorbing everyone's mood. It can also show stubbornness, where you refuse help because asking feels like failing.\n\nThe fix is not another productivity method. It is a day off, a blunt conversation about workload, and allowing someone to carry one of the wands. If your defences are now keeping out the good as well as the bad, look at what you are protecting and from whom.",
+    "love": "Single, you may be tired of dating after a bad run, and cautious in a way that is earned. Take a break without calling it giving up, then re-enter slowly. In a relationship, the card points to stress straining the pair of you, not necessarily a lack of love: shared money anxiety, a bereavement, a tough year. Say plainly what you need. With an ex or situationship, you may still be flinching from the last hurt and reading every message as a warning. Trust is rebuilt in small, observable steps, and you get to set the pace.",
+    "career": "You are close to the finish line of a project or a hard season at work, and fatigue is real. Push through the last stage but plan recovery: book the leave, schedule a quiet week. Do not take on extra tasks now. On money, hold the line a bit longer. A cushion you built through months of careful saving is about to prove its worth. Tell someone senior if the workload is unsustainable before it breaks you.",
+    "yesNo": "maybe",
+    "yesNoText": "Maybe, leaning yes with effort. The Nine of Wands usually means success is close but demands persistence and resilience. You are nearly there. Reversed, it leans no for now: exhaustion, defensiveness or stubbornness is blocking the result, and rest or help comes first.",
+    "melissaLine": "You are closer to the end than your tiredness is telling you, so protect your sleep and finish the last stretch."
+  },
+  {
+    "slug": "ten-of-wands",
+    "name": "Ten of Wands",
+    "metaDescription": "Ten of Wands tarot card meaning: upright, reversed, love and yes or no. Carrying too much, and what to put down first.",
+    "intro": "The Ten of Wands is the card of carrying too much. A man bends forward under a bundle of ten heavy wands, so many that he cannot see where he is going, and heads toward the houses of a village in the distance. Nobody is making him do it. The village is close, and he has not yet put anything down.",
+    "keywordsUpright": [
+      "burden",
+      "responsibility",
+      "overload",
+      "stress",
+      "hard work"
+    ],
+    "keywordsReversed": [
+      "delegation",
+      "breakdown",
+      "relief",
+      "shared load",
+      "putting down"
+    ],
+    "upright": "You said yes to everything and now you are the person holding the whole thing: the group trip you organised, the work project nobody else claimed, the family birthday that somehow became your event. Each commitment was reasonable alone. Together they are a stack you cannot see over.\n\nThis card is not asking you to be stronger. It is asking you to look at the load and sort it. Which wands are actually yours? Which ones were handed over because you are good at carrying? The village is close, which means the end is in view, but you will arrive with sore shoulders and a resentful face. Drop two things this week, ask for help in specific terms, and notice how much of the weight is responsibility you took on because it felt safer than saying no.",
+    "reversed": "Reversed, you either put the burden down or it finally gets too heavy. It can show delegation at last, a realisation that you do not have to be the person who handles everything. It can also show a collapse: crying in the work bathroom, snapping at a friend about something small, missing a deadline because you cannot face the pile.\n\nNeither is failure. If you set something down, do not pick it back up out of guilt. If you are collapsing, the useful move is to cancel one thing today, with no elaborate apology. Rest comes before the rest of the list.",
+    "love": "Single, you may be too busy carrying everyone else to date, or you take on emotional labour for people who are not even partners. In a relationship, the card shows an unbalanced load: you remember the birthdays, book the dentists, and manage the mood. Name it without scoring points: this list is mine and I would like half of it to be yours. With an ex or a situationship, you are carrying a relationship that only one of you is working on. Put it down and see whether the other person picks it up.",
+    "career": "Workload and burnout are the themes. You are doing the job of two people, perhaps because you are good at it and nobody has been asked to share it. List everything you are responsible for, then prioritise and hand some back to your manager. For money, you may be working long hours for a salary that no longer matches the output. Raise it with numbers. Overwork is a finite resource, not a virtue.",
+    "yesNo": "no",
+    "yesNoText": "Leaning no, or not like this. The Ten of Wands shows success that costs too much, or a task that is too heavy for one person. The answer shifts to yes if you can share the load. Reversed, it brightens: the weight lifts and delegation helps.",
+    "melissaLine": "You are not being strong, you are being the only one who will not drop something, so drop two things this week."
+  },
+  {
+    "slug": "page-of-wands",
+    "name": "Page of Wands",
+    "metaDescription": "Page of Wands tarot card meaning: upright, reversed, love and yes or no. Enthusiasm, new ideas and a message worth acting on.",
+    "intro": "The Page of Wands is the keen beginner with something to prove. A young figure stands in a desert, holding a tall wand and looking up at its tip, wearing a yellow tunic patterned with salamanders. Pyramids sit far behind. He is curious, a bit untested, and wildly enthusiastic about what the wand might do.",
+    "keywordsUpright": [
+      "enthusiasm",
+      "curiosity",
+      "new ideas",
+      "exploration",
+      "messages"
+    ],
+    "keywordsReversed": [
+      "procrastination",
+      "immaturity",
+      "lack of follow-through",
+      "half-finished",
+      "bad news"
+    ],
+    "upright": "This is the friend who sends a voice note at midnight saying she has had an idea. The Page represents fresh interest, a message about a new opportunity, or a part of you that wants to try something without needing to be good at it first. The salamanders on his tunic eat their own tails, a sign of cycles starting again.\n\nIt can describe an actual person: a young, restless creative, a brash junior who asks brilliant questions, or you in your trying-things phase. Give the enthusiasm room. Take the pottery class, send the pitch, ask the question you assume is too basic. Just keep an eye on follow-through: curiosity is excellent at starting and less reliable at finishing, so pick one thing and give it a proper month.",
+    "reversed": "Reversed, the Page is the great idea with no follow-up. You bought the ring light, the planner and the domain name, then went back to scrolling. It can also show immaturity: a person who flirts big and commits small, or a message with a lot of promise and no plan attached.\n\nSometimes it is bad news that arrives sideways, or an opportunity you dismiss because it came from someone junior. Check whether you are the one who started and abandoned, or whether you are leaning on someone who does. Finishing small beats starting large.",
+    "love": "Single, expect a flirty, lively beginning: a message full of emojis, a person who seems fun but not yet serious. Enjoy the spark and watch the follow-through. In a relationship, the Page suggests playfulness is needed: a silly plan, a new hobby together, a message that has nothing to do with chores. With an ex or situationship, it can be a casual re-contact that feels exciting and lacks substance. Ask what they actually want, not just how fun the banter is. Charm and commitment are not the same skill.",
+    "career": "A new idea, internship or message about an opportunity is here. Say yes to the exploratory call, the trial shift or the freelance test project. You may be the beginner in the room, which is fine, if you are curious. For money, try small experiments before big spending: sell one item, price one service, test one product. Learn quickly, document the results, and drop what does not work.",
+    "yesNo": "yes",
+    "yesNoText": "Yes, as a starting point. The Page of Wands is positive and curious, so it supports trying, asking and experimenting. It does not promise a polished outcome. Reversed, it leans no or not yet: the idea is half-formed, or the enthusiasm will fade without commitment.",
+    "melissaLine": "Start the thing while you are still excited, but promise yourself one real month before you decide whether it was a phase."
+  },
+  {
+    "slug": "knight-of-wands",
+    "name": "Knight of Wands",
+    "metaDescription": "Knight of Wands tarot card meaning: upright, reversed, love and yes or no. Passion, speed and the person who moves too fast.",
+    "intro": "The Knight of Wands is all momentum. A knight in armour decorated with salamanders gallops across a desert on a rearing horse, wand held high, plumes streaming from his helmet. There is no hesitation in the image and no map either. He is passion and speed, and his main problem is that he may not look where he lands.",
+    "keywordsUpright": [
+      "passion",
+      "action",
+      "adventure",
+      "impulsiveness",
+      "confidence"
+    ],
+    "keywordsReversed": [
+      "haste",
+      "scattered focus",
+      "delays",
+      "recklessness",
+      "frustration"
+    ],
+    "upright": "He is charming, confident and in a hurry. This card often describes a person who arrives with huge plans and leaves before you have unpacked the shopping: the guy planning a spontaneous road trip on the first date, the coworker who pitches big and delegates the detail. It can also describe you when you are fired up and moving house, changing job and booking a trip in the same fortnight.\n\nThe upside is confidence, courage and results, since nobody ever launched anything by thinking about it for another year. The risk is the burnout of someone who sprints, then drops. Use the fire, but build in a check: ask what happens in week six, when the novelty has gone. If the plan still looks good, send the booking confirmation.",
+    "reversed": "Reversed, the Knight is scattered, hot-tempered or stalled. He promised to call, did not, and is now posting from a festival. In you, it may be impatience that makes you drop projects at the first obstacle or snap at someone who has done nothing wrong. It can also be a delay: the horse stops, the plan runs out of fuel.\n\nSlow down enough to finish one thing. If you are dealing with a person like this, believe their behaviour rather than their speeches. Consistency matters more than intensity, and a plan with a date beats a plan with a mood.",
+    "love": "Single, you may meet someone exciting and slightly unreliable: great fun, vague plans, a habit of vanishing for a week. Enjoy the ride if you know what it is. In a relationship, bring adventure back, as in a trip booked or a new restaurant on a random Wednesday. With an ex or situationship, he arrives with big feelings and lukewarm follow-through. Watch what happens after the fourth date, not the first. Passion shows up on cue, whereas reliability shows up when it is inconvenient.",
+    "career": "Your drive is high and so is the temptation to say yes to everything. Channel it: pitch the bold idea, apply for the stretch role, take the trip for the client. Just set one deadline you can keep. Money-wise, avoid impulse spending on a brilliant plan before checking the maths. Quick wins are available, but build a base so they last beyond the burst of enthusiasm.",
+    "yesNo": "yes",
+    "yesNoText": "Yes, but go carefully. The Knight of Wands favours bold action and fast results, so it leans positive. It warns against recklessness and short attention spans. Reversed, the answer turns to no or wait: impulsiveness, delays or a lack of follow-through are in the way.",
+    "melissaLine": "Go for it, but ask yourself what this looks like in six weeks when the excitement has worn off and only effort is left."
+  },
+  {
+    "slug": "queen-of-wands",
+    "name": "Queen of Wands",
+    "metaDescription": "Queen of Wands tarot card meaning: upright, reversed, love and yes or no. Confidence, warmth and taking up space.",
+    "intro": "The Queen of Wands sits on a throne carved with lions, a sunflower in one hand and a wand in the other, with a black cat at her feet. She looks straight out at you. Nothing about her is shy. She is warmth with a spine: charismatic, generous and perfectly aware of her own effect on a room.",
+    "keywordsUpright": [
+      "confidence",
+      "warmth",
+      "independence",
+      "charisma",
+      "determination"
+    ],
+    "keywordsReversed": [
+      "jealousy",
+      "insecurity",
+      "domineering",
+      "burnout",
+      "attention-seeking"
+    ],
+    "upright": "She is the woman who walks into the party and makes three strangers feel included in the first ten minutes, then leaves when she is bored. The Queen of Wands is confident, creative and independent. She knows what she likes, says what she thinks, and does not need the group chat to agree. The black cat is a sign she is not afraid of the unlucky parts of herself.\n\nThis card asks you to take up space. Wear the bright lipstick, send the pitch, put your name on the idea in the meeting. Her warmth is real but it is not endless: she has boundaries and uses them. If you have been shrinking to keep a friend, partner or manager comfortable, the Queen suggests that your fire is not the problem. Their comfort was never your job.",
+    "reversed": "Reversed, the Queen is either dimmed or domineering. You may be dimmed after criticism, hiding your opinions to avoid the fallout and getting jealous of women who seem to take up space easily. Or the fire turns sharp: sarcasm, control, a need for attention that spills into drama.\n\nIt also warns about burnout from being everyone's sunshine. You cannot light the whole table every night. Ask what you need, rather than what the group needs, and give yourself permission to be quiet. Confidence that depends on applause is easy to switch off.",
+    "love": "Single, you are magnetic when you are being yourself, so stop auditioning. Look for someone who enjoys your fire rather than managing it. In a relationship, the Queen asks for honesty and fun, and refuses to be treated as the planner or the therapist. If you have been downplaying your wants, say them aloud. With an ex or situationship, she does not wait around for crumbs. A partner who competes with your light or sulks about your success is a clear answer.",
+    "career": "Lead, create, pitch. The Queen of Wands suits roles where you are visible: presenting, founding, managing or fronting a project. People respond to your enthusiasm, so use it in negotiations. Ask for the title and the pay together. For money, this card is generous and independent: invest in your own ventures, but check that your spending on looking successful matches the actual figures. Charisma opens doors, and a budget keeps them open.",
+    "yesNo": "yes",
+    "yesNoText": "Yes. The Queen of Wands is confident, positive and action-oriented, so it leans firmly yes, especially when the question is about self-expression or leadership. Reversed, it becomes maybe or not yet: your confidence, or someone else's ego, is getting in the way of a clear answer.",
+    "melissaLine": "Stop making yourself smaller to keep other people comfortable, because the fire they find too much is the reason people remember you."
+  },
+  {
+    "slug": "king-of-wands",
+    "name": "King of Wands",
+    "metaDescription": "King of Wands tarot card meaning: upright, reversed, love and yes or no. Leadership, vision and taking charge of your life.",
+    "intro": "The King of Wands sits on a throne decorated with lions and salamanders, holding a wand that is still sprouting leaves. He is half turned, looking as if about to stand and act. A salamander cloak and a calm, steady gaze show someone who leads by vision and by example rather than by volume.",
+    "keywordsUpright": [
+      "leadership",
+      "vision",
+      "decisiveness",
+      "boldness",
+      "authority"
+    ],
+    "keywordsReversed": [
+      "domineering",
+      "impulsiveness",
+      "ruthlessness",
+      "poor leadership",
+      "big ego"
+    ],
+    "upright": "He is the boss who sees what a team could be and then lets them do it, the friend who starts the book club and keeps it going for four years. The King of Wands is a natural leader: bold, decisive and willing to take responsibility for the outcome. The living wand in his hand shows that his authority still grows, he is not finished learning.\n\nThis card is an invitation to act as the person in charge of your own life. Make the decision you have been delegating to other people's opinions. Set the standard, then hold it. Fire needs direction, so he works from a plan, not a mood. If you are dealing with a man like this, look for follow-through. Big visions are impressive, but the proof is in what he finished last year.",
+    "reversed": "Reversed, the King is a tyrant or a flake. He may be a controlling manager who takes credit, or someone who promises a grand vision and delegates the tedium to everyone else. In your own behaviour, it can show impatience with people who move slower than you, or a refusal to listen to feedback.\n\nIt can also point to ineffective leadership: lots of speeches, no decisions. If this describes you, slow down and ask your team what they need. If it describes someone else, protect your time and keep records of what they agreed to.",
+    "love": "Single, you may attract confident, driven people. Check whether his ambition makes room for you or treats you as a supporting role. You might also be the one leading, so say what you want early. In a relationship, the King values loyalty, honesty and shared goals, but he can steamroll small preferences, so speak up on the restaurant, not just the big decisions. With an ex, a chance of reconnecting exists if he has changed, which is shown by behaviour, not apology speeches.",
+    "career": "Step into leadership, formal or not. Run the meeting, own the project, negotiate the terms. People will follow clear direction, so state the goal and the deadline. For money, the King suggests business sense and the ability to build something lasting: back your own venture, think about long-term revenue rather than a flash sale, and get advice from someone who has done it before. Decisions made this month carry weight, so make them deliberately.",
+    "yesNo": "yes",
+    "yesNoText": "Yes. The King of Wands favours decisive, confident action, and usually points to success if you take charge and follow through. Reversed, the answer turns to no or wait: ego, poor planning or controlling behaviour could undermine the plan, so adjust the approach before you proceed.",
+    "melissaLine": "Stop waiting for permission from people who are not in charge of your life, and make the call yourself."
+  },
+  {
+    "slug": "ace-of-cups",
+    "name": "Ace of Cups",
+    "metaDescription": "Ace of Cups tarot card meaning: upright, reversed, love and yes or no. A new emotional beginning, and how to receive it.",
+    "intro": "The Ace of Cups is an emotional beginning. A hand comes out of a cloud holding a gold cup that overflows with five streams of water into a pond of lilies, while a white dove drops a small wafer into the cup. Something is being poured into your life that you did not have to earn. It asks only that you receive it.",
+    "keywordsUpright": [
+      "new love",
+      "compassion",
+      "overflowing joy",
+      "intuition",
+      "creativity"
+    ],
+    "keywordsReversed": [
+      "emotional blockage",
+      "numbness",
+      "repressed feelings",
+      "emptiness",
+      "creative block"
+    ],
+    "upright": "A feeling is arriving and it is warm. It might be a new love, the first week of a friendship that clicks, or a quieter thing: noticing that you laughed properly for the first time in months. The cup is already overflowing, so nobody is asking you to produce emotion on cue. It is just there.\n\nThe discomfort is that receiving feels harder than giving for many people. When someone offers kindness, you reply with a joke or a deflection. The Ace asks you to stay in it for a moment. Say yes to the invite, accept the compliment, let yourself fancy someone without immediately wondering what is wrong with him. It can also be a creative opening: the journal entry that starts honest and goes somewhere unexpected. Feel first and analyse tomorrow.",
+    "reversed": "Reversed, the cup is blocked or tipped over. You may be numb after a hard stretch, finding it hard to feel excitement even when good things happen. Or you are pouring everything into someone else and have nothing left, or holding back affection because the last time you opened up it backfired.\n\nIt can also point to an emotional beginning that falls flat: a lovely first date with no second one, or a reconciliation that does not hold. The task is not to force a feeling. Tend to the basics first: sleep, food, one honest conversation with a friend, and let warmth come back at its own pace.",
+    "love": "Single, a new emotional opening is available. It might be a person, but it is also your own readiness to be moved by someone. Say yes to the introduction and be warm without over-planning. In a relationship, the Ace brings renewal: a gesture of affection, an honest conversation that clears the air, or news of a move, an engagement or a baby. With an ex, it may be a gentler feeling without the old drama, or the first sign you have actually moved on. Notice who makes you feel at ease.",
+    "career": "Work that feels emotionally meaningful appears: a role in a field you care about, a creative project that excites you, or a colleague who actually becomes a friend. Follow what energises you. For money, this card is more about generosity and gifts than hard returns, such as a bonus or a small windfall. Do not ignore the practicals, but allow yourself to value work that feels like it matters.",
+    "yesNo": "yes",
+    "yesNoText": "Yes. The Ace of Cups is one of the most positive cards for love, kindness and new beginnings. It supports questions about feelings and connection. Reversed, the answer softens to not yet: you may be emotionally closed, or the offer is real but you are not ready to receive it.",
+    "melissaLine": "Let the good thing in without checking it for flaws first, because you can always be sensible tomorrow."
+  },
+  {
+    "slug": "two-of-cups",
+    "name": "Two of Cups",
+    "metaDescription": "Two of Cups tarot card meaning: upright, reversed, love and yes or no. Mutual attraction, partnership and a fair exchange.",
+    "intro": "The Two of Cups is the card of two people meeting halfway. A man and woman, both wearing wreaths, face each other and raise their cups as if making a toast or a promise. Between them floats a winged lion's head above a caduceus, a symbol of passion tempered by wisdom. A small house sits on a hill behind them.",
+    "keywordsUpright": [
+      "partnership",
+      "mutual attraction",
+      "connection",
+      "unity",
+      "harmony"
+    ],
+    "keywordsReversed": [
+      "imbalance",
+      "broken communication",
+      "disconnection",
+      "one-sided",
+      "tension"
+    ],
+    "upright": "This is mutual attraction with actual reciprocity. Both people lean in; neither is chasing. It is the date where the conversation runs two hours past the table being cleared, the friend who texts back as quickly as you do, the business partner who matches your effort. The lion above them says the chemistry is physical as well as emotional, but the caduceus hints at balance.\n\nThe card also reminds you that partnership means both people pour. If you are always the one adjusting, reaching out and planning, the Two is a mirror asking where the other cup is. Equal footing does not mean identical effort every day, but across a month, the exchange should feel even. Say what you want, listen to what they say back, and do not make up the rest in your head.",
+    "reversed": "Reversed, the exchange is off balance or has broken. One person is invested and the other is polite. You might see it as a connection that fizzled after a promising first fortnight, a friendship where only you ever make plans, or a partnership with unspoken resentment about money or housework.\n\nIt can also show a fight that needs repair, or a relationship with yourself that is neglected. Notice the pattern: who texts first, who apologises, who compromises. Awareness of the imbalance comes before any fix, and sometimes the honest conclusion is that the cup was never going to be filled from the other side.",
+    "love": "Single, a meaningful connection is possible, and it will feel mutual rather than exhausting. If you keep meeting people who are lukewarm, ask why you tolerate it. In a relationship, this is a strong card for harmony, a renewed commitment and honest communication. With an ex or situationship, it asks whether the feeling is truly mutual or whether you are lending enough warmth for both people. Clarity is simple: you are not guessing whether they like you. They have said so, with their actions.",
+    "career": "Partnerships and collaboration thrive. This is a good moment to team up with a colleague, agree a business arrangement or pitch jointly. Make the terms clear on paper, including who does what. For money, shared accounts, joint ventures and fair splits come into focus. If one side is giving significantly more, discuss the balance now, kindly, before resentment sets in.",
+    "yesNo": "yes",
+    "yesNoText": "Yes. The Two of Cups strongly favours mutual agreements, relationships and cooperation. It says both sides are willing. Reversed, the answer becomes no or not equally: one party is less committed, or communication has broken down and needs repair before anything moves.",
+    "melissaLine": "If you are the only one reaching, that is not a connection, so look for the person who meets you halfway."
+  },
+  {
+    "slug": "three-of-cups",
+    "name": "Three of Cups",
+    "metaDescription": "Three of Cups tarot card meaning: upright, reversed, love and yes or no. Friendship, celebration and the people who know you.",
+    "intro": "The Three of Cups is a toast among friends. Three women in flower crowns dance in a circle with their cups raised high, with pumpkins, grapes and fruit scattered at their feet from a good harvest. Nobody is performing for anyone. It is joy that exists because the right people are in the same place.",
+    "keywordsUpright": [
+      "friendship",
+      "celebration",
+      "community",
+      "joy",
+      "support"
+    ],
+    "keywordsReversed": [
+      "gossip",
+      "isolation",
+      "overindulgence",
+      "cancelled plans",
+      "third party"
+    ],
+    "upright": "Think of the group dinner that goes on until the restaurant stacks the chairs, the hen do that is genuinely fun, the Sunday when four friends sit on one sofa and nobody checks their phone. This card is about friendship, community and celebration with people who know you. It is about being known, not being impressive.\n\nIt arrives when you need to remember that your life is bigger than one relationship or one job. If you have been cancelling plans to focus on someone who gives you very little, the Three nudges you back towards your people. Reply to the invitation. Organise something small: a pizza night, a walk. A harvest also implies work was done, so the party celebrates actual progress, an engagement or a new job. Joy shared with others tends to double rather than divide.",
+    "reversed": "Reversed, the party is spoiled. This could be gossip in the friend group, a friend who is jealous of your good news, or a social scene that has started to feel like an obligation. It can show isolation, when you scroll through everyone's photos and feel on the outside.\n\nIt can also show overindulgence: the third night out in a row, the spending that follows. Look at the quality of your circle, not the quantity. One friend who answers honestly is worth ten who like your post. If you have been avoiding people, send one message, small and easy.",
+    "love": "Single, you are likely to meet someone through friends, a wedding, a group trip or a shared hobby. Say yes to invitations that you would normally skip. In a relationship, the Three suggests celebration: an engagement, a joyful holiday, a couple that is fun with others. Check that you still have your own friends. With an ex or situationship, be wary of the third person: a mutual friend, a flirtation that blurs boundaries, or a social circle that complicates matters. Keep confidences private.",
+    "career": "Teamwork flourishes. Collaboration is rewarded, particularly in creative or social settings. Say yes to the team lunch, mention colleagues in your wins and celebrate small targets. For money, share the load: split costs, pool resources, and be open about contributions. A good reputation within your network could bring an opportunity this month. Reply to the LinkedIn message you have been ignoring.",
+    "yesNo": "yes",
+    "yesNoText": "Yes. The Three of Cups is a joyful, social card that favours celebration, support and shared success. It leans positive for most questions. Reversed, the answer turns to no or not now, with gossip, overindulgence or tension among friends clouding the picture.",
+    "melissaLine": "Text the friends you keep meaning to see, because one person was never meant to be your whole social life."
+  },
+  {
+    "slug": "four-of-cups",
+    "name": "Four of Cups",
+    "metaDescription": "Four of Cups tarot card meaning: upright, reversed, love and yes or no. Boredom, apathy and the offer you have not noticed.",
+    "intro": "The Four of Cups is the card of the person who does not see the gift. A young man sits cross-legged under a tree, arms folded, staring at three cups lined up in front of him. A hand reaches from a cloud holding a fourth cup. He has not noticed it. He is bored, or stuck in his own head.",
+    "keywordsUpright": [
+      "apathy",
+      "contemplation",
+      "boredom",
+      "discontent",
+      "reevaluation"
+    ],
+    "keywordsReversed": [
+      "new interest",
+      "acceptance",
+      "motivation",
+      "awareness",
+      "moving on"
+    ],
+    "upright": "You are not exactly sad, you are flat. The invitations come and you feel nothing. The job is fine, the relationship is fine, the weekend is blank, and everything is mildly disappointing. The Four describes apathy, discontent and contemplation. The three cups are what you already have, which you have started to take for granted, and the fourth is a new offer you are too distracted to see.\n\nSometimes the withdrawal is useful. Your system may need quiet after a long push, and sitting under the tree is a legitimate pause. The risk is that the pause turns into a habit of dismissing everything. Look up. Say yes to one thing that you would normally turn down, whether it is dinner with a friend or a coffee with an old colleague. If nothing appeals, ask what you are avoiding by staring at the three.",
+    "reversed": "Reversed, the stupor lifts. You notice the cup. This could be a sudden spark of interest after months of flatness, an acceptance of an offer you almost refused, or the end of a sulky phase. It can also mean you are motivated by restlessness or boredom, leaping at the next shiny thing before checking if it fits.\n\nUse the renewed interest, but be selective. Say yes to what excites you after a night of sleep, not at the first push of loneliness at 10pm. And take note of what the flat period was telling you, since often it signals that something in your life needs adjusting.",
+    "love": "Single, you might be turning down perfectly decent people because nobody gives you butterflies. Check whether that is discernment or fear. In a relationship, boredom or emotional distance may have crept in, the quiet kind where you eat dinner in front of separate screens. Say it to your partner rather than letting resentment build. With an ex or situationship, you might be daydreaming about what could have been rather than noticing what is available. Ask what you want, as opposed to what you are missing.",
+    "career": "You may feel bored, uninspired or undervalued at work. Do not quit in a fit of dullness, but do take it seriously: what part of the job has gone dead, and what would make it interesting? Notice offers around you, from a colleague, a recruiter or a side project. For money, review recurring costs and see whether stagnation is costing you. Small experiments beat dramatic exits.",
+    "yesNo": "no",
+    "yesNoText": "Leaning no for now. The Four of Cups reflects apathy and dissatisfaction, so it suggests the time or the offer is not right, or you are not engaged. Reversed, it turns toward yes: a fresh offer is noticed and you are ready to accept it.",
+    "melissaLine": "You are not bored of life, you are bored of the same three things, so say yes to something new this week."
+  },
+  {
+    "slug": "five-of-cups",
+    "name": "Five of Cups",
+    "metaDescription": "Five of Cups tarot card meaning: upright, reversed, love and yes or no. Grief, regret and what is still standing.",
+    "intro": "The Five of Cups is the card of mourning what spilled. A figure in a black cloak stands with head bowed over three overturned cups and their dark liquid. Behind, unseen, two upright cups still stand full. A river runs in the foreground, with a bridge and a small house in the distance.",
+    "keywordsUpright": [
+      "loss",
+      "regret",
+      "grief",
+      "disappointment",
+      "mourning"
+    ],
+    "keywordsReversed": [
+      "acceptance",
+      "moving on",
+      "forgiveness",
+      "recovery",
+      "finding peace"
+    ],
+    "upright": "Something went wrong and you cannot stop looking at it. The relationship that ended, the offer that fell through, the thing you said at the party and have replayed since Saturday. Grief and regret are legitimate, and the black cloak suggests no one is asking you to pretend otherwise.\n\nBut the figure has his back to the two cups still standing. That is the hard truth in this card. Staying with the loss is natural, until it is the only thing in view. You do not have to cheer up. You only need to turn around eventually, at your own speed, and see what survived: the friend who checked in, the savings, your own competence. The bridge and the house show that there is a way across when you are ready. Do not hurry, but do not make a home in the sadness.",
+    "reversed": "Reversed, you begin to turn around. The grief softens, forgiveness becomes possible, and you notice the cups you were not looking at. This can be the first morning you did not think about him first. It can also show a stuck grief that will not shift, or one you bury under busyness and holiday bookings.\n\nIf you are recovering, do not rush yourself with a forced reinvention. If you are stuck, find someone to talk to, as a friend or a counsellor, because rehearsing it alone in your head has stopped helping. Acceptance is quieter than most people expect.",
+    "love": "Single, you may be carrying a past heartbreak into every new conversation, so new people are measured against someone who is gone. Mourn it properly and let your shoulders drop. In a relationship, the card points to disappointment or an old wound rising, perhaps over a betrayal, or what the relationship is not. Talk it through. With an ex, it is the card of ending, of looking at the empty seat and wishing. The cups still standing include your own self-respect.",
+    "career": "A setback is stinging: a rejected application, a missed promotion, a project that collapsed. Allow a short, honest period of disappointment, then take an inventory of what you learned and what is still intact. For money, a loss may have occurred, so review without blame and rebuild a plan. Ask for feedback on the rejection, as it is often more useful than the offer would have been.",
+    "yesNo": "no",
+    "yesNoText": "Leaning no. The Five of Cups reflects loss, regret and disappointment, so it generally points to an unfavourable answer, or one that needs grief first. Reversed, it eases towards maybe: you are recovering, noticing opportunities and ready to take a different path.",
+    "melissaLine": "You can grieve what spilled and still turn around, because two cups are standing and they will not wait forever."
+  },
+  {
+    "slug": "six-of-cups",
+    "name": "Six of Cups",
+    "metaDescription": "Six of Cups tarot card meaning: upright, reversed, love and yes or no. Nostalgia, old friends and the pull of the past.",
+    "intro": "The Six of Cups is a card of childhood and sweetness. In a quiet village square, a small boy offers a cup full of white flowers to a smaller girl, with five more cups of flowers around them. An older figure walks away in the background. It is nostalgia, innocence and kindness, with a small ache of time having passed.",
+    "keywordsUpright": [
+      "nostalgia",
+      "childhood",
+      "reunion",
+      "innocence",
+      "memories"
+    ],
+    "keywordsReversed": [
+      "living in the past",
+      "idealising",
+      "stuck",
+      "moving forward",
+      "leaving home"
+    ],
+    "upright": "The past is knocking, usually gently. It could be an old friend messaging out of nowhere, a song that puts you back in a car in 2014, or the smell of your grandmother's hallway. This card concerns memory, loyalty and affection that began long ago. It can also bring a reunion, a return to your hometown or a childhood hobby.\n\nThere is comfort here and a few risks. Nostalgia edits out the bad parts: the ex you remember fondly was also the one who forgot your birthday. Enjoy the sweetness but check the full picture. The card also asks you to be gentle with yourself. What did that child version of you need that nobody gave? Often kindness to your younger self shows up as small acts: eating the cereal you loved, calling the one cousin you actually like.",
+    "reversed": "Reversed, you are stuck in the past or finally leaving it. You might be comparing every new relationship to a golden year that never was, scrolling a former partner's profile, or keeping a childhood grievance alive. It can also show you refusing to grow up, avoiding adult responsibilities with a romantic story about how things used to be.\n\nSometimes it signals that the past must be faced rather than avoided: a family issue, old patterns repeating. Honour what was good, name what was not, and then stop living in the photo album.",
+    "love": "Single, someone from your past, or someone who feels strangely familiar, may reappear. Do not assume it is fate: ask what is missing now. In a relationship, the Six invites tenderness: revisit where you met, share old photos, plan something playful. With an ex, the temptation is high. Notice if you miss the person or the age you were with them. Longing for the feeling is not the same as wanting the reality. Sweetness is valid, but check it against the way things ended.",
+    "career": "Past contacts, former employers or old skills may return to help you. A previous colleague could recommend you, or a first job offers a lesson. Reconnect with your network. In creative work, childhood interests may spark ideas. For money, look at old accounts, forgotten pensions or lapsed payments. Do not stay in a role merely because it is comfortable and familiar, however, as nostalgia can be an expensive reason.",
+    "yesNo": "yes",
+    "yesNoText": "Yes, gently. The Six of Cups is positive in a soft way, favouring kindness, reunions and familiar comforts. It suits questions about the past and home. Reversed, the answer leans no: you may be clinging to an idealised memory or avoiding the present.",
+    "melissaLine": "Enjoy the memory, but remember it has been edited, so ask whether you miss the person or just being twenty."
+  },
+  {
+    "slug": "seven-of-cups",
+    "name": "Seven of Cups",
+    "metaDescription": "Seven of Cups tarot card meaning: upright, reversed, love and yes or no. Too many options, and which of them are real.",
+    "intro": "The Seven of Cups is a dreamlike menu of options. A shadowed figure faces seven cups floating in a cloud, each holding something different: a face, a veiled shape, a snake, a castle, jewels, a laurel wreath and a dragon. Nothing is solid. All of it is tempting, and it is impossible to tell which are real.",
+    "keywordsUpright": [
+      "choices",
+      "fantasy",
+      "illusion",
+      "daydreaming",
+      "temptation"
+    ],
+    "keywordsReversed": [
+      "clarity",
+      "making a choice",
+      "reality check",
+      "overwhelm",
+      "escapism"
+    ],
+    "upright": "You have too many ideas and not enough evidence. Maybe you are daydreaming about five different careers, three possible apartments and the guy who has not replied. The cups are fantasies, wishes and illusions, and a few are traps. The snake and dragon are in there with the treasure.\n\nThe card is not telling you to stop dreaming. Dreaming is how you discover what you want. It is asking for a reality check: which of these could you actually start on Monday? Write a list of the cups and put one concrete next step beside each. Anything that cannot get a step is probably a fantasy. Be wary of choices that rely on the other person becoming someone else, and of plans that exist only in your head at 2am, in the Notes app.",
+    "reversed": "Reversed, the fog clears. You realise which options are fantasy, and choose. This can be a relief, a decision made after months of dithering. It can also show someone overwhelmed by choice, or caught in escapism: watching three series, shopping online, doing anything but facing the decision.\n\nOften the reversed Seven is the moment of clarity after a disappointment, when you stop imagining a person into who you wanted him to be. Pick the cup that is practical and honest, even if it is the least glamorous. It is better to start something real than to admire ten ideas.",
+    "love": "Single, you may be idealising a person based on a few messages, a profile or a single good night. Ask for facts: what does he do on a normal Tuesday? In a relationship, the card can show wandering attention or wondering what else is out there. Look at the cause honestly. With an ex or situationship, beware of the potential version of him rather than the current one. Choose the person who shows up, not the person you imagine on your best day.",
+    "career": "Options are plentiful and unclear: several job offers, side projects, tempting ventures. Sort them with criteria: pay, future prospects, hours, who you would be working with. Beware of promises that sound too good, especially investments or get-rich-quick schemes. For money, resist spreading yourself over too many pots. Pick two priorities, set a deadline for deciding, and discard the rest without drama.",
+    "yesNo": "maybe",
+    "yesNoText": "Maybe. The Seven of Cups shows many possibilities but little certainty, so the honest answer is not yet clear. Check which options are real. Reversed, it moves toward a decision: clarity arrives and you can say yes or no based on facts rather than hopes.",
+    "melissaLine": "Daydream all you like, but anything that cannot be given a Monday morning next step is a fantasy and should be labelled as one."
+  },
+  {
+    "slug": "eight-of-cups",
+    "name": "Eight of Cups",
+    "metaDescription": "Eight of Cups tarot card meaning: upright, reversed, love and yes or no. Walking away from something that looks fine on paper.",
+    "intro": "The Eight of Cups is the card of leaving something that looks perfectly fine. A figure in a red cloak, carrying a staff, walks away from eight neatly stacked cups towards dark mountains under a moon with a face in it. The cups are not broken or empty. He is going anyway, at night, on his own.",
+    "keywordsUpright": [
+      "walking away",
+      "disillusionment",
+      "searching",
+      "leaving",
+      "deeper meaning"
+    ],
+    "keywordsReversed": [
+      "staying put",
+      "fear of leaving",
+      "drifting",
+      "avoidance",
+      "indecision"
+    ],
+    "upright": "On paper it all works: the relationship is steady, the job pays on time, and you have a nice flat. Yet something is missing, and you know it. The Eight is the quiet decision to walk away not because of a disaster, but because you want something deeper. The gap in the stack of cups shows that there is a missing piece, and he is looking for it.\n\nLeaving is brave and lonely. Nobody applauds you for ending a perfectly reasonable situation, and people will ask what was wrong. You can answer that nothing was wrong enough, and it was still not right. Do it deliberately: sort out the money, tell the people who deserve to hear it from you, and don't leave in a fit of drama. The moon says this is an inner, emotional pull, so trust the longing, then plan the route.",
+    "reversed": "Reversed, you stay when you should go, or go and cannot stop going. You might be hanging around in a relationship out of fear of being alone, or a job you dislike because the pension looks good. Or you keep leaving: moving cities, ending friendships, switching courses, hoping the next one will fix a restlessness that travels with you.\n\nAsk what you are running towards, not just away from. If you have been indecisive for a year, you have already collected the evidence. And if you walked away recently, expect a wobble in the first month. That is withdrawal, not necessarily a mistake.",
+    "love": "Single, you may be stepping away from a pattern: the same type, the same dating app, the same flat-footed situationship. Good. Take a break and find out who you are when you are not being chosen. In a relationship, the card asks whether you are staying out of love or out of habit. Have the honest conversation before you pack. With an ex or situationship, it confirms the sense that you have outgrown it. Closure comes from your own decision, not his permission.",
+    "career": "You might be ready to leave a role that looks good but feels hollow. Before you resign, line up a plan: savings for three months, a few conversations with people in the field you want, a CV updated. Walk away on purpose, not out of spite. For money, simplify. Cut the expenses that tie you to a lifestyle you no longer want, as this makes leaving less frightening.",
+    "yesNo": "no",
+    "yesNoText": "Leaning no to staying, yes to moving on. The Eight of Cups usually answers no to continuing as things are, because something is lacking. Reversed, the answer changes to stay or wait: fear, hesitation or uncertainty is holding you in place.",
+    "melissaLine": "If everything is technically fine and you still feel quietly absent, that is information, not ingratitude, and it deserves a proper plan."
+  },
+  {
+    "slug": "nine-of-cups",
+    "name": "Nine of Cups",
+    "metaDescription": "Nine of Cups tarot card meaning: upright, reversed, love and yes or no. The wish card: contentment, and what to do with it.",
+    "intro": "The Nine of Cups is the wish card. A well-fed man in a red hat sits on a wooden bench with his arms crossed, looking pleased with himself, while nine golden cups are lined up on a shelf behind him under a blue cloth. He has what he wanted, and he knows it.",
+    "keywordsUpright": [
+      "wishes granted",
+      "contentment",
+      "satisfaction",
+      "gratitude",
+      "comfort"
+    ],
+    "keywordsReversed": [
+      "dissatisfaction",
+      "smugness",
+      "overindulgence",
+      "hollow success",
+      "unfulfilled wishes"
+    ],
+    "upright": "Something you wanted has arrived, and the card says to enjoy it without apology. It might be the flat you finally got, the pay rise, a table of friends who adore you, or a smaller satisfaction: a Sunday where nothing needed doing and everything was fine. The cups behind him are displayed, because gratitude is better when it is visible.\n\nThere is a small catch. His crossed arms and smug expression point to contentment that can become self-satisfaction. Check whether what you wished for is what you wanted, rather than what looked good on an Instagram grid. Satisfaction that depends on showing it to others is thin. Savour it privately too. Also notice if you have the habit of immediately raising the bar: this card says stop, look at the shelf, and let the win be enough for a bit.",
+    "reversed": "Reversed, the wish falls short. You got it and it is not as satisfying as you pictured, or you are chasing pleasure to avoid noticing something is missing. It can show overindulgence: the third glass, the unnecessary order, the shopping that dulls the feeling for an hour.\n\nIt can also show smugness or a need for external approval. Ask what you really want underneath the thing you wished for. If the answer is rest, reassurance or connection, no extra cup will provide it. Fix the real need and the pleasure becomes pleasure again.",
+    "love": "Single, you are content and attractive for it, and a relationship would be a bonus rather than a rescue. Keep that. Be wary of waiting for someone to complete the picture. In a relationship, the card shows emotional satisfaction, deep appreciation and enjoyment of each other's company. Say thank you out loud. With an ex or situationship, you may finally have what you wanted: the apology, the clarity. Ask honestly whether you still want him, or whether you wanted to be proven right.",
+    "career": "Your efforts are acknowledged and rewarded. Fulfilment at work is available: a result you are proud of, a role that suits you, or a comfortable financial position. Accept the thanks and write down what made it work so you can repeat it. For money, enjoy it sensibly: treat yourself within reason, put some aside, and avoid overspending to display your success.",
+    "yesNo": "yes",
+    "yesNoText": "Yes. The Nine of Cups is known as the wish card and it strongly favours a positive answer, especially for matters of happiness, comfort and satisfaction. Reversed, the answer softens to maybe, or yes with disappointment: the result may not be as fulfilling as hoped.",
+    "melissaLine": "You got something you wanted, so sit with it for a minute before you start asking what is next."
+  },
+  {
+    "slug": "ten-of-cups",
+    "name": "Ten of Cups",
+    "metaDescription": "Ten of Cups tarot card meaning: upright, reversed, love and yes or no. Lasting happiness, home and the ordinary good life.",
+    "intro": "The Ten of Cups shows a happy ending drawn in primary colours. A couple stands with their arms around each other, one arm raised, while two children dance beside them. Above is a rainbow of ten cups, and beyond lies a modest house by a river. Nothing here is glamorous. It is just a good life with people in it.",
+    "keywordsUpright": [
+      "family",
+      "harmony",
+      "fulfilment",
+      "happy home",
+      "lasting love"
+    ],
+    "keywordsReversed": [
+      "family conflict",
+      "broken home",
+      "disconnection",
+      "unrealistic expectations",
+      "keeping up appearances"
+    ],
+    "upright": "This is the card of emotional fulfilment: a home that feels like home, a family you chose or were born into, a relationship that is steady and kind. It is the Sunday lunch that goes on too long, the in-jokes nobody else gets, and the sense of being known. The house is small and the point is that it does not need to be anything else.\n\nIt does not always involve children or a wedding. A group of close friends or a quiet life with someone you trust can match it. If you are in the middle of building this, the card says you are on the right path. If you are thinking it is cheesy, notice if you are scared of wanting it. A life of lasting love is a worthy goal, and it is allowed to be ordinary.",
+    "reversed": "Reversed, the picture is cracked. A family argument turns up at Christmas, a household feels tense, or a relationship has the look of a happy couple online and a very different reality behind the front door. It can show the cost of keeping up appearances.\n\nIt may also show unrealistic expectations. Perfect harmony does not exist, and measuring your home against someone else's photos leaves you disappointed. Look at what is actually off: a conversation avoided, a promise broken, a need unspoken. Repair is possible when both people tell the truth, even in the car on the way back from the in-laws.",
+    "love": "Single, you are ready for a love that is stable and kind, not dramatic. Do not mistake calm for dull. In a relationship, it is among the best cards: lasting happiness, shared values, perhaps a move, an engagement or a family milestone. Do small things to protect it, like phones away at dinner. With an ex or situationship, it asks if there is a real future with a shared picture of life, or just a dream attached to old memories. Both people should be able to describe the same house.",
+    "career": "A workplace that feels like part of your life rather than its enemy. Pride in shared results, a team that works well, and satisfaction in what you do and who you do it with. Aim for roles that fit the life you want, not just a title. For money, long-term security is well supported: savings, property or family finances in good order. Talk to those close to you about plans so everyone is working towards the same picture.",
+    "yesNo": "yes",
+    "yesNoText": "Yes, resoundingly. The Ten of Cups is one of the happiest cards in the deck, pointing to emotional fulfilment, harmony and lasting happiness. It supports questions about love, family and home. Reversed, the answer becomes yes after repair, or not yet: tension or unrealistic expectations need addressing first.",
+    "melissaLine": "Wanting a quiet, happy, ordinary life with people you love is not boring, it is the whole point."
+  },
+  {
+    "slug": "page-of-cups",
+    "name": "Page of Cups",
+    "metaDescription": "Page of Cups tarot card meaning: upright, reversed, love and yes or no. Tender messages, creative surprises and gentle feelings. Read on.",
+    "intro": "The Page of Cups is gentle, curious and slightly surreal. A young person in a blue tunic patterned with water lilies stands by the sea, holding a cup from which a small fish pops its head, as if to say hello. Nobody in the picture finds this strange. It is the card of tender feelings and creative surprises.",
+    "keywordsUpright": [
+      "sensitivity",
+      "creativity",
+      "sweet messages",
+      "intuition",
+      "curiosity"
+    ],
+    "keywordsReversed": [
+      "moodiness",
+      "immaturity",
+      "emotional insecurity",
+      "creative block",
+      "hollow promises"
+    ],
+    "upright": "A message arrives that makes your stomach go warm. It could be a sweet text from someone you like, an unexpected invitation, or news of a pregnancy or engagement. The Page also describes a sensitive, imaginative person: a younger friend who writes poetry, or the part of you that cries at adverts and thinks that is fine.\n\nThe fish is a nudge from your subconscious: pay attention to odd ideas, dreams and impulses that surface when you are quiet. Write them down. Try the art class, the poem, the playlist for one specific person. The risk is naivety: believing everything someone says because it was delivered nicely. Let the feeling be sincere without letting it make decisions alone. Be open and a little curious, and check that the actions match the words.",
+    "reversed": "Reversed, emotional immaturity creeps in. Moodiness, sulking, overreacting to a text left on read, or using a sad story to get attention. It can show creative block, or ignoring your intuition because it is inconvenient. Sometimes it indicates a message that disappoints: the sweet promise that turns out hollow.\n\nTry to name the feeling accurately, rather than the dramatic version. Am I sad or just tired? Hurt or embarrassed? If you are dealing with someone who is emotionally changeable, believe their pattern over their latest mood. Sensitivity is a strength when it is steady.",
+    "love": "Single, a tender new interest could appear, perhaps a shy message or a soft first date. Respond kindly and go slowly. In a relationship, bring back sweetness: a handwritten note, a playlist, a silly photo. Say what you feel in plain language. With an ex or situationship, a nostalgic text may arrive, charming and inconclusive. Enjoy it, but ask what he wants. Romantic words are lovely, and plans are better. A person who is sincere will not mind being asked, and a person who sulks about it has told you something.",
+    "career": "A creative, emotionally meaningful opportunity opens up. It might be a new idea, an offer from an unexpected place or a mentor who sees your sensitivity as an asset. Keep a notebook or voice memo of ideas. For money, remain practical: dreamy projects need a budget. Start small, test an audience and listen to feedback without taking it as a verdict on your worth.",
+    "yesNo": "yes",
+    "yesNoText": "Yes, softly. The Page of Cups is a gentle, hopeful card that favours sincere offers, creative ideas and emotional openness. It is not a promise of results. Reversed, the answer turns to maybe or no: immaturity, mood swings or hollow promises make it less reliable.",
+    "melissaLine": "Notice the small odd idea that keeps surfacing, because it is probably more honest than the sensible plan you made."
+  },
+  {
+    "slug": "knight-of-cups",
+    "name": "Knight of Cups",
+    "metaDescription": "Knight of Cups tarot card meaning: upright, reversed, love and yes or no. Romance, charm and how to tell a gesture from a promise. Read on.",
+    "intro": "The Knight of Cups rides slowly. A knight in silver armour, with wings on his helmet and boots, sits on a pale horse that walks calmly, holding a cup out in front of him like an offering. Behind him are a quiet river and trees. He is the romantic, the charmer, the one who arrives with a proposal and a poem.",
+    "keywordsUpright": [
+      "romance",
+      "charm",
+      "invitation",
+      "idealism",
+      "imagination"
+    ],
+    "keywordsReversed": [
+      "moodiness",
+      "unrealistic",
+      "disappointment",
+      "false promises",
+      "jealousy"
+    ],
+    "upright": "He arrives with an invitation: dinner, a trip, a declaration, a job offer that feels personal. The Knight of Cups is the card of romance, charm and following your heart. He is the man who writes a long message about what he feels, remembers your coffee order and plans the evening in detail. He might also be you when you are acting from sentiment and imagination.\n\nIt is a gorgeous card and it requires a little scepticism. The horse is walking, not galloping, so the pace should be thoughtful, and the cup is held out but not yet handed over. Romance is wonderful when it is backed by consistent behaviour. Say yes to the beauty, and pay attention to what he does when the novelty cools and it is raining on a Wednesday.",
+    "reversed": "Reversed, the charm has a catch. This is the man who says all the right things and cancels; the over-romantic who loves the idea of you; the mood swings of someone who is dreamy and then distant. It can also show disappointment, an offer that falls through, or you retreating into fantasy because real life is a bit dull.\n\nIt may also indicate unrealistic expectations or passive-aggressive sulking. Look for evidence, not atmosphere. A person who is consistent in small ways is more romantic than a person who is lavish in large ones and vanishes in between.",
+    "love": "Single, a charming, romantic person may appear. Enjoy the attention and watch for action, such as turning up when he says he will, or booking the table before you ask. In a relationship, the card asks for romance and emotional honesty: a planned evening, an unexpected note. Say how you feel. With an ex, he might return with a heartfelt message and a poetic apology. Ask what has changed, specifically, and give it time. A beautiful gesture followed by silence is a pattern, not a proposal.",
+    "career": "An offer or invitation arrives that appeals to your values and imagination: a creative role, a mission-driven company, a colleague pitching a joint project. Consider it carefully, because the pitch will sound better than the contract. Ask about pay, hours and expectations. For money, avoid spending on emotion, whether gifts or impulsive trips, and keep a small buffer for romantic ideas. Work that suits your heart can also be practical when you check the numbers.",
+    "yesNo": "yes",
+    "yesNoText": "Yes, with care. The Knight of Cups is a positive card of offers, romance and invitations, so it generally leans yes. Check substance against charm. Reversed, the answer shifts to no or maybe: the offer may be insincere, unreliable or built more on feeling than on facts.",
+    "melissaLine": "Enjoy the romance, but judge him on what he does on an ordinary Tuesday, not on how beautifully he talks."
+  },
+  {
+    "slug": "queen-of-cups",
+    "name": "Queen of Cups",
+    "metaDescription": "Queen of Cups tarot card meaning: upright, reversed, love and yes or no. Intuition, compassion and keeping your own cup full.",
+    "intro": "The Queen of Cups sits on a carved throne at the edge of the sea, with the waves washing at her feet. She holds an ornate, closed chalice topped with a cross and decorated with angels, and gazes at it intently. She is intuition and compassion, and she keeps her depth to herself until she trusts you.",
+    "keywordsUpright": [
+      "compassion",
+      "intuition",
+      "emotional maturity",
+      "nurturing",
+      "calm"
+    ],
+    "keywordsReversed": [
+      "overwhelm",
+      "martyrdom",
+      "emotional insecurity",
+      "codependency",
+      "moodiness"
+    ],
+    "upright": "She is the friend who knows what is wrong from the way you said hello. The Queen of Cups is emotionally mature, compassionate and intuitive. She listens without rushing to fix, and her feelings are deep but not chaotic. The cup is closed, which means she does not pour herself into everyone. She chooses who gets the inside.\n\nThis card invites you to trust your gut reading of a room and a person. You noticed when the tone changed in the meeting, or the way he did not look up from his phone. You were probably right. It also reminds you to look after your own cup: empathy is a resource, not an infinite supply. Say no to the friend who only calls when she is in crisis. Caring deeply does not mean being available around the clock. Be kind, and be selective.",
+    "reversed": "Reversed, the Queen is overwhelmed, or her feelings are bent out of shape. She may soak up everyone else's mood until she cannot tell hers apart, cry at the supermarket and not know why, or use her sensitivity as a weapon: sulking, guilt-tripping, martyrdom. Intuition can become paranoia when you are exhausted.\n\nProtect your boundaries. Switch off notifications, stop being the group therapist and find your own support. When you read something into a silence, check it with a question rather than a theory. Compassion needs a floor, and yours is currently soaking wet.",
+    "love": "Single, you may be drawn to emotionally deep, kind people, and you offer the same. Be careful not to mother a man who needs fixing. In a relationship, she is a card of tenderness and attunement, with a need for emotional safety. Tell your partner what you need, as you cannot expect him to guess. With an ex or situationship, your feelings may be strong and your boundaries weaker. Compassion for them can continue, without letting them back in. Keep the cup closed until trust is earned.",
+    "career": "Your intuition and empathy are professional skills now: reading clients, calming tense teams, spotting who is upset in the meeting. Suited to caring, creative and counselling roles. Do not become the unpaid emotional support for the whole office. For money, she can be generous to a fault, so check your lending and favours. Put your own wellbeing on the budget before you pay for everyone else's.",
+    "yesNo": "yes",
+    "yesNoText": "Yes, if your heart agrees. The Queen of Cups favours emotional honesty, compassion and intuition, so it leans positive when the choice feels right in your gut. Reversed, the answer turns to maybe or no: confusion, over-giving or drained feelings are clouding your judgment.",
+    "melissaLine": "You are not too sensitive, you are just reading the room accurately in a world that prefers you did not."
+  },
+  {
+    "slug": "king-of-cups",
+    "name": "King of Cups",
+    "metaDescription": "King of Cups tarot card meaning: upright, reversed, love and yes or no. Emotional balance, calm judgement and steady kindness.",
+    "intro": "The King of Cups sits on a stone throne that floats on a rough sea, with a fish leaping on one side and a ship rocking behind. In one hand he holds a cup, in the other a sceptre, and he wears a fish pendant. The water is wild around him. He is calm. He is what emotional steadiness looks like.",
+    "keywordsUpright": [
+      "emotional balance",
+      "diplomacy",
+      "compassion",
+      "calm",
+      "wisdom"
+    ],
+    "keywordsReversed": [
+      "moodiness",
+      "manipulation",
+      "emotional coldness",
+      "suppressed feelings",
+      "volatility"
+    ],
+    "upright": "He feels everything and does not let it run the meeting. The King of Cups is emotional maturity: compassion with boundaries, advice that is kind and practical, and the ability to stay level when other people are thrashing. The throne floats on the sea, which means he lives among emotions without being swallowed by them.\n\nThis card asks you to respond rather than react. Take the fifteen minutes before replying to the infuriating email. Let yourself be moved, then act deliberately. It also describes a person you can lean on: a mentor, a counsellor, a partner who stays calm in an argument. Be careful to check that calm is not a cover for suppression. Real balance includes saying what hurts, plainly, and then listening to the answer.",
+    "reversed": "Reversed, the King loses his footing. He may be emotionally manipulative, moody or cold, using charm to get his own way and silence to punish. It might also describe you bottling feelings until they erupt, or numbing them with work, wine or scrolling.\n\nIf someone is blowing hot and cold, notice that the pattern is the message. If it is you, find an outlet that is not a late-night rant: a long walk, a voice note to nobody, a conversation with someone safe. Stability is built, not announced, and it shows in how you behave when nobody is watching.",
+    "love": "Single, look for emotional steadiness over fireworks: someone who communicates, apologises and does not go cold when things get awkward. You may also be the calm one, so do not tolerate chaos just to be useful. In a relationship, the King brings loyalty and kindness, with the caution not to hide behind composure. Talk about feelings before they leak out sideways. With an ex or situationship, beware charm with no accountability, and trust someone who is straightforward about what he wants.",
+    "career": "Diplomacy and calm pay off. You may be the person colleagues bring problems to, or may need a mentor with that quality. Lead by listening, then decide. Counselling, mediation, teaching and healthcare are favoured. For money, steady and sensible choices win: set aside savings, avoid emotional spending and seek advice from a calm adviser. Keep personal drama out of negotiations, as composure is persuasive.",
+    "yesNo": "yes",
+    "yesNoText": "Yes, thoughtfully. The King of Cups favours wise, balanced decisions made with care for everyone involved, so it leans positive when you have thought it through. Reversed, the answer turns to no or maybe: moodiness, manipulation or suppressed feelings could undermine the outcome.",
+    "melissaLine": "Feel it fully, then wait before you reply, because the calmest person in the room usually gets the best outcome."
+  }
+]

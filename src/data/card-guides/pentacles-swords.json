@@ -1,0 +1,758 @@
+[
+  {
+    "slug": "ace-of-pentacles",
+    "name": "Ace of Pentacles",
+    "metaDescription": "Ace of Pentacles tarot card meaning: upright and reversed, what it says about love, work and money, plus a clear yes or no answer.",
+    "intro": "The Ace of Pentacles is a seed placed in your palm. In the Rider-Waite image a hand reaches out of a cloud holding one gold coin, above a garden with an arch of white flowers and a path leading to distant mountains. It means a real, practical beginning: money, a job, a home, or an opportunity you can actually use.",
+    "keywordsUpright": [
+      "new opportunity",
+      "prosperity",
+      "fresh start",
+      "security",
+      "tangible reward"
+    ],
+    "keywordsReversed": [
+      "missed chance",
+      "poor planning",
+      "false start",
+      "scarcity",
+      "delay"
+    ],
+    "upright": "This is the offer that arrives in writing. A contract with a figure on it, a deposit accepted on the flat, the freelance client who pays an invoice within a week. The Ace is not a fantasy windfall; it is one small, solid thing placed in your hand, and the garden below shows what it is for. The flowered arch and the path through it suggest that the opening leads somewhere, if you walk it.\n\nThe uncomfortable part is that an Ace asks you to act. A coin left in a palm does nothing. If you have been saying you will open the savings account, send the application or book the viewing, this card is the quiet nudge to do it this week, before the enthusiasm cools. Start small, keep the paperwork tidy, and let it build slowly.",
+    "reversed": "Reversed, the coin is dropped or never picked up. It can be the opportunity you let expire because replying felt like effort, the job offer you sat on for nine days, or the money plan that lives in a Notes app list titled Sort finances. It can also warn of a shaky start: an investment tip from someone's cousin, a purchase made at midnight, a business idea with no costings.\n\nThe fix is unglamorous. Check the details, read the small print, and decide whether your delay is caution or avoidance. Be honest about which one it is, because only one of them is a good reason.",
+    "love": "Single, the Ace of Pentacles points at something steady rather than dramatic: the person who turns up on time, remembers your coffee order and suggests an actual date instead of vague plans. It rewards effort in the real world more than a month of messaging. In a relationship it can mean a practical next step, such as moving in, sharing a bank account or finally booking the holiday you keep discussing. With an ex or a situationship, it asks whether there is any concrete foundation, or just habit. Warmth is nice. A plan is better.",
+    "career": "A genuine opening: a job offer, a raise you can negotiate, a first paying client, or a side project that has quietly started to earn. This card favours money you can see in an account over potential. Move on it while it is fresh, ask the boring questions about salary and notice period, and put the first payment somewhere sensible before it disappears into takeaways.",
+    "yesNo": "yes",
+    "yesNoText": "Yes. The Ace of Pentacles is one of the clearest yeses in the deck, especially for money, work and anything practical. It says the chance is real and available now. Reversed, it becomes a not yet or a not like this: the idea may be sound, but the details, timing or follow-through are not.",
+    "melissaLine": "Somebody just handed you something real, so stop admiring it and send the email, sign the form or open the account today."
+  },
+  {
+    "slug": "two-of-pentacles",
+    "name": "Two of Pentacles",
+    "metaDescription": "Two of Pentacles tarot card meaning: upright and reversed, love and career guidance on juggling priorities, plus a maybe-style yes or no answer.",
+    "intro": "The Two of Pentacles is the card of keeping several things in the air at once. A young man in a tall red hat dances while juggling two coins joined by a looping infinity ribbon, and behind him two ships ride enormous waves. It asks how well you are really coping with the load you have taken on.",
+    "keywordsUpright": [
+      "juggling",
+      "balance",
+      "adaptability",
+      "priorities",
+      "flexibility"
+    ],
+    "keywordsReversed": [
+      "overwhelmed",
+      "dropped balls",
+      "disorganised",
+      "overcommitted",
+      "chaos"
+    ],
+    "upright": "You are managing, and the card says so. The juggler is smiling, which matters: this is competent multitasking, the person who handles a part-time job, a degree and a Sunday family lunch without writing anything down. The infinity loop shows the two coins feeding each other, work and rest, spending and saving, one commitment lending you the energy for the next.\n\nBut look at the ships. The waves behind are huge, and he is only coping because his attention stays on the coins. This card appears when your life depends on small, constant adjustments: moving a gym session, shifting a payment date, answering the group chat between meetings. It is a skill, but it is not a plan. Ask which of your two coins is the one you would save if you could only keep one.",
+    "reversed": "Reversed, a coin has hit the floor. You have said yes to the Thursday drinks, the extra shift and your friend's flat-hunting favour, and the diary no longer adds up. Bills get paid on the last possible day, replies sit unsent, and you tell people you are fine in a voice that suggests otherwise.\n\nThe reversal rarely means failure. It means the balancing act has become a pattern that needs rules. Cancel one thing deliberately rather than letting three things collapse by accident, and write the real list down somewhere that is not your head.",
+    "love": "Single, the Two of Pentacles often means you are dating around while also pretending you have no time, so nobody gets a proper chance. Choose who deserves an actual evening. In a relationship it describes two lives being juggled: your schedules, his family, your commute, rent. Fairness matters more than romance here, so say who is carrying more of the admin. With an ex or a situationship, it hints you are keeping them on the side while you decide, which is a coin you are not allowed to keep in the air forever.",
+    "career": "You are carrying more than one project, role or income stream, and you are coping better than you think. The warning is that your attention is the only thing holding it together. Track deadlines in one place, protect one block of focused time per day, and be careful about taking on a second job just because the first pays slowly.",
+    "yesNo": "maybe",
+    "yesNoText": "Maybe. The Two of Pentacles is about options in motion, so the answer depends on whether you can actually carry what you are asking about. If your time and money can stretch, lean yes. Reversed, it leans no for now: you are already overloaded and the extra commitment would be the one that makes everything drop.",
+    "melissaLine": "You are not bad at life, you have just agreed to too many things, so choose which coin you would genuinely keep."
+  },
+  {
+    "slug": "three-of-pentacles",
+    "name": "Three of Pentacles",
+    "metaDescription": "Three of Pentacles tarot card meaning: upright and reversed, how it reads in love and work, plus a clear yes or no answer for you.",
+    "intro": "The Three of Pentacles is the card of work done well with other people. Inside a stone cathedral, a craftsman stands on a bench carving an arch while an architect and a monk hold the plans and watch. Three coins are set into the arch above them. It is about skill, collaboration and getting feedback from people who know more than you.",
+    "keywordsUpright": [
+      "teamwork",
+      "craftsmanship",
+      "collaboration",
+      "skill",
+      "feedback"
+    ],
+    "keywordsReversed": [
+      "poor teamwork",
+      "lack of effort",
+      "ego clashes",
+      "mediocrity",
+      "mismatched plans"
+    ],
+    "upright": "Nothing here is glamorous. The stonemason is up a bench with a chisel while two people compare his work to a drawing, and that is exactly the point: good results come from a skill you have practised and a plan other people have actually read. This card turns up in group projects that go well, in the colleague who tells you the slide deck needs a different order, in the friend who looks at your CV and circles the line that sounds vague.\n\nAccepting feedback is the hard part. The craftsman is standing lower than the other two figures, and he still listens. If you have been working alone on something because asking for a second opinion feels exposing, the Three says that your work will be sturdier once other eyes are on it. Find your architect and let them mark it up.",
+    "reversed": "Reversed, the arch goes up crooked. Someone in the team does not pull their weight, three people have three different ideas of the brief, or you are refusing criticism because you already decided you were right. It can be the group chat where nobody replies until the deadline, or the shared document where one person rewrites everyone else's paragraph at 2am.\n\nThe cure is dull but effective: agree who does what, in writing, and decide whose feedback you will genuinely act on. Quality problems usually trace back to unclear roles rather than a lack of talent.",
+    "love": "Single, the Three of Pentacles suggests someone you meet through shared work, a class or a project, where you see how they behave around others before you ever go on a date. That is useful information. In a relationship it describes building something together: renovating the flat, planning a move, or learning to divide the admin fairly. It rewards the unflashy stuff, like asking each other what is working. With an ex, it says rebuilding only works if both of you pick up the tools, not just one.",
+    "career": "A strong card for work. Your skill is being noticed, a collaboration is going well, or a qualification or apprenticeship is about to pay off. Say yes to the team project, ask for specific feedback from someone senior, and make your contribution visible, even if it feels awkward to point at your own work. Money follows quality here, but slowly, so keep building your portfolio and keep the evidence.",
+    "yesNo": "yes",
+    "yesNoText": "Yes, if you are willing to work with others. The Three of Pentacles favours questions about projects, training and shared goals, because it rewards effort and cooperation. Reversed, the answer slides towards no: the plan lacks agreement, the standard is too low, or someone involved is not committed.",
+    "melissaLine": "You do not need to be brilliant alone, you need to show your work to someone who will tell you the truth."
+  },
+  {
+    "slug": "four-of-pentacles",
+    "name": "Four of Pentacles",
+    "metaDescription": "Four of Pentacles tarot card meaning: upright and reversed, what it says about love, money and control, plus a straight yes or no answer.",
+    "intro": "The Four of Pentacles is the card of holding on tight. A crowned figure sits on a stool in front of a city, with one coin balanced on his head, one clutched to his chest and one under each foot. He is not spending any of it. This card is about security, control and the cost of never loosening your grip.",
+    "keywordsUpright": [
+      "security",
+      "saving",
+      "control",
+      "stability",
+      "possessiveness"
+    ],
+    "keywordsReversed": [
+      "overspending",
+      "generosity",
+      "loosening grip",
+      "greed",
+      "financial risk"
+    ],
+    "upright": "The figure is safe, and he knows it. Four coins mean he has built something, perhaps a decent salary, a deposit in the bank or a routine that works, and he refuses to let any of it slip. Look at his body: arms wrapped round his chest, feet planted on the coins, a crown pinning down another. He is so busy guarding what he has that he cannot reach for anything new.\n\nIn modern life this is the person who has not spent anything on a night out since March, who checks the savings balance before breakfast, who keeps the same job because the pension is decent. Saving is sensible. The card asks whether safety has quietly turned into avoidance, and whether you are controlling money, people or plans because trusting them feels risky.",
+    "reversed": "Reversed, the grip loosens in one of two directions. Sometimes it is healthy: you finally buy the good winter coat, lend a friend money without keeping a mental ledger, or stop treating every spend as a threat. Other times it swings the opposite way: impulse purchases at midnight, a weekend of overspending to prove you are not tight, or a financial mess you have been avoiding opening in your banking app.\n\nBoth versions are about your relationship with control. Notice what you do when you feel anxious, hoard or splurge, and set a simple rule that works for the weeks you are not feeling calm.",
+    "love": "Single, the Four of Pentacles points to guardedness: you keep your guard up, vet people to death and ask for proof of intentions before you have even had a second date. Some caution is wise; a locked door is not. In a relationship it can mean possessiveness, or a partner who tracks money and affection like a budget. With an ex or a situationship, it asks if you are holding on to the idea of someone because the loss feels worse than the reality. Open one hand at a time.",
+    "career": "You value stability, and the card respects it. It often shows a steady wage, careful saving or a boss who guards resources. The risk is stagnation: staying in the same role because change feels expensive, or refusing to share information to protect your position. Review your budget, then ask whether one measured risk, such as a course or a pay discussion, would actually improve your security.",
+    "yesNo": "no",
+    "yesNoText": "Leaning no. The Four of Pentacles favours keeping, protecting and waiting, so it rarely supports leaps, big spends or new ventures. It is a yes for savings and boundaries. Reversed, the answer loosens a little, but be careful: it can mean the money or opportunity is already slipping away through impulse.",
+    "melissaLine": "Safety is allowed, but you are clutching it so hard you cannot hold anything new, so open one hand."
+  },
+  {
+    "slug": "five-of-pentacles",
+    "name": "Five of Pentacles",
+    "metaDescription": "Five of Pentacles tarot card meaning: upright and reversed, how it reads in love, money and hardship at work, plus a plain yes or no answer.",
+    "intro": "The Five of Pentacles is the card of hardship and feeling shut out. Two ragged figures trudge through snow past a glowing stained-glass window, one on crutches, one with a bandaged head, and neither looks up at the lit church beside them. It speaks of money worries, isolation and help that is closer than it looks.",
+    "keywordsUpright": [
+      "hardship",
+      "isolation",
+      "worry",
+      "lack",
+      "need support"
+    ],
+    "keywordsReversed": [
+      "recovery",
+      "help arrives",
+      "improvement",
+      "asking for help",
+      "turning a corner"
+    ],
+    "upright": "This card is the cold bit of winter. It shows up when money is tight enough that you check your balance before buying lunch, when you are ill and still working, or when you feel shut out of something warm that other people seem to enjoy. The two figures walk side by side but not together, each wrapped up in their own misery.\n\nHere is the sharper detail: the church window is lit, and the door is right there. The card does not say help does not exist; it says shame or exhaustion may be stopping you from knocking. That might be telling your landlord you are going to be late, speaking to student finance, or admitting to your friend you are not coping. Practical support usually exists. Pride is often the thing in the way.",
+    "reversed": "Reversed, the snow starts to thin. A payment arrives, a job application gets a reply, or someone says the thing you needed to hear. It can also mean you finally stop pretending, ask for help, and discover that the response was kinder than you feared.\n\nBut the reversal can also warn that the hardship is lasting longer than it has to because you are avoiding it. The unopened envelope on the hallway shelf and the debts you refuse to total up do not go away by being ignored. Take one honest look at the numbers this week.",
+    "love": "Single, the Five of Pentacles can reflect loneliness, or the feeling of watching other people's couples photos from outside the window. It can also point to settling for scraps because you doubt you deserve better. In a relationship it suggests one or both of you feel emotionally cold or financially stretched, and you are suffering separately instead of together. With an ex or situationship, it asks if you are begging for crumbs of attention. Warmth exists, but you may need to walk through a different door.",
+    "career": "Work or money is under strain: redundancy fears, unpaid invoices, hours cut or a wage that does not cover the rent. The card advises you to seek help before it becomes a crisis. Speak to your manager, check what support you qualify for, and call the creditor before they call you. Asking early is easier than explaining later, and most lenders and landlords respond better to a short honest email than to silence.",
+    "yesNo": "no",
+    "yesNoText": "No, not right now. The Five of Pentacles is a hard card for yes or no questions, because it sits in scarcity and strain. It suggests the resources are not there yet. Reversed, it softens to a slow maybe: things improve if you ask for help and deal with the practical problem directly.",
+    "melissaLine": "The door to the warm room is right there, and the only thing stopping you walking in is the pride you are carrying."
+  },
+  {
+    "slug": "six-of-pentacles",
+    "name": "Six of Pentacles",
+    "metaDescription": "Six of Pentacles tarot card meaning: upright and reversed, how giving and receiving shows up in love and work, plus a yes or no answer.",
+    "intro": "The Six of Pentacles is about the exchange of money, help and favours. A well-dressed merchant holds a set of scales in one hand and drops coins into the palm of a kneeling beggar with the other, while a second beggar waits below. It asks who is giving, who is receiving, and whether the balance is fair.",
+    "keywordsUpright": [
+      "generosity",
+      "fairness",
+      "giving and receiving",
+      "support",
+      "gratitude"
+    ],
+    "keywordsReversed": [
+      "strings attached",
+      "debt",
+      "imbalance",
+      "stinginess",
+      "one-sided"
+    ],
+    "upright": "Notice who holds the scales. The merchant weighs the situation before he gives, and he gives more to one beggar than the other. This is not a gooey charity card; it is about the real mechanics of help. A parent covers your deposit. A friend picks up the bill and you get the next one. A manager signs off your pay rise because the evidence was on the table.\n\nIt can describe you in either position, and both are tests. If you are the giver, ask whether you are generous or whether you like being owed. If you are receiving, can you accept without feeling small? The Six rewards fair, openly agreed exchanges and warns against the vague favour that gets remembered for years. Keep a loose sense of the balance and act on it.",
+    "reversed": "Reversed, the scales tip. Help comes with a hook: the loan you can feel hanging over every conversation, the lift that costs you an hour of listening to a lecture, the friend who reminds you what they paid for last month. Or you are the one giving until you are empty and getting nothing back, and calling it kindness.\n\nIt can also mean debt, money you have lent that is not coming back, or an unfair pay structure. Name the arrangement out loud, set terms that both sides understand, and be willing to stop giving where there is no fairness.",
+    "love": "Single, the Six of Pentacles suggests dating someone generous, or learning what you actually want from give and take. Watch who offers and who just receives. In a relationship it is about fairness: who plans, who pays, who does the emotional work, and whether one of you keeps score silently. A good conversation about it now saves resentment later. With an ex, it can mean practical matters, such as shared money, belongings or a debt, finally being settled so both of you can move on cleanly.",
+    "career": "This is a fair-exchange card at work: a pay rise, bonus, scholarship, mentor or a favour from someone senior. It also supports charity, volunteering and generous leadership. Ask for what the work is worth with evidence in hand, and be clear about what you offer in return. If you keep giving away free work or covering colleagues' shifts, set a limit and say it plainly.",
+    "yesNo": "yes",
+    "yesNoText": "Yes, as long as it is fair. The Six of Pentacles supports questions about money, help and generosity, and usually points to a fair deal or someone willing to support you. Reversed, the answer turns uncertain: there are conditions, debts or an unequal arrangement you should read carefully first.",
+    "melissaLine": "Help is lovely until it comes with an invoice nobody mentioned, so ask what it costs before you say thank you."
+  },
+  {
+    "slug": "seven-of-pentacles",
+    "name": "Seven of Pentacles",
+    "metaDescription": "Seven of Pentacles tarot card meaning: upright and reversed, patience in love and work, and whether the answer to your question is yes or no.",
+    "intro": "The Seven of Pentacles is the card of waiting for results. A farmer leans on his hoe and studies a bush bearing seven coins, his work paused as he takes stock. Nothing is ready to pick yet, and he looks tired but thoughtful. It asks what you have planted, what it has produced so far, and whether it is worth another season.",
+    "keywordsUpright": [
+      "patience",
+      "investment",
+      "assessment",
+      "long-term effort",
+      "slow progress"
+    ],
+    "keywordsReversed": [
+      "impatience",
+      "poor returns",
+      "wasted effort",
+      "giving up",
+      "frustration"
+    ],
+    "upright": "The farmer has done the hard part, and now he stands still, which is the harder part. This card sits in the middle of a long project: the book chapters you have written, the savings pot that grows by tiny amounts, the training you are halfway through and the relationship you are building with no clear sign of progress. The coins are there. They are just not ripe.\n\nHis posture is the lesson. He is not hovering anxiously, not yanking the plant to speed it up. He is assessing. Ask what is working, what is draining effort for little return, and which tasks to stop. If you have been checking your follower count or bank balance every morning, this card says the checking is not the work. Keep going, keep watering, and review honestly rather than hopefully.",
+    "reversed": "Reversed, patience runs out. You tear up a plan after six weeks because the results are not dramatic, or you realise you have been pouring effort into something that does not return anything. Both are versions of the same question: is the crop slow or is the soil bad?\n\nThis card can show frustration with a side business that has made forty pounds, or a degree you are no longer sure about. Look at the evidence, set a clear review date and then decide, instead of drifting in resentful limbo.",
+    "love": "Single, the Seven of Pentacles suggests that you are tending to your own life first, and love may be slow, so check whether you are impatient with people who are simply taking their time. It also asks if you are investing in someone who never gives anything back. In a relationship it marks a slow build: saving for a future, working through a difficult patch. With an ex or situationship, it asks what you have actually gained from the months you have put in. Be honest about the harvest.",
+    "career": "Long-term effort is under review. It suits a business that is not profitable yet, a career change or a training programme. Check your numbers, drop the tasks that are not paying off and keep the ones that are. Results are coming, but not as fast as you want, and an honest audit will tell you whether to push on or pivot.",
+    "yesNo": "maybe",
+    "yesNoText": "Maybe, and probably not yet. The Seven of Pentacles says the result is still growing and cannot be rushed, so the honest answer is wait and review. Reversed, it leans no: the effort is not producing enough, and you may need to change your approach or stop.",
+    "melissaLine": "You have put in real work, so stop digging up the seeds to check, and look honestly at what is growing."
+  },
+  {
+    "slug": "eight-of-pentacles",
+    "name": "Eight of Pentacles",
+    "metaDescription": "Eight of Pentacles tarot card meaning: upright and reversed, what it says about love, work and money, plus a straight yes or no answer.",
+    "intro": "The Eight of Pentacles is the card of getting good at something by repeating it. A craftsman sits at a bench in a leather apron, tapping a pentacle into a coin, with six finished ones displayed on a pole beside him and the town far behind. It is about skill, practice and quiet, unglamorous commitment.",
+    "keywordsUpright": [
+      "diligence",
+      "mastery",
+      "practice",
+      "dedication",
+      "skill building"
+    ],
+    "keywordsReversed": [
+      "perfectionism",
+      "burnout",
+      "boredom",
+      "sloppy work",
+      "no direction"
+    ],
+    "upright": "Nobody is watching the craftsman. The town is a speck in the distance, he has his head down, and the coins keep coming, one careful stamp at a time. This card appears when improvement is happening in private: the language you practise on the bus for twenty minutes, the portfolio you update every Sunday, the revision timetable stuck above your desk that you actually follow.\n\nThe lesson is that skill is boring on the way up. There is no applause at coin number four. If you have been feeling like your effort is invisible, this card says the repetition is the thing that makes you hard to replace later. It also asks you to care about the detail, because the figure is stamping each coin with the same pattern, not rushing for a pile. Keep the routine and shut the tab that tells you to find a shortcut.",
+    "reversed": "Reversed, the work loses its point. You are redoing a slide for the ninth time because it still does not feel perfect, or the opposite: handing in rushed, careless work because you stopped caring. It can describe a job you could do asleep and are, a course that no longer excites you, or a side project abandoned at the point where it became hard.\n\nAsk whether the problem is perfectionism, exhaustion or boredom, because the fix is different for each. Pause, reset the standard to good enough, and choose one thing to improve properly rather than six to keep alive.",
+    "love": "Single, the Eight of Pentacles says you are working on yourself and your life, and the card respects that, but check you are not using it as an excuse to avoid being known. In a relationship it points to quiet effort: remembering the small things, showing up each week, doing the boring work of communication. It rewards consistency over big gestures. With an ex or situationship, it asks if you are over-investing in fixing something that needs two people, rather than practising a better pattern with someone new.",
+    "career": "A very strong work card. It points to training, an apprenticeship, a promotion earned through consistent output or a skill that will soon pay. Keep practising, document your improvement and put your price up when the quality supports it. The risk is working alone in the workshop for so long that nobody knows what you can do, so show your work.",
+    "yesNo": "yes",
+    "yesNoText": "Yes, with effort. The Eight of Pentacles supports anything built through steady work, such as a qualification, a craft or a long project. It will not give you a shortcut. Reversed, it leans no for now: the work is sloppy, burned out or aimed at the wrong target.",
+    "melissaLine": "Nobody is clapping yet, but every boring repetition is making you harder to replace, so keep going and keep the detail."
+  },
+  {
+    "slug": "nine-of-pentacles",
+    "name": "Nine of Pentacles",
+    "metaDescription": "Nine of Pentacles tarot card meaning: upright and reversed, love, career and independence, plus a plain yes or no answer from the cards.",
+    "intro": "The Nine of Pentacles is the card of earned independence. A woman in a gold-embroidered robe stands alone in a vineyard heavy with coins, a hooded falcon perched on her gloved hand and a snail crawling at her feet. It speaks of self-reliance, comfort you built yourself, and the quiet pleasure of not needing rescuing.",
+    "keywordsUpright": [
+      "self-sufficiency",
+      "independence",
+      "luxury",
+      "discipline",
+      "comfort"
+    ],
+    "keywordsReversed": [
+      "overworking",
+      "dependence",
+      "insecurity",
+      "showing off",
+      "financial anxiety"
+    ],
+    "upright": "She did this herself. The vines, the garden, the house in the distance and the falcon trained to sit still on her hand all show a person who has put in years of patient effort and can now enjoy what she made. This card appears when you pay your own rent on time, buy the good olive oil without checking the price, or realise you can eat dinner alone at a restaurant and enjoy it.\n\nThe falcon is hooded, which hints at discipline: her instincts are trained, not suppressed. The snail at her feet is a slower reminder that the comfort came gradually. Enjoy it. Many women are taught to feel guilty about spending on themselves or to credit luck. This card says the pleasant life is a result of your choices, and you are allowed to sit in your garden without apologising or planning the next thing.",
+    "reversed": "Reversed, the garden looks better than it feels. You are working so hard to maintain the lifestyle that you have no time to use it, or you are spending to look comfortable while quietly worrying about your overdraft. It can also describe leaning on someone else's money or approval when you actually want your own.\n\nSometimes independence slides into isolation, with you declining help because accepting it feels like losing. Check where the effort is going, build a small safety net and stop treating self-sufficiency as a performance for other people.",
+    "love": "Single, the Nine of Pentacles is a very good sign for your own peace. You are not waiting to be chosen, and that tends to make dating better. You can leave a bad second date without a postmortem. In a relationship it means keeping your own money, friends and routines, and choosing togetherness rather than needing it. With an ex or situationship, it asks if you could be perfectly content without them, and whether that is the answer. Fewer people want a partner who is a project.",
+    "career": "Financial comfort and professional confidence, often as a result of years of hard work. It suits a stable income, a successful solo business or the freedom to choose projects. Enjoy the reward but protect it: build savings, keep your contracts clear and avoid spending to prove you have made it. Your standards are an asset, so charge accordingly, and do not discount your rate to keep a client who never says thank you.",
+    "yesNo": "yes",
+    "yesNoText": "Yes. The Nine of Pentacles is positive for questions about money, security and standing on your own. It says you have what you need and can act from comfort rather than fear. Reversed, the answer turns cautious: check your finances, and ask whether you are doing this for yourself or to impress.",
+    "melissaLine": "You built a life that holds up without anyone rescuing you, so enjoy it without apologising for how much it cost."
+  },
+  {
+    "slug": "ten-of-pentacles",
+    "name": "Ten of Pentacles",
+    "metaDescription": "Ten of Pentacles tarot card meaning: upright and reversed, family, legacy, love and money, plus a clear yes or no answer from this card.",
+    "intro": "The Ten of Pentacles is the card of long-term security and family. An elderly man sits under a stone arch with two dogs at his feet while a couple and a child talk nearby, and ten coins are arranged across the scene like a tree of life. It is about inheritance, roots and wealth that outlasts one person.",
+    "keywordsUpright": [
+      "legacy",
+      "family",
+      "long-term wealth",
+      "stability",
+      "belonging"
+    ],
+    "keywordsReversed": [
+      "family conflict",
+      "money disputes",
+      "instability",
+      "short-term thinking",
+      "loss of security"
+    ],
+    "upright": "This is the grown-up version of success. The old man has the dogs, the castle and the generations around him, and none of them are performing for anyone. It is the card of the family house with a kitchen table that has seen forty Christmases, the pension that quietly accumulated, the property passed down, or the friend group that has stayed together for ten years.\n\nIt can mean literal money: an inheritance, a mortgage finally approved, a stable salary with benefits. But it is just as often about belonging. The child and the dogs are paying no attention to the coins, they simply live inside the security. Ask what you are building that someone else could rest on. If you are the first person in your family to have savings, this card honours that. Start thinking in decades rather than weeks.",
+    "reversed": "Reversed, the foundations wobble. The family WhatsApp goes silent after an argument over the will, a house sale falls through, or a business you thought would support you for life starts to creak. It can show money tangled up in relationships, such as a parent expecting a share of your income or siblings splitting over who gets the car.\n\nIt can also mean you are chasing short-term wins at the cost of lasting stability. Put agreements on paper, speak to a professional about the legal bits, and decide which family obligations are real and which are habit.",
+    "love": "Single, the Ten of Pentacles hints at wanting something lasting and being open to partners who think long-term: shared values, shared plans, maybe children or a home. Notice how a date talks about his family. In a relationship it signals commitment, meeting the parents, buying together or building a shared future. It is a strong marriage card. With an ex, it asks whether the history is a foundation or a weight. Reversed, family opinions may be driving the relationship more than the two of you are.",
+    "career": "Lasting financial security: a stable job with good benefits, a family business, a promotion that sets you up for years or an inheritance that changes your choices. Think about pensions, savings plans and contracts, and read the clause about notice periods before you sign. If you are building a business, build it so it could survive a month without you. The long game is on your side.",
+    "yesNo": "yes",
+    "yesNoText": "Yes. The Ten of Pentacles is one of the most reliable yeses for anything involving security, family, property or long-term plans. It says the foundations are solid. Reversed, it leans no or not yet: there is a dispute, a financial gap or a family disagreement to sort out first.",
+    "melissaLine": "You are allowed to build something that outlasts your mood, so think in years, write the plan down and tell your family."
+  },
+  {
+    "slug": "page-of-pentacles",
+    "name": "Page of Pentacles",
+    "metaDescription": "Page of Pentacles tarot card meaning: upright and reversed, how it reads in love, work and study, plus a yes or no answer from the card.",
+    "intro": "The Page of Pentacles is the student of the suit. A young figure in a green field stands very still, holding a single gold coin up in both hands and studying it as though it were a puzzle. Behind them the ground is ploughed and flowers bloom. It is about curiosity, new goals and learning something practical.",
+    "keywordsUpright": [
+      "curiosity",
+      "new goal",
+      "study",
+      "practicality",
+      "dedication"
+    ],
+    "keywordsReversed": [
+      "procrastination",
+      "daydreaming",
+      "lack of focus",
+      "unrealistic plans",
+      "missed chance"
+    ],
+    "upright": "Look at how carefully the Page holds the coin: not tossing it, not pocketing it, just looking, as if working out how it is made. This is the beginner's mindset in a good form. The card appears when you sign up for the evening course, open a stocks and shares account to learn how it works, or start a business plan in a spreadsheet and read the whole thing back.\n\nThe Page is not an expert, and the card is relaxed about that. What counts is a willingness to ask basic questions and put in unglamorous hours. It often marks the very first step of a goal: the application started, the first lesson booked, the first small amount paid in. The ground behind is ploughed, so preparation has been done. Now your job is to stay interested in the details long enough to build something real.",
+    "reversed": "Reversed, the coin stays untouched. You have six tabs open about starting a business and no actual business, a gym induction booked and cancelled, or a dream life described in a long Notes list that never gets a deadline. The Page is daydreaming instead of practising.\n\nIt can also warn about unrealistic expectations: thinking a short course makes you an expert, or expecting results to arrive faster than the work allows. Pick one small, measurable step, such as booking the course or moving twenty pounds into savings, do it today and stop treating research as a substitute for starting, because a plan nobody has tested is still only a plan.",
+    "love": "Single, the Page of Pentacles suggests slow, sincere connection with someone who is earnest, a bit shy and interested in your actual life. It also hints you may be learning what you really want rather than rushing to find it. In a relationship it points to taking small, practical steps together, such as a first joint holiday, or learning each other's money habits. With an ex or situationship, it asks if you are being realistic about what is on offer. Dependability beats chemistry that is always about to start.",
+    "career": "A fresh start in work or study: an internship, a new qualification, a first job in a field, or a side project with potential. Be a diligent student. Ask questions, take notes and accept the lower rung without sulking. Money may be modest at first, but you are laying the base for later and should budget with that in mind.",
+    "yesNo": "yes",
+    "yesNoText": "Yes, as a beginning. The Page of Pentacles supports starting something practical, such as a course, a savings habit or a new skill, and it favours small steps over leaps. Reversed, the answer slides to no or not yet: the plan needs more research or you are procrastinating on the first move.",
+    "melissaLine": "You do not have to be good at this yet, you just have to start and keep turning up, because that is how everyone begins."
+  },
+  {
+    "slug": "knight-of-pentacles",
+    "name": "Knight of Pentacles",
+    "metaDescription": "Knight of Pentacles tarot card meaning: upright and reversed, patience in love, work and money, plus a straightforward yes or no answer.",
+    "intro": "The Knight of Pentacles is the most patient rider in the deck. A knight in dark armour sits on a heavy black horse that stands perfectly still in a ploughed field, and he holds a single coin out in front of him, examining it. Where the other Knights charge, he checks the work twice. This card is about reliability and slow, thorough progress.",
+    "keywordsUpright": [
+      "reliability",
+      "patience",
+      "routine",
+      "thoroughness",
+      "hard work"
+    ],
+    "keywordsReversed": [
+      "stubbornness",
+      "stuck in a rut",
+      "boredom",
+      "laziness",
+      "perfectionism"
+    ],
+    "upright": "This card is the person who always turns up. The horse is not moving, and the knight is fine with that. He is checking that the field is properly ploughed, that the coin is actually gold and that the sums are right before going anywhere. It is the colleague who sends the follow-up email the same day, the friend who remembers the appointment you mentioned once, or you, on the weeks you do the boring thing because the plan said so.\n\nProgress here is slow and cumulative, like paying down a credit card by the same amount on the first of every month. The Knight does not do spontaneity, so do not expect fireworks. He does do results. If you have been tempted to abandon a sensible plan because it feels dull, this card suggests that dull is exactly what it takes. Keep going, and keep your receipts.",
+    "reversed": "Reversed, steady becomes stuck. The horse refuses to move because the knight has checked the coin so many times he never rides. It can be a job you stay in out of routine, an unfinished application you keep refining, or a refusal to try a new route because the old one is familiar and nobody could criticise it.\n\nThe card also warns about stubbornness and work done without joy. Loosen one habit this week, say yes to something unscheduled, and ask whether your caution is protecting you or just sparing you from trying.",
+    "love": "Single, the Knight of Pentacles points to a slow burn: the colleague or friend who has been quietly dependable for a year, or a dating style where you want proof of character before romance. Give it time. In a relationship it means loyalty, routines and practical devotion, such as the shared shop on Sundays. Add some surprise. With an ex or situationship, it says consistency is what matters, and a person who only appears when it suits them is not offering it.",
+    "career": "Dependable progress, hard work and a reputation for getting things done. It suits long projects, careful budgeting, steady promotion and building a client list one person at a time. Do not rush for a quick win. Keep your records tidy, finish what you start and let the reliability speak for you in review season. The risk is staying too long in a safe lane because the pay is predictable.",
+    "yesNo": "maybe",
+    "yesNoText": "Maybe, leaning yes if you can wait. The Knight of Pentacles supports slow, sensible plans and is cautious about quick wins. The answer comes through steady effort, not speed. Reversed, it leans no: you are stuck, stubborn or putting off a decision under the label of being careful.",
+    "melissaLine": "Slow is not the same as failing, so keep doing the dull, correct thing and stop comparing your pace to anyone else's."
+  },
+  {
+    "slug": "queen-of-pentacles",
+    "name": "Queen of Pentacles",
+    "metaDescription": "Queen of Pentacles tarot card meaning: upright and reversed, love, work and money guidance, plus a clear yes or no answer from the card.",
+    "intro": "The Queen of Pentacles is the practical nurturer. She sits on a stone throne carved with fruit and goats in a rich garden, roses arching overhead, a rabbit at her feet and a coin resting in her lap, cradled like a sleeping child. This card is about warmth that actually does something: feeding, budgeting, making a place feel safe.",
+    "keywordsUpright": [
+      "nurturing",
+      "practicality",
+      "resourcefulness",
+      "generosity",
+      "homemaking"
+    ],
+    "keywordsReversed": [
+      "self-neglect",
+      "smothering",
+      "work-life imbalance",
+      "jealousy",
+      "materialism"
+    ],
+    "upright": "Her love language is competence. She is the friend who arrives with soup when you are ill, the woman with a spare charger, a plaster and the number of a good plumber. Look at her lap: she holds the coin gently, treating money as something to look after, not worship. The garden around her is lush because she tends it daily.\n\nThis card appears when you are good at making a home or a situation comfortable, when you can turn a tight budget into a lovely week, or when someone offers you care that is practical rather than performative. It also asks you to receive it. The Queen balances giving with her own comfort, and the rabbit near her suggests fertility and ease. If you have been feeding everyone else's needs from an empty cupboard, her message is that your own plate counts too.",
+    "reversed": "Reversed, the care curdles. She over-gives and resents it, mothers a partner who should be an adult, or works so many hours to provide that the home becomes a place to collapse in. It can also tip into smothering, control through generosity, or measuring love by what people spend.\n\nThe quiet warning is self-neglect: running on toast, never booking your own appointment, being the reliable one while nobody checks on you. Put one thing for you in the diary this week, and say no to a request without a long explanation.",
+    "love": "Single, the Queen of Pentacles suggests you are drawn to stability and a partner who shows up with action, such as fixing things, cooking, remembering. Look for that, and offer it without becoming everyone's carer. In a relationship it brings comfort, domestic warmth and a shared practical life. Check the load is shared. With an ex or situationship, it asks whether you are mothering someone who will not take responsibility for himself. Loving someone is not the same as managing them.",
+    "career": "A good card for money and work: sensible budgeting, a stable income, a business that serves people well, or a role in care, hospitality, finance or wellbeing. You know how to make resources stretch. Use that skill for yourself too: set a monthly savings amount, price your time honestly, and do not undercharge friends and family because they are friends and family.",
+    "yesNo": "yes",
+    "yesNoText": "Yes. The Queen of Pentacles supports practical, caring and financially sensible choices, and she favours comfort, security and steady building of resources. Reversed, the answer softens to maybe or no: you may be overextending yourself, neglecting your own needs or letting money decide too much.",
+    "melissaLine": "You are brilliant at looking after everyone else, and now you can go and put the kettle on for yourself."
+  },
+  {
+    "slug": "king-of-pentacles",
+    "name": "King of Pentacles",
+    "metaDescription": "King of Pentacles tarot card meaning: upright and reversed, how it reads in love, career and money, plus a plain yes or no answer.",
+    "intro": "The King of Pentacles is the master of material security. A broad king sits on a throne carved with bulls, his robe covered in grapevines, one hand holding a sceptre and the other resting on a gold coin, with a castle and a flourishing garden behind. He is about wealth built patiently, and the calm that comes from having enough.",
+    "keywordsUpright": [
+      "abundance",
+      "security",
+      "leadership",
+      "discipline",
+      "reliability"
+    ],
+    "keywordsReversed": [
+      "greed",
+      "stubbornness",
+      "controlling",
+      "financial risk",
+      "materialism"
+    ],
+    "upright": "He has done the long, dull work. The bulls on his throne speak of steadiness, the grapes of enjoyment he can afford, and the castle behind him of assets that took decades to accrue. This is the person who read the pension statement, who negotiates calmly because they are not desperate, and who can say no to a bad deal without losing sleep.\n\nHe appears when you are in charge of resources and handling them well: running a budget, managing a team, or running a business that pays everyone on time. The King shows that money is a tool. He does not cling like the Four of Pentacles or show off like a bad influencer; he simply keeps the garden growing. If you have been waiting to feel like a proper adult, act like one. Choose reliability and reasonable risk over drama.",
+    "reversed": "Reversed, security turns to control or greed. A boss who hoards credit, a partner who uses money to win arguments, or your own habit of valuing people by what they earn. It can also show financial recklessness, such as a risky investment made to prove a point, or lifestyle spending beyond what your income supports.\n\nStubbornness is another trap: the plan that used to work but cannot be questioned. Look at the numbers without pride, take advice from someone who owes you nothing, and remember that a solid person adjusts when the facts change.",
+    "love": "Single, the King of Pentacles suggests a mature, stable partner who is generous without being flashy, or it describes the standard you want to hold: someone who keeps promises and has a plan for the weekend. In a relationship, it brings commitment, loyalty and shared practical goals. Watch for money being used as control. With an ex or situationship, it asks if he can offer genuine security. Charm is not a pension, and consistency over time is the only reliable proof.",
+    "career": "A very good sign for money and authority. It points to promotion, ownership, strong financial footing or being the person others trust with budgets. Make decisions based on the numbers, invest steadily and avoid flashy shortcuts. If you are the boss, pay people on time and treat them fairly. If you are choosing one to work for, pick the steady one over the charismatic one who changes strategy every quarter.",
+    "yesNo": "yes",
+    "yesNoText": "Yes. The King of Pentacles is a solid yes for questions about money, business, security and long-term plans. He favours the sensible, well-resourced choice. Reversed, the answer turns no or cautious: greed, rigidity or financial risk may be hiding behind a confident front.",
+    "melissaLine": "Real security is quiet, so choose the person, plan or job that is boringly dependable over the one that merely sounds impressive."
+  },
+  {
+    "slug": "ace-of-swords",
+    "name": "Ace of Swords",
+    "metaDescription": "Ace of Swords tarot card meaning: upright and reversed, what it says about love, work and honesty, plus a clear yes or no answer from the card.",
+    "intro": "The Ace of Swords is the moment you finally see the situation clearly. A hand emerges from a cloud holding an upright double-edged sword, its tip threaded through a gold crown wrapped in a laurel and a palm branch. Barren mountains stand below. It stands for truth, a sharp new idea and the decision you have been circling.",
+    "keywordsUpright": [
+      "clarity",
+      "truth",
+      "breakthrough",
+      "decision",
+      "new idea"
+    ],
+    "keywordsReversed": [
+      "confusion",
+      "clouded judgement",
+      "harsh words",
+      "miscommunication",
+      "indecision"
+    ],
+    "upright": "Something goes quiet in your head, and then you just know. The Ace of Swords is the sentence you finally say out loud to a friend, the spreadsheet that shows you cannot afford the flat, or the realisation at 3pm on a Tuesday that you have been making excuses for a situation that does not work. The sword is double-edged: it cuts through fog, but it also cuts.\n\nNotice the crown at the tip, with laurel for victory and palm for peace. Honest clarity is meant to win you something, not hurt you for sport. The mountains below are bare, so the card is not warm or decorative. It is stripped back and factual. Use it for the conversation you have been rehearsing, the essay structure that suddenly makes sense, or the email that says no. Say it plainly, in daylight, and keep it kind where you can.",
+    "reversed": "Reversed, the sword is dull or pointed the wrong way. Your head is full of static: a dozen opinions from friends, three conflicting plans and a group chat that never reaches a conclusion. Or you have the facts and are using them as a weapon, delivering a perfectly accurate sentence that lands as cruelty.\n\nIt can also mean a breakthrough that is blocked. You know, but you do not want to know yet. Write the situation down in two plain sentences, stop asking for more opinions, and wait until you can speak without needing to win.",
+    "love": "Single, the Ace of Swords says you can see what you want and what you will no longer tolerate, and it is time to act on that, perhaps by deleting the dating app profile that attracts the wrong crowd or finally telling someone you like them. In a relationship it brings honest conversation, the one where you stop hinting. With an ex or situationship, it delivers the truth you have been avoiding: either he is offering something concrete, or he is not. The answer may sting briefly, but it is a clean cut.",
+    "career": "A breakthrough in thinking: a clear strategy, a pitch that finally lands, a decision to leave or stay. It suits writing, law, research, technology and anything needing clear logic. Put your idea in writing, name the problem precisely and ask for what you want in the next meeting. Clarity is your advantage this week, and a vague plan will waste it.",
+    "yesNo": "yes",
+    "yesNoText": "Yes. The Ace of Swords is a strong, clear yes when the question is about truth, decisions and fresh ideas. It says you have what you need to see the answer. Reversed, it leans no or not yet: the facts are muddy, the words are too harsh, or you are avoiding what you already know.",
+    "melissaLine": "You already know what is true here, so say it plainly and kindly, and stop asking five more people to confirm it."
+  },
+  {
+    "slug": "two-of-swords",
+    "name": "Two of Swords",
+    "metaDescription": "Two of Swords tarot card meaning: upright and reversed, how it reads in love and work when you are stuck, plus a yes or no answer.",
+    "intro": "The Two of Swords is the card of the decision you are refusing to make. A woman in white sits on a stone bench, blindfolded, holding two crossed swords across her chest, with a calm sea and a pale crescent moon behind her. She cannot see, and she does not want to. It speaks of stalemate, avoidance and a fragile truce.",
+    "keywordsUpright": [
+      "stalemate",
+      "indecision",
+      "avoidance",
+      "truce",
+      "blocked emotions"
+    ],
+    "keywordsReversed": [
+      "overwhelmed",
+      "information overload",
+      "lesser evil",
+      "forced choice",
+      "confusion"
+    ],
+    "upright": "She is balancing two blades with arms so tense they are locked. The blindfold matters: she has chosen not to look, and the calm sea behind her suggests that emotion is being held out of reach. This card turns up when you have two options and a pile of reasons for each, when you keep answering a question with let me think about it, or when you and someone else have agreed not to discuss the thing in the room.\n\nAvoidance feels like peace, and that is what makes it tempting. The sword arms are tiring though. Holding the position has a cost: sleep, focus, a low hum of dread. It is saying take the blindfold off, even briefly, and look at what each choice actually involves. Write the pros and cons, tell a friend which way you are leaning and notice your own reaction.",
+    "reversed": "Reversed, the blindfold slips, and it is not comfortable. Everything arrives at once: opinions, spreadsheets, three browser tabs of reviews, a hundred messages from people who each think they know. You are overwhelmed rather than undecided, and the calm surface has gone.\n\nSometimes this card reversed means you are being forced to choose and feel there is no good option. Look for the lesser harm, set a deadline in your diary and accept that an imperfect decision made today usually beats a perfect one made after the deadline, when someone else has chosen for you.",
+    "love": "Single, the Two of Swords can mean guarding your heart so thoroughly nobody gets in, or being unable to choose between two people because choosing means losing one. In a relationship it shows a stalemate: the topic you both avoid, such as moving in, children or money. Peace that depends on silence is a truce, not a resolution. With an ex or situationship, it asks you to stop sitting on the fence. Not deciding is also a decision, and it usually costs you most.",
+    "career": "Stuck between two job offers, two directions or a decision your boss will not make. It also marks tense standoffs and negotiations that have stalled. Get the information you are missing, set a date to decide and ask the person who can actually answer, rather than guessing from the corridor. Postponing may feel safe, but offers expire and budgets get reallocated while you think.",
+    "yesNo": "maybe",
+    "yesNoText": "Maybe, and that is the problem. The Two of Swords means the situation is balanced on a knife-edge and no clear answer is available until something changes. It usually asks you to remove the blindfold and decide. Reversed, it leans no for now, because confusion or pressure is clouding the choice.",
+    "melissaLine": "Not choosing is still a choice, and it is the one that quietly costs you the most sleep."
+  },
+  {
+    "slug": "three-of-swords",
+    "name": "Three of Swords",
+    "metaDescription": "Three of Swords tarot card meaning: upright and reversed, heartbreak, grief and healing in love, plus a straight yes or no answer.",
+    "intro": "The Three of Swords is the card of heartbreak, and it does not soften it. A red heart floats against a grey sky, pierced by three swords, while rain falls from heavy clouds. There is no figure to console it. It stands for grief, betrayal and the sharp pain of a truth finally landing.",
+    "keywordsUpright": [
+      "heartbreak",
+      "grief",
+      "betrayal",
+      "sorrow",
+      "painful truth"
+    ],
+    "keywordsReversed": [
+      "recovery",
+      "forgiveness",
+      "releasing pain",
+      "suppressed grief",
+      "slow healing"
+    ],
+    "upright": "This card is the moment, not the aftermath. It is the message that ends something, the conversation where he says he is not sure about you, the friend you find out has been talking behind your back, the scan, the redundancy letter. The three swords go straight through the heart with no deflection, and the storm behind does not clear.\n\nThere is no hidden good news in the image, and Melissa will not pretend there is. Pain this sharp needs to be felt, not reframed in a week. Cry in the shower, skip the plans, tell your close friend the unedited version. What the card does offer is accuracy: you are not overreacting, and the hurt is proportional to how much it mattered. The rain does eventually pass, but it passes by itself, not because you decided to feel better by Friday.",
+    "reversed": "Reversed, the swords begin to ease out, slowly and unevenly. You go a whole afternoon without checking his Instagram. You laugh, then feel guilty for laughing. Or the opposite: you are pretending to be fine, refusing to cry, and the grief is stored up for a worse day.\n\nIt can also mean old pain resurfacing, or a grudge you keep tidy and sharp because forgiving feels like letting someone off. Forgiveness is not approval. Decide what you actually want to carry, and speak to someone qualified if the grief stops you functioning.",
+    "love": "Single, the Three of Swords often marks recovery from a past relationship, or the heartbreak of being rejected by someone you liked. Give yourself the time you would give a friend. In a relationship it signals real hurt: infidelity, a bruising argument, a truth finally told. Whether it can be repaired depends on honesty and effort from both sides. With an ex or situationship, it confirms that the pain was real. Do not let anyone talk you out of what you felt, but do not move back into it for a hit of relief.",
+    "career": "Redundancy, a painful rejection, a betrayal by a colleague or a project that fell apart after you gave it everything. The hurt is legitimate. Take a day, then write down the facts: what was said, what was agreed, what your options are. Do not send the furious email tonight; draft it, leave it in your drafts folder and reread it tomorrow. Once the shock has passed, plan your next step practically, starting with your finances and your CV.",
+    "yesNo": "no",
+    "yesNoText": "No. The Three of Swords is one of the hardest cards for a yes or no question, as it points to pain, loss or a disappointing truth. It rarely supports hopeful outcomes. Reversed, the answer softens to not yet: recovery is possible, but only after you have faced what actually happened.",
+    "melissaLine": "This hurts because it mattered, so cry properly, tell one person the real story, and do not rush to feel okay."
+  },
+  {
+    "slug": "four-of-swords",
+    "name": "Four of Swords",
+    "metaDescription": "Four of Swords tarot card meaning: upright and reversed, rest and recovery in love and work, plus a clear yes or no answer from the card.",
+    "intro": "The Four of Swords is the card of deliberate rest. Inside a quiet church, a knight lies on a stone tomb with his hands pressed together in prayer, one sword beneath him and three hanging on the wall above. A stained-glass window shows a figure giving and receiving care. It is about stopping on purpose so you can recover.",
+    "keywordsUpright": [
+      "rest",
+      "recovery",
+      "retreat",
+      "stillness",
+      "recuperation"
+    ],
+    "keywordsReversed": [
+      "burnout",
+      "restlessness",
+      "stagnation",
+      "refusing rest",
+      "re-entering too soon"
+    ],
+    "upright": "He is not dead, and he is not giving up. He is lying very still because everything before this was too much. The swords on the wall are hung out of reach, which means the fights, the plans and the problems have been paused, not solved. This card appears when you have worked the shifts, passed the exam, ended the relationship or got through the awful month, and your body is quietly insisting on a break.\n\nIt is permission, but not for scrolling. Real rest means the phone in another room, a long bath, a walk with no podcast, a weekend with an empty calendar. The stained-glass window hints that help and care can be received, so say yes when someone offers to cook or cover for you. You will return to the sword on the floor. Just not today, and you will use it better after sleep.",
+    "reversed": "Reversed, the rest is refused or broken. You are answering work emails from the sofa, saying you are fine while running on four hours of sleep and caffeine, or pushing back into dating a week after heartbreak because the quiet feels unbearable. Burnout often arrives dressed as productivity.\n\nIt can also mean you have rested enough and are ready to rise but are lingering in the safe stillness. Check your honest energy level, put one boundary around your time, and make rest a plan rather than something you collapse into.",
+    "love": "Single, the Four of Swords says to pause dating if you are drained. You do not owe anyone your energy, and a break after a bad run is not failure. In a relationship it can mean needing space, a quiet period after conflict, or both of you being too tired for a good conversation, so postpone it until you are rested. With an ex or situationship, it suggests no contact for a while, to let the nervous system settle. Clear thinking about love rarely happens on four hours of sleep.",
+    "career": "Time out is needed: a holiday you have kept postponing, sick leave, a sabbatical or a quieter project cycle. Cover your essentials, hand off what you can and take the leave you are owed. Making career choices while exhausted is risky, so wait until you have slept properly before signing, resigning or pitching. The inbox will still be there, and a rested reply is usually shorter and better.",
+    "yesNo": "no",
+    "yesNoText": "Not yet. The Four of Swords says wait: this is a time for rest, not action, and a firm yes now would probably come from exhaustion. It is a no for starting new things. Reversed, it nudges towards maybe, as you are close to ready, but check your energy first.",
+    "melissaLine": "You are not lazy, you are depleted, so switch the phone off and rest properly before you make any big decisions."
+  },
+  {
+    "slug": "five-of-swords",
+    "name": "Five of Swords",
+    "metaDescription": "Five of Swords tarot card meaning: upright and reversed, conflict and winning at a cost in love and work, plus a yes or no answer.",
+    "intro": "The Five of Swords is the card of the hollow win. A smirking figure gathers three swords while two more lie on the ground, and two other figures walk away across a shoreline under a ragged, stormy sky, shoulders slumped. Someone has won, and nobody feels good. It is about conflict, pettiness and the price of being right.",
+    "keywordsUpright": [
+      "conflict",
+      "hollow victory",
+      "pettiness",
+      "defeat",
+      "dishonour"
+    ],
+    "keywordsReversed": [
+      "reconciliation",
+      "regret",
+      "walking away",
+      "making amends",
+      "lingering resentment"
+    ],
+    "upright": "The figure in front has the swords and the smirk, but look at where he is standing: alone, with the rest of the group leaving. This is the argument you won by bringing up something said in 2022, the group-chat takedown that got ten likes and one silent friendship, or the negotiation where you squeezed every pound and lost the goodwill.\n\nThe sky is jagged, so the atmosphere is sour even for the victor. The card asks a blunt question: what did winning cost? Sometimes the answer is nothing, and you really did defend yourself against someone who took advantage. Often, though, the cost is trust. Before you send the long, devastating paragraph, ask whether you want to be right or want to be close to the person, because you rarely get both.",
+    "reversed": "Reversed, the fight is over and the regret begins. You replay the line you wish you had not said, draft an apology in your Notes app, or realise you were arguing about the washing-up when the real subject was feeling unheard. It can also mean a reconciliation, a truce brokered by someone sensible, or you choosing to walk away from a pointless row.\n\nThere is also a darker reading: resentment continuing quietly after the shouting stops. If an apology is needed, make it specific and short, and do not add a but.",
+    "love": "Single, the Five of Swords warns against games, sarcasm and winning at dating by acting indifferent. It can also mean fallout from a love triangle or a messy break-up. In a relationship it points to arguments that go for the jugular, using past mistakes as ammunition and the silent treatment as a weapon. Ask what you are each actually fighting for. With an ex or situationship, it suggests a petty pattern of point-scoring that no one wins. Walking away without a last word is the strongest move.",
+    "career": "Office politics, a competitive colleague, someone taking credit or a conflict with a manager. You may win the point and lose the room. Pick your battles, keep records of what happened, and avoid gossip in the kitchen or the team chat. Money disputes call for calm, written communication. Sometimes the smart play is to let a petty victory go and protect your reputation.",
+    "yesNo": "no",
+    "yesNoText": "No. The Five of Swords usually signals a win that costs too much, or a situation filled with conflict, defensiveness and bad faith. Reversed, the answer eases towards maybe: the argument may end, amends could be made, or you might finally see that the prize was not worth the fight.",
+    "melissaLine": "You can win this argument and still lose the person, so decide which result you actually want before you reply."
+  },
+  {
+    "slug": "six-of-swords",
+    "name": "Six of Swords",
+    "metaDescription": "Six of Swords tarot card meaning: upright and reversed, moving on in love and work, plus a straight yes or no answer from the card.",
+    "intro": "The Six of Swords is the card of leaving rough waters for calmer ones. A ferryman poles a small boat across a stretch of choppy water towards a smooth shore, carrying a hooded woman and a child, with six swords standing upright in the hull. It is about transition, travel and moving away from something painful.",
+    "keywordsUpright": [
+      "transition",
+      "moving on",
+      "calmer waters",
+      "leaving",
+      "relief"
+    ],
+    "keywordsReversed": [
+      "stuck",
+      "baggage",
+      "resistance to change",
+      "unfinished business",
+      "turbulent exit"
+    ],
+    "upright": "Nobody in this boat is celebrating. The figures are bundled and quiet, their backs to us, and the swords in the hull show that they are carrying their troubles with them. That is the honest bit: moving on does not mean leaving your problems on the shore. It means changing the conditions you live in while the grief catches up.\n\nLook at the water. Behind the boat it is rough and grey, and ahead of it the surface is nearly flat. This is the card of the one-way ticket, the key to a new flat, the first week at a new job, or the first morning after deciding to stop checking someone's profile. It can be a literal trip. The ferryman is steering, which means help is available, and the direction is better than the one you left. Go gently and pack carefully.",
+    "reversed": "Reversed, the boat does not leave. You keep one foot on the shore, answering his messages, staying at a job that has already wrecked your Sundays, or planning to leave in January for the third year running. Or you move but refuse to deal with what you packed, so the same pattern follows you to the new postcode.\n\nIt can also warn of a rushed exit, leaving in anger without a plan. Decide what you need to finish, what you can leave and what you are carrying, and then actually step into the boat.",
+    "love": "Single, the Six of Swords suggests you are leaving behind an old pattern, or someone who was wrong for you, and heading towards calmer, healthier connections. Do not take the old baggage on the first dates. In a relationship it can describe moving through a rough patch together, or one of you needing to leave. With an ex or situationship, it supports finally ending it and not turning the boat back at the first wave of loneliness. The relief may come before the happiness, and that is normal.",
+    "career": "A change of job, field, location or working pattern, usually towards less stress. It may mean a relocation, a move away from a toxic team, or a career pivot that takes several months. Plan the logistics: notice period, a savings buffer of at least a month or two, and references from people who will answer their phone. The way ahead is calmer, but you still have to row.",
+    "yesNo": "yes",
+    "yesNoText": "Yes, with a quiet kind of relief. The Six of Swords supports leaving a bad situation and moving towards something steadier, so it is a good card for travel, moving house or ending something that no longer works. Reversed, it leans no for now: you are stuck, unprepared or carrying unresolved baggage.",
+    "melissaLine": "You are allowed to leave without a dramatic reason, because wanting calmer water is reason enough."
+  },
+  {
+    "slug": "seven-of-swords",
+    "name": "Seven of Swords",
+    "metaDescription": "Seven of Swords tarot card meaning: upright and reversed, deception and secrecy in love, work and money, plus a clear yes or no answer.",
+    "intro": "The Seven of Swords is the card of sneaking away with something. A man tiptoes out of a military camp with five swords bundled in his arms, glancing back over his shoulder, while two swords remain stuck upright in the ground. Behind him, tents and figures sit unaware. It speaks of deception, evasion and getting away with it.",
+    "keywordsUpright": [
+      "deception",
+      "evasion",
+      "strategy",
+      "secrecy",
+      "half-truths"
+    ],
+    "keywordsReversed": [
+      "confession",
+      "conscience",
+      "getting caught",
+      "coming clean",
+      "accountability"
+    ],
+    "upright": "Look at what he leaves behind: two swords, still planted, because he cannot carry them all. Even the clever plan has its limits. This card is the best friend who has been telling you what you want to hear, the colleague quietly taking credit, the man whose story has a gap on Friday nights, or you, deciding not to mention something until later.\n\nIt is not always sinister. It can also be strategy: choosing what to share, working around a difficult boss, or doing things quietly rather than announcing your plans. The key question is who is being kept in the dark and why. If you are the one tiptoeing, ask whether you are protecting yourself or avoiding an honest talk. If you suspect someone else, go with the pattern you have noticed rather than the explanation they gave.",
+    "reversed": "Reversed, the secret comes out. The man turns round and puts the swords back, or he is caught holding them. It might be you confessing to the thing you have been carrying, a lie unravelling because of a screenshot, or an unexpected apology from someone who could not keep up the act.\n\nIt also appears when you are tired of living with a half-truth. Telling the truth is rarely painless, but it is cheaper than the upkeep of a lie. If you are the one who got caught out, own it plainly, without a long defence.",
+    "love": "Single, the Seven of Swords warns about someone who is vague, cagey with details or still very attached to an ex. Watch for the pattern, not the charm. In a relationship it points to something unsaid: a hidden spending habit, a friendship that feels too private or a lie that started small. Ask direct questions and listen to the pauses. With an ex or situationship, it suggests that half your information is missing. If the story keeps shifting, stop trying to solve it and believe what he repeatedly does.",
+    "career": "Be careful about office politics, a colleague who takes your ideas, or contracts and promises that do not match what you were told. Keep dated records and get agreements in writing. It can also mean working strategically, with a quiet job search or a negotiation tactic. Just make sure you could explain your methods out loud to your boss without flinching, because that is the test.",
+    "yesNo": "no",
+    "yesNoText": "Leaning no. The Seven of Swords suggests that something is hidden, incomplete or not what it seems, so a confident yes would be risky. Reversed, the truth comes out, which may help you decide: the answer becomes clearer once the facts are on the table.",
+    "melissaLine": "If the story keeps changing or the details keep going missing, stop looking for a better explanation and believe the pattern."
+  },
+  {
+    "slug": "eight-of-swords",
+    "name": "Eight of Swords",
+    "metaDescription": "Eight of Swords tarot card meaning: upright and reversed, feeling trapped in love and work, plus a straight yes or no answer from the card.",
+    "intro": "The Eight of Swords is the card of feeling trapped. A woman stands blindfolded and loosely bound at the ankles, ringed by eight upright swords planted in wet ground, with a castle on a distant cliff. Look closely and the ring has gaps. It speaks of self-imposed limits, fear and a prison that is looser than it feels.",
+    "keywordsUpright": [
+      "feeling trapped",
+      "self-limiting beliefs",
+      "fear",
+      "powerlessness",
+      "victim mindset"
+    ],
+    "keywordsReversed": [
+      "freedom",
+      "release",
+      "new perspective",
+      "taking control",
+      "removing the blindfold"
+    ],
+    "upright": "The swords do not touch her. Her ribbons are loose, the ground is shallow water, and there are visible gaps in the fence. What holds her is the blindfold and the story she tells herself: I cannot leave, I cannot afford it, I would never find anything better, they would be furious. The card appears when your options are real, but your fear has hidden them.\n\nThis is not blame. Some constraints, like money, visas or family, are real. The point is that a lot of the bars are thoughts. Say the trapped sentence aloud, then add the word yet. The castle in the distance suggests help exists. Take off the blindfold first and take one small step in any direction, to test whether the swords actually stop you.",
+    "reversed": "Reversed, the blindfold comes off. You see the gaps: the savings account that makes leaving possible, the friend with a spare room, the career course you could apply for. It can feel dizzying, because freedom brings responsibility, and the old excuse no longer works.\n\nIt can also mean you are still half bound, aware of the way out but afraid to move. Note what you tell yourself every time you stay, and take one concrete action in the next 48 hours, such as booking the appointment or sending the application.",
+    "love": "Single, the Eight of Swords says you may be telling yourself no one will want you, or you are too much, or too late. Those are blindfold stories, not facts. In a relationship it often means feeling stuck with someone, whether through habit, fear of being alone or shared money. Name what is actually stopping you. If you feel unsafe, reach out to a support service. With an ex or situationship, it asks whether you are trapped by him or by the idea that no one else will do. Both can be untangled with support.",
+    "career": "A job that has you pinned: the feeling you cannot leave, cannot speak up, cannot afford to retrain. Break it down into evidence. Look at the real notice period, the transferable skills, the vacancies that exist. Speak to a mentor or a careers adviser about options before deciding they do not exist, and check whether a transfer or a four-day week was ever on the table. Frightened thinking narrows the view, so widen it deliberately.",
+    "yesNo": "no",
+    "yesNoText": "Leaning no, for now. The Eight of Swords suggests that fear, limiting beliefs or genuine constraints are blocking you, so a forward step is hard. Reversed, it turns to yes: the blindfold comes off, you see your options and can act, though you still need to take the first step.",
+    "melissaLine": "The ropes are looser than you think, so take the blindfold off and test one gap before you call it a cage."
+  },
+  {
+    "slug": "nine-of-swords",
+    "name": "Nine of Swords",
+    "metaDescription": "Nine of Swords tarot card meaning: upright and reversed, anxiety and sleepless nights in love and work, plus a plain yes or no answer.",
+    "intro": "The Nine of Swords is the card of the 3am spiral. A woman sits upright in bed with her face buried in her hands, a quilt of roses and zodiac signs across her lap, while nine swords hang horizontally on the black wall behind her. It stands for anxiety, guilt, sleepless nights and fears that grow in the dark.",
+    "keywordsUpright": [
+      "anxiety",
+      "nightmares",
+      "worry",
+      "guilt",
+      "insomnia"
+    ],
+    "keywordsReversed": [
+      "recovery",
+      "hope",
+      "reaching out",
+      "shame easing",
+      "facing fear"
+    ],
+    "upright": "Notice that the swords are not touching her. They hang on the wall, floating in the dark, and the room is otherwise quiet. This is the picture of a mind at night: replaying the thing you said at the party in 2019, running through worst-case versions of tomorrow's meeting, or opening the banking app one more time just to be sure. The fear feels huge because everything else has gone silent.\n\nSome of the worry may be real. But thinking at 3am is not the same as thinking at 11am, and the weight of the swords depends partly on the hour. The quilt, painted with roses and astrological signs, hints at comfort that is within reach if you let someone else in. Write the worries down, say them to a friend, and see a doctor if the sleeplessness lasts.",
+    "reversed": "Reversed, the dawn arrives. You tell someone how bad it has been and they do not flinch. You book the GP appointment, say the thing aloud and notice the swords are smaller in daylight. It is not instant, but a window opens.\n\nThere is also a warning: the anxiety may be swallowed rather than solved, showing up as headaches, jaw clenching or irritability. Bottled worry gets louder. If your fear is persistent or overwhelming, speak to a professional, and lean on the people who care about you before the next bad night.",
+    "love": "Single, the Nine of Swords suggests overthinking your love life, replaying dates, imagining rejection before it happens, or feeling guilty about a previous relationship. Be kind to the person you were. In a relationship it shows anxiety about the connection: reading too much into a short reply, fearing he is losing interest, or hiding a worry you should share. Say it in daylight. With an ex or situationship, it often marks the guilt or rumination that follows, and the late-night urge to message. Sleep first, decide in the morning.",
+    "career": "Work stress is affecting your sleep. Deadlines, redundancy fears, a difficult boss or money worries keep replaying in your head. Talk to your manager or HR about workload, and speak to someone about your mental health if it is spreading into everything. Write tomorrow's top three tasks down before bed so your brain can put them away, and keep the work phone out of the bedroom.",
+    "yesNo": "no",
+    "yesNoText": "No. The Nine of Swords reflects worry, guilt and fear, and a decision made from this state is unlikely to be your best. Wait until you have slept and talked it through. Reversed, the answer softens to maybe: the worst is passing, though you may still need support.",
+    "melissaLine": "The 3am version of this problem is exaggerated, so write it down, go to sleep and reread it in daylight."
+  },
+  {
+    "slug": "ten-of-swords",
+    "name": "Ten of Swords",
+    "metaDescription": "Ten of Swords tarot card meaning: upright and reversed, endings and rock bottom in love, work and money, plus a clear yes or no answer.",
+    "intro": "The Ten of Swords is the card of the dramatic end. A man lies face down on the ground with ten swords along his back, under a black sky, while a band of gold dawn lights the horizon over still water. It is about betrayal, a painful ending and the strange relief of having reached the bottom.",
+    "keywordsUpright": [
+      "painful ending",
+      "rock bottom",
+      "betrayal",
+      "exhaustion",
+      "final straw"
+    ],
+    "keywordsReversed": [
+      "recovery",
+      "survival",
+      "refusing to end",
+      "drama",
+      "slow rebuilding"
+    ],
+    "upright": "There is no more damage to be done. Ten swords is overkill, and that is the clue: this card says the worst has arrived, and it is complete. It is the redundancy meeting, the relationship that ends with a screenshot, the exam result that is definitely a fail, or the collapse of a plan you invested everything in.\n\nBut look at the horizon. The sky is black above him, yet dawn is already gold across the water, and the sea is calm. The card has a stark kind of mercy: when things are this bad, they cannot get much worse, and something has finished that needed to finish. You can stop bracing. You do not need to defend the story anymore. Let people bring tea. Make the practical calls and get your documents together. You will not feel better tomorrow, but the direction of travel has changed.",
+    "reversed": "Reversed, you are getting up. Slowly, with aches. It is the first week you cook a proper meal, the day you stop explaining the breakup to everyone, or the moment you apply for something new. The sword marks are still there, but they no longer define the story.\n\nThe reversal also catches the dramatic habit of clinging to an ending that has already happened, or dragging out a collapse long after the facts are clear. If something is over, let it be over. Ask for help with the paperwork, tell the truth about what happened and begin rebuilding in small, boring steps.",
+    "love": "Single, the Ten of Swords often shows the aftermath of a brutal ending or a long run of bad dating. It says the pattern is finished, and room is opening. In a relationship it can mean the final blow: a betrayal, a decisive row or the death of the connection. If it is already over, stop trying to resuscitate it. With an ex or situationship, it says this ending is real, not a pause. You do not need further proof, an explanation or one more conversation before you let yourself grieve and move on.",
+    "career": "A job ending, a failed venture or a financial crash that leaves you scrambling. It is a hard card, and the facts may hurt. Take stock of your rights, your savings and your references, and ask for support from people who have been through it. Check the redundancy terms before signing anything. The phase is finished, and the next step can be a clean one.",
+    "yesNo": "no",
+    "yesNoText": "No. The Ten of Swords is a clear no for anything that depends on a current situation surviving, because it marks an ending. It does clear the ground for a fresh start. Reversed, the answer eases towards maybe: the worst is behind you, but recovery will be gradual.",
+    "melissaLine": "This is the bottom, which means the next thing can only be up, so stop defending a story that has already ended."
+  },
+  {
+    "slug": "page-of-swords",
+    "name": "Page of Swords",
+    "metaDescription": "Page of Swords tarot card meaning: upright and reversed, curiosity and honest talk in love and work, plus a plain yes or no answer.",
+    "intro": "The Page of Swords is the card of the curious, restless mind. A young figure stands on a windswept hilltop with a sword raised in both hands, hair blowing sideways, clouds rushing past and birds flying high. They are alert and a little tense. It stands for new ideas, sharp questions and the urge to find out the truth.",
+    "keywordsUpright": [
+      "curiosity",
+      "vigilance",
+      "new ideas",
+      "honesty",
+      "mental energy"
+    ],
+    "keywordsReversed": [
+      "gossip",
+      "sharp tongue",
+      "all talk",
+      "impulsiveness",
+      "scattered thoughts"
+    ],
+    "upright": "Everything about the Page is leaning forward. The wind pushes back, the sword is lifted before there is anything to fight, and the eyes are scanning the horizon. This is the friend who asks the awkward question at dinner, the new employee who spots the error in the spreadsheet, or you, at midnight, with fourteen tabs open on a subject you suddenly care about.\n\nIt is an energetic card with real strengths: directness, wit, the courage to say what others are only thinking. It often marks the start of a mental project, such as learning a language, a writing idea, a legal question, a research plan. The caution is that the Page is not yet experienced. They can mistake being blunt for being right. Ask before you assume, check the facts before you post, and keep the sword up but not swinging.",
+    "reversed": "Reversed, the wit turns sour. It is the group chat gossip you pass on because it was interesting, the screenshot you send to someone else before you have understood the context, or the sharp remark made to get a laugh at the wrong person's expense. It can also mean all talk and no follow-through, with a fascinating idea that never leaves the Notes app.\n\nThe reversal asks you to slow down and speak with care. Check what you actually know, hold back the clever reply for an hour and put the idea in motion with one concrete step.",
+    "love": "Single, the Page of Swords suggests flirty banter, a new person who is quick, curious and likes talking about everything, or you asking more direct questions on dates. Good, but watch whether the conversation stays at clever messages and never becomes plans. In a relationship it favours honest, open conversation, even if it is awkward. With an ex or situationship, it warns against reading through old messages for evidence and building a case. Ask one plain question instead. Reversed, beware gossip and mind games.",
+    "career": "A good card for learning, research, writing, communicating and generating ideas. A new project may start with a burst of enthusiasm, and you may be the one spotting the problem. Back up what you say with facts, keep emails measured and finish what you start before opening a new tab. Contracts and documents deserve a careful read, especially the dates and the small print about fees.",
+    "yesNo": "maybe",
+    "yesNoText": "Maybe. The Page of Swords is curious but unproven, so the answer depends on facts you do not have yet. Gather information before deciding. It leans yes for learning, communicating and starting. Reversed, it leans no: the plan is all talk, or the words being used are careless.",
+    "melissaLine": "Your questions are good, so ask the direct one out loud, with kindness, and check your facts before you press send."
+  },
+  {
+    "slug": "knight-of-swords",
+    "name": "Knight of Swords",
+    "metaDescription": "Knight of Swords tarot card meaning: upright and reversed, haste and bluntness in love and work, plus a straight yes or no answer.",
+    "intro": "The Knight of Swords is the card of charging in. A knight in steel armour gallops across the picture on a white horse, sword raised high, while the trees bend double in the wind and storm clouds race overhead. Nothing is slowing him down. It stands for ambition, speed, bluntness and acting before thinking.",
+    "keywordsUpright": [
+      "ambition",
+      "speed",
+      "directness",
+      "drive",
+      "bluntness"
+    ],
+    "keywordsReversed": [
+      "recklessness",
+      "aggression",
+      "burning out",
+      "impulsiveness",
+      "no plan"
+    ],
+    "upright": "Everything in the picture is going sideways because he is going so fast. The horse is wide-eyed and the sword is out before he has any idea what is on the other side of the hill. This is the person who decides on Monday to quit, move cities and start a business, and by Thursday has handed in the notice. It is also the colleague who says the thing everyone was thinking in a meeting.\n\nThere is real power here. When you need a decisive push, a hard conversation or the energy to finish a deadline, the Knight gets it done. The cost is collateral damage: the sentence delivered too sharply, the details missed, the person left in the dust. Ask whether the speed is courage or avoidance of a feeling. If you are going to charge, at least check the direction and warn the people standing nearby.",
+    "reversed": "Reversed, the gallop becomes reckless. It is the furious voice note sent at midnight, the three impulsive purchases to prove a point, or someone whose temper burns hot and then regrets it. It can also be the exhaustion that follows a burst of overwork, or the stalled version, where plenty of energy is spent and nothing moves.\n\nOften this is a person who talks fast to avoid hearing a reply. Count to ten, sleep on the decision and take advice from someone calmer. A pause is not weakness, and it often saves a relationship or a bank balance.",
+    "love": "Single, the Knight of Swords often shows a fast, intense, flirty start: someone who texts constantly for a week and vanishes the next, or you throwing yourself in before you know the person. Slow it down and watch consistency. In a relationship, it points to blunt honesty, arguments with sharp edges and a need to cool off before talking. With an ex or situationship, it may signal hot-and-cold behaviour or a sudden return. Fast attention is not the same as commitment, and he has to show up past the first fortnight.",
+    "career": "Fast progress, ambition and a bold move: a pitch, a promotion push or a sudden change of direction. It favours people who can act quickly and communicate clearly. Check the figures before committing, avoid burning bridges with a heated email and make sure the plan has more than momentum behind it. Speed is only helpful if you are heading somewhere.",
+    "yesNo": "maybe",
+    "yesNoText": "Maybe, leaning yes if speed helps. The Knight of Swords favours bold, quick action, but it comes with mistakes and bluntness attached. The answer depends on whether you have checked the details. Reversed, it leans no: acting now would be reckless, angry or poorly planned.",
+    "melissaLine": "You are moving fast because slowing down would mean feeling something, so check your direction before you check your speed."
+  },
+  {
+    "slug": "queen-of-swords",
+    "name": "Queen of Swords",
+    "metaDescription": "Queen of Swords tarot card meaning: upright and reversed, honesty and boundaries in love, work and money, plus a plain yes or no answer.",
+    "intro": "The Queen of Swords is the woman who sees through you kindly and says so. She sits side-on on a high stone throne, one hand raised as if in greeting or warning, and a sword held straight up in the other. Clouds sit at her level, butterflies are carved on the throne, and her face is serious. She represents clear judgement and honest boundaries.",
+    "keywordsUpright": [
+      "clarity",
+      "independence",
+      "honesty",
+      "boundaries",
+      "perception"
+    ],
+    "keywordsReversed": [
+      "cold",
+      "bitter",
+      "cutting remarks",
+      "overly critical",
+      "emotionally closed"
+    ],
+    "upright": "She has been through something, and it made her precise. The raised hand says wait, and the upright sword says I will tell you the truth. She is the friend who reads the dating profile you are excited about and notes, kindly, that two photos have the same woman cropped out. She is also the manager who gives clear feedback without drama, and you, on the day you stop explaining yourself.\n\nHer strength is separating feeling from fact without becoming cold. The butterflies carved on the throne hint at transformation, and the high sky suggests a wide view. She asks for directness: say no without a paragraph of apology, state your needs without hinting, and expect the same in return. Her armour can be heavy, though. Clear boundaries are good; a closed heart is a different thing.",
+    "reversed": "Reversed, the clarity turns into coldness. It is the cutting remark you deliver because it is accurate, the silent treatment justified as having standards, or the bitterness that follows an old betrayal and now colours every new person. She can become the critic who spots every flaw and warms to nobody.\n\nIt can also mean you are being judged harshly, or that you are running emotion through logic so tightly that nothing gets in. Ask what you are protecting. A boundary should protect your peace, not keep everyone at arm's length.",
+    "love": "Single, the Queen of Swords says you know your standards and are no longer entertaining mixed signals, breadcrumbs or three-week silences. That is excellent. Keep the standards and leave a window open for warmth. In a relationship it points to honest conversations, clear agreements and mutual respect, though be careful not to critique your partner as if marking an essay. With an ex or situationship, she is the voice that says: you do not need to be convinced, you need to be clear. Say what you want, and leave if it is not on offer.",
+    "career": "A strong card for clear communication, sharp judgement and independence. It suits editing, law, research, strategy and leadership that requires honest feedback. Set boundaries on your time, put agreements in writing and negotiate with facts. Say no to extra work that is not recognised or paid, and be direct but not harsh in how you phrase it. Put the figure in the email.",
+    "yesNo": "yes",
+    "yesNoText": "Yes, if the facts support it. The Queen of Swords favours clear, honest, well-thought-out decisions, and she will tell you if something does not add up. Reversed, the answer turns to no or maybe: coldness, bitterness or harsh judgement may be getting in the way of a fair choice.",
+    "melissaLine": "Your standards are not too high, so keep them, say them plainly and stop apologising for needing the truth."
+  },
+  {
+    "slug": "king-of-swords",
+    "name": "King of Swords",
+    "metaDescription": "King of Swords tarot card meaning: upright and reversed, authority and logic in love and work, plus a clear yes or no answer from the card.",
+    "intro": "The King of Swords is the card of clear authority. A king sits facing us on a high-backed throne, a sword held upright in his right hand, with butterflies carved above him, clouds and birds behind and a blue robe over his shoulders. His expression is calm and fair. He stands for logic, truth, discipline and making decisions based on facts.",
+    "keywordsUpright": [
+      "authority",
+      "logic",
+      "truth",
+      "fairness",
+      "discipline"
+    ],
+    "keywordsReversed": [
+      "manipulation",
+      "coldness",
+      "abuse of power",
+      "harsh judgement",
+      "arrogance"
+    ],
+    "upright": "He has no need to raise his voice. The King of Swords sits straight, looks directly at you and tells you what the contract says. This is the solicitor who explains your options without flattery, the senior colleague who gives feedback with specifics, or the version of you that sits down with the numbers and decides.\n\nHis power comes from thinking clearly, not from force. He weighs evidence, applies the same rule to everyone and takes responsibility for the outcome. The sword points up, meaning his authority serves the truth rather than his mood. When this card appears, ask whether you are letting feelings blur a decision that needs facts, and also whether you have been hiding behind logic to avoid a feeling. Use him for negotiations, complaints, boundaries and legal or financial choices. Write it down, sleep on it, and then act with a steady voice.",
+    "reversed": "Reversed, the authority is misused. It is the boss who wins arguments by being technically correct and humiliating you, the partner who corrects your memory of events until you doubt it, or the cold, controlling tone used to keep people in line. Logic becomes a weapon, and fairness disappears.\n\nIt can also warn you against being the one who uses facts to avoid empathy. If you are on the receiving end, keep your own notes, ask for things in writing and talk to someone outside the situation. Authority that cannot be questioned is not strength.",
+    "love": "Single, the King of Swords is the partner who communicates plainly, keeps his word and does not play games, or the standard of honesty you set for dating. Clever and charming is less important than clear and consistent. In a relationship it points to fair, rational conversations and shared decisions, though remember warmth matters too. With an ex or situationship, it advises weighing what actually happened rather than what you hoped. Reversed, it can describe someone controlling, critical or emotionally withholding, and it deserves to be taken seriously.",
+    "career": "A very strong card for leadership, expertise and decision-making. It supports promotions, contracts, legal matters and professional authority. Prepare your evidence, speak plainly and let your reasoning do the persuading. Be fair to those you manage, and seek advice from someone senior if a decision feels heavy. Your credibility is built on consistency, so do what you said you would do by the date you gave.",
+    "yesNo": "yes",
+    "yesNoText": "Yes, if the facts add up. The King of Swords favours decisions made with logic, honesty and fairness, and he rewards clear thinking. Reversed, the answer turns to no: someone is misusing authority, hiding the truth, or making a cold decision that ignores the human cost.",
+    "melissaLine": "Decide with the facts, say it calmly, and then stand behind it without needing everyone to agree."
+  }
+]
