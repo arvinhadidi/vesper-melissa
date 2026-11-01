@@ -37,6 +37,7 @@ Flashcards are dull and rarely stick. Try these instead:
 2. **Use the suit and number.** Cups plus three is a gathering of friends. Swords plus three is heartbreak. Numbers carry meaning: aces are beginnings, fives are conflict, tens are completion.
 3. **Link to a story.** The Hermit holds a lantern on a mountain. That is you ignoring your phone for an evening.
 4. **Look up the meaning after your own guess.** Not before.
+5. **Start with your own card.** Every star sign has a Major Arcana card and a court card. [Find yours by zodiac sign](/zodiac) and learn those two first.
 
 ## Your first spreads
 

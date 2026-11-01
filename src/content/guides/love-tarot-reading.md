@@ -44,7 +44,7 @@ Browse every card in the [full list](/cards).
 
 Do not ask whether he will return. Ask what the relationship taught you, what you are still waiting for, and what closure would look like if it came from you. A [Five of Cups](/cards/five-of-cups) often shows up here: three spilled cups in front, two upright ones behind. It asks you to turn around and notice what remains.
 
-If you keep pulling the same card about the same person, that is a sign the real question is not about him.
+If you keep pulling the same card about the same person, that is a sign the real question is not about him. If you still want to ask it, [will my ex come back?](/questions/will-my-ex-come-back) has a spread built for exactly that, and [is he the one?](/questions/is-he-the-one) covers the bigger question.
 
 ## Reading for a situationship
 

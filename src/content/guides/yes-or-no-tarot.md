@@ -73,7 +73,7 @@ Skip it when:
 - You have already asked three times. The answer has not changed, and neither has your anxiety.
 - You are in a spiral. Ask an open question instead, such as "What do I need to see about this?"
 
-Yes or no is a tool for clarity. If you notice you are using it to avoid deciding, put the cards down and make a list of pros and cons on actual paper.
+Yes or no is a tool for clarity. If you notice you are using it to avoid deciding, put the cards down and make a list of pros and cons on actual paper. For the questions people ask most, from the job to the ex, see [questions people ask the cards](/questions), each with its own spread and yes, no and wait cards.
 
 If you want to talk through a tricky answer rather than guess, [Melissa will read it with you](/onboarding), and you can ask follow-up questions in the chat.
 

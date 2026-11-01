@@ -13,6 +13,10 @@ export default function LandingFooter() {
           <Link href="/cards" style={linkStyle}>Tarot card meanings</Link>
           {sep}
           <Link href="/guides" style={linkStyle}>Tarot guides</Link>
+          {sep}
+          <Link href="/questions" style={linkStyle}>Tarot questions</Link>
+          {sep}
+          <Link href="/zodiac" style={linkStyle}>Tarot by zodiac sign</Link>
         </p>
         <p style={{ marginTop: '8px' }}>
           {FEATURED_CARD_SLUGS.map((slug, i) => {

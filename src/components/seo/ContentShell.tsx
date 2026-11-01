@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { GUIDES } from '@/lib/seo/guides';
 import { FEATURED_CARD_SLUGS, getCardBySlug } from '@/lib/seo/cards';
+import { QUESTION_PAGES } from '@/lib/seo/questions';
 import { READING_CTA_HREF } from '@/lib/seo/site';
 import { SERIF, UI, CREAM, GOLD, FAINT, HAIRLINE } from './tokens';
 
@@ -31,6 +32,8 @@ export default function ContentShell({ children, wide = false }: { children: Rea
           </Link>
           <Link href="/cards" style={navLink}>Card meanings</Link>
           <Link href="/guides" style={navLink}>Guides</Link>
+          <Link href="/questions" style={navLink}>Questions</Link>
+          <Link href="/zodiac" style={navLink}>Zodiac</Link>
           <Link
             href={READING_CTA_HREF}
             style={{ ...navLink, opacity: 1, color: GOLD, border: `1px solid ${GOLD}`, borderRadius: '999px', padding: '6px 14px' }}
@@ -72,6 +75,13 @@ export default function ContentShell({ children, wide = false }: { children: Rea
               return c ? <Link key={s} href={`/cards/${s}`} style={footLink}>{c.name} meaning</Link> : null;
             })}
             <Link href="/cards" style={footLink}>All 78 tarot cards</Link>
+          </div>
+          <div>
+            <p style={{ color: CREAM, margin: '0 0 10px', fontWeight: 500 }}>Ask the cards</p>
+            {QUESTION_PAGES.map((q) => (
+              <Link key={q.slug} href={`/questions/${q.slug}`} style={footLink}>{q.question}</Link>
+            ))}
+            <Link href="/zodiac" style={{ ...footLink, marginTop: '14px' }}>Tarot by zodiac sign</Link>
           </div>
           <div>
             <p style={{ color: CREAM, margin: '0 0 10px', fontWeight: 500 }}>Vesper</p>

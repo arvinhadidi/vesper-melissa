@@ -37,6 +37,10 @@ export default function CardsIndexPage() {
         New to tarot? Read <Link href="/guides/how-to-read-tarot-for-beginners" style={{ color: GOLD }}>how to read tarot for beginners</Link>{' '}
         or try a <Link href="/guides/three-card-spread" style={{ color: GOLD }}>three card spread</Link>.
       </p>
+      <p style={{ fontFamily: UI, fontSize: '14px', color: MUTED, margin: '0 0 8px' }}>
+        Got a specific question? See <Link href="/questions" style={{ color: GOLD }}>questions people ask the cards</Link>, or find{' '}
+        <Link href="/zodiac" style={{ color: GOLD }}>your tarot card by zodiac sign</Link>.
+      </p>
 
       {CARD_GROUPS.map((group) => (
         <section key={group.key} aria-labelledby={`g-${group.key}`} style={{ marginTop: '48px' }}>
