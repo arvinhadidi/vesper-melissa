@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import styles from "./landing.module.css";
 import { track } from "@/lib/analytics";
@@ -60,8 +61,9 @@ export default function LandingHero() {
           </motion.div>
         </motion.div>
         <motion.p className={styles.heroSub} {...enter(3)}>
-          Meet Melissa. Your personal oracle, available every day for the
-          clarity you&rsquo;ve been looking for.
+          Vesper is a tarot reading app. Meet Melissa, your personal oracle:
+          daily card readings and spreads for love, work and the questions
+          you keep coming back to.
         </motion.p>
         <motion.div {...enter(4)}>
           <a
@@ -71,6 +73,14 @@ export default function LandingHero() {
           >
             Start your free reading
           </a>
+          <p style={{ marginTop: "16px", fontSize: "0.95rem", opacity: 0.85 }}>
+            <Link
+              href="/cards"
+              style={{ color: "inherit", textDecoration: "underline", textUnderlineOffset: "3px" }}
+            >
+              Learn what every tarot card means
+            </Link>
+          </p>
         </motion.div>
       </div>
     </header>
