@@ -52,7 +52,7 @@ export default function SocialProofPage() {
         </div>
       </div>
       <div style={{ width: '100%' }}>
-        <PrimaryButton onClick={() => router.push('/onboarding/trial-enabled')}>Continue</PrimaryButton>
+        <PrimaryButton onClick={() => router.push('/onboarding/save-reading')}>Continue</PrimaryButton>
       </div>
     </div>
   );

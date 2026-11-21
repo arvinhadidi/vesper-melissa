@@ -3,7 +3,7 @@
 import { PRICING } from '@/lib/onboarding/constants';
 
 type Plan = 'yearly' | 'monthly';
-type PriceInfo = (typeof PRICING)[string];
+type PriceInfo = (typeof PRICING)["GBP"];
 
 interface PlanSelectorProps {
   selectedPlan: Plan;
@@ -32,7 +32,7 @@ export function PlanSelector({ selectedPlan, onSelect, pricing }: PlanSelectorPr
       >
         <span style={{ position: 'absolute', top: '-10px', left: '50%', transform: 'translateX(-50%)', background: '#C9A84C', color: '#1E1256', fontFamily: 'var(--font-dm-sans-var), sans-serif', fontSize: '10px', fontWeight: 700, padding: '3px 8px', borderRadius: '6px', letterSpacing: '0.3px', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>Save {pricing.savePct}%</span>
         <span style={{ fontFamily: 'var(--font-dm-sans-var), sans-serif', fontSize: '16px', fontWeight: 600, color: '#FAF7F0', display: 'block' }}>Yearly</span>
-        <span style={{ fontFamily: 'var(--font-dm-sans-var), sans-serif', fontSize: '18px', fontWeight: 700, color: '#FAF7F0', display: 'block', marginTop: '4px' }}>{pricing.symbol}{pricing.yearly}</span>
+        <span style={{ fontFamily: 'var(--font-dm-sans-var), sans-serif', fontSize: '18px', fontWeight: 700, color: '#FAF7F0', display: 'block', marginTop: '4px' }}>{pricing.decimals === 0 ? `${pricing.symbol}${pricing.yearly.toLocaleString('en-IN')}` : `${pricing.symbol}${pricing.yearly}`}</span>
       </button>
       <button
         onClick={() => onSelect('monthly')}
@@ -48,7 +48,7 @@ export function PlanSelector({ selectedPlan, onSelect, pricing }: PlanSelectorPr
         }}
       >
         <span style={{ fontFamily: 'var(--font-dm-sans-var), sans-serif', fontSize: '16px', fontWeight: 600, color: '#FAF7F0', display: 'block' }}>Monthly</span>
-        <span style={{ fontFamily: 'var(--font-dm-sans-var), sans-serif', fontSize: '18px', fontWeight: 700, color: '#FAF7F0', display: 'block', marginTop: '4px' }}>{pricing.symbol}{pricing.monthly}</span>
+        <span style={{ fontFamily: 'var(--font-dm-sans-var), sans-serif', fontSize: '18px', fontWeight: 700, color: '#FAF7F0', display: 'block', marginTop: '4px' }}>{pricing.decimals === 0 ? `${pricing.symbol}${pricing.monthly.toLocaleString('en-IN')}` : `${pricing.symbol}${pricing.monthly}`}</span>
       </button>
     </div>
   );

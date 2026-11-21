@@ -28,6 +28,11 @@ export function MelissaAvatar({ size = 96, variant = 'default' }: { size?: numbe
         zIndex: 0,
       }} />
       <Image src={src} alt="Melissa" width={size} height={size}
+        /* priority = eager load + <link rel="preload">. Without it next/image lazy-loads
+           and the 800KB PNG only starts downloading after hydration, so Melissa used to
+           pop in 2-3s after the glow on the welcome screen. */
+        priority
+        sizes={`${size}px`}
         style={{
           display: 'block',
           position: 'relative',

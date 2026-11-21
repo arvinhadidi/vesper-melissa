@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useOnboardingData } from '@/lib/onboarding/useOnboardingData';
-import { createClient } from '@/lib/supabase/client';
 import { PrimaryButton } from '@/components/onboarding/PrimaryButton';
 
 export default function DisclaimerPage() {
@@ -13,38 +12,15 @@ export default function DisclaimerPage() {
   const [expanded, setExpanded] = useState(false);
   const [signingIn, setSigningIn] = useState(false);
 
-  async function handleAccept() {
-    // Without this guard, a double-click (easy to do during the brief delay before
-    // the browser actually navigates to Google) fires signInWithOAuth twice, which
-    // can restart the flow and re-show the account picker right after the user
-    // already chose one. Mirrors the same guard in LandingNav's handleSignIn.
+  function handleAccept() {
+    // Sign-in no longer happens here: it moved to the save-reading step right before
+    // the paywall, after the visitor has invested in their answers (it lost ~1 in 3
+    // visitors at this step). Answers are saved anonymously as they go.
     if (signingIn) return;
     setSigningIn(true);
     const updated = { ...data, disclaimer_accepted_at: new Date().toISOString() };
     persist(updated);
-
-    // Supabase's redirect-URL allowlist drops the custom ?next= query param even
-    // with a wildcard match (it only preserves its own code/error/state params), so
-    // a user who lands back here already authenticated (e.g. bounced through
-    // /main -> middleware -> /onboarding because `next` got lost) would otherwise
-    // re-trigger Google sign-in needlessly. Check auth state first and skip
-    // straight to the next step if already signed in.
-    const supabase = createClient();
-    const { data: { user } } = await supabase.auth.getUser();
-    if (user) {
-      router.push('/onboarding/name');
-      return;
-    }
-
-    supabase.auth.signInWithOAuth({
-      provider: 'google',
-      options: {
-        redirectTo: `${window.location.origin}/auth/callback?next=/onboarding/name`,
-        // Always show the Google account chooser — otherwise, if one Google account is
-        // already signed in with prior consent, Google silently reuses it and skips the picker.
-        queryParams: { prompt: 'select_account' },
-      },
-    });
+    router.push('/onboarding/name');
   }
 
   return (
@@ -74,7 +50,7 @@ export default function DisclaimerPage() {
         )}
       </AnimatePresence>
       <div style={{ width: '100%', maxWidth: '360px' }}>
-        <PrimaryButton onClick={handleAccept} disabled={signingIn}>{signingIn ? 'Opening…' : "I'm ready"}</PrimaryButton>
+        <PrimaryButton onClick={handleAccept} disabled={signingIn}>I&apos;m ready</PrimaryButton>
       </div>
     </div>
   );

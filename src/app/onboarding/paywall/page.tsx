@@ -1,12 +1,14 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { createClient } from '@/lib/supabase/client';
 import { useOnboardingData } from '@/lib/onboarding/useOnboardingData';
 import { PrimaryButton } from '@/components/onboarding/PrimaryButton';
 import { MelissaAvatar } from '@/components/onboarding/MelissaAvatar';
 import { PlanSelector } from '@/components/onboarding/PlanSelector';
-import { useDetectedCurrency } from '@/lib/onboarding/useDetectedCurrency';
+import { useGeo } from '@/lib/onboarding/useDetectedCurrency';
+import { ClosingOfferSheet } from '@/components/onboarding/ClosingOfferSheet';
+import { saveProgress } from '@/lib/onboarding/saveProgress';
+import { startGoogleSignIn } from '@/lib/onboarding/googleSignIn';
 import { track } from '@/lib/analytics';
 import { VALUE_PROPS, PRICING, DEFAULT_CURRENCY, TRIAL_DAYS, COUNTDOWN_SECONDS } from '@/lib/onboarding/constants';
 
@@ -14,9 +16,13 @@ export default function PaywallPage() {
   const { data } = useOnboardingData();
   const [selectedPlan, setSelectedPlan] = useState<'yearly' | 'monthly'>('monthly');
   const [secondsLeft, setSecondsLeft] = useState(COUNTDOWN_SECONDS);
-  const currency = useDetectedCurrency();
+  const { currency, closingOffer } = useGeo();
   const [trialStarting, setTrialStarting] = useState(false);
-  const supabaseWriteFired = useRef(false);
+  const [offerOpen, setOfferOpen] = useState(false);
+  const [offerBusy, setOfferBusy] = useState(false);
+  const [offerError, setOfferError] = useState<string | null>(null);
+  const offerShown = useRef(false);
+  const [offerUsed, setOfferUsed] = useState(false);
 
   useEffect(() => {
     const KEY = 'vesper_paywall_deadline';
@@ -38,48 +44,45 @@ export default function PaywallPage() {
     return () => clearInterval(t);
   }, []);
 
+  // Answers are no longer written from here: onboarding/template.tsx saves them on
+  // every step via /api/onboarding/save (server side, anonymous-first). The old
+  // client-side upsert in this effect never landed (every new profile had null answers).
+
+  function showClosingOffer(source: 'back' | 'not_now') {
+    if (offerShown.current || !closingOffer) return false;
+    offerShown.current = true;
+    setOfferUsed(true);
+    setOfferOpen(true);
+    track('closing_offer_shown', { source, currency });
+    saveProgress({ event: 'closing_offer_shown' });
+    return true;
+  }
+
+  // Back-button exit intent: hold one history entry so the first "back" opens the
+  // closing offer instead of leaving. Only armed when the offer is live.
   useEffect(() => {
-    if (supabaseWriteFired.current) return;
-    // Guard against wiping saved answers with nulls if we land here without onboarding
-    // data in sessionStorage (e.g. returning to the trial offer in a fresh tab).
-    if (!data.display_name) return;
-    supabaseWriteFired.current = true;
-    const supabase = createClient();
-    supabase.auth.getUser().then(({ data: { user } }) => {
-      if (!user) return;
-      supabase.from('user_profiles').upsert({
-        id: user.id,
-        display_name: data.display_name || null,
-        star_sign: data.star_sign || null,
-        birth_date: data.birth_date || null,
-        focus_area: data.focus_area || null,
-        relationship_status: data.relationship_status || null,
-        life_weight: data.life_weight || null,
-        has_specific_person: data.has_specific_person || null,
-        reading_intent: data.reading_intent,
-        current_mood: data.current_mood || null,
-        notices_signs: data.notices_signs || null,
-        duration_weight: data.duration_weight || null,
-        gut_feeling: data.gut_feeling || null,
-        micro_pull_card: data.micro_pull_card || null,
-        disclaimer_accepted_at: data.disclaimer_accepted_at || null,
-        preferred_checkin_time: data.preferred_checkin_time || null,
-        email_marketing_consent: data.email_marketing_consent,
-        email_consent_given_at: data.email_consent_given_at || null,
-      }, { onConflict: 'id' });
-    });
+    if (!closingOffer) return;
+    window.history.pushState({ vesperPaywall: true }, '');
+    function onPop() {
+      if (!showClosingOffer('back')) window.history.back();
+    }
+    window.addEventListener('popstate', onPop);
+    return () => window.removeEventListener('popstate', onPop);
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [closingOffer]);
 
   function handlePlanSelect(plan: 'yearly' | 'monthly') {
     track('paywall_plan_selected', { plan });
     setSelectedPlan(plan);
   }
 
-  async function handleStartTrial() {
-    if (trialStarting) return;
-    setTrialStarting(true);
-    track('trial_checkout_started', { plan: selectedPlan, currency });
+  async function handleStartTrial(withOffer = false) {
+    if (trialStarting || offerBusy) return;
+    const plan = withOffer ? 'monthly' : selectedPlan;
+    if (withOffer) { setOfferBusy(true); setOfferError(null); } else setTrialStarting(true);
+    track(withOffer ? 'closing_offer_accepted' : 'trial_checkout_started', { plan, currency });
+    saveProgress({ event: withOffer ? 'closing_offer_accepted' : 'checkout_started' });
+    const reset = () => { setTrialStarting(false); setOfferBusy(false); };
 
     const now = new Date();
     const spreadTimestamp = now.getTime();
@@ -123,14 +126,20 @@ export default function PaywallPage() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          plan: selectedPlan,
+          plan,
           currency,
           trial: true,
+          ...(withOffer ? { offer: 'closing_offer' } : {}),
           successUrl: '/personalisation',
           cancelUrl: '/onboarding/paywall',
         }),
       });
-      const body = await res.json();
+      if (res.status === 401) {
+        // Not signed in (e.g. landed here directly): sign in, then come straight back.
+        await startGoogleSignIn('/onboarding/paywall');
+        return;
+      }
+      const body = res.headers.get('content-type')?.includes('json') ? await res.json() : {};
       if (body.url) {
         window.location.href = body.url;
       } else if (res.status === 409 && body.error === 'already_subscribed') {
@@ -139,10 +148,12 @@ export default function PaywallPage() {
         // instead of leaving this button silently reset with no explanation.
         window.location.href = '/main';
       } else {
-        setTrialStarting(false);
+        if (withOffer) setOfferError('Sorry, that offer could not be opened. Please try again.');
+        reset();
       }
     } catch {
-      setTrialStarting(false);
+      if (withOffer) setOfferError('Sorry, that offer could not be opened. Please try again.');
+      reset();
     }
   }
 
@@ -179,7 +190,7 @@ export default function PaywallPage() {
         </div>
 
         <p style={{ fontFamily: 'var(--font-dm-sans-var), sans-serif', fontSize: '12px', color: 'rgba(250,247,240,0.55)', textAlign: 'center', margin: '0 0 14px', fontStyle: 'italic' }}>
-          A single tarot reading can cost £25–50. Melissa is with you every day.
+          A single tarot reading can cost {p.readingCost}. Melissa is with you every day.
         </p>
 
         <PlanSelector selectedPlan={selectedPlan} onSelect={handlePlanSelect} pricing={p} />
@@ -188,7 +199,7 @@ export default function PaywallPage() {
           No payment due now
         </p>
         <div style={{ width: '100%' }}>
-          <PrimaryButton onClick={handleStartTrial}>Try Vesper for {p.symbol}0</PrimaryButton>
+          <PrimaryButton onClick={() => handleStartTrial()}>Try Vesper for {p.symbol}0</PrimaryButton>
         </div>
         <p style={{ fontFamily: 'var(--font-dm-sans-var), sans-serif', fontSize: '13px', color: 'rgba(250,247,240,0.45)', textAlign: 'center', margin: '8px 0 0' }}>
           Cancel anytime during your trial.
@@ -196,6 +207,27 @@ export default function PaywallPage() {
         <p style={{ fontFamily: 'var(--font-dm-sans-var), sans-serif', fontSize: '13px', color: 'rgba(250,247,240,0.45)', textAlign: 'center', margin: '4px 0 0' }}>
           We&apos;ll email you before your trial ends.
         </p>
+        {closingOffer && !offerUsed && (
+          <button
+            onClick={() => showClosingOffer('not_now')}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', marginTop: '14px', fontFamily: 'var(--font-dm-sans-var), sans-serif', fontSize: '13px', color: 'rgba(250,247,240,0.4)', textDecoration: 'underline' }}
+          >
+            Not now
+          </button>
+        )}
+        <ClosingOfferSheet
+          open={offerOpen}
+          name={data.display_name || undefined}
+          currency={currency}
+          busy={offerBusy}
+          error={offerError}
+          onAccept={() => handleStartTrial(true)}
+          onDecline={() => {
+            setOfferOpen(false);
+            track('closing_offer_declined', { currency });
+            saveProgress({ event: 'closing_offer_declined' });
+          }}
+        />
       </div>
 
       <div className="paywall-timeline" style={{ alignSelf: 'stretch', justifyContent: 'center' }}>

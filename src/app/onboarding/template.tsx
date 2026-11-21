@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 import { STEP_ORDER, EASE } from '@/lib/onboarding/constants';
 import { track } from '@/lib/analytics';
+import { saveProgress } from '@/lib/onboarding/saveProgress';
 
 export default function OnboardingTemplate({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -17,6 +18,9 @@ export default function OnboardingTemplate({ children }: { children: React.React
   useEffect(() => {
     if (currentIndex >= 0) {
       track('onboarding_step_viewed', { step: slug, index: currentIndex, total: STEP_ORDER.length });
+      // Continual save: every step writes the visitor's answers so far to Supabase
+      // (anonymous until they sign in), so we keep detail on everyone who starts.
+      saveProgress({ step: slug, index: currentIndex, event: slug === 'paywall' ? 'paywall_viewed' : undefined });
     }
   }, [slug, currentIndex]);
 

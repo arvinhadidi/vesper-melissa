@@ -1,3 +1,4 @@
+import { LOCAL_PRICING } from './pricing';
 import type { OnboardingData, MicroCard } from './types';
 
 export const ONBOARDING_SESSION_KEY = 'vesper_onboarding_session';
@@ -27,12 +28,12 @@ export const STEP_ORDER = [
   'notices-signs', 'focus-area', 'interstitial-focus', 'privacy', 'situation',
   'specific-person', 'micro-pull', 'duration', 'reading-intent', 'gut-feeling',
   'stat', 'commitment', 'email-checkin', 'synthesis', 'social-proof',
-  'trial-enabled', 'paywall',
+  'save-reading', 'trial-enabled', 'paywall',
 ] as const;
 
 export const NO_PROGRESS = new Set([
   'welcome', 'disclaimer', 'interstitial-focus',
-  'micro-pull', 'synthesis', 'social-proof', 'trial-enabled', 'paywall',
+  'micro-pull', 'synthesis', 'social-proof', 'save-reading', 'trial-enabled', 'paywall',
 ]);
 
 export function getNextStep(current: string): string | null {
@@ -131,10 +132,9 @@ export const VALUE_PROPS = [
   'A private journal to track what the cards have been telling you',
 ];
 
-export const PRICING: Record<string, { symbol: string; monthly: number; yearly: number; savePct: number }> = {
-  GBP: { symbol: '£', monthly: 9.99, yearly: 79.99, savePct: 33 },
-  USD: { symbol: '$', monthly: 12.99, yearly: 103.99, savePct: 33 },
-};
+// Per-currency prices live in ./pricing.ts (GBP/USD/EUR/INR); re-exported here so existing
+// imports keep working.
+export const PRICING = LOCAL_PRICING;
 export const DEFAULT_CURRENCY = 'GBP';
 export const TRIAL_DAYS = 14;
 export const COUNTDOWN_SECONDS = 5 * 60;

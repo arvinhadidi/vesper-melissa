@@ -4,16 +4,22 @@ import { createClient } from '@/lib/supabase/server';
 import { stripe } from '@/lib/stripe';
 import { TRIAL_DAYS } from '@/lib/onboarding/constants';
 import { getRequestOrigin } from '@/lib/requestOrigin';
+import { getChargeableCurrencies } from '@/lib/stripeCurrencies';
+import { isCurrencyCode, type CurrencyCode } from '@/lib/onboarding/pricing';
 
+// One Stripe price per plan. They are GBP prices; local currencies (USD/EUR/INR) are
+// `currency_options` on the same price, selected per session via `currency` below.
 const PRICE_MAP: Record<string, string | undefined> = {
-  monthly_GBP: process.env.STRIPE_PRICE_ID_MONTHLY_GBP,
-  yearly_GBP: process.env.STRIPE_PRICE_ID_YEARLY_GBP,
+  monthly: process.env.STRIPE_PRICE_ID_MONTHLY_GBP,
+  yearly: process.env.STRIPE_PRICE_ID_YEARLY_GBP,
 };
 
 interface CheckoutBody {
   plan: 'monthly' | 'yearly';
   currency: string;
   trial?: boolean;
+  /** 'closing_offer' = % off the first paid month (monthly only), from the paywall exit sheet. */
+  offer?: 'closing_offer';
   successUrl?: string;
   cancelUrl?: string;
 }
@@ -23,9 +29,18 @@ export async function POST(req: NextRequest) {
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return new Response('Unauthorized', { status: 401 });
 
-  const { plan, currency, trial, successUrl, cancelUrl } = (await req.json()) as CheckoutBody;
-  const priceId = PRICE_MAP[`${plan}_${currency}`];
-  if (!priceId) return new Response('Invalid plan or currency', { status: 400 });
+  const { plan, currency, trial, offer, successUrl, cancelUrl } = (await req.json()) as CheckoutBody;
+  const priceId = PRICE_MAP[plan];
+  if (!priceId) return new Response('Invalid plan', { status: 400 });
+  // Charge in the visitor's currency only if the live price really carries it
+  // (otherwise GBP). Previously any non-GBP currency 400'd here, so US visitors
+  // tapping "Try for $0" silently got nothing.
+  const chargeable = await getChargeableCurrencies();
+  const requestedCurrency = isCurrencyCode(currency) && currency !== 'GBP' && chargeable.has(currency)
+    ? currency.toLowerCase()
+    : undefined;
+  const offerCoupon = offer === 'closing_offer' && plan === 'monthly' ? process.env.STRIPE_COUPON_FIRST_MONTH : undefined;
+  if (offer === 'closing_offer' && !offerCoupon) return new Response('Offer unavailable', { status: 400 });
 
   const { data: profile } = await supabase
     .from('user_profiles')
@@ -87,23 +102,50 @@ export async function POST(req: NextRequest) {
     return Response.json({ error: 'already_subscribed' }, { status: 409 });
   }
 
+  // Trial and closing offer are first-subscription only. Both arrive from the client,
+  // so a lapsed customer (any prior subscription) never gets a second trial or the discount.
+  const firstSubscription = existingSubs.data.length === 0;
+  const applyTrial = Boolean(trial) && firstSubscription;
+  const applyCoupon = firstSubscription ? offerCoupon : undefined;
+  // Stripe locks a customer to the currency of their earlier subscriptions, so a
+  // returning customer keeps that currency (GBP when it isn't one we can charge).
+  const priorCurrency = existingSubs.data[0]?.currency;
+  const sessionCurrency = firstSubscription
+    ? requestedCurrency
+    : priorCurrency && priorCurrency !== 'gbp' && isCurrencyCode(priorCurrency.toUpperCase()) && chargeable.has(priorCurrency.toUpperCase() as CurrencyCode) ? priorCurrency : undefined;
+
   const origin = getRequestOrigin(req);
   const successDestination = successUrl ? `${origin}${successUrl}` : `${origin}/paywall?success=true`;
   const successUrlWithSession = `${successDestination}${successDestination.includes('?') ? '&' : '?'}session_id={CHECKOUT_SESSION_ID}`;
-  const session = await stripe.checkout.sessions.create({
+  const params: Stripe.Checkout.SessionCreateParams = {
     customer: customerId,
     mode: 'subscription',
     line_items: [{ price: priceId, quantity: 1 }],
+    ...(sessionCurrency ? { currency: sessionCurrency } : {}),
     success_url: successUrlWithSession,
     // Trial flow cancels back to the trial offer (/onboarding/paywall); only genuinely
     // lapsed users (standalone /paywall) cancel back to the "trial has ended" page.
     cancel_url: cancelUrl ? `${origin}${cancelUrl}` : `${origin}/paywall`,
     subscription_data: {
-      metadata: { supabase_uid: user.id },
-      ...(trial ? { trial_period_days: TRIAL_DAYS } : {}),
+      metadata: { supabase_uid: user.id, ...(applyCoupon ? { offer: 'closing_offer' } : {}) },
+      ...(applyTrial ? { trial_period_days: TRIAL_DAYS } : {}),
     },
-    allow_promotion_codes: true,
-  });
+    // Stripe forbids discounts + allow_promotion_codes together. The coupon is
+    // duration "once", so with a trial it lands on the first paid invoice.
+    ...(applyCoupon ? { discounts: [{ coupon: applyCoupon }] } : { allow_promotion_codes: true }),
+  };
+
+  let session: Stripe.Checkout.Session;
+  try {
+    session = await stripe.checkout.sessions.create(params);
+  } catch (err) {
+    // Any currency mismatch Stripe still rejects (e.g. a customer balance in GBP):
+    // fall back to the price's default currency rather than failing checkout.
+    if (!sessionCurrency || !(err instanceof Stripe.errors.StripeInvalidRequestError)) throw err;
+    const { currency: _drop, ...gbpParams } = params;
+    void _drop;
+    session = await stripe.checkout.sessions.create(gbpParams);
+  }
 
   return Response.json({ url: session.url });
 }

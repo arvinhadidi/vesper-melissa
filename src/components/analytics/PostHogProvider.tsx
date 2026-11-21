@@ -3,6 +3,7 @@
 import { Suspense, useEffect } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 import posthog from 'posthog-js';
+import { captureFirstTouch } from '@/lib/onboarding/saveProgress';
 import { PostHogProvider as PHProvider } from 'posthog-js/react';
 
 // Module-level guard so React StrictMode's double-mount (dev) doesn't double-init PostHog.
@@ -10,6 +11,9 @@ let initialized = false;
 
 export default function PostHogProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
+    // Record first-touch source (referrer/UTM/landing page) on the very first page,
+    // before onboarding, so onboarding_sessions rows know where each visitor came from.
+    captureFirstTouch();
     const key = process.env.NEXT_PUBLIC_POSTHOG_KEY;
     if (!key || initialized) return;
     initialized = true;

@@ -6,7 +6,16 @@ export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const origin = getRequestOrigin(request);
   const code = searchParams.get('code');
-  const next = searchParams.get('next');
+  // Supabase's redirect allowlist can drop ?next=, so fall back to the cookie set by
+  // startGoogleSignIn (src/lib/onboarding/googleSignIn.ts).
+  const cookieNext = request.cookies.get('vesper_post_auth_next')?.value;
+  let decodedCookieNext: string | null = null;
+  try {
+    decodedCookieNext = cookieNext ? decodeURIComponent(cookieNext) : null;
+  } catch {
+    decodedCookieNext = null; // malformed cookie: ignore it rather than 500 mid-OAuth
+  }
+  const next = searchParams.get('next') ?? decodedCookieNext;
 
   if (code) {
     const supabase = await createClient();
@@ -24,12 +33,16 @@ export async function GET(request: NextRequest) {
           .single();
 
         if (profile?.onboarding_completed) {
-          return NextResponse.redirect(`${origin}/main`);
+          const home = NextResponse.redirect(`${origin}/main`);
+          home.cookies.delete('vesper_post_auth_next');
+          return home;
         }
       }
 
-      const destination = next && next.startsWith('/') ? next : '/main';
-      return NextResponse.redirect(`${origin}${destination}`);
+      const destination = next && next.startsWith('/') && !next.startsWith('//') ? next : '/main';
+      const res = NextResponse.redirect(`${origin}${destination}`);
+      res.cookies.delete('vesper_post_auth_next');
+      return res;
     }
   }
 
