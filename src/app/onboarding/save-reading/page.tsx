@@ -8,6 +8,7 @@ import { useOnboardingData } from '@/lib/onboarding/useOnboardingData';
 import { MelissaAvatar } from '@/components/onboarding/MelissaAvatar';
 import { startGoogleSignIn } from '@/lib/onboarding/googleSignIn';
 import { track } from '@/lib/analytics';
+import { saveProgress } from '@/lib/onboarding/saveProgress';
 import { EASE } from '@/lib/onboarding/constants';
 
 const NEXT = '/onboarding/trial-enabled';
@@ -49,6 +50,15 @@ export default function SaveReadingPage() {
     }
   }
 
+  // 4 of 7 visitors who finished the questions on 21–22 Nov stopped here. Sign-in is
+  // optional at this point; the paywall asks for it only when they tap the trial.
+  function handleSkip() {
+    if (opening) return;
+    track('signin_skipped', { location: 'save_reading' });
+    saveProgress({ event: 'signin_skipped' });
+    router.push(NEXT);
+  }
+
   const name = data.display_name;
 
   return (
@@ -83,6 +93,13 @@ export default function SaveReadingPage() {
         <p style={{ fontFamily: 'var(--font-dm-sans-var), sans-serif', fontSize: '12.5px', color: 'rgba(250,247,240,0.5)', margin: '14px 0 0', lineHeight: 1.5 }}>
           Takes 5 seconds. We never post anything or share your email.
         </p>
+        <button
+          onClick={handleSkip}
+          disabled={opening}
+          style={{ background: 'none', border: 'none', cursor: 'pointer', marginTop: '18px', padding: '6px', fontFamily: 'var(--font-dm-sans-var), sans-serif', fontSize: '14px', color: 'rgba(250,247,240,0.55)', textDecoration: 'underline' }}
+        >
+          Skip for now
+        </button>
       </div>
     </div>
   );

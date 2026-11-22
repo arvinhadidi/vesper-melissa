@@ -12,11 +12,15 @@ import { startGoogleSignIn } from '@/lib/onboarding/googleSignIn';
 import { track } from '@/lib/analytics';
 import { VALUE_PROPS, PRICING, DEFAULT_CURRENCY, TRIAL_DAYS, COUNTDOWN_SECONDS } from '@/lib/onboarding/constants';
 
+const RESUME_KEY = 'vesper_resume_checkout';
+// Matches the 900s post-auth cookie: a key left by an abandoned Google sign-in is ignored.
+const RESUME_MAX_AGE_MS = 15 * 60 * 1000;
+
 export default function PaywallPage() {
   const { data } = useOnboardingData();
   const [selectedPlan, setSelectedPlan] = useState<'yearly' | 'monthly'>('monthly');
   const [secondsLeft, setSecondsLeft] = useState(COUNTDOWN_SECONDS);
-  const { currency, closingOffer } = useGeo();
+  const { currency, closingOffer, ready: geoReady } = useGeo();
   const [trialStarting, setTrialStarting] = useState(false);
   const [offerOpen, setOfferOpen] = useState(false);
   const [offerBusy, setOfferBusy] = useState(false);
@@ -71,14 +75,35 @@ export default function PaywallPage() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [closingOffer]);
 
+  // Back from Google after tapping the trial while signed out: resume that checkout once.
+  // Waits for geo so the checkout uses the visitor's local currency.
+  const resumed = useRef(false);
+  useEffect(() => {
+    if (resumed.current || !geoReady) return;
+    let pending: { plan?: 'yearly' | 'monthly'; withOffer?: boolean; ts?: number } | null = null;
+    try {
+      const raw = sessionStorage.getItem(RESUME_KEY);
+      if (raw) { sessionStorage.removeItem(RESUME_KEY); pending = JSON.parse(raw); }
+    } catch { pending = null; }
+    if (!pending || typeof pending.ts !== 'number' || Date.now() - pending.ts > RESUME_MAX_AGE_MS) return;
+    resumed.current = true;
+    const plan = pending.plan === 'yearly' ? 'yearly' : 'monthly';
+    // One-shot sync from sessionStorage after mount (reading it during render would
+    // break hydration), so the plan selector matches the checkout being resumed.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setSelectedPlan(plan);
+    handleStartTrial(Boolean(pending.withOffer), plan, true);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [geoReady]);
+
   function handlePlanSelect(plan: 'yearly' | 'monthly') {
     track('paywall_plan_selected', { plan });
     setSelectedPlan(plan);
   }
 
-  async function handleStartTrial(withOffer = false) {
+  async function handleStartTrial(withOffer = false, planOverride?: 'yearly' | 'monthly', resuming = false) {
     if (trialStarting || offerBusy) return;
-    const plan = withOffer ? 'monthly' : selectedPlan;
+    const plan = withOffer ? 'monthly' : (planOverride ?? selectedPlan);
     if (withOffer) { setOfferBusy(true); setOfferError(null); } else setTrialStarting(true);
     track(withOffer ? 'closing_offer_accepted' : 'trial_checkout_started', { plan, currency });
     saveProgress({ event: withOffer ? 'closing_offer_accepted' : 'checkout_started' });
@@ -135,7 +160,12 @@ export default function PaywallPage() {
         }),
       });
       if (res.status === 401) {
-        // Not signed in (e.g. landed here directly): sign in, then come straight back.
+        // Still signed out after a resume (cookies blocked, session didn't stick): stop
+        // here and show the button rather than looping back to Google.
+        if (resuming) { reset(); return; }
+        // Not signed in (skipped the save step, or landed here directly): sign in, then
+        // come straight back and carry on to checkout without a second tap.
+        try { sessionStorage.setItem(RESUME_KEY, JSON.stringify({ plan, withOffer, ts: Date.now() })); } catch { /* storage blocked */ }
         await startGoogleSignIn('/onboarding/paywall');
         return;
       }

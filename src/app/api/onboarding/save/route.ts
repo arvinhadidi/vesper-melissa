@@ -12,7 +12,7 @@ import { geoFromHeaders, resolveCurrency } from '@/lib/geo';
 // fields ONLY (see sanitizeAnswers); entitlement fields are never written here.
 
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
-const EVENTS = new Set(['paywall_viewed', 'checkout_started', 'closing_offer_shown', 'closing_offer_accepted', 'closing_offer_declined', 'signin_started', 'signed_in']);
+const EVENTS = new Set(['paywall_viewed', 'checkout_started', 'closing_offer_shown', 'closing_offer_accepted', 'closing_offer_declined', 'signin_started', 'signin_skipped', 'signed_in']);
 const str = (v: unknown, max: number) => (typeof v === 'string' && v ? v.slice(0, max) : null);
 
 type Body = {

@@ -6,14 +6,14 @@ import { isCurrencyCode, type CurrencyCode } from './pricing';
 
 const PREVIEW_KEY = 'vesper_preview_currency';
 
-export type GeoInfo = { currency: CurrencyCode; closingOffer: boolean };
+export type GeoInfo = { currency: CurrencyCode; closingOffer: boolean; ready: boolean };
 
 // Visitor's billing currency, from /api/geo (Vercel IP country → local currency, only
 // when the live Stripe price can charge it), plus whether the paywall exit offer is
 // live. Used by both paywalls so detection lives in one place.
 // Dev only: add ?currency=EUR to any onboarding URL to preview another currency.
 export function useGeo(): GeoInfo {
-  const [geo, setGeo] = useState<GeoInfo>({ currency: DEFAULT_CURRENCY as CurrencyCode, closingOffer: false });
+  const [geo, setGeo] = useState<GeoInfo>({ currency: DEFAULT_CURRENCY as CurrencyCode, closingOffer: false, ready: false });
 
   useEffect(() => {
     let preview: string | null = null;
@@ -25,9 +25,9 @@ export function useGeo(): GeoInfo {
     fetch(`/api/geo${preview ? `?currency=${encodeURIComponent(preview)}` : ''}`)
       .then(r => r.json())
       .then((d: { currency?: string; closingOffer?: boolean }) => {
-        setGeo({ currency: isCurrencyCode(d.currency) ? d.currency : (DEFAULT_CURRENCY as CurrencyCode), closingOffer: Boolean(d.closingOffer) });
+        setGeo({ currency: isCurrencyCode(d.currency) ? d.currency : (DEFAULT_CURRENCY as CurrencyCode), closingOffer: Boolean(d.closingOffer), ready: true });
       })
-      .catch(() => {});
+      .catch(() => setGeo(g => ({ ...g, ready: true })));
   }, []);
 
   return geo;
