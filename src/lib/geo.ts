@@ -3,14 +3,14 @@ import { getChargeableCurrencies } from '@/lib/stripeCurrencies';
 
 export type Geo = { country: string | null; region: string | null; city: string | null };
 
-/** Vercel edge geo headers (absent in local dev). */
+/** Geo headers: Vercel's x-vercel-ip-*, or Cloudflare's cf-ipcountry (country only). Absent in local dev. */
 export function geoFromHeaders(h: Headers): Geo {
   const dec = (v: string | null) => {
     if (!v) return null;
     try { return decodeURIComponent(v); } catch { return v; }
   };
   return {
-    country: h.get('x-vercel-ip-country'),
+    country: h.get('x-vercel-ip-country') ?? (h.get('cf-ipcountry') && h.get('cf-ipcountry') !== 'XX' ? h.get('cf-ipcountry') : null),
     region: dec(h.get('x-vercel-ip-country-region')),
     city: dec(h.get('x-vercel-ip-city')),
   };

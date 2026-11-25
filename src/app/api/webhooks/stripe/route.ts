@@ -33,7 +33,8 @@ export async function POST(req: NextRequest) {
 
   let event: Stripe.Event;
   try {
-    event = stripe.webhooks.constructEvent(body, signature, process.env.STRIPE_WEBHOOK_SECRET!);
+    // Async + WebCrypto: the sync version needs Node crypto, which Cloudflare Workers lack. Same check on Vercel.
+    event = await stripe.webhooks.constructEventAsync(body, signature, process.env.STRIPE_WEBHOOK_SECRET!, undefined, Stripe.createSubtleCryptoProvider());
   } catch {
     return new Response('Invalid signature', { status: 400 });
   }

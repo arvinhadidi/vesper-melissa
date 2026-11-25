@@ -12,10 +12,10 @@ export function absoluteUrl(path: string): string {
   return `${SITE_URL}${path.startsWith('/') ? path : `/${path}`}`;
 }
 
-// The app-root opengraph-image.tsx. Pages that declare their own `openGraph` object replace the
+// The app-root opengraph-image.png (static since the Cloudflare move: next/og's wasm blew the Worker size limit). Pages that declare their own `openGraph` object replace the
 // inherited one wholesale (file-based image included), so they must re-attach this explicitly.
 export const DEFAULT_OG_IMAGE = {
-  url: '/opengraph-image',
+  url: '/opengraph-image.png',
   width: 1200,
   height: 630,
   alt: 'Vesper: tarot readings with Melissa, your personal oracle',

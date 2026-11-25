@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Link from 'next/link';
+import Link from '@/components/Link';
 import { getCardBySlug } from '@/lib/seo/cards';
 import { UI, CREAM, GOLD, HAIRLINE } from './tokens';
 

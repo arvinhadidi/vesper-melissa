@@ -12,7 +12,9 @@
     "test:coverage": "vitest --coverage",
     "test:e2e:capture-session": "tsx tests/e2e/capture-session.ts",
     "test:e2e": "playwright test",
-    "indexnow": "node scripts/indexnow.mjs"
+    "indexnow": "node scripts/indexnow.mjs",
+    "cf:build": "opennextjs-cloudflare build",
+    "cf:deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.102.0",
@@ -20,7 +22,7 @@
     "@supabase/supabase-js": "^2.107.0",
     "@vercel/analytics": "^2.0.1",
     "framer-motion": "^12.40.0",
-    "next": "16.2.7",
+    "next": "^16.4.6",
     "posthog-js": "^1.391.2",
     "react": "19.2.4",
     "react-dom": "19.2.4",
@@ -30,8 +32,10 @@
     "stripe": "^22.2.1"
   },
   "devDependencies": {
+    "@opennextjs/cloudflare": "^1.20.18",
     "@playwright/test": "^1.60.0",
     "@tailwindcss/postcss": "^4",
+    "@testing-library/dom": "^10.4.2",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.1.0",
     "@types/node": "^20",
@@ -40,12 +44,18 @@
     "@vitejs/plugin-react": "^4.3.5",
     "canvas": "^3.2.3",
     "eslint": "^9",
-    "eslint-config-next": "16.2.7",
+    "eslint-config-next": "^16.4.6",
     "jsdom": "^29.0.0",
     "supabase": "^2.105.0",
     "tailwindcss": "^4",
     "tsx": "^4.22.4",
     "typescript": "^5",
-    "vitest": "^2.1.8"
+    "vitest": "^2.1.8",
+    "wrangler": "^4.168.0"
+  },
+  "overrides": {
+    "@opennextjs/aws": {
+      "cookie": "0.7.2"
+    }
   }
 }

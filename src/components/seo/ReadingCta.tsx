@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import Image from 'next/image';
 import { READING_CTA_HREF } from '@/lib/seo/site';
 import { TRIAL_DAYS } from '@/lib/onboarding/constants';

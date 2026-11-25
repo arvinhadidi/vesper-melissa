@@ -4,6 +4,7 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       { source: "/tarot-card-meanings", destination: "/cards", permanent: true },
+      { source: "/opengraph-image", destination: "/opengraph-image.png", permanent: true },
       { source: "/tarot-card-meanings/:slug", destination: "/cards/:slug", permanent: true },
     ];
   },

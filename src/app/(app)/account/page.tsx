@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
+import Link from '@/components/Link';
 import { useUserProfile } from '@/lib/hooks/useUserProfile';
 import { createClient } from '@/lib/supabase/client';
 import { clearVesperLocalData } from '@/lib/clearLocalData';

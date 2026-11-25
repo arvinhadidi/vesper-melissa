@@ -1,10 +1,10 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import type { Components } from 'react-markdown';
 import { SERIF, BODY, UI, CREAM, GOLD, MUTED } from './tokens';
 
-// Server-rendered Markdown for the guides. Internal links use next/link for prefetching.
+// Server-rendered Markdown for the guides. Internal links use the site Link (prefetch off).
 const components: Components = {
   h2: ({ children }) => (
     <h2 style={{ fontFamily: SERIF, fontSize: '28px', fontWeight: 400, color: CREAM, margin: '44px 0 14px', lineHeight: 1.25 }}>{children}</h2>

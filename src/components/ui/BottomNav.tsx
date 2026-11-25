@@ -1,6 +1,6 @@
 'use client';
 
-import Link from 'next/link';
+import Link from '@/components/Link';
 import { usePathname } from 'next/navigation';
 
 // Mirrors SideNav's item set and icon-only pill aesthetic — this is the mobile

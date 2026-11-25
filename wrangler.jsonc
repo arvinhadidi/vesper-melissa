@@ -1,0 +1,32 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"main": ".open-next/worker.js",
+	"name": "vesper",
+	// Free plan caps the worker at 3 MiB gzip; minifying saves ~1 MiB at no runtime cost.
+	"minify": true,
+	"compatibility_date": "2026-11-01",
+	"compatibility_flags": [
+		"nodejs_compat",
+		"global_fetch_strictly_public"
+	],
+	"assets": {
+		"directory": ".open-next/assets",
+		"binding": "ASSETS"
+	},
+	"services": [
+		{
+			"binding": "WORKER_SELF_REFERENCE",
+			"service": "vesper"
+		}
+	],
+	// id filled in after `wrangler kv namespace create NEXT_INC_CACHE_KV`
+	"kv_namespaces": [
+		{
+			"binding": "NEXT_INC_CACHE_KV",
+			"id": "15aae7b25e9f4119b89ea56c671e4ed5"
+		}
+	],
+	"images": {
+		"binding": "IMAGES"
+	}
+}

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import Link from '@/components/Link';
 import { motion, useReducedMotion } from "framer-motion";
 import styles from "./landing.module.css";
 import { track } from "@/lib/analytics";

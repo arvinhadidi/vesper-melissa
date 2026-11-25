@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import { GUIDES } from '@/lib/seo/guides';
 import { FEATURED_CARD_SLUGS, getCardBySlug } from '@/lib/seo/cards';
 import { QUESTION_PAGES } from '@/lib/seo/questions';

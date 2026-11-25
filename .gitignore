@@ -86,3 +86,8 @@ env.txt
 !.claude/
 .claude/*
 !.claude/agents/
+
+# Cloudflare / OpenNext
+.open-next
+.wrangler
+.dev.vars

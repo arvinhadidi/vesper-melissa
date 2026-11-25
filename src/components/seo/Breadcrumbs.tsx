@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import JsonLd from './JsonLd';
 import { absoluteUrl } from '@/lib/seo/site';
 import { UI, FAINT, GOLD } from './tokens';

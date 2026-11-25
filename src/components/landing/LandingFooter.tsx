@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from '@/components/Link';
 import styles from "./landing.module.css";
 import { FEATURED_CARD_SLUGS, getCardBySlug } from "@/lib/seo/cards";
 

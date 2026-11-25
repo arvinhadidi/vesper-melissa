@@ -72,7 +72,8 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen">
         <PostHogProvider>{children}</PostHogProvider>
-        <Analytics />
+        {/* Vercel Analytics only exists on Vercel; on Cloudflare its script 404s. PostHog covers both. */}
+        {process.env.VERCEL ? <Analytics /> : null}
       </body>
     </html>
   );
