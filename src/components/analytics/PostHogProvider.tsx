@@ -18,7 +18,9 @@ export default function PostHogProvider({ children }: { children: React.ReactNod
     if (!key || initialized) return;
     initialized = true;
     posthog.init(key, {
-      api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://us.i.posthog.com',
+      // First-party proxy (cf-worker.js on Cloudflare, rewrites in next.config.ts on Vercel) so ad blockers don't drop events.
+      api_host: '/ingest',
+      ui_host: 'https://us.posthog.com',
       // App Router doesn't emit page loads on client navigations, so we capture $pageview
       // ourselves (below) and turn off the built-in one to avoid missing/duplicate events.
       capture_pageview: false,

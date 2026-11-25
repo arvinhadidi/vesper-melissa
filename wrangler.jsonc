@@ -1,9 +1,12 @@
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
-	"main": ".open-next/worker.js",
+	// cf-worker.js wraps .open-next/worker.js and adds the /ingest PostHog proxy
+	"main": "cf-worker.js",
 	"name": "vesper",
 	// Free plan caps the worker at 3 MiB gzip; minifying saves ~1 MiB at no runtime cost.
 	"minify": true,
+	// Keep request logs and errors (Workers Logs, free within plan limits); Vercel used to keep these for us.
+	"observability": { "enabled": true },
 	"compatibility_date": "2026-11-01",
 	"compatibility_flags": [
 		"nodejs_compat",
