@@ -28,5 +28,10 @@
 	],
 	"images": {
 		"binding": "IMAGES"
-	}
+	},
+	// Serve the real domains (needs the vesper.cards zone active on Cloudflare)
+	"routes": [
+		{ "pattern": "vesper.cards", "custom_domain": true },
+		{ "pattern": "www.vesper.cards", "custom_domain": true }
+	]
 }
